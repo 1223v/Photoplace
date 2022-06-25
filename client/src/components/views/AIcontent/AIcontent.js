@@ -5,6 +5,8 @@ import * as tmImage from '@teachablemachine/image';
 import Dots from "react-activity/dist/Dots";
 import "react-activity/dist/Dots.css";
 import styled from "styled-components";
+import { useDispatch } from 'react-redux'
+import { aiUser } from "../../../_actions/user_actions";
 
 const URL = 'https://teachablemachine.withgoogle.com/models/KAoZrcPlp/';
 const modelURL = URL + 'model.json';
@@ -63,7 +65,7 @@ const Image=styled.img`
 `;
 
 
-const AIcontent = ({history}) => {
+const AIcontent = (props,{history}) => {
     const [imgBase64, setImgBase64] = useState(""); // 파일 base64
     const [imgFile, setImgFile] = useState(null);	//파일
     const [loading,setLoading]=useState(false);
@@ -71,7 +73,7 @@ const AIcontent = ({history}) => {
     const [predictionArr,setPredictionArr]=useState([]);
     const [result,setResult]=useState(null);
     const [keyword,setKeyword]=useState(null);
-
+	const dispatch = useDispatch();
     
 
 
@@ -174,8 +176,18 @@ const AIcontent = ({history}) => {
           break;
       }
       console.log("가장높은확률 : ",prediction[0].className)
-      
-      
+      let body = {
+		  prediction: prediction[0].className
+	  }
+	  dispatch(aiUser(body))
+      	.then(response => {
+		  if(response.payload.aiSuccess){
+			  props.history.push('/')
+		  }
+		  else{
+			  alert('error');
+		  }
+	  })
     }
   
     const handleChangeFile = (event) => {
