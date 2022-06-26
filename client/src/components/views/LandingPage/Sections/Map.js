@@ -7,7 +7,7 @@ const { kakao } = window;
 const Map = () => {
 	
 	const aicontent = useSelector( (state) => state.user);
-	console.log(aicontent.aiSuccess)
+	console.log(aicontent)
 	useEffect(() => {
 		var container = document.getElementById('map');
 		var options = {

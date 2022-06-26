@@ -1,5 +1,5 @@
 import React,{useState,useRef,useEffect} from 'react';
-import {BsArrowCounterclockwise} from "react-icons/bs";
+//import {BsArrowCounterclockwise} from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import * as tmImage from '@teachablemachine/image';
 import Dots from "react-activity/dist/Dots";
@@ -7,6 +7,8 @@ import "react-activity/dist/Dots.css";
 import styled from "styled-components";
 import { useDispatch } from 'react-redux'
 import { aiUser } from "../../../_actions/user_actions";
+
+
 
 const URL = 'https://teachablemachine.withgoogle.com/models/KAoZrcPlp/';
 const modelURL = URL + 'model.json';
@@ -83,6 +85,7 @@ const AIcontent = (props,{history}) => {
     // input 태그를 클릭하는 것과 같은 효과를 주기 위해서 사용
     const inputRef=useRef();
     
+	
   // Load the image model and setup the webcam
     async function init() {
 
@@ -179,15 +182,14 @@ const AIcontent = (props,{history}) => {
       let body = {
 		  prediction: prediction[0].className
 	  }
-	  dispatch(aiUser(body))
-      	.then(response => {
-		  if(response.payload.aiSuccess){
-			  props.history.push('/')
-		  }
-		  else{
-			  alert('error');
-		  }
-	  })
+		
+		dispatch(aiUser(body))
+		.then(navigate(-1))
+	  
+	  
+		 
+	 
+	  
     }
   
     const handleChangeFile = (event) => {
@@ -212,6 +214,7 @@ const AIcontent = (props,{history}) => {
           console.log("init 모델"),
           predict()
         );
+		 
   
       }
     }
@@ -229,6 +232,7 @@ const AIcontent = (props,{history}) => {
 
     }
 
+	
 
     return (
       <Container>

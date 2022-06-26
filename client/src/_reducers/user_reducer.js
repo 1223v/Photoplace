@@ -8,7 +8,7 @@ export default function(state={},action){
     switch(action.type){
         
         case AI_USER:
-            return { ...state, aiSuccess: action.payload }
+            return { ...state,aiSuccess: action.payload }
        
         
         default:
