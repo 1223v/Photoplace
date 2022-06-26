@@ -1,13 +1,18 @@
 /* global kakao */
-import React, { useEffect } from 'react';
-import Mapinfo from './Mapinfo';
+import React, { useState,useEffect } from 'react';
+import Modal from './Modal';
 import { useSelector} from 'react-redux'
 const { kakao } = window;
 
 const Map = () => {
 	
+	
+	const [modalVisible, setModalVisible] = useState(true)
 	const aicontent = useSelector( (state) => state.user);
 	console.log(aicontent)
+	 const closeModal = () => {
+        setModalVisible(false)
+    }
 	useEffect(() => {
 		var container = document.getElementById('map');
 		var options = {
@@ -156,9 +161,17 @@ const Map = () => {
 
 	return (
 		<div>
+			
 			<div id="map" style={{ width: '1530px', height: '670px' }}>
-				<Mapinfo />
+				<div>
+            
+                {modalVisible && (
+                    <Modal visible={modalVisible} closable={true} maskClosable={true} onClose={closeModal}></Modal>
+                )}
+            
+        </div>
 			</div>
+			
 		</div>
 	);
 };

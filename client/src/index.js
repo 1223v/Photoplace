@@ -29,7 +29,7 @@ root.render(
 			
 			>
 			
-			<PersistGate persistor={persistor}>	// 추가
+			<PersistGate persistor={persistor}>	
 			<App />
 		</PersistGate>
 		</Provider>

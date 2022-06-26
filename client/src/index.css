@@ -143,3 +143,27 @@ input.error {
 .info .link {
 	color: #5085bb;
 }
+
+#header {
+    background: url(http://placehold.it/420x160) center top no-repeat;
+}
+#header-inner {
+    background: url(http://placekitten.com/150/200) right top no-repeat;
+}
+.logo-class {
+    height: 128px;
+}
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    border-collapse: collapse;
+    z-index: -1;
+    position:relative;
+}
+.td-main {
+    text-align: center;
+    padding: 80px 10px 80px 10px;
+    border: 1px solid #A02422;
+    background: #ABABAB;
+}
