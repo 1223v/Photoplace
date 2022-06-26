@@ -7,8 +7,7 @@ import {Provider} from 'react-redux'
 import { applyMiddleware, createStore , compose} from 'redux'
 import promiseMiddleware from 'redux-promise'
 import ReduxThunk from 'redux-thunk';
-import Reducer from './_reducers';
-import persistedReducer from './_reducers';	// 추가
+import  persistedReducer from './_reducers';
 import { persistStore } from 'redux-persist';	// 추가
 import { PersistGate } from 'redux-persist/integration/react';	// 추가
 import storage from 'redux-persist/lib/storage'

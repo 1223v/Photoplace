@@ -1,18 +1,16 @@
 /* global kakao */
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
-import { useSelector} from 'react-redux'
+import { useSelector } from 'react-redux';
 const { kakao } = window;
 
 const Map = () => {
-	
-	
-	const [modalVisible, setModalVisible] = useState(true)
-	const aicontent = useSelector( (state) => state.user);
-	console.log(aicontent)
-	 const closeModal = () => {
-        setModalVisible(false)
-    }
+	const [modalVisible, setModalVisible] = useState(true);
+	const aicontent = useSelector((state) => state.user);
+	console.log(aicontent);
+	const closeModal = () => {
+		setModalVisible(false);
+	};
 	useEffect(() => {
 		var container = document.getElementById('map');
 		var options = {
@@ -29,7 +27,7 @@ const Map = () => {
 		var markerPosition = new kakao.maps.LatLng(37.48637170971676, 126.80186916341724);
 		var imageSrc =
 				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbhRk06-nfObLkWTnoLLflwUciu_lbjOzpufdZepvPEDQ9bhxI2uwmCqyH7QkOpxSOWYM&usqp=CAU', // 마커이미지의 주소입니다
-				//인스타 게시글 링크로 붙여넣어서 해도 사진 뜨나?????????
+			//인스타 게시글 링크로 붙여넣어서 해도 사진 뜨나?????????
 			imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
 			imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
@@ -114,7 +112,7 @@ const Map = () => {
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-				// 마커를 표시할 위치입니다
+		// 마커를 표시할 위치입니다
 		var markerPosition2 = new kakao.maps.LatLng(37.4829471177741, 126.79612326284906);
 		var imageSrc2 =
 				'https://ak-d.tripcdn.com/images/1i60l22158ewabw9t1A4F.jpg?proc=source/trip', // 마커이미지의 주소입니다
@@ -161,17 +159,20 @@ const Map = () => {
 
 	return (
 		<div>
-			
 			<div id="map" style={{ width: '1530px', height: '670px' }}>
 				<div>
-            
-                {modalVisible && (
-                    <Modal visible={modalVisible} closable={true} maskClosable={true} onClose={closeModal}></Modal>
-                )}
-            
-        </div>
+					<React.Fragment>
+						{modalVisible && (
+							<Modal
+								visible={modalVisible}
+								closable={true}
+								maskClosable={true}
+								onClose={closeModal}
+							></Modal>
+						)}
+					</React.Fragment>
+				</div>
 			</div>
-			
 		</div>
 	);
 };
