@@ -4,17 +4,17 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux'
-import { applyMiddleware, createStore , compose} from 'redux'
+import { applyMiddleware, createStore ,compose} from 'redux'
 import promiseMiddleware from 'redux-promise'
 import ReduxThunk from 'redux-thunk';
 import  persistedReducer from './_reducers';
 import { persistStore } from 'redux-persist';	// 추가
 import { PersistGate } from 'redux-persist/integration/react';	// 추가
 import storage from 'redux-persist/lib/storage'
-
+import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 const store = createStore(persistedReducer, compose(
     applyMiddleware(promiseMiddleware, ReduxThunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   )
 )
 const persistor = persistStore(store)	// 추가

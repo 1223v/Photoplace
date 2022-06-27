@@ -7,7 +7,7 @@ const { kakao } = window;
 const Map = () => {
 	const [modalVisible, setModalVisible] = useState(true);
 	const aicontent = useSelector((state) => state.user);
-	console.log(aicontent);
+	console.log(aicontent.aiSuccess);
 	const closeModal = () => {
 		setModalVisible(false);
 	};
