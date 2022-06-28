@@ -1,6 +1,7 @@
 /* global kakao */
 import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
+import {Button} from 'antd'
 import { useSelector } from 'react-redux';
 const { kakao } = window;
 
@@ -15,7 +16,7 @@ const Map = () => {
 		var container = document.getElementById('map');
 		var options = {
 			center: new kakao.maps.LatLng(37.486021038352995, 126.80229974931666),
-			level: 10,
+			level: 13,
 		};
 
 		var map = new kakao.maps.Map(container, options);
@@ -158,8 +159,8 @@ const Map = () => {
 	}, []);
 
 	return (
-		<div>
-			<div id="map" style={{ width: '1530px', height: '670px' }}>
+		<div >
+			<div id="map" style={{ width: '90%', height: '80vh', margin:'auto', borderRadius: "30px" }}>
 				<div>
 					<React.Fragment>
 						{modalVisible && (
@@ -173,6 +174,9 @@ const Map = () => {
 					</React.Fragment>
 				</div>
 			</div>
+			<div style={{display:'flex',justifyContent:'center'}}>
+				<Button>전체보기</Button>
+				</div>
 		</div>
 	);
 };
