@@ -29,8 +29,9 @@ const MainText=styled.h1`
    color:white;
    font-size:25px;
    font-weight:bolder;
+   font-family: 'Yellowtail', cursive;
    @media (min-width: 800px) {
-    font-size:40px;
+    font-size:60px;
   }
 `;
 const SubText=styled.h3`
@@ -69,7 +70,7 @@ const Img=styled.img`
 export default function Loading() {
   return (
     <Container>
-		<MainText>Photo Place</MainText>
+		<MainText id= "maint">Photo Place</MainText>
         <SubText>나와 어울리는 여행지는?</SubText>
         <LoadingContainer>
             <Bounce size={30} color="#BAAD7D"></Bounce>

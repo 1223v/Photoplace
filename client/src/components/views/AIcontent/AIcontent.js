@@ -10,7 +10,7 @@ import { aiUser } from "../../../_actions/user_actions";
 
 
 
-const URL = 'https://teachablemachine.withgoogle.com/models/KAoZrcPlp/';
+const URL = 'https://teachablemachine.withgoogle.com/models/D563JHUM9/';
 const modelURL = URL + 'model.json';
 const metadataURL = URL + 'metadata.json';
 
@@ -114,71 +114,9 @@ const AIcontent = (props,{history}) => {
       setShowResult(true)
       setLoading(false)
       setResult(prediction[0].className)
-      switch(prediction[0].className){
-        case "김정은":
-          setKeyword("내래 북한 백두혈통이야");
-          break;
-        case "마크롱":
-          setKeyword("프랑스 최연소 대통령");
-          break;
-        case "메르켈":
-          setKeyword("게르만 철의 여인");
-          break;
-        case "문재인":
-          setKeyword("대한민국 19대 대통령");
-          break;
-        case "바이든":
-          setKeyword("BUILD BACK BETTER");
-          break;
-        case "보리스존슨":
-          setKeyword("브렉시트를 완수하고 영국의 잠재력을 일깨우자");
-          break;
-        case "시진핑":
-          setKeyword("중화인민공화국의 정치인");
-          break;
-        case "심상정":
-          setKeyword("정의당당당 주4일제");
-          break;
-        case "아베":
-          setKeyword("역대 최장 기간 집권한 일본 총리");
-          break;
-        case "아웅산수치":
-          setKeyword("미얀마 민주화운동의 상징");
-          break;
-        case "안철수":
-          setKeyword("의사, 프로그래머, 벤처 기업 CEO, 대학 교수");
-          break;
-        case "오바마":
-          setKeyword("Yes, We can!");
-          break;
-        case "윤석열":
-          setKeyword("법조인 출신 정치인으로, 前 검찰총장");
-          break;
-        case "이재명":
-          setKeyword("변호사 출신 정치인, 前 성남시장");
-          break;
-        case "줄리아길라드":
-          setKeyword("호주 첫 여성총리");
-          break;
-        case "트럼프":
-          setKeyword("MAKE AMERICA GREAT AGAIN!");
-          break;
-        case "푸틴":
-          setKeyword("러시아 상남자");
-          break;
-        case "허경영":
-          setKeyword("내 눈을 바라봐. 넌 건강해지고");
-          break;
-        case "홍준표":
-          setKeyword("대한민국의 검사 출신 정치인. 現 제21대 국회의원");
-          break;
-        case "힐러리":
-          setKeyword("미국 역사상 최초 여성 대통령 후보");
-          break;
-        default:
-          break;
-      }
+      
       console.log("가장높은확률 : ",prediction[0].className)
+		
       let body = {
 		  prediction: prediction[0].className
 	  }

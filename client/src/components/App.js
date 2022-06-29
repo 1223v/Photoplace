@@ -16,10 +16,10 @@ function App() {
     },2000)
   },[])
 
-  if(loading){
-    return(
-      <Loading></Loading>
-    )
+ if(loading){
+   return(
+     <Loading></Loading>
+   )
   }
   return (
      <Suspense >
@@ -28,7 +28,8 @@ function App() {
         <BrowserRouter>
 		  <Routes>
 			  
-        <Route exact path="/" element = {<LandingPage/>} />
+			  
+			  <Route exact path="/" element = {<LandingPage/>} />
         <Route exact path="/AIcontent" element={<AIcontent/>}/>
           
         </Routes>
