@@ -1,14 +1,26 @@
 const express = require('express')
 var cors = require('cors')
 const app = express()
-const port = 5000
+const path = require("path");
+const bodyParser = require("body-parser");
 app.use(cors())
+
+
+//to not get any deprecation warning or error
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true }));
+//to get json data
+// support parsing of application/json type post data
+app.use(bodyParser.json());
+app.use('/api/data', require('./routes/data'));
+
 app.get('/', (req, res) => {
   res.send('Hello World!aaa')
 })
-app.get('/hello',(req,res)=>{
-	res.send("안녕하세요gggggg")
-})
+
+
+const port = process.env.PORT || 5000
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
