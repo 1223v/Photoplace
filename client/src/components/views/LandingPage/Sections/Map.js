@@ -3,12 +3,14 @@ import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
 import { Button } from 'antd';
 import { useSelector } from 'react-redux';
-const { kakao } = window;
+//const { kakao } = window;
 
 const Map = () => {
-	const [modalVisible, setModalVisible] = useState(true);
+	
+	const [modalVisible, setModalVisible] = useState(false);
+	const [imageSrcs, setimageSrcs] = useState("");
 	const aicontent = useSelector((state) => state.user);
-	console.log(aicontent.aiSuccess);
+	//console.log(aicontent.aiSuccess);
 	const closeModal = () => {
 		setModalVisible(false);
 	};
@@ -49,6 +51,10 @@ const Map = () => {
 		// 마커에 클릭이벤트를 등록합니다
 		kakao.maps.event.addListener(marker, 'click', function () {
 			// 마커 위에 인포윈도우를 표시합니다
+			//setimageSrcs("")
+			setModalVisible(true);
+			setimageSrcs(imageSrc)
+			
 			
 		});
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,24 +82,14 @@ const Map = () => {
 		// 마커를 지도에 표시합니다.
 		marker1.setMap(map);
 
-		// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-		var iwContent1 =
-				'        <div>' +
-				`                <img src=${imageSrc1} width="180" height="150">` +
-				//'                <br/><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a>' +
-				'        </div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-		// 인포윈도우를 생성합니다
-		var infowindow1 = new kakao.maps.InfoWindow({
-			content: iwContent1,
-			removable: iwRemoveable,
-		});
-
-		// 마커에 클릭이벤트를 등록합니다
+				// 마커에 클릭이벤트를 등록합니다
 		kakao.maps.event.addListener(marker1, 'click', function () {
 			// 마커 위에 인포윈도우를 표시합니다
-			infowindow1.open(map, marker1);
+			//setimageSrcs("")
+			setModalVisible(true);
+			setimageSrcs(imageSrc1)
+			
+			
 		});
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,23 +116,14 @@ const Map = () => {
 		// 마커를 지도에 표시합니다.
 		marker2.setMap(map);
 
-		// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-		var iwContent2 =
-				'        <div>' +
-				'                <img src="https://ak-d.tripcdn.com/images/1i60l22158ewabw9t1A4F.jpg?proc=source/trip" width="180" height="150">' +
-				'        </div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			iwRemoveable2 = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-		// 인포윈도우를 생성합니다
-		var infowindow2 = new kakao.maps.InfoWindow({
-			content: iwContent2,
-			removable: iwRemoveable2,
-		});
-
-		// 마커에 클릭이벤트를 등록합니다
+				// 마커에 클릭이벤트를 등록합니다
 		kakao.maps.event.addListener(marker2, 'click', function () {
 			// 마커 위에 인포윈도우를 표시합니다
-			infowindow2.open(map, marker2);
+			//setimageSrcs("")
+			setModalVisible(true);
+			setimageSrcs(imageSrc2)
+			
+			
 		});
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -157,6 +144,7 @@ const Map = () => {
 								closable={true}
 								maskClosable={true}
 								onClose={closeModal}
+								imageSrcs={imageSrcs}
 							></Modal>
 						)}
 					</React.Fragment>

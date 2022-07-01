@@ -10,6 +10,7 @@ export default function(state={},action){
         case AI_USER:
             return { ...state,aiSuccess: action.payload }
        
+		
         
         default:
             return state;
