@@ -1,7 +1,7 @@
 /* global kakao */
 import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
-import {Button} from 'antd'
+import { Button } from 'antd';
 import { useSelector } from 'react-redux';
 const { kakao } = window;
 
@@ -28,7 +28,6 @@ const Map = () => {
 		var markerPosition = new kakao.maps.LatLng(37.48637170971676, 126.80186916341724);
 		var imageSrc =
 				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbhRk06-nfObLkWTnoLLflwUciu_lbjOzpufdZepvPEDQ9bhxI2uwmCqyH7QkOpxSOWYM&usqp=CAU', // 마커이미지의 주소입니다
-			
 			imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
 			imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
@@ -47,24 +46,10 @@ const Map = () => {
 		// 마커를 지도에 표시합니다.
 		marker.setMap(map);
 
-		// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-		var iwContent =
-				'        <div>' +
-				'                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbhRk06-nfObLkWTnoLLflwUciu_lbjOzpufdZepvPEDQ9bhxI2uwmCqyH7QkOpxSOWYM&usqp=CAU" width="180" height="150">' +
-				//'                <br/><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a>' +
-				'        </div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-		// 인포윈도우를 생성합니다
-		var infowindow = new kakao.maps.InfoWindow({
-			content: iwContent,
-			removable: iwRemoveable,
-		});
-
 		// 마커에 클릭이벤트를 등록합니다
 		kakao.maps.event.addListener(marker, 'click', function () {
 			// 마커 위에 인포윈도우를 표시합니다
-			infowindow.open(map, marker);
+			
 		});
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -159,8 +144,11 @@ const Map = () => {
 	}, []);
 
 	return (
-		<div >
-			<div id="map" style={{ width: '90%', height: '80vh', margin:'auto', borderRadius: "30px" }}>
+		<div>
+			<div
+				id="map"
+				style={{ width: '90%', height: '80vh', margin: 'auto', borderRadius: '30px' }}
+			>
 				<div>
 					<React.Fragment>
 						{modalVisible && (
@@ -174,9 +162,9 @@ const Map = () => {
 					</React.Fragment>
 				</div>
 			</div>
-			<div style={{display:'flex',justifyContent:'center'}}>
+			<div style={{ display: 'flex', justifyContent: 'center' }}>
 				<Button>전체보기</Button>
-				</div>
+			</div>
 		</div>
 	);
 };
