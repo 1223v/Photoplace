@@ -21,5 +21,8 @@ router.get("/hello", (req, res) => {
     res.send("안녕하세요gggggg")
 });
 
+router.get('/', (req, res) => {
+  res.send('Hello World!aaa')
+});
 
 module.exports = router;

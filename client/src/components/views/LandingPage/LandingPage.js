@@ -5,7 +5,7 @@ import {API_URL,API_URL1, API_KEY,API_KEY1} from '../../Config'
 
 function LandingPage(){
 	useEffect(()=>{
-		Axios.get('https://korea-app.run.goorm.io/hello')
+		Axios.get('https://korea-app.run.goorm.io/api/data/hello')
 		.then(response=> console.log(response.data))
 		
 		const endpoint = `${API_URL}galleryList?ServiceKey=${API_KEY}&arrange=A&MobileOS=ETC&MobileApp=AppTesting&_type=json`

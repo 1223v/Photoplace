@@ -14,9 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/api/data', require('./routes/data'));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!aaa')
-})
 
 
 const port = process.env.PORT || 5000
