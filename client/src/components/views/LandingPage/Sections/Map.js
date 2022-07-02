@@ -1,7 +1,6 @@
 /* global kakao */
 import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
-import { Button } from 'antd';
 import { useSelector } from 'react-redux';
 //const { kakao } = window;
 
@@ -150,8 +149,9 @@ const Map = () => {
 					</React.Fragment>
 				</div>
 			</div>
+			<br/>
 			<div style={{ display: 'flex', justifyContent: 'center' }}>
-				<Button>전체보기</Button>
+				<button type="button" class="btn btn-outline-primary">전체보기</button>
 			</div>
 		</div>
 	);
