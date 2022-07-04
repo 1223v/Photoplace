@@ -149,10 +149,13 @@ const Map = () => {
 					</React.Fragment>
 				</div>
 			</div>
-			<br/>
+			
 			<div style={{ display: 'flex', justifyContent: 'center' }}>
 				<button type="button" class="btn btn-outline-primary">전체보기</button>
 			</div>
+			<br/>
+			<br/>
+			<br/>
 		</div>
 	);
 };

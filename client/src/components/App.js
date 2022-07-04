@@ -29,8 +29,8 @@ function App() {
 		  <Routes>
 			  
 			  
-			  <Route exact path="/" element = {<LandingPage/>} />
-        <Route exact path="/AIcontent" element={<AIcontent/>}/>
+			  <Route path="/" element = {<LandingPage/>} />
+        <Route path="/AIcontent" element={<AIcontent/>}/>
           
         </Routes>
 		  </BrowserRouter>

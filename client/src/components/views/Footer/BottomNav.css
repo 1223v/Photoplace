@@ -1,0 +1,36 @@
+/* 네비바 하단 고정 밑 세로 길이 설정 */
+.wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45px;
+    background-color:#F0F0F0;
+  }
+  
+  /* nav태그 아래의 자식들을 수평정렬하기 위한 설정 */
+  nav {
+    overflow: hidden;
+    
+  }
+  /* nav태그 아래의 div태그들을 수평정렬 및 세로길이 설정 */
+  .nav-link {
+    /* 수평정렬, 5개의 button을 각각 20% width만큼 할당 */
+    float: left;
+    width: 20%;
+    text-align: center;
+  
+    /* 세로길이 설정 */
+    height: 45px;
+    line-height: 45px;
+  }
+  
+  /* 하단 네비바의 메뉴를 눌렀을 때 색상 변경*/
+  .nav-item {
+    color: grey;
+  }
+  
+  /* 하단 네비바의 메뉴를 눌렀을 때 색상 변경*/
+  .active {
+    color: #ef5c89;
+  }

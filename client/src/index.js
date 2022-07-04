@@ -12,6 +12,7 @@ import { persistStore } from 'redux-persist';	// 추가
 import { PersistGate } from 'redux-persist/integration/react';	// 추가
 import storage from 'redux-persist/lib/storage'
 import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
+
 const store = createStore(persistedReducer, compose(
     applyMiddleware(promiseMiddleware, ReduxThunk),
     //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
@@ -29,7 +30,9 @@ root.render(
 			>
 			
 			<PersistGate persistor={persistor}>	
+			
 			<App />
+			
 		</PersistGate>
 		</Provider>
     
