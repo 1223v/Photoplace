@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./BottomNav.css";
-import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, Routes, Navigate } from 'react-router-dom';
 import "./FontAwesome";
 // FontAwesomIcon 컴포넌트를 사용하기 위해 import
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +13,7 @@ const Footer = () => {
     <nav className="wrapper">
       {/* 하단 네비게이션 최상위 태그 */}
       <Router>
-      <Link to="/" className="nav-link" onClick={() => setActiveNav(1)}>
+      <a href ="/" className="nav-link" onClick={() => setActiveNav(1)}>
         <div>
           <FontAwesomeIcon
             icon="home"
@@ -21,7 +21,7 @@ const Footer = () => {
           />
           {/* 네비게이션을 구성하고 있는 하나의 버튼 */}
         </div>
-      </Link>
+      </a>
       <Link to="/" className="nav-link" onClick={() => setActiveNav(2)}>
         <div>
           <FontAwesomeIcon
@@ -46,14 +46,14 @@ const Footer = () => {
           />
         </div>
       </Link>
-      <Link to="/AIcontent" className="nav-link" onClick={() => setActiveNav(5)}>
+      <a href="/AIcontent" className="nav-link" onClick={() => setActiveNav(5)}>
         <div>
           <FontAwesomeIcon
             icon="user"
             className={activeNav === 5 ? "nav-item active" : "nav-item"}
           />
         </div>
-      </Link>
+      </a>
       </Router>
     </nav>
   );

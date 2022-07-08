@@ -22,7 +22,8 @@ router.get("/hello", (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  res.send('Hello World!aaa')
+  res.send('Hello World!aaa');
+	res.send("hihiih");
 });
 
 
