@@ -40,6 +40,7 @@ function Componentpage() {
                        	return(
                            		<motion.div className="item7777" key={image}>
                                		<img src={image} alt=""/>
+									
 								
                            		</motion.div>
                        	);

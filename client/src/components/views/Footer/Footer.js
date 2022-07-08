@@ -12,8 +12,8 @@ const Footer = () => {
   return (
     <nav className="wrapper">
       {/* 하단 네비게이션 최상위 태그 */}
-      <Router>
-      <a href ="/" className="nav-link" onClick={() => setActiveNav(1)}>
+      
+      <Link to ="/" className="nav-link" onClick={() => setActiveNav(1)}>
         <div>
           <FontAwesomeIcon
             icon="home"
@@ -21,7 +21,7 @@ const Footer = () => {
           />
           {/* 네비게이션을 구성하고 있는 하나의 버튼 */}
         </div>
-      </a>
+      </Link>
       <Link to="/" className="nav-link" onClick={() => setActiveNav(2)}>
         <div>
           <FontAwesomeIcon
@@ -46,15 +46,15 @@ const Footer = () => {
           />
         </div>
       </Link>
-      <a href="/AIcontent" className="nav-link" onClick={() => setActiveNav(5)}>
+      <Link to ="/AIcontent" className="nav-link" onClick={() => setActiveNav(5)}>
         <div>
           <FontAwesomeIcon
             icon="user"
             className={activeNav === 5 ? "nav-item active" : "nav-item"}
           />
         </div>
-      </a>
-      </Router>
+      </Link>
+      
     </nav>
   );
 };
