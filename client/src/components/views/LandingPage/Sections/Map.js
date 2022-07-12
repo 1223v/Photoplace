@@ -187,17 +187,20 @@ for (var i = 0; i < positions.length; i ++) {
         position: positions[i].latlng, // 마커를 표시할 위치
         title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
         image : markerImage3 // 마커 이미지 
+		
     });
 	
-	kakao.maps.event.addListener(marker3, 'click', function () {
-			
+	
+	 kakao.maps.event.addListener(marker3, 'click', function () {
+			console.log(markerImage3);
 			setModalVisible(true);
-			setimageSrcs(positions[i].imageSrc)
+			setimageSrcs(markerImage3)
 			
 			
 		});
 }	
 	
+		console.log(imageSrcs);
 	}, []);
 
 	return (
