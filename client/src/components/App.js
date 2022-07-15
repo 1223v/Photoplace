@@ -7,7 +7,7 @@ import AIcontent from './views/AIcontent/AIcontent';
 import Loading from './views/Loading/Loading';
 import Mapsearch from './views/Mapsearch/Mapsearch';
 import Ranking from './views/Ranking/Ranking';
-
+import Detail from './views/Detail/Detail';
 function App() {
 	const [loading, setLoading] = useState(true);
 
@@ -29,6 +29,7 @@ function App() {
 					<Route path="/AIcontent" element={<AIcontent />} />
 					<Route path="/Mapsearch" element={<Mapsearch />} />
 					<Route path="/Ranking" element={<Ranking />} />
+					<Route path="/Detail" element={<Detail />} />
 				</Routes>
 			</div>
 			<Footer />

@@ -36,6 +36,13 @@
 	
 }
 
+.popupDIV{
+	display: flex;
+	justify-content: flex-start;
+	
+	height: 100%;
+}
+
 .dragAreaRef{
     cursor: grab;
     overflow: hidden;

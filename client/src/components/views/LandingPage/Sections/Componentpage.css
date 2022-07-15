@@ -4,7 +4,14 @@
     min-width: 20rem;
 	*/
     padding: 10px;
+	width: 150px;
 	
+	margin-right: 4px;
+	margin-left: 4px;
+	
+	height: 100%;
+	
+	font-size: small;
 	/*
 	width: 320px;
 	height: 320px;
@@ -33,7 +40,7 @@
 	justify-content: flex-start;
 	
 	height: 100%;
-	
+	width: 100%;
 }
 
 .dragAreaRef{
@@ -41,11 +48,23 @@
     overflow: hidden;
 	
 	height: 100%;
-	width: 100%;
-	
+	width: 100%;	
 	
 }
 
 .imagesRow{
-	background-color: yellowgreen;
+	
+	background-color: skyblue;
+	
+	
+}
+
+.wholeView{
+	border-radius: 1.8rem;
+	background-color: pink;
+	
+	height: 100%;
+	width: 100%;
+	
+	overflow-y: auto;
 }

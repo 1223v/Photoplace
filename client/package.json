@@ -29,6 +29,7 @@
     "redux-persist": "^6.0.0",
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.4.1",
+    "smooth-scrollbar": "^8.7.4",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
