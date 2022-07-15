@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 
-function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs }) {
+function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs, contents, titles }) {
 	const onMaskClick = (e) => {
 		if (e.target === e.currentTarget) {
 			onClose(e);
@@ -32,7 +32,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs 
 						{closable && (
 							<CloseStyle>
 								<Close className="modal-close" onClick={close}>
-									서울 남산타워
+									{titles}
 								</Close>
 								<Close className="modal-close" onClick={close}>
 									<b>X</b>
@@ -56,7 +56,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs 
 						<CloseStyled>
 								<Close className="modal-close">
 									
-									<b>대한민국 서울 남산타워 256-81</b>
+									<b>{contents}</b>
 									
 								</Close>
 							</CloseStyled>

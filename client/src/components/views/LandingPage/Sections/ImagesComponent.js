@@ -33,12 +33,15 @@ function ImagesComponent(props){
 					</div>
 				);
 			})}
-			{information.map((item) => {
-				return(	
-					<div className="information">
-						{info}
+			{props.items.map((item,i) => {
+				return(
+					<div className="items">
+						<img src={item[i].image} alt=""/>
+						{items[i].name}
+						{item[i].info}
 					</div>
 				);
+
 			})}
 		</div>
 			
