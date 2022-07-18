@@ -5,9 +5,10 @@ function Detail(){
 	
 	return(
 	<div>
-		aa
+    aa
+			
 	</div>
-		
+
 	);
 }
 

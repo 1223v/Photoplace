@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
 import Select from "../Ranking/SelectBox"
-import SearchIcon from "../../asset/search_icon.png"
+//import SearchIcon from "../../asset/search_icon.png"
 
 const OPTIONS = [
 	{value: "latest", name: "최신순"},
@@ -81,7 +81,7 @@ function Mapsearch(){
 		<div>
 			<PageWrapper>
 				<SearchBar>
-					<Image src={SearchIcon} alt="SearchIcon"></Image>
+					<Image src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fy1gw1%2FbtrHzpEvQmv%2FEuGrbEbuLbuozRHlP56jc1%2Fimg.png" alt="SearchIcon"></Image>
 					<Input></Input>
 				</SearchBar>
 				<SelectWrapper>

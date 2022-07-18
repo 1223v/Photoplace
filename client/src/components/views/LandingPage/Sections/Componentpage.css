@@ -54,7 +54,7 @@
 
 .imagesRow{
 	
-	background-color: skyblue;
+	/*background-color: skyblue;*/
 	
 	
 }
@@ -67,4 +67,7 @@
 	width: 100%;
 	
 	overflow-y: auto;
+	
+	font-family: 'main_font';
 }
+/**overflow-y는 스크롤 되게 할려고 쓰고 잇는거**/

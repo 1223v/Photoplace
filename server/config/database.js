@@ -1,6 +1,8 @@
 module.exports= {
-  host     : 'https://korea-app.run.goorm.io',
-  user     : 'Maker',
-  password : 'Maker',
-  database : 'my_Maker'
+  //host : 'https://photoplace-xyqhc.run.goorm.io',
+  host : 'localhost',
+  user : "user",
+  password : "user", 
+  database : "photoplace",
+  port: "3306",
 };

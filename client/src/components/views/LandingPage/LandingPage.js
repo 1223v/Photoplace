@@ -7,7 +7,7 @@ function LandingPage(){
 	useEffect(()=>{
 		Axios.get('https://korea-app.run.goorm.io/api/data/hello')
 		.then(response=> console.log(response.data))
-		
+		/*
 		const endpoint = `${API_URL}galleryList?ServiceKey=${API_KEY}&arrange=A&MobileOS=ETC&MobileApp=AppTesting&_type=json&numOfRows=5`
 		fetch(endpoint)//url
 		.then(response => response.json())
@@ -30,6 +30,8 @@ function LandingPage(){
 		fetch(endpoint3)
 		.then(response3 => response3.json())
 		.then(response3 => console.log(response3))
+		
+		*/
 	},[])
 	
 	return(

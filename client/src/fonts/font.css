@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+@font-face {
+	font-family: "tag_font";
+	src: url("./TMONBlack.ttf");
+}
+
+@font-face{
+	font-family: "main_font";
+	src: url("./locus_sangsang.ttf");
+}
+
+@font-face{
+	font-family: "loading_font";
+	src: url("./loding_page.ttf");
+}
+
+@font-face{
+	font-family: "ai_font";
+	src: url("./AI_page.ttf");
+}
