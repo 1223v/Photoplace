@@ -3,7 +3,7 @@ import styled from "styled-components";
 // import { render } from "react-dom";
 import { Bounce } from "react-activity";
 import "react-activity/dist/library.css";
-
+import "./Loading.css";
 
 const Container = styled.div`
   margin-left:auto;
@@ -27,7 +27,7 @@ const Container = styled.div`
 
 const MainText=styled.h1`
    color:white;
-   font-size:25px;
+   font-size:50px;
    font-weight:bolder;
    font-family: 'Yellowtail', cursive;
    @media (min-width: 800px) {
@@ -36,7 +36,7 @@ const MainText=styled.h1`
 `;
 const SubText=styled.h3`
    color:white;
-   font-size:15px;
+   font-size:25px;
    font-weight:bolder;
    @media (min-width: 800px) {
     font-size:15px;
@@ -69,7 +69,26 @@ const Img=styled.img`
 
 export default function Loading() {
   return (
-    <Container>
+    <Container className="loading_KOR">
+		<MainText id= "maint">Photo Place</MainText>
+        <SubText>나와 어울리는 여행지는?</SubText>
+        <LoadingContainer>
+			<br/>
+			<br/>
+		  	<br/>
+		  	<br/>
+            <Bounce size={30} color="#BAAD7D"></Bounce>
+			<br/>		  
+            <BottomText>LOADING</BottomText>
+        </LoadingContainer>
+        
+    </Container>
+  )
+}
+
+
+/*
+<Container className="loading_KOR">
 		<MainText id= "maint">Photo Place</MainText>
         <SubText>나와 어울리는 여행지는?</SubText>
         <LoadingContainer>
@@ -79,5 +98,4 @@ export default function Loading() {
         </LoadingContainer>
         
     </Container>
-  )
-}
+*/

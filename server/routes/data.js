@@ -13,15 +13,9 @@ connection.connect();
 
 //connection.end();
 
-router.get("/hello", (req, res) => {
 
-    res.send("안녕하세요gggggg")
-});
 
-router.get('/', (req, res) => {
-  res.send('Hello World!aaa');
-	res.send("hihiih");
-});
+
 
 router.get('/map',(req,res)=>{
     sql = "select * from Marker1";
@@ -30,24 +24,24 @@ router.get('/map',(req,res)=>{
            console.log("실패");
            return res.send(err);
        }
-       else{  
-            console.log("성공");
+      else{
             return res.send(rows);
-        }
+		}
+        
     })
 });
 
 router.get('/Componentpage',(req,res)=>{
-    sql = "select * from Marker"
+    sql = "select * from Marker1"
     connection.query(sql,(err,rows)=>{
        if(err){
            console.log("실패");
            return res.send(err);
        }
-       else{  
-            console.log("성공");
+       
+    	else{
             return res.send(rows);
-        }
+		}
     })
 });
 

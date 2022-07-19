@@ -3,13 +3,14 @@ import styled from "styled-components";
 
 const Select = styled.select`
 	display: block;
-	width: 20%;
-	height: 4%;
+	width: 100px;
+	height: 35px;
 	padding: 8px 8px;
 	font-size: inherit;
 	border:1px solid;
 	border-radius: 4px;
 	line-height: inherit;
+	margin-top: 10px;
 	&:focus,
   	&:active {
     outline: none;

@@ -7,6 +7,7 @@ import 'react-activity/dist/Dots.css';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { aiUser } from '../../../_actions/user_actions';
+import "./AIcontent.css";
 
 const URL = 'https://teachablemachine.withgoogle.com/models/D563JHUM9/';
 const modelURL = URL + 'model.json';
@@ -113,7 +114,7 @@ const AIcontent = (props, { history }) => {
 			prediction: prediction[0].className,
 		};
 
-		dispatch(aiUser(body)).then(navigate(-1));
+		dispatch(aiUser(body)).then(navigate("/AImap"));
 	}
 
 	const handleChangeFile = (event) => {
@@ -151,7 +152,7 @@ const AIcontent = (props, { history }) => {
 	};
 
 	return (
-		<Container>
+		<Container className="ai_page">
 			{showResult ? (
 				<div>분석결과는?</div>
 			) : (
@@ -172,15 +173,17 @@ const AIcontent = (props, { history }) => {
 					<Image id="srcImg" src={imgBase64}></Image>
 				) : (
 					<div>
-						<h3>GIVE ME A YOUR PICTURE!</h3>
+						<h3>GIVE ME YOUR PICTURE!</h3>
 					</div>
 				)}
 			</ImageContainer>
 			{!loading && result === null ? (
 				<div>
-					<h2>
-						※업로드 된 사진은 별도로 수집, 보존 하지않고 얼굴인식 용도에만 사용됩니다.
-					</h2>
+					<br/>
+					<br/>
+					<h4>
+						※ 업로드 된 사진은 별도로 수집, 보존 하지않고 얼굴인식 용도에만 사용됩니다.
+					</h4>
 				</div>
 			) : null}
 

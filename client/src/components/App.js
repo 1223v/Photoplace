@@ -8,6 +8,7 @@ import Loading from './views/Loading/Loading';
 import Mapsearch from './views/Mapsearch/Mapsearch';
 import Ranking from './views/Ranking/Ranking';
 import Detail from './views/Detail/Detail';
+import AImap from './views/AImap/AImap';
 function App() {
 	const [loading, setLoading] = useState(true);
 
@@ -29,6 +30,7 @@ function App() {
 					<Route path="/AIcontent" element={<AIcontent />} />
 					<Route path="/Mapsearch" element={<Mapsearch />} />
 					<Route path="/Ranking" element={<Ranking />} />
+					<Route path="/AImap" element={<AImap />} />
 					<Route path="/Detail" element={<Detail />} />
 				</Routes>
 			</div>
@@ -38,3 +40,7 @@ function App() {
 }
 
 export default App;
+/*
+//param 사용
+<Route exact path="/Detail/:id" element={<Detail />} />
+*/

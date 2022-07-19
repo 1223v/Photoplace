@@ -5,7 +5,8 @@
     left: 0;
     right: 0;
     height: 45px;
-    background-color:#F0F0F0;
+    background-color:#FFFFFF;
+	box-shadow: 0px -1px 20px -10px gray;
   }
   
   /* nav태그 아래의 자식들을 수평정렬하기 위한 설정 */
@@ -32,5 +33,5 @@
   
   /* 하단 네비바의 메뉴를 눌렀을 때 색상 변경*/
   .active {
-    color: #ef5c89;
+    color: #FFD700;
   }

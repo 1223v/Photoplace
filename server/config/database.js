@@ -1,5 +1,5 @@
 module.exports= {
-  //host : 'https://photoplace-xyqhc.run.goorm.io',
+  //host : 'https://korea-app-beqvu.run.goorm.io/',
   host : 'localhost',
   user : "user",
   password : "user", 

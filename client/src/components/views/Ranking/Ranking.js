@@ -4,13 +4,14 @@ import { useRef, useEffect, useState } from 'react';
 import Axios from 'axios'
 //import ImagesComponent from "./ImagesComponent.js";
 import '../LandingPage/Sections/Componentpage.css';
-
+import './Ranking.css';
 import styled from "styled-components";
 import Select from "./SelectBox"
 const OPTIONS = [
 	{value: "latest", name: "최신순"},
 	{value: "popularity", name: "인기순"},
 ];
+
 
 const SelectWrapper = styled.div`
   display: flex;
@@ -68,10 +69,10 @@ const ItemWrapper = styled.div`
  `
 function Ranking(){
 	const [width, setwidth] = useState(0);
+	const [Rankings,setRankings] = useState([])
 	const dragAreaRef = useRef(null);
 	
-	Axios.get('https://korea-app.run.goorm.io/api/data/Componentpage')
-		.then(response=> console.log(response.data))
+	
 	
 	let items = [
 		{
@@ -121,6 +122,12 @@ function Ranking(){
 
 	useEffect(() => {
 		setwidth(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
+		Axios.get('https://korea-app.run.goorm.io/api/data/map')
+		.then(response=> {
+		console.log(response.data)
+		setRankings(response.data)
+		
+	})
 	}, []);
 	
 	return(
@@ -131,7 +138,7 @@ function Ranking(){
 				</SelectWrapper>
 				
 				<InfoWrapper>
-					<TitleWrapper>
+					<TitleWrapper className="Tag">
 						<TitleImage src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FSys6r%2FbtrHrwYtLcD%2FzNleoQ90L2stofIU7YdjL0%2Fimg.png" alt="view"></TitleImage>
 						<Title>야경</Title>
 					</TitleWrapper>
@@ -148,17 +155,17 @@ function Ranking(){
 						dragConstraints={{ right: 0, left: -width }}
 						className="inner-carousel"
 					>						
-						{items.map((array) => {
+						{Rankings.map((array) => {
 							return(
 								<motion.div
 									className="item7777" 
-									key={array.image}
+									key={array.imageSrc}
 								>
-									<img src={array.image} alt="" />	
+									<img src={array.imageSrc} alt="" />	
 									<br/>
-									{array.loc_name}
+									{array.title}
 									<br/>
-									{array.loc_info}									
+									{array.content}									
 								</motion.div>					
 							);
 						})}
@@ -170,7 +177,7 @@ function Ranking(){
 					</ItemWrapper>
 				</InfoWrapper>
 				<InfoWrapper>
-					<TitleWrapper>
+					<TitleWrapper className="Tag">
 						<TitleImage src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJrTtm%2FbtrHumoqUaU%2FGHWL78psTfZnbb061jkwyK%2Fimg.png" alt="attraction"></TitleImage>
 						<Title>놀이공원</Title>
 					</TitleWrapper>
@@ -209,7 +216,7 @@ function Ranking(){
 					</ItemWrapper>
 				</InfoWrapper>
 				<InfoWrapper>
-					<TitleWrapper>
+					<TitleWrapper className="Tag">
 						<TitleImage src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbAb6O5%2FbtrHwkRgl35%2FLnZjTDFM2VbWwTE8Fki5gK%2Fimg.png" alt="photozone"></TitleImage>
 						<Title>포토존</Title>
 					</TitleWrapper>

@@ -10,8 +10,6 @@
 	margin-left: 4px;
 	
 	height: 100%;
-	
-	font-size: small;
 	/*
 	width: 320px;
 	height: 320px;
@@ -58,7 +56,6 @@
 	
 	
 }
-
 .wholeView{
 	border-radius: 1.8rem;
 	background-color: pink;
@@ -68,6 +65,7 @@
 	
 	overflow-y: auto;
 	
-	font-family: 'main_font';
+	font-family: "main_font";
+	font-size: 15px;
 }
 /**overflow-y는 스크롤 되게 할려고 쓰고 잇는거**/

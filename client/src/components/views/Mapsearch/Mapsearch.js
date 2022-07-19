@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 import Select from "../Ranking/SelectBox"
 //import SearchIcon from "../../asset/search_icon.png"
+import "./Mapsearch.css";
 
 const OPTIONS = [
 	{value: "latest", name: "최신순"},
@@ -11,6 +12,7 @@ const OPTIONS = [
 const SelectWrapper = styled.div`
   display: flex;
   margin: 10px;
+  margin-top: 5px;
   margin_bottom: 15px;
   width: 80%;
 `
@@ -46,8 +48,8 @@ const SearchBar = styled.div`
   background: rgba(211, 214, 237, 0.6);
   border: none;
   border-radius: 60px;
-  width: 40%;
-  height: 1%;
+  width: 300px;
+  height: 30px;
   padding: 0.5% 1% 0.5% 1%;
   margin_bottom: 2%;
   align-items: center;
@@ -56,8 +58,8 @@ const SearchBar = styled.div`
 const Image = styled.img`
   margin-left: 1%;
   margin-right: 1%;
-  width: 6%;
-  height: 6%;
+  width: 20px;
+  height: 20px;
 `;
 
 const Input = styled.input`
@@ -78,7 +80,7 @@ const Input = styled.input`
 function Mapsearch(){
 	
 	return(
-		<div>
+		<div className="mapsearch">
 			<PageWrapper>
 				<SearchBar>
 					<Image src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fy1gw1%2FbtrHzpEvQmv%2FEuGrbEbuLbuozRHlP56jc1%2Fimg.png" alt="SearchIcon"></Image>

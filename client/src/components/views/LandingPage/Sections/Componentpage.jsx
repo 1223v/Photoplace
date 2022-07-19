@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Axios from 'axios'
 //import ImagesComponent from "./ImagesComponent.js";
 import './Componentpage.css';
@@ -8,11 +9,11 @@ import './Componentpage.css';
 
 function Componentpage() {
 	
-	//const[Click, setClick]=useState(false);
-	//const click=()=>{
-	//	setClick(true)
-	//}
-	
+	const[Click, setClick]=useState(false);
+	const click=()=>{
+		setClick(true)
+		console.log("clicked!!")
+	}
 	
 	const [width, setwidth] = useState(0);
 	const dragAreaRef = useRef(null);
@@ -99,8 +100,6 @@ function Componentpage() {
 								</motion.div>					
 							);
 						})}
-					
-						
 					</motion.div>
 				</motion.div>
 			</div>
@@ -148,6 +147,7 @@ function Componentpage() {
 			<br/>
 			<br/>
 			<br/>
+			
 			<div style={{ width: '100%', height: '250px' }} className="imagesRow">
 				<motion.div
 					ref={dragAreaRef}
@@ -163,7 +163,11 @@ function Componentpage() {
 						{items.map((array) => {
 							return(
 								<motion.div className="item7777" key={array.image}>
-									<img src={array.image} alt="" />	
+									<Link to='/Detail' onClick={click}>
+										<div>
+											<img src={array.image} alt=""/>
+										</div>
+									</Link>
 									<br/>
 									{array.loc_name}
 									<br/>
@@ -171,8 +175,6 @@ function Componentpage() {
 								</motion.div>					
 							);
 						})}
-					
-						
 					</motion.div>
 				</motion.div>
 			</div>
@@ -194,9 +196,21 @@ function Componentpage() {
 export default Componentpage;
 
 /*
-<Link to="/Detail" className="detail-link" onClick>
-										
-									<Link/>
+<Link to={{
+	pathname: `/update/${this.state.article.id}`,
+		state: { // 오.. 새 기술이다
+        title: this.state.article.title,
+        name: this.state.article.name,
+        body: this.state.article.body
+    }
+}}>
+	<button className="btn btn-secondary" style={btnStyle}>수정</button>
+</Link>
+
+//param 사용
+<Link path={`/Detail/${array.num}`} params={{id: {array.num}}} onClick={click}>
+
+<Link to={{pathname:`/Detail/${array.num}`},query:{id:{array.num}}} onClick={click}>
 */
 
 //드래그 오왼만 되는 

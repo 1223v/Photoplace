@@ -1,9 +1,9 @@
 /* global kakao */
 import React, { useState, useEffect } from 'react';
-import Modal from './Modal';
-import InfoPage from './InfoPage';
+import Modal from '../LandingPage/Sections/Modal';
+import { useSelector } from 'react-redux';
+import InfoPage from '../LandingPage/Sections/InfoPage';
 import styled from 'styled-components';
-//const { kakao } = window;
 import Axios from 'axios'
 
 
@@ -25,7 +25,9 @@ const Map = () => {
 	const [imageSrcs, setimageSrcs] = useState('');
 	const [contents, setcontents] = useState('');
 	const [Titles, setTitles] = useState('');
-	
+	//const [positions, setpositions] = useState([]);
+	const aicontent = useSelector((state) => state.user);
+	console.log(aicontent.aiSuccess);
 	const show = () => {
 		setShowInfo(!showInfo);
 		ButtonColor === '#18978F' ? setButton('#FF869E') : setButton('#18978F');
@@ -96,7 +98,7 @@ const Map = () => {
 		<div>
 			<div
 				id="map"
-				style={{ width: '90%', height: '80vh', margin: 'auto', borderRadius: '20px' }}
+				style={{ width: '90%', height: '80vh', margin: 'auto', borderRadius: '30px' }}
 			>
 				<div>
 					<React.Fragment>
