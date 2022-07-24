@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import Axios from 'axios'
 import styled from "styled-components";
 
-import { useHistory, useLocation } from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
+import { useHistory } from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
 
 import "./Detail.css";
 //여기다 디자인 하면 됨~~~! 아마 슈잉 디자인 따라서
@@ -19,7 +19,7 @@ function Detail(){
 	const [width, setwidth] = useState(0);
 	const [Rankings,setRankings] = useState([])
 	const dragAreaRef = useRef(null);
-
+	
 	let items = [
 		{
 			num:1,
@@ -101,7 +101,7 @@ function Detail(){
 		},
 	];
 	
-	
+	/*
 	useEffect(()=>{
 		var container = document.getElementById('map');
 		var options = {
@@ -111,13 +111,13 @@ function Detail(){
 
 		var map = new kakao.maps.Map(container, options);
 	})
-	
+	*/
 	
 	return(		
 	<div>
 		<br/>
 		<div className="locName_and_btn_back">
-			장소이름이랑 뒤로가기 버튼
+			장소이름이랑 나가는 버튼 자리 (사진에 오버레이)
 		</div>
 		<div className="loc_info_expln">
 			<div className="front_image">

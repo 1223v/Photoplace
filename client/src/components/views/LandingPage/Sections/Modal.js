@@ -35,31 +35,24 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 									{titles}
 								</Close>
 								<Close className="modal-close" onClick={close}>
-									<b>X</b>
-									
+									X	
 								</Close>
 								
 							</CloseStyle>
 						)}
 						
 						<ImgStyle>
-							<a
-								//href="/"
-								rel="noopener noreferrer"
+							<a rel="noopener noreferrer"
 								target={'_blank'}
 								cursor="pointer"
-							>
-								<img src={`${imageSrcs}`} style={{ width: '250px' , height: '240px', borderRadius: '15px' }} alt="" />
+								align="center">
+								<Img src={imageSrcs} alt="" />
 							</a>
 						</ImgStyle>
 						
-						<CloseStyled>
-								<Close className="modal-close">
-									
-									<b>{contents}</b>
-									
-								</Close>
-							</CloseStyled>
+						<CloseStyled className="modal-close">
+							<Field>{contents}</Field>
+						</CloseStyled>
 					</ModalInner2>
 				</ModalInner>
 			</ModalWrapper>
@@ -71,45 +64,47 @@ Modal.propTypes = {
 	visible: PropTypes.bool,
 };
 
-const ModalInner2 = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-`;
 
 const ImgStyle = styled.div`
 	display: flex;
 	justify-content: space-between;
-	background-color: #ffffff;
+	background-color: rgba(0, 0, 0);
 	width: 270px;
-	padding: 10px;
-	border-radius: 0 0 0 0;
 	color: #ffffff;
 	align-items: center;
-	
 `;
 
 const CloseStyle = styled.div`
 	display: flex;
 	justify-content: space-between;
-	background-color: #282828;
+	background-color: rgba(0, 0, 0);
 	width: 270px;
-	padding: 15px;
-	border-radius:  15px 15px 0 0;
+	padding: 10px 15px 10px 15px;
 	color: #ffffff;
 `;
+
+const Img = styled.img`
+	width: 85%;
+	height: 85%;
+`;
+
 const CloseStyled = styled.div`
 	display: flex;
+	align-content: center;
 	justify-content: space-between;
-	background-color: #ffffff;
+	background-color: rgba(0, 0, 0);
 	width: 270px;
-	padding: 50px;
-	border-radius: 0 0 15px 15px;
-	color: #282828;
+	min-height: 100px;
+	padding: 10px 15px 10px 15px;
+	flex-direction: column;
+	color: #ffffff;
 	
 `;
 const Close = styled.span`
 	cursor: pointer;
+	font-weight: bold;
+	font-size: 20px;
+	font-family: "tag_font";
 `;
 
 const ModalWrapper = styled.div`
@@ -138,6 +133,12 @@ const ModalOverlay = styled.div`
 	z-index: 999;
 `;
 
+const ModalInner2 = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
+
 const ModalInner = styled.div`
 	box-sizing: border-box;
 	position: relative;
@@ -151,5 +152,13 @@ const ModalInner = styled.div`
 	margin: 0 auto;
 	padding: 40px 20px;
 `;
-
+const Field = styled.div`
+	font-family: "main_font";
+	text-align: left;
+	font-size: 15px;
+	display: flex;
+	outline: none;
+	align-content: center;
+	flex-direction: row;
+`
 export default React.memo(Modal);

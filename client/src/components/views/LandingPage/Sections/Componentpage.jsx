@@ -2,12 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import {useParams,useLocation}from "react-router-dom";
 import Axios from 'axios'
 //import ImagesComponent from "./ImagesComponent.js";
 import './Componentpage.css';
 //import Detail from '../Detail/Detail'
 
 function Componentpage() {
+	
+	const {id}=useParams();
 	
 	const[Click, setClick]=useState(false);
 	const click=()=>{
@@ -92,7 +95,11 @@ function Componentpage() {
 									className="item7777" 
 									key={array.image}
 								>
-									<img src={array.image} alt="" />	
+									<Link to={`/Detail/${array.num}`} onClick={click}>
+										<div>
+											<img src={array.image} alt=""/>
+										</div>
+									</Link>	
 									<br/>
 									{array.loc_name}
 									<br/>
@@ -128,7 +135,11 @@ function Componentpage() {
 									className="item7777" 
 									key={array.image}
 								>
-									<img src={array.image} alt="" />	
+									<Link to={`/Detail/${array.num}`} onClick={click}>
+										<div>
+											<img src={array.image} alt=""/>
+										</div>
+									</Link>	
 									<br/>
 									{array.loc_name}
 									<br/>
@@ -163,7 +174,7 @@ function Componentpage() {
 						{items.map((array) => {
 							return(
 								<motion.div className="item7777" key={array.image}>
-									<Link to='/Detail' onClick={click}>
+									<Link to={`/Detail/${array.num}`} onClick={click}>
 										<div>
 											<img src={array.image} alt=""/>
 										</div>

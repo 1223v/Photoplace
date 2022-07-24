@@ -1,0 +1,177 @@
+/*
+// 이거 싹다 적용해야 될걸
+font-family: "main_font";
+font-size: 5px;	
+overflow-y: auto;
+*/
+
+
+.locName_and_btn_back{
+	/* < 장소이름 - 취소버튼 겸 장소이름 */
+	height: 100%;
+	width: 100%;
+	font-family: "main_font";
+	font-size: 20px;
+}
+
+.front_image{
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+	display: flex;
+  	flex-direction: column;
+}
+.loc_info_expln{
+	/* 장소이름 + 장소설명*/
+	height: 100%;
+	width: 100%;
+	
+	display: flex;
+  	flex-direction: column;
+}
+.loc_name{
+	height: 100%;
+	width: 100%;
+	
+	/* 장소이름(굵은)  ex) 젠틀가든 팝업 스토어 */
+	font-family: "main_font";
+	font-size: 15px;
+	font-weight: bold;
+
+	overflow-y: auto;
+	margin: 10px;
+}
+.loc_explanation{
+	height: 100%;
+	width: 100%;
+	
+	/* 장소설명~~~~ */
+	font-family: "main_font";
+	margin: 10px;
+	font-size: 15px;
+	color: rgb(112,112,112);
+}
+
+
+
+
+.conges_info_inner{	
+	height: 100%;
+	width: 100%;
+	
+	margin: 10px;
+	background-color: rgb(236,236,236);
+	border-radius: 0.7rem;
+	
+}
+.conges_info{
+	height: 100%;
+	width: 100%;
+	
+	display: flex;
+	flex-direction: column;
+	
+}
+.d_cong{
+	height: 100%;
+	width: 100%;
+	margin: 10px;
+	
+	/* 요일별 혼잡도 */
+	font-family: "main_font";
+	font-size: 16px;
+	color: rgb(112,112,112);
+	font-weight: bold;
+	
+}
+.d_cong_expln{
+	height: 100%;
+	width: 100%;
+	margin: 10px;
+	
+	/* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다. */
+	font-family: "main_font";
+	font-size: 16px;
+	color: rgb(166,166,166);
+	
+	overflow-y: auto;
+}
+.days{
+	height: 100%;
+	width: 100%;
+	
+	/* 월화수목금토일 */
+	font-family: "main_font";
+	font-size: 14px;
+	text-align: center;
+	font-weight: bold;
+	color: rgb(112,112,112);
+}
+.cong_circles{
+	
+}
+
+
+
+
+
+.map_div{
+	height: 100%;
+	width: 100%;
+}
+.loc_info_with_map{
+	height: 100%;
+	width: 100%;
+	
+	/* 위치정보 */
+	font-family: "main_font";
+	font-size: 15px;
+	font-weight: bold;
+	margin: 10px;
+}
+.map_and_expln{
+	height: 100%;
+	width: 100%;
+	
+	/* 해당 장소의 위치정보입니다. */
+	font-family: "main_font";
+	font-size: 15px;
+	color: rgb(112,112,112);	
+	
+	margin: 10px;
+}
+
+.photo_div{
+	/* 사진 모음*/
+	height: 100%;
+	width: 100%;
+	
+	font-family: "main_font";
+	font-size: 15px;
+	font-weight: bold;
+	
+	margin: 10px;
+	display: flex;
+  	flex-direction: column;
+}
+.img_and_expln{
+	/* 방문자 및 한국관광공사 제공 사진입니다.*/
+	font-family: "main_font";
+	font-size: 15px;
+	color: rgb(112,112,112);
+	
+	margin: 10px;
+}
+.photos{
+	font-family: "main_font";
+	font-size: 10px;
+	margin: 10px;
+}
+
+.btnBack{
+	
+}

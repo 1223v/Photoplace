@@ -18,7 +18,7 @@ connection.connect();
 
 
 router.get('/map',(req,res)=>{
-    sql = "select * from Marker1";
+    sql = "select * from Marker";
     connection.query(sql,(err,rows)=>{
        if(err){
            console.log("실패");
@@ -32,7 +32,7 @@ router.get('/map',(req,res)=>{
 });
 
 router.get('/Componentpage',(req,res)=>{
-    sql = "select * from Marker1"
+    sql = "select * from Marker"
     connection.query(sql,(err,rows)=>{
        if(err){
            console.log("실패");

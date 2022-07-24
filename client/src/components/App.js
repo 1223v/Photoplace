@@ -31,7 +31,7 @@ function App() {
 					<Route path="/Mapsearch" element={<Mapsearch />} />
 					<Route path="/Ranking" element={<Ranking />} />
 					<Route path="/AImap" element={<AImap />} />
-					<Route path="/Detail" element={<Detail />} />
+					<Route path="/Detail/:id" element={<Detail />} />
 				</Routes>
 			</div>
 			<Footer />
