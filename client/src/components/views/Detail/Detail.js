@@ -120,7 +120,7 @@ function Detail(){
 	<div>
 		<br/>
 		<div className="locName_and_btn_back">
-			장소이름이랑 뒤로가기 버튼
+			장소이름이랑 뒤로가기 버튼 ㅇ
 			
 		</div>
 		<div className="loc_info_expln">
