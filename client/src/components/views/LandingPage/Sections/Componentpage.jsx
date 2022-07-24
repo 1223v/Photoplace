@@ -95,7 +95,7 @@ function Componentpage() {
 									className="item7777" 
 									key={array.image}
 								>
-									<Link to={`/Detail/${array.num}`} onClick={click}>
+									<Link to={`/Detail/${array.num}`} state={{num:array.num}} onClick={click}>
 										<div>
 											<img src={array.image} alt=""/>
 										</div>
@@ -135,7 +135,7 @@ function Componentpage() {
 									className="item7777" 
 									key={array.image}
 								>
-									<Link to={`/Detail/${array.num}`} onClick={click}>
+									<Link to={`/Detail/${array.num}`} state={{num:array.num}} onClick={click}>
 										<div>
 											<img src={array.image} alt=""/>
 										</div>
@@ -174,7 +174,7 @@ function Componentpage() {
 						{items.map((array) => {
 							return(
 								<motion.div className="item7777" key={array.image}>
-									<Link to={`/Detail/${array.num}`} onClick={click}>
+									<Link to={`/Detail/${array.num}`} state={{num:array.num}} onClick={click}>
 										<div>
 											<img src={array.image} alt=""/>
 										</div>

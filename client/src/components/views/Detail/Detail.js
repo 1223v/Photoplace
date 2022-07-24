@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import Axios from 'axios'
 import styled from "styled-components";
 
-import { useHistory, useLocation } from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
+//import { useHistory, useLocation } from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
 
 import "./Detail.css";
 //여기다 디자인 하면 됨~~~! 아마 슈잉 디자인 따라서
@@ -113,16 +113,20 @@ function Detail(){
 	})
 	
 	
+	//let history = useHistory();
+	
+	
 	return(		
 	<div>
 		<br/>
 		<div className="locName_and_btn_back">
 			장소이름이랑 뒤로가기 버튼
+			
 		</div>
 		<div className="loc_info_expln">
 			<div className="front_image">
 				<img  
-					style={{ height:'70%', width:'70%', margin: 'auto' }}
+					style={{ height:'100%', width:'100%', margin: 'auto' }}
 					src={"https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png"}/>
 			</div>
 			<div className="loc_name">
@@ -136,7 +140,7 @@ function Detail(){
 				등을 활용해 몽환적인 공간으로 재현했습니다.)<br/>
 			</div>
 		</div>
-		
+		<br/>
 			<div className="conges_info">
 			<div className="conges_info_inner">
 				
@@ -181,19 +185,25 @@ function Detail(){
 		<br/>
 			
 		<div className="photo_div">
-			사진 모음
-		</div>
-		<div className="img_and_expln">
-			방문자 및 한국관광공사 제공 사진입니다.
-		</div>
-		<div className="photos">
-			여기에 사진들 넣어줭
+			<div className="photos_collection">
+				사진 모음
+			</div>
+			<div className="img_and_expln">
+				방문자 및 한국관광공사 제공 사진입니다.
+				<div className="photos">
+					여기에 사진들 넣어줭
+				</div>
+			</div>
+			
 		</div>
 		
 			
 		<br/>
 		<br/>
-		<br/>	
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 	</div>
 
 	);
