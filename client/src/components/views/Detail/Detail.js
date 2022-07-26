@@ -3,11 +3,12 @@ import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import Axios from 'axios'
 import styled from "styled-components";
-
-//import { useHistory, useLocation } from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
+import {IoIosArrowBack} from "react-icons/io"
+import { useLocation,useNavigate,Link } from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
 
 import "./Detail.css";
-//여기다 디자인 하면 됨~~~! 아마 슈잉 디자인 따라서
+import "./KeenSlider_style.css";
+
 //items의 dayCd - 요일 구분코드(1~7)
 //items의 dayNm - 요일 구분명 (월~일)
 //items의 touristCd - 관광객 코드
@@ -16,9 +17,16 @@ import "./Detail.css";
 //items의 baseYmd - 기준 년월일
 
 function Detail(){
+	
 	const [width, setwidth] = useState(0);
 	const [Rankings,setRankings] = useState([])
 	const dragAreaRef = useRef(null);
+	const location=useLocation();
+	console.log(location);
+	const num=location.state.num;
+	console.log(num);
+	
+	const navigate = useNavigate();
 
 	let items = [
 		{
@@ -98,7 +106,7 @@ function Detail(){
 			touristNm: "외지인(b)",
 			tourNum: 282352,
 			baseYmd: 20210518,
-		},
+		}
 	];
 	
 	
@@ -110,100 +118,141 @@ function Detail(){
 		};
 
 		var map = new kakao.maps.Map(container, options);
+		
+		
 	})
 	
-	
-	//let history = useHistory();
+	useEffect(() => {
+		setwidth(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
+		
+	}, []);
 	
 	
 	return(		
-	<div>
-		<br/>
+	<div className="fixed">
+		
 		<div className="locName_and_btn_back">
-			장소이름이랑 뒤로가기 버튼 ㅇㅇ
-			
+			<Link to="/">
+				<IoIosArrowBack size= "30"/> 
+			</Link>
+			장소이름 주세요
 		</div>
-		<div className="loc_info_expln">
-			<div className="front_image">
-				<img  
-					style={{ height:'100%', width:'100%', margin: 'auto' }}
-					src={"https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png"}/>
+		<div className="front_image">
+			<img  
+				style={{ height:'300px', width:'300px', margin: 'auto' }}
+				src={"https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png"}>
+			
+			</img>
+		</div>
+			
+			
+		<motion.div 
+			ref={dragAreaRef}
+			whileTap={{ cursor: 'grabbing' }}
+			className="KeenSlider"
+			
+			drag="y"
+			dragConstraints={{ top: -940, bottom: 0 }}
+			style={{ width: '100%', height: '100%' }}
+		>
+			<div className="line">
+				-
 			</div>
-			<div className="loc_name">
-				<br/>
-				젠틀가든 팝업 스토어(여기에 장소 이름!!)
-			</div>
-			<div className="loc_explanation">
+			
+			<div className="loc_info_expln">
+				
+				<div className="loc_name">
+					젠틀가든 팝업 스토어(여기에 장소 이름!!)
+				</div>
+				<div className="loc_explanation">
 				장소설명 넣으면 됩니당<br/>
 				(젠틀몬스터가 블랙핑크 제니와 협업한 프로젝트 ‘JENTLE GARDEN: 젠틀가든’ 팝업 공간으로, 
 				젠틀몬스터와 제니가 함께 상상한 판타지 세계를 다양한 디오라마 설치물과 화려한 꽃, 핑크빛 호수 
 				등을 활용해 몽환적인 공간으로 재현했습니다.)<br/>
+				</div>
 			</div>
-		</div>
-		<br/>
+			<br/>
 			<div className="conges_info">
-			<div className="conges_info_inner">
-				
-				<div className="d_cong">
+				<div className="conges_info_inner">
+					<div className="d_cong">
 					요일별 혼잡도
-				</div>
-				<div className="d_cong_expln">
+					</div>
+					<div className="d_cong_expln">
 					* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다. 	
-				</div>
-				<br/>
-				<br/>
-				<div className="days">
+					</div>
+					<br/>
+					<br/>
+					<div className="days">
 					월 화 수 목 금 토 일
-				</div>
-				<br/>
-				<div className="cong_circles">
+					</div>
+					<br/>
+					<div className="cong_circles">
 					여기에 혼잡도 동그라미 이미지나 .에 색 넣은거 들어오면 됨!!
-				<br/>
+					<br/>
+					</div>
 				</div>
 			</div>
-			</div>
 			
-		<br/>
-		<br/>
-		<br/>
+			<br/>
+			<br/>
+			<br/>
 			
-		<div className="map_div">
-			<div className="loc_info_with_map">
+			<div className="map_div">
+				<div className="loc_info_with_map">
 				위치정보
-			</div>
-			<div className="map_and_expln">
+				</div>
+				<div className="map_and_expln">
 				해당 장소의 위치 정보 입니다. 
-				<div
-					id="map"
-					style={{ width: '95%', height: '40vh', margin: 'auto', borderRadius: '10px' }}>
+					<div
+						id="map"
+						style={{ width: '95%', height: '40vh', margin: 'auto', borderRadius: '10px' }}>
+					</div>
 				</div>
 			</div>
-		</div>
 			
-		<br/>
-		<br/>
-		<br/>
+			<br/>
+			<br/>
+			<br/>
 			
-		<div className="photo_div">
+			
+			<div className="photo_div">
 			<div className="photos_collection">
 				사진 모음
 			</div>
 			<div className="img_and_expln">
 				방문자 및 한국관광공사 제공 사진입니다.
-				<div className="photos">
-					여기에 사진들 넣어줭
+				<div style={{ width: '100%', height: '100%' }} className="photos">
+					<motion.div
+					ref={dragAreaRef}
+					className="dragAreaRef"
+					whileTap={{ cursor: 'grabbing' }}
+					>
+						<motion.div
+						style={{ width: '100%', height: '100%' }}
+						drag="x"
+						dragConstraints={{ right: 0, left: -650 }}
+						className="inner-carousel"
+						>						
+						{items.map((array) => {
+							return(
+								<motion.div
+									className="item7777" 
+									key={array.image}
+								>
+									<div>
+										<img src={array.image} alt=""/>
+									</div>								
+								</motion.div>					
+							);
+						})}
+						</motion.div>
+					</motion.div>
 				</div>
 			</div>
+			</div>
 			
-		</div>
-		
 			
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
+		</motion.div>
 	</div>
 
 	);

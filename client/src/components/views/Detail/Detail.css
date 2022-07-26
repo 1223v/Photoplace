@@ -4,8 +4,17 @@ font-family: "main_font";
 font-size: 5px;	
 overflow-y: auto;
 */
+.fixed{
+	position: fixed; 
+	width: 100%;
+}
 
-
+.line{
+	text-align: center;
+	font-size: 30px;
+	color: gray;
+	font-family: "main_font";
+}
 .locName_and_btn_back{
 	/* < 장소이름 - 취소버튼 겸 장소이름 */
 	height: 50%;
@@ -15,8 +24,8 @@ overflow-y: auto;
 }
 
 .front_image{
-	height: 50%;
-	width: 50%;
+	/*height: 50%;
+	width: 50%;*/
 	text-align: center;
 	
 	margin-left: auto;
@@ -172,6 +181,57 @@ overflow-y: auto;
 	height: 100%;
 	width: 100%;
 }
-.btnBack{
+
+
+
+
+
+.inner-carousel{
+    display: flex;
+	justify-content: flex-start;
+	
+	height: 100%;
+	width: 100%;
+}
+.item7777{
+	/*
+	min-height: 30rem;
+    min-width: 20rem;
+	*/
+    padding: 10px;
+	width: 150px;
+	
+	margin-right: 4px;
+	margin-left: 4px;
+	
+	height: 100%;
+	/*
+	width: 320px;
+	height: 320px;
+	*/
+}
+
+.item7777 img{
+	
+    width: 150px;
+    height: 150px;
+	
+	/*
+	width: 120%;
+    height: 50%;
+	*/
+	
+    border-radius: 0.5rem;  
+    pointer-events: none;
+	
+	margin-bottom: 10px;
+	padding: 0.1px;
+}
+.dragAreaRef{
+    cursor: grab;
+    overflow: hidden;
+	
+	height: 100%;
+	width: 100%;	
 	
 }

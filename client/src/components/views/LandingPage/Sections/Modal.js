@@ -51,7 +51,26 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 						</ImgStyle>
 						
 						<CloseStyled className="modal-close">
-							<Field>{contents}</Field>
+							<icon>
+								  
+								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
+									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbrkOxL%2FbtrH5eJL9Ql%2FbAKeSz9khkTLRRI1AOwo9k%2Fimg.png"></img>
+								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
+									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FyYIqe%2FbtrH9Hj8n4e%2FMNmqEfiFOKEfMZArrlUBPK%2Fimg.png"></img>
+								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
+									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbifvKn%2FbtrIdyfccPX%2FBmgv8WgxBI2KlLWONeJ1b1%2Fimg.png"></img>
+								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px', float: 'right' }}
+									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpfhdZ%2FbtrIcGx1fQZ%2FreKieO0Ylv02uoYqh5lkpK%2Fimg.png"></img>	
+							</icon>
+							<Field style={{padding: '5px 0px 0px 0px'}}>{contents}</Field>
+							<Field style={{padding: '5px 0px 0px 0px'}}>
+								<img style={{ height:'20px', width:'25px', padding: '1px 2px', float: 'left' }}
+									   src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbSShKN%2FbtrIcG5SCGN%2FhKSILrQXKSh4fWQS4CjXQ1%2Fimg.png"></img>
+								장소는 어쩌구
+								<img style={{ height:'20px', width:'25px', padding: '1px 2px', float: 'left' }}
+									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fby0ndM%2FbtrIaPWtnIG%2FMGIxUL2x8XgaRzH6id7Oa1%2Fimg.png"></img>
+								거리는 이만큼
+							</Field>
 						</CloseStyled>
 					</ModalInner2>
 				</ModalInner>
@@ -161,4 +180,11 @@ const Field = styled.div`
 	align-content: center;
 	flex-direction: row;
 `
+
+const icon = styled.div`
+	display: flex;
+	outline: none;
+	flex-direction: row;
+`
+
 export default React.memo(Modal);
