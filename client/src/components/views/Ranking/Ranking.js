@@ -24,7 +24,7 @@ const PageWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 `
 const InfoWrapper = styled.div`
   display: flex;
@@ -124,7 +124,7 @@ function Ranking(){
 		setwidth(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
 		Axios.get('https://korea-app.run.goorm.io/api/data/map')
 		.then(response=> {
-		console.log(response.data)
+		//console.log(response.data)
 		setRankings(response.data)
 		
 	})

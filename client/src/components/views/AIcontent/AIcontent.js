@@ -7,13 +7,8 @@ import 'react-activity/dist/Dots.css';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { aiUser } from '../../../_actions/user_actions';
-import "./AIcontent.css";
-
-const URL = 'https://teachablemachine.withgoogle.com/models/D563JHUM9/';
-const modelURL = URL + 'model.json';
-const metadataURL = URL + 'metadata.json';
-
-let model;
+import './AIcontent.css';
+import Select from '../Ranking/SelectBox';
 
 const Container = styled.div`
 	margin-left: auto;
@@ -64,8 +59,36 @@ const Image = styled.img`
 	height: 90%;
 	border-radius: 10px;
 `;
+const SelectWrapper = styled.div`
+	display: flex;
+	margin: 10px;
+	margin_bottom: 15px;
+	width: 80%;
+`;
 
 const AIcontent = (props, { history }) => {
+	let URL = 'https://teachablemachine.withgoogle.com/models/D563JHUM9/';
+
+	let OPTIONS = [
+		{
+			value: 'Busan',
+			name: '부산',
+			key: 'https://teachablemachine.withgoogle.com/models/D563JHUM9/',
+		},
+		{
+			value: 'Seoul',
+			name: '서울',
+			key: 'https://teachablemachine.withgoogle.com/models/D563JHUM9/',
+		},
+	];
+	URL = OPTIONS[0].key;
+	console.log(URL);
+
+	const modelURL = URL + 'model.json';
+	const metadataURL = URL + 'metadata.json';
+
+	let model;
+
 	const [imgBase64, setImgBase64] = useState(''); // 파일 base64
 	const [imgFile, setImgFile] = useState(null); //파일
 	const [loading, setLoading] = useState(false);
@@ -114,7 +137,8 @@ const AIcontent = (props, { history }) => {
 			prediction: prediction[0].className,
 		};
 
-		dispatch(aiUser(body)).then(navigate("/AImap"));
+		dispatch(aiUser(body));
+		navigate('/AImap');
 	}
 
 	const handleChangeFile = (event) => {
@@ -153,6 +177,9 @@ const AIcontent = (props, { history }) => {
 
 	return (
 		<Container className="ai_page">
+			<SelectWrapper>
+				<Select options={OPTIONS} defaultValue="Busan" onChange></Select>
+			</SelectWrapper>
 			{showResult ? (
 				<div>분석결과는?</div>
 			) : (
@@ -179,8 +206,8 @@ const AIcontent = (props, { history }) => {
 			</ImageContainer>
 			{!loading && result === null ? (
 				<div>
-					<br/>
-					<br/>
+					<br />
+					<br />
 					<h4>
 						※ 업로드 된 사진은 별도로 수집, 보존 하지않고 얼굴인식 용도에만 사용됩니다.
 					</h4>

@@ -15,6 +15,7 @@ const InfoButton = styled.button`
 	position: absolute;
 	padding: 0;
 	margin: 10px;
+	
 	border: 1px solid ${(props) => props.color};
 `;
 
@@ -96,7 +97,7 @@ const Map = () => {
 		<div>
 			<div
 				id="map"
-				style={{ width: '90%', height: '80vh', margin: 'auto', borderRadius: '20px' }}
+				style={{ width: '90%', height: '80vh', margin: 'auto', borderRadius: '20px'}}
 			>
 				<div>
 					<React.Fragment>
@@ -120,7 +121,7 @@ const Map = () => {
 				></InfoPage>
 			</div>
 
-			<div style={{ display: 'flex', justifyContent: 'center' }}>
+			<div style={{ display: 'flex', justifyContent: 'center'}}>
 				<InfoButton color={ButtonColor} onClick={show}>
 					전체보기
 				</InfoButton>

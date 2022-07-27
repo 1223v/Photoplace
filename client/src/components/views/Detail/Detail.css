@@ -4,6 +4,7 @@ font-family: "main_font";
 font-size: 5px;	
 overflow-y: auto;
 */
+
 .fixed{
 	position: fixed; 
 	width: 100%;
@@ -12,20 +13,22 @@ overflow-y: auto;
 .line{
 	text-align: center;
 	font-size: 30px;
-	color: gray;
+	color: rgb(217,217,217);
 	font-family: "main_font";
+	font-weight: bold;
 }
 .locName_and_btn_back{
 	/* < 장소이름 - 취소버튼 겸 장소이름 */
 	height: 50%;
 	width: 50%;
 	font-family: "main_font";
-	font-size: 20px;
+	font-size: 25px;
+	color: rgb(255,233,189);
 }
 
 .front_image{
-	/*height: 50%;
-	width: 50%;*/
+	height: 400px;
+	width: 300px;
 	text-align: center;
 	
 	margin-left: auto;
@@ -118,11 +121,56 @@ overflow-y: auto;
 	color: rgb(112,112,112);
 }
 .cong_circles{
-	
+	text-align: center;
+	height: 15px;
+	display: flex;
+	justify-content: flex-start;
 }
 
+.c_green{
+	/*position: absolute;*/
+	/*width: 18px;*/
+	height: 15px;
 
+	font-weight: 900;
+	font-size: 40px;
+	/*line-height: 48px;*/
+	text-align: center;
+	color: #70E08F;
+}
+.c_yellow{
+	/*position: absolute;*/
+	/*width: 18px;*/
+	height: 15px;
 
+	font-weight: 900;
+	font-size: 40px;
+	/*line-height: 48px;*/
+	text-align: center;
+	color: #FFFA7A;
+}
+.c_orange{
+	/*position: absolute;*/
+	/*width: 18px;*/
+	height: 15px;
+
+	font-weight: 900;
+	font-size: 40px;
+	/*line-height: 48px;*/
+	text-align: center;
+	color: #FFA572;
+}
+.c_red{
+	/*position: absolute;*/
+	/*width: 18px;*/
+	height: 15px;
+
+	font-weight: 900;
+	font-size: 40px;
+	line-height: 48px;
+	text-align: center;
+	color: #FF7A7A;
+}
 
 
 .map_div{

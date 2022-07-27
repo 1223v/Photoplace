@@ -27,8 +27,8 @@ function SelectBox(props){
 			{props.options.map((option) => (
 				<option
 					key={option.value}
-					value={option.value}
-					defaultValue={props.defaultValue === option.value}
+					value={option.key}
+					defaultValue={props.defaultValue === option.key}
 				>
 					{option.name}
 				</option>

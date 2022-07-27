@@ -129,22 +129,31 @@ function Detail(){
 	
 	
 	return(		
-	<div className="fixed">
-		
+	<div className="fixed" style={{
+				backgroundRepeat: 'no-repeat',
+				backgroundImage: "url(" + "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png" + ")",
+				backgroundPosition: 'center top'}}>
 		<div className="locName_and_btn_back">
 			<Link to="/">
-				<IoIosArrowBack size= "30"/> 
+				<IoIosArrowBack size= "30" color="#FFE9BD" />
 			</Link>
-			장소이름 주세요
+			장소이름
 		</div>
-		<div className="front_image">
-			<img  
-				style={{ height:'300px', width:'300px', margin: 'auto' }}
-				src={"https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png"}>
-			
-			</img>
+		<div>
+			<br/>	
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
 		</div>
-			
+		
 			
 		<motion.div 
 			ref={dragAreaRef}
@@ -180,16 +189,24 @@ function Detail(){
 					<div className="d_cong_expln">
 					* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다. 	
 					</div>
-					<br/>
-					<br/>
+					
 					<div className="days">
-					월 화 수 목 금 토 일
+						월&nbsp;&nbsp;&nbsp;&nbsp;화&nbsp;&nbsp;&nbsp;&nbsp;수&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;&nbsp;&nbsp;&nbsp;금&nbsp;&nbsp;&nbsp;&nbsp;토&nbsp;&nbsp;&nbsp;&nbsp;일
 					</div>
-					<br/>
 					<div className="cong_circles">
-					여기에 혼잡도 동그라미 이미지나 .에 색 넣은거 들어오면 됨!!
-					<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<div className="c_green">.</div>&nbsp;&nbsp;&nbsp;
+						<div className="c_green">.</div>&nbsp;&nbsp;&nbsp;
+						<div className="c_yellow">.</div>&nbsp;&nbsp;&nbsp;
+						<div className="c_orange">.</div>&nbsp;&nbsp;&nbsp;
+						<div className="c_red">.</div>&nbsp;&nbsp;&nbsp;
+						<div className="c_red">.</div>&nbsp;&nbsp;&nbsp;
+						<div className="c_orange">.</div>
+						<br/><br/><br/><br/>
 					</div>
+					<br/>
+					<br/>
+					
 				</div>
 			</div>
 			
@@ -251,8 +268,8 @@ function Detail(){
 			</div>
 			</div>
 			
-			
 		</motion.div>
+			
 	</div>
 
 	);
