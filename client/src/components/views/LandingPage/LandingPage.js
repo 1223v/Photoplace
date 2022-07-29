@@ -12,6 +12,7 @@ function LandingPage(){
 		.then(response => response.json())
 		.then(response => console.log(response))
 		*/
+		/*
 		for(let i=1;i<5;i++){
 		const encodeStr=encodeURI("서울")
 		const endpoint1 = `${API_URL}gallerySearchList?ServiceKey=${API_KEY}&arrange=A&pageNo=`+i+`&MobileOS=ETC&MobileApp=AppTesting&_type=json&numOfRows=50&keyword=`+encodeStr
@@ -29,7 +30,7 @@ function LandingPage(){
 		fetch(endpoint3)
 		.then(response3 => response3.json())
 		.then(response3 => console.log(response3))
-		
+		*/
 	},[])
 	
 	return(

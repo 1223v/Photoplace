@@ -49,7 +49,7 @@ const Footer = () => {
           />
         
       </Link>
-      <Link to ="/AIcontent" className="nav-link" onClick={() => setActiveNav(5)}>
+      <Link to ="/Seoul" className="nav-link" onClick={() => setActiveNav(5)}>
         
           <FaRobot
 			  size="25"

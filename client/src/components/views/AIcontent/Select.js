@@ -25,6 +25,7 @@ function SelectBox(props){
 	const navigate = useNavigate();
 	const handleChange = (e) => {
 		console.log("응애",e.target.value);
+		navigate(e.target.value);
 	}
 	return(
 		<Select onChange={handleChange}>

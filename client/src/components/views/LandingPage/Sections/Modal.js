@@ -46,7 +46,8 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 								target={'_blank'}
 								cursor="pointer"
 								align="center">
-								<Img src={imageSrcs} alt="" />
+								<Img src="https://blog.kakaocdn.net/dn/bcuraN/btrIx0pgrDR/BBD9TJvgFkQSRccimpUeC0/img.gif" alt="" />
+								
 							</a>
 						</ImgStyle>
 						

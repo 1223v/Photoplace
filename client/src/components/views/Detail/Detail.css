@@ -134,7 +134,7 @@ overflow-y: auto;
 
 	font-weight: 900;
 	font-size: 40px;
-	/*line-height: 48px;*/
+	line-height: 48px;
 	text-align: center;
 	color: #70E08F;
 }
@@ -145,7 +145,7 @@ overflow-y: auto;
 
 	font-weight: 900;
 	font-size: 40px;
-	/*line-height: 48px;*/
+	line-height: 48px;
 	text-align: center;
 	color: #FFFA7A;
 }
@@ -156,7 +156,7 @@ overflow-y: auto;
 
 	font-weight: 900;
 	font-size: 40px;
-	/*line-height: 48px;*/
+	line-height: 48px;
 	text-align: center;
 	color: #FFA572;
 }

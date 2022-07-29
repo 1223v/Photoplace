@@ -1,6 +1,6 @@
 import {
-    AI_USER
-    
+    AI_USER,
+    AI_SELECT
 } from '../_actions/types';
  
 

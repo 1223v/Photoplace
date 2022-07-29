@@ -3,7 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import LandingPage from './views/LandingPage/LandingPage';
 import NavBar from './views/NavBar/NavBar';
 import Footer from './views/Footer/Footer';
-import AIcontent from './views/AIcontent/AIcontent';
+import Seoul from './views/AIcontent/Seoul';
+import Busan from './views/AIcontent/Busan';
 import Loading from './views/Loading/Loading';
 import Mapsearch from './views/Mapsearch/Mapsearch';
 import Ranking from './views/Ranking/Ranking';
@@ -27,7 +28,8 @@ function App() {
 			<div style={{ minHeight: 'calc(100vh - 80px)' }}>
 				<Routes>
 					<Route path="/" element={<LandingPage />} />
-					<Route path="/AIcontent" element={<AIcontent />} />
+					<Route path="/Seoul" element={<Seoul />} />
+					<Route path="/Busan" element={<Busan />} />
 					<Route path="/Mapsearch" element={<Mapsearch />} />
 					<Route path="/Ranking" element={<Ranking />} />
 					<Route path="/AImap" element={<AImap />} />

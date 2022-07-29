@@ -5,10 +5,10 @@ import * as tmImage from '@teachablemachine/image';
 import Dots from 'react-activity/dist/Dots';
 import 'react-activity/dist/Dots.css';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { aiUser } from '../../../_actions/user_actions';
 import './AIcontent.css';
-import Select from '../Ranking/SelectBox';
+import Select from "./Select"
 
 const Container = styled.div`
 	margin-left: auto;
@@ -66,23 +66,22 @@ const SelectWrapper = styled.div`
 	width: 80%;
 `;
 
-const AIcontent = (props, { history }) => {
-	let URL = 'https://teachablemachine.withgoogle.com/models/D563JHUM9/';
+const Busan = (props, { history }) => {
+	let URL = 'https://teachablemachine.withgoogle.com/models/bPVTnnqcJ/';
 
 	let OPTIONS = [
 		{
 			value: 'Busan',
 			name: '부산',
-			key: 'https://teachablemachine.withgoogle.com/models/D563JHUM9/',
+			key: '/Busan',
 		},
 		{
 			value: 'Seoul',
 			name: '서울',
-			key: 'https://teachablemachine.withgoogle.com/models/D563JHUM9/',
+			key: '/Seoul',
 		},
 	];
-	URL = OPTIONS[0].key;
-	console.log(URL);
+	
 
 	const modelURL = URL + 'model.json';
 	const metadataURL = URL + 'metadata.json';
@@ -97,7 +96,7 @@ const AIcontent = (props, { history }) => {
 	const [result, setResult] = useState(null);
 	const [keyword, setKeyword] = useState(null);
 	const dispatch = useDispatch();
-
+	
 	//react-router 사용
 	const navigate = useNavigate();
 	// input 태그를 클릭하는 것과 같은 효과를 주기 위해서 사용
@@ -226,4 +225,4 @@ const AIcontent = (props, { history }) => {
 	);
 };
 
-export default AIcontent;
+export default Busan;
