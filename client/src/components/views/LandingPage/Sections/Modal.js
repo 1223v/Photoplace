@@ -60,8 +60,10 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FyYIqe%2FbtrH9Hj8n4e%2FMNmqEfiFOKEfMZArrlUBPK%2Fimg.png"></img>
 								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
 									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbifvKn%2FbtrIdyfccPX%2FBmgv8WgxBI2KlLWONeJ1b1%2Fimg.png"></img>
-								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px', float: 'right' }}
-									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpfhdZ%2FbtrIcGx1fQZ%2FreKieO0Ylv02uoYqh5lkpK%2Fimg.png"></img>	
+								<a href="https://naver.com">
+									<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px', float: 'right' }}
+										src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDwzJD%2FbtrIvnZEn58%2FBe6spOic2XwizQK025Wdh0%2Fimg.png"></img>	
+								</a>
 							</icon>
 							<Field style={{padding: '5px 0px 0px 0px'}}>{contents}</Field>
 							<Field style={{padding: '5px 0px 0px 0px'}}>
