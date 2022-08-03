@@ -49,7 +49,7 @@ const ImageContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	box-shadow: 0px 0px 25px #576574;
-	z-index: 5;
+	
 	flex-direction: column;
 	box-shadow: 0px 3px 20px 10px rgba(0, 0, 0, 0.1);
 `;
@@ -163,20 +163,13 @@ const Seoul = (props, { history }) => {
 		}
 	};
 
-	const handleShare = () => {
-		if (navigator.share) {
-			navigator.share({
-				title: '나와 닮은 정치인은?',
-				// text: 'Hello World',
-				url: 'https://politictest.netlify.app/',
-			});
-		} else {
-			alert('공유하기가 지원되지 않는 브라우저 입니다.');
-		}
-	};
+
 
 	return (
 		<Container className="ai_page">
+			<br/>
+			<br/>
+			<br/>
 			<SelectWrapper>
 				<Select options={OPTIONS} defaultValue="Busan" onChange></Select>
 			</SelectWrapper>

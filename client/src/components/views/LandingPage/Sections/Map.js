@@ -4,13 +4,13 @@ import Modal from './Modal';
 import InfoPage from './InfoPage';
 import styled from 'styled-components';
 //const { kakao } = window;
-import Axios from 'axios'
+import Axios from 'axios';
 
 
 const InfoButton = styled.button`
 	background-color: white;
 	color: ${(props) => props.color};
-	width: 80px;
+	width: 80px; 
 	height: 40px;
 	position: absolute;
 	padding: 0;
@@ -26,6 +26,7 @@ const Map = () => {
 	const [imageSrcs, setimageSrcs] = useState('');
 	const [contents, setcontents] = useState('');
 	const [Titles, setTitles] = useState('');
+	const [Nums, setNums] = useState([]);
 	
 	const show = () => {
 		setShowInfo(!showInfo);
@@ -64,7 +65,7 @@ const Map = () => {
 			var imageSrca = response.data[i].imageSrc;
 			var contents = response.data[i].content;
 			var titles = response.data[i].title;
-			
+			var nums = response.data[i].num;
 			// 마커를 생성합니다
 			var latlngs = new kakao.maps.LatLng(response.data[i].uplatlng,response.data[i].downlatlng)
 			var marker3 = new kakao.maps.Marker({
@@ -77,17 +78,18 @@ const Map = () => {
 			kakao.maps.event.addListener(
 				marker3,
 				'click',
-				makeOverListener(map, marker3, imageSrca, contents,titles)
+				makeOverListener(map, marker3, imageSrca, contents,titles, nums)
 			);
 		}
 
 		// 인포윈도우를 표시하는 클로저를 만드는 함수입니다
-		function makeOverListener(map, marker3, imageSrca, contents,titles) {
+		function makeOverListener(map, marker3, imageSrca, contents,titles, nums) {
 			return function () {
 				setModalVisible(true);
 				setimageSrcs(imageSrca);
 				setcontents(contents);
-				setTitles(titles)
+				setTitles(titles);
+				setNums(nums);
 			};
 		}
 		})
@@ -95,6 +97,9 @@ const Map = () => {
 
 	return (
 		<div>
+			<br/>
+			<br/>
+			<br />
 			<div
 				id="map"
 				style={{ width: '90%', height: '80vh', margin: 'auto', borderRadius: '20px'}}
@@ -110,6 +115,7 @@ const Map = () => {
 								imageSrcs={imageSrcs}
 								contents={contents}
 								titles={Titles}
+								nums={Nums}
 							></Modal>
 						)}
 					</React.Fragment>

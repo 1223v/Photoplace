@@ -22,6 +22,7 @@ function App() {
 	if (loading) {
 		return <Loading></Loading>;
 	}
+	
 	return (
 		<div>
 			<NavBar />

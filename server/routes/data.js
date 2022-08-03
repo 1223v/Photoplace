@@ -61,12 +61,9 @@ router.post('/Searchpage',(req,res)=>{
     })
 });
 
-/*
-router.get('/Ranking',(req,res)=>{
-	
-    
-	var userSearch = req.body.search;
-    var sql = `SELECT * FROM Marker WHERE tag_1 LIKE '%${userSearch}%' OR tag_2 LIKE '%${userSearch}%'`;
+router.post('/Detail/:id',(req,res)=>{
+	var userNum = req.body.Num;
+    var sql = `SELECT * FROM Marker WHERE num = ${userNum}`;
     connection.query(sql,(err,rows)=>{
 		
        if(err){
@@ -80,6 +77,24 @@ router.get('/Ranking',(req,res)=>{
         
     })
 });
-*/
+
+router.get('/Ranking',(req,res)=>{
+	
+	
+    var sql = `SELECT * FROM Marker `;
+    connection.query(sql,(err,rows)=>{
+		
+       if(err){
+           console.log("실패");
+           return res.send(err);
+       }
+      else{
+		  	
+            return res.send(rows);
+		}
+        
+    })
+});
+
 
 module.exports = router;

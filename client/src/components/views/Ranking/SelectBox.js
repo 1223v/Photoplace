@@ -5,14 +5,16 @@ import { useNavigate } from 'react-router-dom';
 
 const Select = styled.select`
 	display: block;
+	background-color:white;
 	width: 100px;
 	height: 35px;
-	padding: 8px 8px;
+	padding: 5px 5px;
 	font-size: inherit;
 	border:1px solid;
 	border-radius: 4px;
 	line-height: inherit;
 	margin-top: 10px;
+	margin-left:20px;
 	&:focus,
   	&:active {
     outline: none;

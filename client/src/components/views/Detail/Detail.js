@@ -20,6 +20,7 @@ function Detail(){
 	
 	const [width, setwidth] = useState(0);
 	const [Rankings,setRankings] = useState([])
+	const [Details,setDetails] = useState([])
 	const dragAreaRef = useRef(null);
 	const location=useLocation();
 	console.log(location);
@@ -119,25 +120,34 @@ function Detail(){
 
 		var map = new kakao.maps.Map(container, options);
 		
-		
-	})
-	
-	useEffect(() => {
+		let body = {
+			Num: num
+		}
+		Axios.post('https://korea-app.run.goorm.io/api/data/Detail/:num', body)
+		.then(response=>{
+			console.log(response.data[0])
+			setDetails(response.data[0])
+			
+		})
 		setwidth(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
+	},[])
+	
+	
 		
-	}, []);
+		
+	
 	
 	
 	return(		
 	<div className="fixed" style={{
 				backgroundRepeat: 'no-repeat',
-				backgroundImage: "url(" + "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png" + ")",
+				backgroundImage: "url(" + `${Details.imageSrc}` + ")",
 				backgroundPosition: 'center top'}}>
 		<div className="locName_and_btn_back">
 			<Link to="/">
 				<IoIosArrowBack size= "30" color="#FFE9BD" />
 			</Link>
-			장소이름
+			{Details.title}
 		</div>
 		<div>
 			<br/>	
@@ -273,6 +283,8 @@ function Detail(){
 	</div>
 
 	);
+	
+
 }
 
 export default Detail;

@@ -12,6 +12,7 @@ function Componentpage() {
 	
 	const {id}=useParams();
 	
+	
 	const[Click, setClick]=useState(false);
 	const click=()=>{
 		setClick(true)
