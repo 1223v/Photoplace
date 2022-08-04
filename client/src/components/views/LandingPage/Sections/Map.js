@@ -32,11 +32,13 @@ const Map = () => {
 		setShowInfo(!showInfo);
 		ButtonColor === '#18978F' ? setButton('#FF869E') : setButton('#18978F');
 	};
+	
 	const closeModal = () => {
 		setModalVisible(false);
 	};
+	
 	useEffect(() => {
-		
+		const { kakao } = window;
 		var container = document.getElementById('map');
 		var options = {
 			center: new kakao.maps.LatLng(37.486021038352995, 126.80229974931666),
@@ -48,7 +50,6 @@ const Map = () => {
 		Axios.get('https://korea-app.run.goorm.io/api/data/map')
         .then(response => {
             
-
 		// 마커 이미지의 이미지 주소입니다
 
 		

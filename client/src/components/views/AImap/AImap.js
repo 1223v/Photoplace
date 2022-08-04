@@ -18,7 +18,7 @@ const InfoButton = styled.button`
 	border: 1px solid ${(props) => props.color};
 `;
 
-const Map = () => {
+const AImap = () => {
 	const [ButtonColor, setButton] = useState('#18978F');
 	const [showInfo, setShowInfo] = useState(false);
 	const [modalVisible, setModalVisible] = useState(false);
@@ -36,7 +36,7 @@ const Map = () => {
 		setModalVisible(false);
 	};
 	useEffect(() => {
-		
+		const { kakao } = window;
 		var container = document.getElementById('map');
 		var options = {
 			center: new kakao.maps.LatLng(37.486021038352995, 126.80229974931666),
@@ -96,6 +96,9 @@ const Map = () => {
 
 	return (
 		<div>
+			<br/>
+			<br/>
+			<br />
 			<div
 				id="map"
 				style={{ width: '90%', height: '80vh', margin: 'auto', borderRadius: '30px' }}
@@ -137,4 +140,4 @@ const Map = () => {
 	);
 };
 
-export default Map;
+export default AImap;

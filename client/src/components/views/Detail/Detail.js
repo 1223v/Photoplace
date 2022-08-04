@@ -1,3 +1,4 @@
+/* global kakao */
 import React from "react";
 import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
@@ -5,6 +6,7 @@ import Axios from 'axios'
 import styled from "styled-components";
 import {IoIosArrowBack} from "react-icons/io"
 import { useLocation,useNavigate,Link } from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
+import Share_modal from "../LandingPage/Sections/Share_modal"
 
 import "./Detail.css";
 import "./KeenSlider_style.css";
@@ -16,7 +18,14 @@ import "./KeenSlider_style.css";
 //items의 tourNum - 관광객 수 
 //items의 baseYmd - 기준 년월일
 
-function Detail(){
+function Detail(props){
+	
+	const [IsShare, setIsShare] = useState(false);
+	
+	
+	const closeModal = () => {
+		props.setShare(!props.Share);
+	};
 	
 	const [width, setwidth] = useState(0);
 	const [Rankings,setRankings] = useState([])
@@ -137,8 +146,7 @@ function Detail(){
 		
 	
 	
-	
-	return(		
+	return(	
 	<div className="fixed" style={{
 				backgroundRepeat: 'no-repeat',
 				backgroundImage: "url(" + `${Details.imageSrc}` + ")",
@@ -149,6 +157,7 @@ function Detail(){
 			</Link>
 			{Details.title}
 		</div>
+		
 		<div>
 			<br/>	
 			<br/>
@@ -171,13 +180,13 @@ function Detail(){
 			className="KeenSlider"
 			
 			drag="y"
-			dragConstraints={{ top: -940, bottom: 0 }}
+			dragConstraints={{ top: -850, bottom: 200 }}
 			style={{ width: '100%', height: '100%' }}
 		>
 			<div className="line">
 				-
 			</div>
-			
+            
 			<div className="loc_info_expln">
 				
 				<div className="loc_name">
@@ -190,6 +199,7 @@ function Detail(){
 				등을 활용해 몽환적인 공간으로 재현했습니다.)<br/>
 				</div>
 			</div>
+			
 			<br/>
 			<div className="conges_info">
 				<div className="conges_info_inner">
@@ -228,6 +238,7 @@ function Detail(){
 				<div className="loc_info_with_map">
 				위치정보
 				</div>
+            
 				<div className="map_and_expln">
 				해당 장소의 위치 정보 입니다. 
 					<div
@@ -269,17 +280,48 @@ function Detail(){
 									<div>
 										<img src={array.image} alt=""/>
 									</div>								
-								</motion.div>					
+								</motion.div>
 							);
 						})}
 						</motion.div>
 					</motion.div>
 				</div>
+			</div>	
 			</div>
-			</div>
-			
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
 		</motion.div>
-			
+		
+		<div>
+			<React.Fragment>
+				{!props.Share && (
+					<Share_modal
+						visible={!props.Share}
+						closable={true}
+						maskClosable={true}
+						onClose={closeModal}
+						titles="임시이름"
+					></Share_modal>
+				)}
+			</React.Fragment>
+		</div>
 	</div>
 
 	);

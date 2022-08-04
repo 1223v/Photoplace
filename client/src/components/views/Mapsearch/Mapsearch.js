@@ -202,6 +202,7 @@ function Mapsearch() {
 		<div className="mapsearch">
 			<br/>
 			<br/>
+			<br/>
 			
 			<SearchWrapper>
 				<SearchBar onSubmit={onSubmitHandler}>

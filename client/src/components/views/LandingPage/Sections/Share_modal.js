@@ -41,7 +41,7 @@ function Share_modal({ className, onClose, maskClosable, closable, visible, titl
 						)}
 						
 						<CloseStyled className="modal-close">
-                			<div style={{zIndex:'999999'}} class="addthis_inline_share_toolbox"></div>
+                			<div class="addthis_inline_share_toolbox_2to0"></div>
             
 							<Field style={{padding: '5px 0px 0px 0px'}}>ㄹㅇㅋㅋ</Field>
 						</CloseStyled>
@@ -59,6 +59,11 @@ Share_modal.propTypes = {
 	visible: PropTypes.bool,
 };
 
+const Share = styled.div`
+	position: relative;
+	z-index: 999;
+	transform: rotate(0deg);
+`;
 
 const CloseStyle = styled.div`
 	display: flex;
@@ -80,6 +85,7 @@ const CloseStyled = styled.div`
 	padding: 10px 15px 10px 15px;
 	flex-direction: column;
 	color: #ffffff;
+	position: relative;
 	
 `;
 const Close = styled.span`

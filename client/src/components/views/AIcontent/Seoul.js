@@ -41,17 +41,17 @@ const ImageUploadContainer = styled.input`
 
 const ImageContainer = styled.div`
 	position: relative;
-	width: 70%;
-	height: 28%;
+	width: 85%;
+	height: 55%;
 	display: flex;
-	background-color: rgba(0, 0, 0, 0.07);
+	background-color: rgb(252, 248, 232);
 	border-radius: 10px;
 	justify-content: center;
 	align-items: center;
-	box-shadow: 0px 0px 25px #576574;
 	
+	z-index: 5;
 	flex-direction: column;
-	box-shadow: 0px 3px 20px 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 3px 5px 1px rgb(252, 248, 232);
 `;
 
 const Image = styled.img`
@@ -169,15 +169,21 @@ const Seoul = (props, { history }) => {
 		<Container className="ai_page">
 			<br/>
 			<br/>
-			<br/>
+			
 			<SelectWrapper>
 				<Select options={OPTIONS} defaultValue="Busan" onChange></Select>
 			</SelectWrapper>
 			{showResult ? (
 				<div>분석결과는?</div>
 			) : (
-				<div>{loading ? '잠시만 기다려주세요!' : '사진을 업로드 해주세요!'}</div>
+				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : 'AI가 어울리는 여행지를 추천해드려요!'}</div>
 			)}
+			{!loading && result === null ? (
+				<div style={{ width:'80%' , fontSize:'12px'}}>
+						※ 업로드 된 사진은 별도로 수집, 보존 하지않고 얼굴인식 용도에만 사용됩니다.
+						<br/><br/>
+				</div>
+			) : null}
 			<ImageContainer
 				onClick={() => {
 					inputRef.current.click();
@@ -192,20 +198,11 @@ const Seoul = (props, { history }) => {
 				{imgBase64 ? (
 					<Image id="srcImg" src={imgBase64}></Image>
 				) : (
-					<div>
-						<h3>GIVE ME YOUR PICTURE!</h3>
+					<div style={{ fontSize:'25px' }}>
+						GIVE ME YOUR PICTURE!
 					</div>
 				)}
 			</ImageContainer>
-			{!loading && result === null ? (
-				<div>
-					<br />
-					<br />
-					<h4>
-						※ 업로드 된 사진은 별도로 수집, 보존 하지않고 얼굴인식 용도에만 사용됩니다.
-					</h4>
-				</div>
-			) : null}
 
 			{loading && result === null ? (
 				<div>
