@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 //import {BsArrowCounterclockwise} from "react-icons/bs";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as tmImage from '@teachablemachine/image';
 import Dots from 'react-activity/dist/Dots';
 import 'react-activity/dist/Dots.css';
@@ -9,6 +9,7 @@ import { useDispatch} from 'react-redux';
 import { aiUser } from '../../../_actions/user_actions';
 import './AIcontent.css';
 import Select from "./Select"
+
 
 const Container = styled.div`
 	margin-left: auto;
@@ -31,6 +32,23 @@ const Container = styled.div`
 	}
 `;
 
+const UpperIconsContainer = styled.div`
+	width: 100%;
+	height: 20px;
+	display : flex;
+	position: absolute;
+	top:10px;
+
+	justify-content: center;
+`
+const LowerIconsContainer = styled.div`
+	width: 100%;	
+	height: 50px;
+	position: absolute;
+	bottom: 20px;
+	text-align: center;
+`
+
 const ImageUploadContainer = styled.input`
 	width: 100%;
 	height: 100%;
@@ -45,6 +63,14 @@ const ImageContainer = styled.div`
 	height: 55%;
 	display: flex;
 	background-color: rgb(252, 248, 232);
+	
+	
+	
+	background: linear-gradient(to right bottom, #8033F1, #ffa69e);
+    color: transparent;
+	
+	
+	
 	border-radius: 10px;
 	justify-content: center;
 	align-items: center;
@@ -55,8 +81,8 @@ const ImageContainer = styled.div`
 `;
 
 const Image = styled.img`
-	width: 90%;
-	height: 90%;
+	width: 100%;
+	height: 100%;
 	border-radius: 10px;
 `;
 const SelectWrapper = styled.div`
@@ -65,22 +91,29 @@ const SelectWrapper = styled.div`
 	margin_bottom: 15px;
 	width: 80%;
 `;
+const AnalyzingContainer=styled.div`
+	top:50px;
+`
 
 const Seoul = (props, { history }) => {
 	let URL = 'https://teachablemachine.withgoogle.com/models/D563JHUM9/';
 
 	let OPTIONS = [
 		{
+			value: 'Busan',
+			name: '부산',
+			key: '/Busan',
+		},
+		{
 			value: 'Seoul',
 			name: '서울',
 			key: '/Seoul',
 		},
 		{
-			value: 'Busan',
-			name: '부산',
-			key: '/Busan',
+			value: 'Jeju',
+			name: '제주',
+			key: '/Jeju',
 		},
-		
 	];
 	
 
@@ -135,6 +168,10 @@ const Seoul = (props, { history }) => {
 
 		let body = {
 			prediction: prediction[0].className,
+			prediction1: prediction[1].className,
+			prediction2: prediction[2].className,
+			prediction3: prediction[3].className,
+			prediction4: prediction[4].className,
 		};
 
 		dispatch(aiUser(body));
@@ -166,10 +203,8 @@ const Seoul = (props, { history }) => {
 
 
 	return (
-		<Container className="ai_page">
-			<br/>
-			<br/>
-			
+		<Container className="ai_page">	
+			<br/><br/>
 			<SelectWrapper>
 				<Select options={OPTIONS} defaultValue="Busan" onChange></Select>
 			</SelectWrapper>
@@ -178,17 +213,36 @@ const Seoul = (props, { history }) => {
 			) : (
 				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : 'AI가 어울리는 여행지를 추천해드려요!'}</div>
 			)}
+
 			{!loading && result === null ? (
-				<div style={{ width:'80%' , fontSize:'12px'}}>
+				<div style={{ width:'80%' , fontSize:'10px'}}>
 						※ 업로드 된 사진은 별도로 수집, 보존 하지않고 얼굴인식 용도에만 사용됩니다.
 						<br/><br/>
 				</div>
 			) : null}
+
 			<ImageContainer
 				onClick={() => {
 					inputRef.current.click();
 				}}
 			>
+				<UpperIconsContainer>
+					<img style={{marginRight:'38%' }} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Flyjkg%2FbtrIT91lvHy%2FseRbk2IR9tYKBWeHKG69u1%2Fimg.png"></img>
+					<img style={{}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoqlOl%2FbtrISNEqoeV%2FOv6miOdVjaOADzyXcllPnK%2Fimg.png"></img>
+					<img style={{ marginLeft:'38%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkHhiq%2FbtrIRF7H6gC%2FnoqrnCCKbzrZThW8EGjYZ0%2Fimg.png"></img>
+				</UpperIconsContainer>
+
+				<LowerIconsContainer>
+				<img style={{width:'13%', marginRight:'27%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbiwEn6%2FbtrIVhLB9E9%2FhKikwNymyj7ScBirSWVZ20%2Fimg.png"></img>
+				<img style={{width:'16%', marginRight:'40%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8DD1z%2FbtrIOSF0zp1%2FGoaATe4xkFtl8gZB8cuhQk%2Fimg.png"></img>
+				<br/>
+				<div>
+					<Link style={{zIndex:'10', color:'black',textDecoration: 'none',marginLeft:'18%'}} to="/Seoul">서울 </Link>
+					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Busan">부산</Link>
+					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Jeju"> 제주</Link>
+				</div>
+				</LowerIconsContainer>
+				
 				<ImageUploadContainer
 					ref={inputRef}
 					onChange={handleChangeFile}
@@ -204,14 +258,14 @@ const Seoul = (props, { history }) => {
 				)}
 			</ImageContainer>
 
+			<AnalyzingContainer>
 			{loading && result === null ? (
-				<div>
-					<Dots size={45} color="#224976"></Dots>
-					<h2>분석중...</h2>
+				<div style={{fontSize:'25px', textAlign:'center'}}>
+					<Dots size={25} color="#224976" style={{textAlign:'center'}}></Dots>
+					분석중...
 				</div>
 			) : null}
-
-			<div class="addthis_inline_share_toolbox_mxdj"></div>
+			</AnalyzingContainer>
 		</Container>
 	);
 };

@@ -16,6 +16,16 @@ function Share_modal({ className, onClose, maskClosable, closable, visible, titl
 		}
 	};
 	
+	const CopyClipBoard = async () => {
+		const url = document.URL;
+		try {
+		  await navigator.clipboard.writeText(url);
+		  alert('복사 성공!');
+		} catch (error) {
+		  alert('복사 실패!');
+		}
+	 };
+	
 	return (
 		<div elementId="modal-root">
 			<ModalOverlay visible={visible} />
@@ -41,9 +51,12 @@ function Share_modal({ className, onClose, maskClosable, closable, visible, titl
 						)}
 						
 						<CloseStyled className="modal-close">
-                			<div class="addthis_inline_share_toolbox_2to0"></div>
-            
-							<Field style={{padding: '5px 0px 0px 0px'}}>ㄹㅇㅋㅋ</Field>
+                			<Share onClick={CopyClipBoard} style={{padding: '5px 0px 0px 0px'}}>
+								url 복사
+							</Share>							
+							<Field style={{padding: '5px 0px 0px 0px'}}>
+										
+							</Field>
 						</CloseStyled>
 					</ModalInner2>
 				</ModalInner>
@@ -58,12 +71,6 @@ function Share_modal({ className, onClose, maskClosable, closable, visible, titl
 Share_modal.propTypes = {
 	visible: PropTypes.bool,
 };
-
-const Share = styled.div`
-	position: relative;
-	z-index: 999;
-	transform: rotate(0deg);
-`;
 
 const CloseStyle = styled.div`
 	display: flex;
@@ -151,6 +158,15 @@ const ModalInner = styled.div`
 	padding: 40px 20px;
 `;
 const Field = styled.div`
+	font-family: "main_font";
+	text-align: left;
+	font-size: 15px;
+	display: flex;
+	outline: none;
+	align-content: center;
+	flex-direction: row;
+`
+const Share = styled.div`
 	font-family: "main_font";
 	text-align: left;
 	font-size: 15px;

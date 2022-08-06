@@ -1,211 +1,171 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import {useParams,useLocation}from "react-router-dom";
 import Axios from 'axios'
 //import ImagesComponent from "./ImagesComponent.js";
 import './Componentpage.css';
+import ApexCharts from 'react-apexcharts';
 //import Detail from '../Detail/Detail'
 
-function Componentpage() {
-	
-	const {id}=useParams();
-	
-	
-	const[Click, setClick]=useState(false);
-	const click=()=>{
-		setClick(true)
-		console.log("clicked!!")
-	}
-	
-	const [width, setwidth] = useState(0);
-	const dragAreaRef = useRef(null);
-	
-	Axios.get('https://korea-app.run.goorm.io/api/data/Componentpage')
-		.then(response=> console.log(response.data))
-	
-	let items = [
-		{
-			num:1,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png',
-			loc_name: '장소이름1',
-			loc_info: '주소1',
-		},
-		{
-			num:2,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqUpFy%2FbtrGF6SfaRi%2F2RBk5OaRvQD5FbuJtcCE70%2Fimg.png',
-			loc_name: '장소이름2',
-			loc_info: '주소2',
-		},
-		{
-			num:3,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png',
-			loc_name: '명동 몰토 카페',
-			loc_info: '서울 중구 명동길 73 3층',
-		},
-		{
-			num:4,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqUpFy%2FbtrGF6SfaRi%2F2RBk5OaRvQD5FbuJtcCE70%2Fimg.png',
-			loc_name: '서울 젠틀몬스터 팝업스토어',
-			loc_info: '서울 중구 소공로 63 신세계백화점 명동점 신관 1층',
-		},
-		{
-			num:5,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png',
-			loc_name: '전주 한벽굴 - 스물다섯 스물하나 촬영지',
-			loc_info: '전북 전주시 완산구 교동',
-		},
-		{
-			num:6,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqUpFy%2FbtrGF6SfaRi%2F2RBk5OaRvQD5FbuJtcCE70%2Fimg.png',
-			loc_name: '부산 흰여울 문화마을 해변 터널',
-			loc_info: '부산광역시 영도구 영선동4가',
-		},
-	];
-	
+const AnalysisPageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  height: 80vh;
+`;
 
-	useEffect(() => {
-		setwidth(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
-	}, []);
+const AnalysisTitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
-	
-	return (	
-		<div style={{ width: '100%', height: '100%' }} className="wholeView">
-			<div style={{ width: '100%', height: '250px' }} className="imagesRow">
-				<motion.div
-					ref={dragAreaRef}
-					className="dragAreaRef"
-					whileTap={{ cursor: 'grabbing' }}
-				>
-					<motion.div
-						style={{ width: '100%', height: '100%' }}
-						drag="x"
-						dragConstraints={{ right: 0, left: -width }}
-						className="inner-carousel"
-					>						
-						{items.map((array) => {
-							return(
-								<motion.div
-									className="item7777" 
-									key={array.image}
-								>
-									<Link to={`/Detail/${array.num}`} state={{num:array.num}} onClick={click}>
-										<div>
-											<img src={array.image} alt=""/>
-										</div>
-									</Link>	
-									<br/>
-									{array.loc_name}
-									<br/>
-									{array.loc_info}									
-								</motion.div>					
-							);
-						})}
-					</motion.div>
-				</motion.div>
-			</div>
-			
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			
-			<div style={{ width: '100%', height: '250px' }} className="imagesRow">
-				<motion.div
-					ref={dragAreaRef}
-					className="dragAreaRef"
-					whileTap={{ cursor: 'grabbing' }}
-				>
-					<motion.div
-						style={{ width: '100%', height: '100%' }}
-						drag="x"
-						dragConstraints={{ right: 0, left: -width }}
-						className="inner-carousel"
-					>						
-						{items.map((array) => {
-							return(
-								<motion.div 
-									className="item7777" 
-									key={array.image}
-								>
-									<Link to={`/Detail/${array.num}`} state={{num:array.num}} onClick={click}>
-										<div>
-											<img src={array.image} alt=""/>
-										</div>
-									</Link>	
-									<br/>
-									{array.loc_name}
-									<br/>
-									{array.loc_info}									
-								</motion.div>					
-							);
-						})}
-					
-						
-					</motion.div>
-				</motion.div>
-			</div>
-			
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			
-			<div style={{ width: '100%', height: '250px' }} className="imagesRow">
-				<motion.div
-					ref={dragAreaRef}
-					className="dragAreaRef"
-					whileTap={{ cursor: 'grabbing' }}
-				>
-					<motion.div
-						style={{ width: '100%', height: '100%' }}
-						drag="x"
-						dragConstraints={{ right: 0, left: -width }}
-						className="inner-carousel"
-					>						
-						{items.map((array) => {
-							return(
-								<motion.div className="item7777" key={array.image}>
-									<Link to={`/Detail/${array.num}`} state={{num:array.num}} onClick={click}>
-										<div>
-											<img src={array.image} alt=""/>
-										</div>
-									</Link>
-									<br/>
-									{array.loc_name}
-									<br/>
-									{array.loc_info}									
-								</motion.div>					
-							);
-						})}
-					</motion.div>
-				</motion.div>
-			</div>
-			
-			
-			
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			
-		</div>
-		
-	
-	);
+const GraphWrapper = styled.div`
+  margin-top: 10px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+`;
+
+const Title = styled.div`
+  font-size: 30px;
+  font-family: "main_font";
+`;
+
+const Image = styled.img`
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 60px;
+  width: 20%;
+  height: 200px;
+`;
+
+const LocTitle=styled.div`
+  font-size: 25px;
+  font-family: "main_font";
+  color: #FFCC00;
+`;
+
+const LocDetail=styled.div`
+  font-size:15px;
+  font-family: "main_font";
+`;
+var data = [
+    {
+        data: [100, 20, 40, 80, 60]
+    }
+]
+var options = {
+    chart: {
+    type: 'bar',
+	width: '80%',
+    height: '60%',
+    toolbar: {
+        show: false,
+    },
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 5,
+      horizontal: true,
+      distributed: true,
+      dataLabels: {
+        position: 'bottom'
+      },
+      colors: {
+        backgroundBarColors: ["#eee"],
+        backgroundBarOpacity: 1,
+        backgroundBarRadius: 9
+      },
+    },
+  },
+  tooltip: {
+    enabled: false,
+  },
+  dataLabels: {
+    enabled: true,
+    textAnchor: 'start',
+    style: {
+        colors: ['#fff']
+    },
+    formatter: function (val, opt) {
+        return val + "%"
+      },
+    offsetX: 0,
+  },
+  colors: [
+    '#146152', '#44803F', '#B4CF66', '#FFEC5C', '#FF5A33', '#FF9933', '#A1C7E0'
+    ],
+  xaxis: {
+    categories: ['젠틀몬스터', '한옥/궁', '핑크뮬리', '롯데월드', '명동'
+    ],
+    max: 100,
+    lines: {
+        show: false,
+      },
+    axisBorder: {
+        show: false,
+    },
+    axisTicks: {
+        show: false,
+    },
+    labels: {
+        show: false,
+    }
+  },
+  yaxis: {
+    lines: {
+      show: false,
+    },
+	labels: {
+    	style: {
+            fontSize: '13px',
+            fontWeight: 600,
+			fontFamily: "main_font",
+        }
+    }
+  },
+  legend: {
+    show: false
+  },
+  grid: {
+    show: false,
+  },
+
+};
+
+const BarChart = () => {
+    return(
+        <ApexCharts
+            series={data}
+            options={options}
+            type="bar"
+            width="100%"
+            height="100%"
+      />
+    );
 }
-
-export default Componentpage;
+export default function Componentpage() {
+    return(
+        <AnalysisPageWrapper>
+            <AnalysisTitleWrapper>
+            <Title>분석 결과</Title>				
+            </AnalysisTitleWrapper>
+			<LocTitle>젠틀몬스터</LocTitle>
+			
+			<LocDetail>젠틀몬스터가 블랙핑크 제니와 협업한 프로젝트 ‘JENTLE GARDEN: 젠틀가든’ 팝업
+						공간으로, 젠틀몬스터와 제니가 함께 상상한 판타지 세계를 다양한 디오라마
+						설치물과 화려한 꽃, 핑크빛 호수 등을 활용해 몽환적인 공간으로 재현했습니다.</LocDetail>
+            <GraphWrapper>
+            	<BarChart></BarChart>
+            </GraphWrapper>
+        </AnalysisPageWrapper>
+    );
+}
 
 /*
 <Link to={{

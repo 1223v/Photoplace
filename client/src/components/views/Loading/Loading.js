@@ -55,6 +55,7 @@ const BottomText=styled.h1`
    color:#C0B27F;
    font-size:20px;
    font-weight:bolder;
+   font-family: 'loadingpage_font';
   @media (min-width: 800px) {
     font-size:40px;
   }

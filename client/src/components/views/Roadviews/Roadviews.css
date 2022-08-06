@@ -1,0 +1,10 @@
+    #overlayImg {
+        width: 200px;
+        height: 400px;
+        border: 1px solid #096320;
+        transition: linear 0.5s opacity;
+    }
+
+ #overlayImg:active{
+        opacity: 0.5;
+    }
