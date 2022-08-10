@@ -29,10 +29,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 		}
 	};
 
-	const message = () => {
- 		console.log("fdzz") 
-	};
-	
+
 	const close = (e) => {
 		if (onClose) {
 			onClose(e);
@@ -66,7 +63,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 								target={'_blank'}
 								cursor="pointer"
 								align="center">
-								<SlickComponent Item={items}></SlickComponent>
+								<SlickComponent Item={items} imageSrcs={imageSrcs} nums={nums}></SlickComponent>
 							</a>
 						</ImgStyle>
 						<CloseStyled className="modal-close">

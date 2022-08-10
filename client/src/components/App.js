@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import LandingPage from './views/LandingPage/LandingPage';
 import NavBar from './views/NavBar/NavBar';
+import NavBar_Detail from './views/NavBar/NavBar_Detail';
 import Footer from './views/Footer/Footer';
 import Seoul from './views/AIcontent/Seoul';
 import Busan from './views/AIcontent/Busan';
@@ -15,6 +16,10 @@ import Roadviews from './views/Roadviews/Roadviews';
 
 function App() {
 	const [loading, setLoading] = useState(true);
+	const location = useLocation();
+	useEffect(() => {
+		console.log(location);
+	}, [location]);
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -25,7 +30,35 @@ function App() {
 	if (loading) {
 		return <Loading></Loading>;
 	}
-	
+
+	const url = document.URL;
+
+	if (url.includes('Detail')) {
+		return (
+			<div>
+				<NavBar_Detail />
+				<div style={{ minHeight: 'calc(100vh - 80px)' }}>
+					<Routes>
+						<Route path="/Detail/:id" element={<Detail />} />
+						<Route path="/Roadviews" element={<Roadviews />} />
+					</Routes>
+				</div>
+				<Footer />
+			</div>
+		);
+	} else if (url.includes('Roadviews')) {
+		return (
+			<div>
+				<div style={{ minHeight: 'calc(100vh - 80px)' }}>
+					<Routes>
+						<Route path="/Roadviews" element={<Roadviews />} />
+					</Routes>
+				</div>
+				<Footer />
+			</div>
+		);
+	}
+
 	return (
 		<div>
 			<NavBar />
@@ -38,8 +71,6 @@ function App() {
 					<Route path="/Mapsearch" element={<Mapsearch />} />
 					<Route path="/Ranking" element={<Ranking />} />
 					<Route path="/AImap" element={<AImap />} />
-					<Route path="/Detail/:id" element={<Detail />} />
-					<Route path="/Roadviews" element={<Roadviews />} />
 				</Routes>
 			</div>
 			<Footer />
@@ -48,7 +79,3 @@ function App() {
 }
 
 export default App;
-/*
-//param 사용
-<Route exact path="/Detail/:id" element={<Detail />} />
-*/

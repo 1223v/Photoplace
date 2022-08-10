@@ -23,15 +23,7 @@ const Footer = () => {
           {/* 네비게이션을 구성하고 있는 하나의 버튼 */}
 		
       </Link>
-      <Link to="/" className="nav-link" onClick={() => setActiveNav(2)}>
-        
-          <BsGeoAltFill
-            size="22"
-            className={activeNav === 2 ? "nav-item active" : "nav-item"}
-          />
-		 
-        
-      </Link>
+    
       <Link to="/Mapsearch" className="nav-link" onClick={() => setActiveNav(3)}>
         
           <AiOutlineSearch

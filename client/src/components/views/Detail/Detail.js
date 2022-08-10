@@ -46,7 +46,7 @@ function Detail(props) {
 
 	let items = [
 		{
-			num: 1,
+			num: 0,
 			image:
 				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png',
 			loc_name: '장소이름1',
@@ -63,7 +63,7 @@ function Detail(props) {
 			right_loc: -40
 		},
 		{
-			num: 2,
+			num: 1,
 			image:
 				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqUpFy%2FbtrGF6SfaRi%2F2RBk5OaRvQD5FbuJtcCE70%2Fimg.png',
 			loc_name: '장소이름2',
@@ -138,13 +138,12 @@ function Detail(props) {
 	];
 
 	useEffect(() => {
-		
-
 		let body = {
 			Num: num,
 		};
-		Axios.post('https://korea-app.run.goorm.io/api/data/Detail/:num', body).then((response) => {
-			console.log(response.data[0]);
+		Axios.post('https://korea-app.run.goorm.io/api/data/Detail/:num', body)
+			.then((response) => {
+			console.log(response.data);
 			setDetails(response.data[0]);
 		});
 		setwidth(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
@@ -159,15 +158,12 @@ function Detail(props) {
 				backgroundPosition: 'center top',
 			}}
 		>
-			<div className="locName_and_btn_back">
-				<Link to="/">
-					<IoIosArrowBack size="30" color="#FFE9BD" />
-				</Link>
-				{Details.title}
-			</div>
+			<img src="#" onError={init} />
+			<br/><br/><br/><br/>
+			
 
 			<div>
-				<img src="#" onError={init} />
+				
 				<br />
 				<br />
 				<br />
@@ -193,13 +189,11 @@ function Detail(props) {
 				<div className="line">-</div>
 
 				<div className="loc_info_expln">
-					<div className="loc_name">젠틀가든 팝업 스토어(여기에 장소 이름!!)</div>
+					<div className="loc_name">{Details.title}</div>
 					<div className="loc_explanation">
 						장소설명 넣으면 됩니당
 						<br />
-						(젠틀몬스터가 블랙핑크 제니와 협업한 프로젝트 ‘JENTLE GARDEN: 젠틀가든’ 팝업
-						공간으로, 젠틀몬스터와 제니가 함께 상상한 판타지 세계를 다양한 디오라마
-						설치물과 화려한 꽃, 핑크빛 호수 등을 활용해 몽환적인 공간으로 재현했습니다.)
+						{Details.content}
 						<br />
 					</div>
 				</div>
@@ -356,7 +350,7 @@ const DETAIL = styled.div`
 
 	right: 0;
 	width: 100%;
-	height: calc(100vh - 180px);
+	height: 100%;
 
 	background-color: #ffffff;
 

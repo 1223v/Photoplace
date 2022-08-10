@@ -17,7 +17,7 @@ const SelectWrapper = styled.div`
 	display: flex;
 	width: 50%;
 	background-color:white;
-	align-items:right;
+	align-items: center;
 `;
 
 const SearchWrapper = styled.div`
@@ -42,7 +42,6 @@ const InfoWrapper = styled.div`
   align-items:center;
   background-color:white;
   padding:5px;
-  
 `
 
 const TitleWrapper = styled.div`
@@ -122,7 +121,7 @@ const styledButton=styled.button`
 function Mapsearch() {
 	const [Text, setText] = useState('');
 	const [SearchImage, setSearchImage] = useState([]);
-	
+	const [isSearching, setIsSearching] = useState(false);
 	const [width, setwidth] = useState(0);
 	const [Rankings,setRankings] = useState([]);
 	const dragAreaRef = useRef(null);
@@ -195,9 +194,56 @@ function Mapsearch() {
 		.then(response=>{
 			console.log(response.data)
 			setSearchImage(response.data)
+			setIsSearching(true)
+			if (Text === ""){
+				setIsSearching(false)
+			}
 		})
 	};
-
+	const SearchPage = (props) => {
+		const SearchText = props.Text;
+		if (props.isSearching) {
+				return(
+					<InfoWrapper>
+						<TitleWrapper>
+							<Title>검색결과</Title>
+						</TitleWrapper>
+						<ItemWrapper>
+							<div style={{ width: '100%', height: '250px' }} className="imagesRow">
+								<motion.div
+									ref={dragAreaRef}
+									className="dragAreaRef"
+									whileTap={{ cursor: 'grabbing' }}
+								>
+									<motion.div
+										style={{ width: '100%', height: '100%' }}
+										drag="x"
+										dragConstraints={{ right: 0, left: -width }}
+										className="inner-carousel"
+									> 			
+										{SearchImage.map((array) => {
+											return(
+												<motion.div
+													className="item7777" s
+													key={array.imageSrc}
+												>
+													<img src={array.imageSrc} alt="" />	
+													<br/>
+													{array.title}
+													<br/>
+													{array.content}									
+												</motion.div>					
+											);
+										})}
+									</motion.div>
+								</motion.div>
+							</div>
+						</ItemWrapper>
+				</InfoWrapper>
+		);
+		}
+	}
+ 
 	return (
 		<div className="mapsearch">
 			<br/>
@@ -213,6 +259,7 @@ function Mapsearch() {
 					<Select options={OPTIONS} defaultValue="latest"></Select>
 				</SelectWrapper>
 			</SearchWrapper>
+				<SearchPage isSearching={isSearching}></SearchPage>
 				<InfoWrapper>
 					<TitleWrapper>
 						<Title>야경</Title>
@@ -233,7 +280,7 @@ function Mapsearch() {
 						{Rankings.map((array) => {
 							return(
 								<motion.div
-									className="item7777" 
+									className="item7777" s
 									key={array.imageSrc}
 								>
 									<img src={array.imageSrc} alt="" />	

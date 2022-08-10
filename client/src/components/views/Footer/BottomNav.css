@@ -19,7 +19,7 @@
   .nav-link {
     /* 수평정렬, 5개의 button을 각각 20% width만큼 할당 */
     float: left;
-    width: 20%;
+    width: 25%;
     text-align: center;
   	padding: 0px 0px;
     /* 세로길이 설정 */

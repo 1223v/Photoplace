@@ -18,12 +18,12 @@ router.get('/map',(req,res)=>{
     sql = "select * from Marker";
     connection.query(sql,(err,rows)=>{
        if(err){
-           console.log("실패");
+           
            return res.send(err);
        }
-      else{
+      
             return res.send(rows);
-		}
+		
         
     })
 });
@@ -96,5 +96,23 @@ router.get('/Ranking',(req,res)=>{
     })
 });
 
+router.post('/ModalSlider',(req,res)=>{
+	
+    
+	var nums = req.body.nums;
+    var sql = `SELECT * FROM Marker WHERE tag_1 LIKE '%${nums}%'`;
+    connection.query(sql,(err,rows)=>{
+		
+       if(err){
+           console.log("실패");
+           return res.send(err);
+       }
+      else{
+		  	
+            return res.send(rows);
+		}
+        
+    })
+});
 
 module.exports = router;

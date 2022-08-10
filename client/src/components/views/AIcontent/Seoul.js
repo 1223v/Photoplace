@@ -167,11 +167,17 @@ const Seoul = (props, { history }) => {
 		console.log('가장높은확률 : ', prediction[0].className);
 
 		let body = {
+			
 			prediction: prediction[0].className,
+			predictionper: prediction[0].probability.toFixed(2),
 			prediction1: prediction[1].className,
+			predictionper1: prediction[1].probability.toFixed(2),
 			prediction2: prediction[2].className,
+			predictionper2: prediction[2].probability.toFixed(2),
 			prediction3: prediction[3].className,
+			predictionper3: prediction[3].probability.toFixed(2),
 			prediction4: prediction[4].className,
+			predictionper4: prediction[4].probability.toFixed(2),
 		};
 
 		dispatch(aiUser(body));

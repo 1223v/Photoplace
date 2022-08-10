@@ -44,7 +44,7 @@ function Ranking() {
 					{Rankings.map((rank, index) => (
 						<React.Fragment key={index}>
 							<GridCards
-								image={rank.imageSrc}
+								image={rank.imageSrc}	
 								num={rank.num}
 								title={rank.title}
 								content={rank.content}

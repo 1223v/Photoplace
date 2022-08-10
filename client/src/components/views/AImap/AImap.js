@@ -26,8 +26,11 @@ const AImap = () => {
 	const [contents, setcontents] = useState('');
 	const [Titles, setTitles] = useState('');
 	//const [positions, setpositions] = useState([]);
+	
 	const aicontent = useSelector((state) => state.user);
 	console.log(aicontent.aiSuccess);
+	
+	
 	const show = () => {
 		setShowInfo(!showInfo);
 		ButtonColor === '#18978F' ? setButton('#FF869E') : setButton('#18978F');
