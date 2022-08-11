@@ -4,12 +4,9 @@ import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import Axios from 'axios';
 import styled from 'styled-components';
-import { IoIosArrowBack } from 'react-icons/io';
-import { BiArrowBack } from 'react-icons/bi';
-import { useLocation, useNavigate, Link } from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
+import { useLocation} from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
 import Share_modal from '../LandingPage/Sections/Share_modal';
 import Detailmap from '../Detailmap/Detailmap'
-
 import './Detail.css';
 import './KeenSlider_style.css';
 
@@ -24,7 +21,7 @@ function Detail(props) {
 	const [Appear, setAppear] = useState(false);
 	
 	const init = () => {
-		if(location.state.IsShare == true) {
+		if(location.state.IsShare === true) {
 			setAppear(true)
 		}
 	}
@@ -33,7 +30,7 @@ function Detail(props) {
 		setAppear(false);
 	};
 
-	const [width, setwidth] = useState(0);
+	const [width, setwidthe] = useState(0);
 	const [Rankings, setRankings] = useState([]);
 	const [Details, setDetails] = useState([]);
 	const dragAreaRef = useRef(null);
@@ -42,8 +39,7 @@ function Detail(props) {
 	const num = location.state.num;
 	
 
-	const navigate = useNavigate();
-
+	
 	let items = [
 		{
 			num: 0,
@@ -141,12 +137,12 @@ function Detail(props) {
 		let body = {
 			Num: num,
 		};
-		Axios.post('https://korea-app.run.goorm.io/api/data/Detail/:num', body)
+		Axios.post('/api/data/Detail/:num', body)
 			.then((response) => {
-			console.log(response.data);
+			
 			setDetails(response.data[0]);
 		});
-		setwidth(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
+		setwidthe(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
 	}, []);
 
 	return (
@@ -191,7 +187,7 @@ function Detail(props) {
 				<div className="loc_info_expln">
 					<div className="loc_name">{Details.title}</div>
 					<div className="loc_explanation">
-						장소설명 넣으면 됩니당
+						
 						<br />
 						{Details.content}
 						<br />

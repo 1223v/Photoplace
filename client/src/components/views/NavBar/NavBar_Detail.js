@@ -16,11 +16,14 @@ const MainText=styled.div`
 
 
 function NavBar_Detail() {
-	const [tmpNum, setNum] = useState(0);
+	const [tmpNum, setNum] = useState('');
 	
   const test = () => {
 	  const url = document.url;
-	  setNum(url.substr(-1));
+	  console.log("test");
+	  console.log(url);
+	  const num = url.substr(-1);
+	  console.log(num);
   }
   
   const openShare = () => {
@@ -31,24 +34,23 @@ function NavBar_Detail() {
   return (
     <div >
     <Navbar style={{position: "fixed", backgroundColor:"#FFFFFF", top:"0", left:"0", right:"0", zIndex:"500"}}>
-    <Container onLoad={test}>		
+    <Container>		
 		<div style={{ display:'flex', textAlign:'center', width:'100%' }}>
     		<Link to="/Ranking">
 				<IoIosArrowBack size="30" color="#707070"/>
 			</Link>
 			
 			<MainText style={{ textAlign:'center' }}>장소이름</MainText>
-			
-			<button>
+				<img src="#" onError={test} />
 				<Link 
 				to={`/Detail/${tmpNum}`}
 				state={{num:tmpNum, IsShare:true}}
 				onClick={openShare}
 				>
-					 <img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px', float: 'right' }}
-					src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDwzJD%2FbtrIvnZEn58%2FBe6spOic2XwizQK025Wdh0%2Fimg.png" alt=""></img>	
+					 <img
+						 style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px', float: 'right' }}
+						src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDwzJD%2FbtrIvnZEn58%2FBe6spOic2XwizQK025Wdh0%2Fimg.png" alt=""></img>	
 				</Link>
-			</button>
 		</div>
     </Container>
   </Navbar>

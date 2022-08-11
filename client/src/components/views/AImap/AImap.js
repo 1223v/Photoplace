@@ -48,7 +48,7 @@ const AImap = () => {
 
 		var map = new kakao.maps.Map(container, options);
 
-		Axios.get('https://korea-app.run.goorm.io/api/data/map')
+		Axios.get('/api/data/map')
         .then(response => {
             
 

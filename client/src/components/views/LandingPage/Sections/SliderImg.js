@@ -65,7 +65,7 @@ const SimpleSlider = ({Item,imageSrcs,nums}) => {
 		}
 	useEffect(()=>{
 		
-		Axios.post('https://korea-app.run.goorm.io/api/data/ModalSlider',body)
+		Axios.post('/api/data/ModalSlider',body)
         .then(response => {
 			setSecondImage(response.data)
 		})

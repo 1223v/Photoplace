@@ -173,7 +173,7 @@ function Mapsearch() {
 	
 	useEffect(() => {
 		setwidth(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
-		Axios.get('https://korea-app.run.goorm.io/api/data/map')
+		Axios.get('/api/data/map')
 		.then(response=> {
 		//console.log(response.data)
 		setRankings(response.data)
@@ -190,7 +190,7 @@ function Mapsearch() {
 		let body = {
 			search: Text
 		}
-		Axios.post('https://korea-app.run.goorm.io/api/data/Searchpage',body)
+		Axios.post('/api/data/Searchpage',body)
 		.then(response=>{
 			console.log(response.data)
 			setSearchImage(response.data)

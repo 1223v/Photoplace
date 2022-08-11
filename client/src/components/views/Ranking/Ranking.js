@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import GridCards from '../commons/GridCards';
-import { Row, Button } from 'antd';
+import { Row} from 'antd';
 import Axios from 'axios';
 import Select from './SelectBox';
 import styled from 'styled-components';
@@ -24,10 +24,12 @@ function Ranking() {
 	const [Rankings, setRankings] = useState([]);
 
 	useEffect(() => {
-		Axios.get('https://korea-app.run.goorm.io/api/data/Ranking').then((response) => {
+			
+	}, []);
+		Axios.get('/api/data/Ranking').then((response) => {
 			setRankings(response.data);
 		});
-	}, []);
+
 
 	return (
 		<div>

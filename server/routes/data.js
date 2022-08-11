@@ -81,17 +81,17 @@ router.post('/Detail/:id',(req,res)=>{
 router.get('/Ranking',(req,res)=>{
 	
 	
-    var sql = `SELECT * FROM Marker `;
+    var sql = `SELECT * FROM Marker LIMIT 20;`;
     connection.query(sql,(err,rows)=>{
 		
        if(err){
-           console.log("실패");
+           
            return res.send(err);
        }
-      else{
+      
 		  	
             return res.send(rows);
-		}
+		
         
     })
 });

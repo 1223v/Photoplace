@@ -45,7 +45,7 @@ const Map = () => {
 
 		var map = new kakao.maps.Map(container, options);
 
-		Axios.get('https://korea-app.run.goorm.io/api/data/map').then((response) => {
+		Axios.get('/api/data/map').then((response) => {
 			// 마커 이미지의 이미지 주소입니다
 
 			for (var i = 0; i < response.data.length; i++) {

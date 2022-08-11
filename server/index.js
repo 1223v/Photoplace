@@ -3,8 +3,19 @@ var cors = require('cors')
 const app = express()
 const path = require("path");
 const bodyParser = require("body-parser");
+
+//전체 cors 설정
 app.use(cors())
 
+//특정 도메인 cors 설정
+/*
+let corsOptions = {
+    origin: 'https://www.domain.com',
+    credentials: true
+}
+
+app.use(cors(corsOptions));
+*/
 
 //to not get any deprecation warning or error
 //support parsing of application/x-www-form-urlencoded post data
