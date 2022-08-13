@@ -2,6 +2,7 @@ import React, { useRef, useEffect,useState } from 'react';
 import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Axios from 'axios';
 import SlickComponent from './SliderImg';
 
 function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs, contents, titles, nums }) {
@@ -10,6 +11,19 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 	const [SharemodalVisible, setShareModalVisible] = useState(false);
 	const [ShareNums, setShareNums] = useState([]);
 	const [Share, setShare] = useState(false);
+	const [SecondImage, setSecondImage] = useState([])
+	
+	let body = {
+			nums: nums
+		}
+	useEffect(()=>{
+		
+		Axios.post('/api/data/ModalSlider',body)
+        .then(response => {
+			setSecondImage(response.data)
+		})
+		
+	},[])
 	
    const openShare = () => {
       setShare(!Share);
@@ -72,7 +86,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 								target={'_blank'}
 								cursor="pointer"
 								align="center">
-								<SlickComponent Item={items} imageSrcs={imageSrcs} nums={nums}></SlickComponent>
+								<SlickComponent Item={SecondImage} imageSrcs={imageSrcs} nums={nums}></SlickComponent>
 							</a>
 						</ImgStyle>
 						<CloseStyled className="modal-close">
@@ -222,37 +236,5 @@ const icon = styled.div`
 	outline: none;
 	flex-direction: row;
 `
-let items = [
-		{
-			num:1,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png',
 
-		},
-		{
-			num:2,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqUpFy%2FbtrGF6SfaRi%2F2RBk5OaRvQD5FbuJtcCE70%2Fimg.png',
-		},
-		{
-			num:3,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png',
-		},
-		{
-			num:4,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqUpFy%2FbtrGF6SfaRi%2F2RBk5OaRvQD5FbuJtcCE70%2Fimg.png',
-		},
-		{
-			num:5,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png',
-		},
-		{
-			num:6,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqUpFy%2FbtrGF6SfaRi%2F2RBk5OaRvQD5FbuJtcCE70%2Fimg.png',
-		},
-	];
 export default React.memo(Modal);

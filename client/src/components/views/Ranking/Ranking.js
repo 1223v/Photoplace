@@ -13,15 +13,14 @@ const SelectWrapper = styled.div`
 `;
 
 const OPTIONS = [
-	{ value: 'latest', name: '부산' },
-	{ value: 'popularity', name: '서울' },
-	{ value: 'latest', name: '음식' },
-	{ value: 'popularity', name: '드라마' },
+	{ value: 'Busan', name: '부산' },
+	{ value: 'Seoul', name: '서울' },
+	{ value: 'Food', name: '음식' },
+	{ value: 'Drama', name: '드라마' },
 ];
 
 function Ranking() {
 	const [Rankings, setRankings] = useState([]);
-
 
 		Axios.get('/api/data/Ranking').then((response) => {
 			setRankings(response.data);
@@ -40,15 +39,15 @@ function Ranking() {
 				<hr />
 
 				
-					{Rankings.map((rank) => (
-						<div>
+					{Rankings.map((rank, index) => (
+						<React.Fragment key={index}>
 							<GridCards
 								image={rank.imageSrc}	
 								num={rank.num}
 								title={rank.title}
 								content={rank.content}
 							/>
-						</div>
+						</React.Fragment>
 					))}
 				
 				<br />
