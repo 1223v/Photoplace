@@ -17,9 +17,7 @@ import Roadviews from './views/Roadviews/Roadviews';
 function App() {
 	const [loading, setLoading] = useState(true);
 	const location = useLocation();
-	useEffect(() => {
-		console.log(location);
-	}, [location]);
+
 
 	useEffect(() => {
 		setTimeout(() => {

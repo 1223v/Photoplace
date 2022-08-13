@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, {  useEffect,useState } from "react";
 import Axios from 'axios';
 import styled from 'styled-components';
 import Slider from "react-slick";
@@ -50,7 +50,7 @@ const SlickItems = styled.div`
     }
 `;
 
-const SimpleSlider = ({Item,imageSrcs,nums}) => {
+const SimpleSlider = ({imageSrcs,nums}) => {
     const settings = {
       lazyLoad: true,
       dots: true,
@@ -59,27 +59,28 @@ const SimpleSlider = ({Item,imageSrcs,nums}) => {
       slidesToShow: 1,
       slidesToScroll: 1
     };
+
 	const [SecondImage, setSecondImage] = useState([])
 	let body = {
 			nums: nums
 		}
+	
 	useEffect(()=>{
-		
 		Axios.post('/api/data/ModalSlider',body)
         .then(response => {
 			setSecondImage(response.data)
+			console.log(response.data[0].imageSrc)
 		})
-		
 	},[])
+	
     return (
       <Wrap>
         <Slider {...settings}>
 			<Image src={imageSrcs} alt=""/>
-            {Item.map(item => {
+            {SecondImage.map((item, index) => {
                 return(
-					
-                    <SlickItems key={item.num}>
-                        <Image src={item.image} alt=""/>
+                    <SlickItems key={index}>
+                        <Image src={item.imageSrc} alt=""/>
                     </SlickItems>
                 );
             })}

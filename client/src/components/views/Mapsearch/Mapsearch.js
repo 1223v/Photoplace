@@ -107,7 +107,7 @@ const ItemWrapper = styled.div`
   background-color:white;
  `;
 
-const styledButton=styled.button`
+const StyledButton=styled.button`
  	font-color:lightgray;
  	background-color:white;
 	border:none;
@@ -220,11 +220,11 @@ function Mapsearch() {
 										dragConstraints={{ right: 0, left: -width }}
 										className="inner-carousel"
 									> 			
-										{SearchImage.map((array) => {
+										{SearchImage.map((array, index) => {
 											return(
 												<motion.div
-													className="item7777" s
-													key={array.imageSrc}
+													className="item7777" 
+													key={index}
 												>
 													<img src={array.imageSrc} alt="" />	
 													<br/>
@@ -252,7 +252,7 @@ function Mapsearch() {
 			<SearchWrapper>
 				<SearchBar onSubmit={onSubmitHandler}>
 					<Input type="text" value={Text} onChange={onTextHandler} />
-					<styledButton type="submit"><BiSearch></BiSearch></styledButton>
+					<StyledButton type="submit"><BiSearch></BiSearch></StyledButton>
 				</SearchBar>
 				<SelectWrapper>
 					<Select options={OPTIONS} defaultValue="latest"></Select>
@@ -276,11 +276,11 @@ function Mapsearch() {
 						dragConstraints={{ right: 0, left: -width }}
 						className="inner-carousel"
 					> 			
-						{Rankings.map((array) => {
+						{Rankings.map((array, index) => {
 							return(
 								<motion.div
-									className="item7777" s
-									key={array.imageSrc}
+									className="item7777" 
+									key={index}
 								>
 									<img src={array.imageSrc} alt="" />	
 									<br/>
@@ -315,11 +315,11 @@ function Mapsearch() {
 						dragConstraints={{ right: 0, left: -width }}
 						className="inner-carousel"
 					>						
-						{items.map((array) => {
+						{items.map((array,index) => {
 							return(
 								<motion.div
 									className="item7777" 
-									key={array.image}
+									key={index}
 								>
 									<img src={array.image} alt="" />	
 									<br/>
@@ -353,11 +353,11 @@ function Mapsearch() {
 						dragConstraints={{ right: 0, left: -width }}
 						className="inner-carousel"
 					>						
-						{items.map((array) => {
+						{items.map((array, index) => {
 							return(
-								<motion.div
+								<motion.div 
 									className="item7777" 
-									key={array.image}
+									key = {index}
 								>
 									<img src={array.image} alt="" />	
 									<br/>

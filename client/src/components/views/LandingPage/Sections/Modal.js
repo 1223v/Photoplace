@@ -1,5 +1,5 @@
-import React, { useRef, useEffect,useState } from 'react';
-import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
+import React, {  useEffect,useState } from 'react';
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
@@ -7,35 +7,14 @@ import SlickComponent from './SliderImg';
 
 function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs, contents, titles, nums }) {
 	
-	const [ShareshowInfo, setShareShowInfo] = useState(false);
-	const [SharemodalVisible, setShareModalVisible] = useState(false);
-	const [ShareNums, setShareNums] = useState([]);
 	const [Share, setShare] = useState(false);
-	const [SecondImage, setSecondImage] = useState([])
 	
-	let body = {
-			nums: nums
-		}
-	useEffect(()=>{
-		
-		Axios.post('/api/data/ModalSlider',body)
-        .then(response => {
-			setSecondImage(response.data)
-		})
-		
-	},[])
+	
+	
 	
    const openShare = () => {
       setShare(!Share);
    };
-	
-	const clickShare = () => {
-		var url = "https://korea-app-beqvu.run.goorm.io/Detail/";
-		var referrer = document.referrer;
-		url = url + String(nums);
-		alert(referrer);
-		
-	};
 	
 	const onMaskClick = (e) => {
 		if (e.target === e.currentTarget) {
@@ -43,23 +22,15 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 		}
 	};
 
-
+ 
 	const close = (e) => {
 		if (onClose) {
 			onClose(e);
 		}
 	};
 	
-	const LinkButton = (id) => {
-		const navigate = useNavigate();
-		const onClick = (id) => {
-			navigate("/Detail/" + id);
-			openShare();
-		}
-	}
-
 	return (
-		<div elementId="modal-root">
+		<div elementid="modal-root">
 			<ModalOverlay visible={visible} />
 			<ModalWrapper
 				className={className}
@@ -86,11 +57,11 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 								target={'_blank'}
 								cursor="pointer"
 								align="center">
-								<SlickComponent Item={SecondImage} imageSrcs={imageSrcs} nums={nums}></SlickComponent>
+								<SlickComponent imageSrcs={imageSrcs} nums={nums}></SlickComponent>
 							</a>
 						</ImgStyle>
 						<CloseStyled className="modal-close">
-							<icon>
+							<Icon>
 								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
 									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbrkOxL%2FbtrH5eJL9Ql%2FbAKeSz9khkTLRRI1AOwo9k%2Fimg.png" alt=""></img>
 								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
@@ -106,7 +77,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDwzJD%2FbtrIvnZEn58%2FBe6spOic2XwizQK025Wdh0%2Fimg.png" alt=""></img>	
 								</Link>
 
-							</icon>
+							</Icon>
 							<Field style={{padding: '5px 0px 0px 0px'}}>{contents}</Field>
 							<Field style={{padding: '5px 0px 0px 0px'}}>
 								<img alt="" style={{ height:'20px', width:'25px', padding: '1px 2px', float: 'left' }}
@@ -171,11 +142,6 @@ const ImgStyle = styled.div`
 	align-items: center;
 `;
 
-const Img = styled.img`
-	width: 85%;
-	height: 85%;
-`;
-
 const ModalWrapper = styled.div`
 	box-sizing: border-box;
 	display: ${(props) => (props.visible ? 'block' : 'none')};
@@ -231,7 +197,7 @@ const Field = styled.div`
 	flex-direction: row;
 `
 
-const icon = styled.div`
+const Icon = styled.div`
 	display: flex;
 	outline: none;
 	flex-direction: row;

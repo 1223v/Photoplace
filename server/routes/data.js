@@ -101,7 +101,8 @@ router.post('/ModalSlider',(req,res)=>{
 	
     
 	var nums = req.body.nums;
-    var sql = `SELECT * FROM Marker WHERE num='${nums}' union SELECT num, marker_num, imageSrc,1,2,3,4,5,6 FROM slide WHERE marker_num='${nums}'`;
+    //var sql = `SELECT * FROM Marker WHERE num='${nums}' union SELECT num, marker_num, imageSrc,1,2,3,4,5,6 FROM slide WHERE marker_num='${nums}'`;
+	var sql = `SELECT num, marker_num, imageSrc FROM slide WHERE marker_num='${nums}'`;
     connection.query(sql,(err,rows)=>{
 		
        if(err){

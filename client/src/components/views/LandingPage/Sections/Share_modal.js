@@ -1,12 +1,37 @@
-/* global kakao */
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const {Kakao, location} = window;
+//const {Kakao, location} = window;
 
 function Share_modal({props, className, onClose, maskClosable, closable, visible, titles, nums }) {
-	const userId = "";
+	useEffect(() => {
+		const script = document.createElement("script");
+		script.src = "https://developers.kakao.com.sdk/js/kakao.js";
+		script.async = true;
+		document.body.appendChild(script);
+		return () => document.body.removeChild(script);
+	}, []);
+
+	const shareKakaoCustom = () => {
+		const url = document.URL;
+		if(window.Kakao) {
+			const kakao = window.Kakao;
+			if(!kakao.isInitialized()) {
+				kakao.init("88a1a10486c09c3e8ebff912acfccd68");
+			}
+			kakao.Link.sendCustom({
+				templateId: 81118,
+				templateArgs: {
+					'like': 123,
+					'share': 321,
+					'view': 213,
+					'url': url,
+				}
+			});			
+		}
+	};	 
+
 	const onMaskClick = (e) => {
 		if (e.target === e.currentTarget) {
 			onClose(e);
@@ -27,56 +52,8 @@ function Share_modal({props, className, onClose, maskClosable, closable, visible
 		} catch (error) {
 		  alert('복사 실패!');
 		}
-	  };	
+	  };		
 
-	const KakaoShare = () => {
-		Kakao.Link.sendCustom({
-            templateId: [81118]
-        });
-
-		try {
-			function sendLinkDefault() {
-				Kakao.Share.sendDefault({
-				objectType : 'feed',
-				content : {
-					title : 'Test Homepage Title',
-					description : '#Test #Homepage #Kakao Link Description',
-					imageUrl : 'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
-					link : {
-						mobileWebUrl : 'https://developers.kakao.com',
-						webUrl : 'https://developers.kakao.com',
-					},
-				},
-				social : {
-					likeCount : 999,
-					commentCount : 999,
-					sharedCount : 999,
-				},
-				buttons : [
-					{
-						title : '웹으로 보기',
-						link : {
-							mobileWebUrl : 'https://developers.kakao.com',
-							webUrl : 'https://developers.kakao.com',
-						},
-					},
-					{
-						title : '앱으로 보기',
-						link : {
-							mobileWebUrl : 'https://developers.kakao.com',
-							webUrl : 'https://developers.kakao.com',
-						},
-					}, ],
-				})
-			}
-			;
-			window.kakaoDemoCallback && window.kakaoDemoCallback()
-		} catch (e) {
-			window.kakaoDemoException && window.kakaoDemoException(e)
-		}
-	}
-	
-	
 	const LineShare = () => {
 		const title = "PhotoPlace";
 		const summary = "장소이름!";
@@ -90,7 +67,7 @@ function Share_modal({props, className, onClose, maskClosable, closable, visible
 
 
 	return (
-		<div elementId="modal-root">
+		<div elementid="modal-root">
 			<ModalOverlay visible={visible} />
 			<ModalWrapper
 				className={className}
@@ -112,9 +89,9 @@ function Share_modal({props, className, onClose, maskClosable, closable, visible
 							</CloseStyle>
 						)}
 						
-						<CloseStyled className="modal-close" style={{padding: '0px 10px'}} onClick={KakaoShare}>
+						<CloseStyled className="modal-close" style={{padding: '0px 10px'}} onClick={shareKakaoCustom}>
 							<Share>
-								<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd8VMLZ%2FbtrJcGxWJKd%2FIaUnrdLRt41LWVL498QjjK%2Fimg.png"
+								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd8VMLZ%2FbtrJcGxWJKd%2FIaUnrdLRt41LWVL498QjjK%2Fimg.png"
 								style={{height: '50px', width: '50px', padding: '1px 2px'}}
 								/>
 								<Text>
@@ -122,7 +99,7 @@ function Share_modal({props, className, onClose, maskClosable, closable, visible
 								</Text>
 							</Share>
 							<Share>
-								<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FrHPLy%2FbtrJgPAmMAh%2FfA3tMgpSzMAQ79DBnZTkQ0%2Fimg.png"
+								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FrHPLy%2FbtrJgPAmMAh%2FfA3tMgpSzMAQ79DBnZTkQ0%2Fimg.png"
 								style={{height: '50px', width: '50px', padding: '1px 2px'}}
 								/>
 								<Text>
@@ -131,7 +108,7 @@ function Share_modal({props, className, onClose, maskClosable, closable, visible
 							</Share>
 							
 							<Share onClick={LineShare}>
-								<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fr9uWm%2FbtrJgduNhuq%2F94lr5w0oztqXb0QuCiv0x0%2Fimg.png"
+								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fr9uWm%2FbtrJgduNhuq%2F94lr5w0oztqXb0QuCiv0x0%2Fimg.png"
 								style={{height: '50px', width: '50px', padding: '1px 2px'}}
 								/>
 								<Text>
@@ -140,7 +117,7 @@ function Share_modal({props, className, onClose, maskClosable, closable, visible
 							</Share>
 							
 							<Share onClick={handleCopyClipBoard}>
-								<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdTY4Ft%2FbtrI2VinIYg%2FKsMqBaRomHlvTnFB5ZkeVK%2Fimg.png"
+								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdTY4Ft%2FbtrI2VinIYg%2FKsMqBaRomHlvTnFB5ZkeVK%2Fimg.png"
 								style={{height:'50px', width:'50px', padding: '1px 2px'}}
 								/>
 								<Text>
@@ -207,15 +184,6 @@ const Close = styled.span`
 	padding-bottom: 10px;
 	font-family: "tag_font";
 `;
-const ImgStyle = styled.div`
-	display: flex;
-	justify-content: space-between;
-	background-color: rgba(0, 0, 0);
-	width: 270px;
-	height: 250px;
-	color: #ffffff;
-	align-items: center;
-`;
 
 const ModalWrapper = styled.div`
 	box-sizing: border-box;
@@ -265,15 +233,6 @@ const ModalInner = styled.div`
 	margin: 0 auto;
 	padding: 20px 20px;
 `;
-const Field = styled.div`
-	font-family: "main_font";
-	text-align: left;
-	font-size: 15px;
-	display: flex;
-	outline: none;
-	align-content: center;
-	flex-direction: row;
-`
 
 const Share = styled.div`
 	font-family: "main_font";

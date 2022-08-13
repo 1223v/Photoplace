@@ -269,9 +269,9 @@ function Detail(props) {
 									dragConstraints={{ right: 0, left: -650 }}
 									className="inner-carousel"
 								>
-									{items.map((array) => {
+									{items.map((array, index) => {
 										return (
-											<motion.div className="item7777" key={array.image}>
+											<motion.div className="item7777" key={index}>
 												<div>
 													<img src={array.image} alt="" />
 												</div>
