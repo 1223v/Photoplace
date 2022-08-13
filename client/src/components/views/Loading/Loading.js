@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
-// import { render } from "react-dom";
 import { Bounce } from "react-activity";
 import "react-activity/dist/library.css";
-import "./Loading.css";
 
 const Container = styled.div`
   margin-left:auto;
@@ -16,6 +14,7 @@ const Container = styled.div`
   background-color: #FED06E;
   flex-direction: column;
   position:relative;
+  font-family: "loadingpage_font";
   @media (min-width: 800px) {
     width: 600px;
     height: 100vh;
@@ -61,12 +60,6 @@ const BottomText=styled.h1`
   }
 `;
 
-const Img=styled.img`
-    width:60%;
-    height:10%;
-`;
-
-
 
 export default function Loading() {
   return (
@@ -88,15 +81,3 @@ export default function Loading() {
 }
 
 
-/*
-<Container className="loading_KOR">
-		<MainText id= "maint">Photo Place</MainText>
-        <SubText>나와 어울리는 여행지는?</SubText>
-        <LoadingContainer>
-            <Bounce size={30} color="#BAAD7D"></Bounce>
-			<br/>
-            <BottomText>LOADING</BottomText>
-        </LoadingContainer>
-        
-    </Container>
-*/

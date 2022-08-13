@@ -1,5 +1,5 @@
 import React, { useRef, useEffect,useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import SlickComponent from './SliderImg';
@@ -35,6 +35,15 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 			onClose(e);
 		}
 	};
+	
+	const LinkButton = (id) => {
+		const navigate = useNavigate();
+		const onClick = (id) => {
+			navigate("/Detail/" + id);
+			openShare();
+		}
+	}
+
 	return (
 		<div elementId="modal-root">
 			<ModalOverlay visible={visible} />
@@ -76,13 +85,13 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
 									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbifvKn%2FbtrIdyfccPX%2FBmgv8WgxBI2KlLWONeJ1b1%2Fimg.png" alt=""></img>
 								<Link 
-									to={`/Detail/${nums}`}
-									state={{num:nums, IsShare:true}}
+									to={`/Detail/${nums}?true`}
 									onClick={openShare}
 								>
 									 <img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px', float: 'right' }}
 									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDwzJD%2FbtrIvnZEn58%2FBe6spOic2XwizQK025Wdh0%2Fimg.png" alt=""></img>	
 								</Link>
+
 							</icon>
 							<Field style={{padding: '5px 0px 0px 0px'}}>{contents}</Field>
 							<Field style={{padding: '5px 0px 0px 0px'}}>

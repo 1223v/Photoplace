@@ -25,7 +25,7 @@ const AImap = () => {
 	const [imageSrcs, setimageSrcs] = useState('');
 	const [contents, setcontents] = useState('');
 	const [Titles, setTitles] = useState('');
-	//const [positions, setpositions] = useState([]);
+	
 	
 	const aicontent = useSelector((state) => state.user);
 	console.log(aicontent.aiSuccess);
@@ -135,7 +135,6 @@ const AImap = () => {
 				
 			</div>
 			<br />
-			<div class="addthis_inline_share_toolbox_mxdj"></div>
 			<br />
 			<br />
 			<br />

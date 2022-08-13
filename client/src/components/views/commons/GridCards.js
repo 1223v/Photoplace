@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { Col } from 'antd';
 import styled from 'styled-components';
 
-function GridCards(props) {
 const Image = styled.div`
-	background-image: url(${props.image});
 	background-size: 300px 320px;
 	width: 300px;
 	height: 320px;
@@ -14,7 +12,6 @@ const Image = styled.div`
 	border-radius: 7px;
 	border: 2px solid #ffd700;
 	display:inline-block;
-	
 `;
 
 const Imgtext = styled.div`
@@ -29,7 +26,7 @@ const Imgtext = styled.div`
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 17px #fff, 0 0 17px #f2ee1f,
     0 0 17px #f2ee1f, 0 0 17px #f2ee1f, 0 0 17px #f2ee1f, 0 0 17px #f2ee1f;
 `;
-	
+
 const Imgtext2 = styled.div`
 	
   text-align: left;
@@ -43,7 +40,7 @@ const Imgtext2 = styled.div`
 
 const Numtext = styled.div`
 	
-    text-align: left;
+  text-align: left;
   flex-direction: column;
   
   
@@ -56,11 +53,11 @@ const Numtext = styled.div`
     0 0 17px #f2ee1f, 0 0 17px #f2ee1f, 0 0 17px #f2ee1f, 0 0 17px #f2ee1f;
 `;
 
-
+function GridCards(props) {
 	return (
 		
-		<Link to={`/Detail/${props.num}`} state={{ num: props.num }}>
-			<Image alt={props.title}>
+		<Link to={`/Detail/${props.num}`}>
+			<Image alt={props.title} style={{backgroundImage: `url(${props.image})`}}>
 				<Numtext>#{props.num}</Numtext>
 				<br/>
 				<br/>

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import GridCards from '../commons/GridCards';
-import { Row} from 'antd';
 import Axios from 'axios';
 import Select from './SelectBox';
 import styled from 'styled-components';
@@ -23,9 +22,7 @@ const OPTIONS = [
 function Ranking() {
 	const [Rankings, setRankings] = useState([]);
 
-	useEffect(() => {
-			
-	}, []);
+
 		Axios.get('/api/data/Ranking').then((response) => {
 			setRankings(response.data);
 		});
@@ -42,18 +39,18 @@ function Ranking() {
 			<div style={{ margin: '1rem auto', textAlign: 'center' }}>
 				<hr />
 
-				<Row>
-					{Rankings.map((rank, index) => (
-						<React.Fragment key={index}>
+				
+					{Rankings.map((rank) => (
+						<div>
 							<GridCards
 								image={rank.imageSrc}	
 								num={rank.num}
 								title={rank.title}
 								content={rank.content}
 							/>
-						</React.Fragment>
+						</div>
 					))}
-				</Row>
+				
 				<br />
 				<br />
 			</div>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 //import {BsArrowCounterclockwise} from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
 import * as tmImage from '@teachablemachine/image';

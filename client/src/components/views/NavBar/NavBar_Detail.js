@@ -1,3 +1,43 @@
+import React from 'react';
+import { Navbar, Container } from 'react-bootstrap'
+import styled from "styled-components";
+import { Link } from 'react-router-dom';
+import {IoIosArrowBack} from "react-icons/io"
+
+
+const MainText=styled.div`
+   
+   font-size:25px;
+   margin: auto;
+   font-family: 'main_font', cursive;
+   
+`;
+
+
+function NavBar_Detail() {
+  
+  return (
+    <div >
+    <Navbar style={{position: "fixed", backgroundColor:"#FFFFFF", top:"0", left:"0", right:"0", zIndex:"500"}}>
+    <Container>		
+		<div style={{ display:'flex', textAlign:'center', width:'100%' }}>
+    		<Link to="/Ranking">
+				<IoIosArrowBack size="30" color="#707070"/>
+			</Link>
+			
+			<MainText style={{ textAlign:'center' }}>장소이름</MainText>
+		</div>
+    </Container>
+  </Navbar>
+</div>
+  )
+}
+
+export default NavBar_Detail
+
+
+
+/*
 import React, { useRef, useEffect,useState } from 'react';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
 import  'bootstrap/dist/css/bootstrap.min.css';
@@ -25,7 +65,7 @@ function NavBar_Detail() {
 	  const num = url.substr(-1);
 	  console.log(num);
   }
-  
+    
   const openShare = () => {
       setShare(!Share);
    };
@@ -59,3 +99,6 @@ function NavBar_Detail() {
 }
 
 export default NavBar_Detail
+
+
+*/

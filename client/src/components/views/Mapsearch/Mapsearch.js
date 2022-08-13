@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Select from '../Ranking/SelectBox';
 import '../LandingPage/Sections/Componentpage.css';
 import Axios from 'axios';
-//import SearchIcon from "../../asset/search_icon.png"
 import './Mapsearch.css';
 import {BiSearch} from "react-icons/bi"
 

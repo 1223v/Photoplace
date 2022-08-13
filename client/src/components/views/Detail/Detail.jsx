@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import Axios from 'axios';
 import styled from 'styled-components';
-import { useLocation} from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
-import Share_modal from '../LandingPage/Sections/Share_modal';
+import { useLocation, useParams} from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
+import Sharemodal from '../LandingPage/Sections/Share_modal';
 import Detailmap from '../Detailmap/Detailmap'
 import './Detail.css';
 import './KeenSlider_style.css';
@@ -21,10 +21,11 @@ function Detail(props) {
 	const [Appear, setAppear] = useState(false);
 	
 	const init = () => {
-		if(location.state.IsShare === true) {
-			setAppear(true)
+		const url = document.URL;
+		if(url.includes('true')) {
+		   setAppear(true);
 		}
-	}
+	 }
 	
 	const closeModal = () => {
 		setAppear(false);
@@ -34,11 +35,8 @@ function Detail(props) {
 	const [Rankings, setRankings] = useState([]);
 	const [Details, setDetails] = useState([]);
 	const dragAreaRef = useRef(null);
-	const location = useLocation();
 	
-	const num = location.state.num;
-	
-
+	let {id} = useParams();
 	
 	let items = [
 		{
@@ -135,12 +133,12 @@ function Detail(props) {
 
 	useEffect(() => {
 		let body = {
-			Num: num,
+			Num: id,
 		};
-		Axios.post('/api/data/Detail/:num', body)
+		Axios.post('/api/data/Detail/' + id, body)
 			.then((response) => {
-			
 			setDetails(response.data[0]);
+			console.log(response.data[0]);
 		});
 		setwidthe(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
 	}, []);
@@ -307,14 +305,14 @@ function Detail(props) {
 			</motion.div>
 			<div>
 			<React.Fragment>
-				{location.state.IsShare && (
-					<Share_modal
+				{Appear && (
+					<Sharemodal
 						visible={Appear}
 						closable={true}
 						maskClosable={true}
 						onClose={closeModal}
 						titles="임시이름"
-					></Share_modal>
+					></Sharemodal>
 				)}
 			</React.Fragment>
 		</div>

@@ -46,7 +46,8 @@ router.post('/Searchpage',(req,res)=>{
 	
     
 	var userSearch = req.body.search;
-    var sql = `SELECT * FROM Marker WHERE tag_1 LIKE '%${userSearch}%' OR tag_2 LIKE '%${userSearch}%'`;
+    var sql = `SELECT * FROM Marker WHERE title LIKE '%${userSearch}%' OR tag_1 LIKE '%${userSearch}%' OR tag_2 LIKE '%${userSearch}%'`;
+	console.log(sql);
     connection.query(sql,(err,rows)=>{
 		
        if(err){
@@ -100,7 +101,7 @@ router.post('/ModalSlider',(req,res)=>{
 	
     
 	var nums = req.body.nums;
-    var sql = `SELECT * FROM Marker WHERE tag_1 LIKE '%${nums}%'`;
+    var sql = `SELECT * FROM Marker WHERE num='${nums}' union SELECT num, marker_num, imageSrc ,1,2,3,4,5,6 FROM slide WHERE marker_num='${nums}'`;
     connection.query(sql,(err,rows)=>{
 		
        if(err){
@@ -108,7 +109,6 @@ router.post('/ModalSlider',(req,res)=>{
            return res.send(err);
        }
       else{
-		  	
             return res.send(rows);
 		}
         
