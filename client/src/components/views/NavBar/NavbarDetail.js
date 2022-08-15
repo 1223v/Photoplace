@@ -3,6 +3,7 @@ import { Navbar, Container } from 'react-bootstrap'
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 import {IoIosArrowBack} from "react-icons/io"
+import  'bootstrap/dist/css/bootstrap.min.css';
 
 
 const MainText=styled.div`
@@ -14,7 +15,7 @@ const MainText=styled.div`
 `;
 
 
-function NavBar_Detail() {
+function NavbarDetail() {
   
   return (
     <div >
@@ -33,7 +34,7 @@ function NavBar_Detail() {
   )
 }
 
-export default NavBar_Detail
+export default NavbarDetail
 
 
 

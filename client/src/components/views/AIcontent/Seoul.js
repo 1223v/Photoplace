@@ -7,7 +7,7 @@ import 'react-activity/dist/Dots.css';
 import styled from 'styled-components';
 import { useDispatch} from 'react-redux';
 import { aiUser } from '../../../_actions/user_actions';
-import './AIcontent.css';
+
 import Select from "./Select"
 
 
@@ -20,6 +20,7 @@ const Container = styled.div`
 	align-items: center;
 	background-color: white;
 	flex-direction: column;
+	font-family: "AIpage_font";
 	position: relative;
 	/* justify-content:space-evenly; */
 
@@ -233,14 +234,14 @@ const Seoul = (props, { history }) => {
 				}}
 			>
 				<UpperIconsContainer>
-					<img style={{marginRight:'38%' }} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Flyjkg%2FbtrIT91lvHy%2FseRbk2IR9tYKBWeHKG69u1%2Fimg.png"></img>
-					<img style={{}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoqlOl%2FbtrISNEqoeV%2FOv6miOdVjaOADzyXcllPnK%2Fimg.png"></img>
-					<img style={{ marginLeft:'38%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkHhiq%2FbtrIRF7H6gC%2FnoqrnCCKbzrZThW8EGjYZ0%2Fimg.png"></img>
+					<img alt="photo1" style={{marginRight:'38%' }} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Flyjkg%2FbtrIT91lvHy%2FseRbk2IR9tYKBWeHKG69u1%2Fimg.png"></img>
+					<img alt="photo2" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoqlOl%2FbtrISNEqoeV%2FOv6miOdVjaOADzyXcllPnK%2Fimg.png"></img>
+					<img alt="photo3" style={{ marginLeft:'38%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkHhiq%2FbtrIRF7H6gC%2FnoqrnCCKbzrZThW8EGjYZ0%2Fimg.png"></img>
 				</UpperIconsContainer>
 
 				<LowerIconsContainer>
-				<img style={{width:'13%', marginRight:'27%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbiwEn6%2FbtrIVhLB9E9%2FhKikwNymyj7ScBirSWVZ20%2Fimg.png"></img>
-				<img style={{width:'16%', marginRight:'40%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8DD1z%2FbtrIOSF0zp1%2FGoaATe4xkFtl8gZB8cuhQk%2Fimg.png"></img>
+				<img alt="photo4" style={{width:'13%', marginRight:'27%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbiwEn6%2FbtrIVhLB9E9%2FhKikwNymyj7ScBirSWVZ20%2Fimg.png"></img>
+				<img alt="photo5" style={{width:'16%', marginRight:'40%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8DD1z%2FbtrIOSF0zp1%2FGoaATe4xkFtl8gZB8cuhQk%2Fimg.png"></img>
 				<br/>
 				<div>
 					<Link style={{zIndex:'10', color:'black',textDecoration: 'none',marginLeft:'18%'}} to="/Seoul">서울 </Link>

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Navbar, Container } from 'react-bootstrap'
-import  'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
-import {IoIosArrowBack} from "react-icons/io"
+import  'bootstrap/dist/css/bootstrap.min.css';
 
 const MainText=styled.h1`
    

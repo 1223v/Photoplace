@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Col } from 'antd';
 import styled from 'styled-components';
 
 const Image = styled.div`

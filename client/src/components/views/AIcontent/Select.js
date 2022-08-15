@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 
@@ -24,7 +24,7 @@ function SelectBox(props){
 
 	const navigate = useNavigate();
 	const handleChange = (e) => {
-		console.log("응애",e.target.value);
+		
 		navigate(e.target.value);
 	}
 	return(

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
-import LandingPage from './views/LandingPage/LandingPage';
+import { Route, Routes, useLocation} from 'react-router-dom';
 import NavBar from './views/NavBar/NavBar';
-import NavBar_Detail from './views/NavBar/NavBar_Detail';
+import NavbarDetail from './views/NavBar/NavbarDetail';
 import Footer from './views/Footer/Footer';
 import Seoul from './views/AIcontent/Seoul';
 import Busan from './views/AIcontent/Busan';
@@ -13,12 +12,15 @@ import Ranking from './views/Ranking/Ranking';
 import Detail from './views/Detail/Detail';
 import AImap from './views/AImap/AImap';
 import Roadviews from './views/Roadviews/Roadviews';
+import SeoulMap from './views/LandingPage/SeoulMap';
+import BusanMap from './views/LandingPage/Sections/BusanMap';
+import JejuMap from './views/LandingPage/Sections/JejuMap';
+import DramaMap from './views/LandingPage/Sections/DramaMap';
 
 function App() {
 	const [loading, setLoading] = useState(true);
 	const location = useLocation();
-
-
+	
 	useEffect(() => {
 		setTimeout(() => {
 			setLoading(false);
@@ -30,11 +32,10 @@ function App() {
 	}
 
 	const url = document.URL;
-
 	if (url.includes('Detail')) {
 		return (
 			<div>
-				<NavBar_Detail />
+				<NavbarDetail />
 				<div style={{ minHeight: 'calc(100vh - 80px)' }}>
 					<Routes>
 						<Route path="/Detail/:id" element={<Detail />} />
@@ -62,13 +63,16 @@ function App() {
 			<NavBar />
 			<div style={{ minHeight: 'calc(100vh - 80px)' }}>
 				<Routes>
-					<Route path="/" element={<LandingPage />} />
+					<Route path="/" element={<SeoulMap />} />
 					<Route path="/Seoul" element={<Seoul />} />
 					<Route path="/Busan" element={<Busan />} />
 					<Route path="/Jeju" element={<Jeju />} />
 					<Route path="/Mapsearch" element={<Mapsearch />} />
 					<Route path="/Ranking" element={<Ranking />} />
 					<Route path="/AImap" element={<AImap />} />
+					<Route path="/BusanMap" element={<BusanMap />} />
+					<Route path="/JejuMap" element={<JejuMap />} />
+					<Route path="/DramaMap" element={<DramaMap />} />
 				</Routes>
 			</div>
 			<Footer />

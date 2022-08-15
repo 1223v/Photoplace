@@ -4,40 +4,33 @@ import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import Axios from 'axios';
 import styled from 'styled-components';
-import { useLocation, useParams} from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
+import { useParams } from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
 import Sharemodal from '../LandingPage/Sections/Share_modal';
-import Detailmap from '../Detailmap/Detailmap'
+import Detailmap from '../Detailmap/Detailmap';
 import './Detail.css';
 import './KeenSlider_style.css';
 
-//items의 dayCd - 요일 구분코드(1~7)
-//items의 dayNm - 요일 구분명 (월~일)
-//items의 touristCd - 관광객 코드
-//items의 touristNm - 관광객 구분명
-//items의 tourNum - 관광객 수
-//items의 baseYmd - 기준 년월일
-
 function Detail(props) {
 	const [Appear, setAppear] = useState(false);
-	
+
 	const init = () => {
 		const url = document.URL;
-		if(url.includes('true')) {
-		   setAppear(true);
+		console.log(document.URL);
+		if (url.includes('true')) {
+			setAppear(true);
 		}
-	 }
-	
+	};
+
 	const closeModal = () => {
 		setAppear(false);
 	};
 
 	const [width, setwidthe] = useState(0);
-	const [Rankings, setRankings] = useState([]);
 	const [Details, setDetails] = useState([]);
 	const dragAreaRef = useRef(null);
-	
-	let {id} = useParams();
-	
+
+	let { id } = useParams();
+
 	let items = [
 		{
 			num: 0,
@@ -54,7 +47,7 @@ function Detail(props) {
 			down_loc: 128.7273531,
 			up_loc: 35.3490459,
 			left_loc: 320,
-			right_loc: -40
+			right_loc: -40,
 		},
 		{
 			num: 1,
@@ -71,7 +64,7 @@ function Detail(props) {
 			down_loc: 128.7273531,
 			up_loc: 35.3490459,
 			left_loc: 320,
-			right_loc: -40
+			right_loc: -40,
 		},
 		{
 			num: 3,
@@ -88,7 +81,7 @@ function Detail(props) {
 			down_loc: 128.7273531,
 			up_loc: 35.3490459,
 			left_loc: 320,
-			right_loc: -40
+			right_loc: -40,
 		},
 		{
 			num: 4,
@@ -138,7 +131,7 @@ function Detail(props) {
 		Axios.post('/api/data/Detail/' + id, body)
 			.then((response) => {
 			setDetails(response.data[0]);
-			console.log(response.data[0]);
+			
 		});
 		setwidthe(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
 	}, []);
@@ -152,12 +145,13 @@ function Detail(props) {
 				backgroundPosition: 'center top',
 			}}
 		>
-			<img src="#" onError={init} />
-			<br/><br/><br/><br/>
-			
+			<img src="#" onError={init} alt="profile"/>
+			<br />
+			<br />
+			<br />
+			<br />
 
 			<div>
-				
 				<br />
 				<br />
 				<br />
@@ -185,7 +179,6 @@ function Detail(props) {
 				<div className="loc_info_expln">
 					<div className="loc_name">{Details.title}</div>
 					<div className="loc_explanation">
-						
 						<br />
 						{Details.content}
 						<br />
@@ -304,18 +297,18 @@ function Detail(props) {
 				<br />
 			</motion.div>
 			<div>
-			<React.Fragment>
-				{Appear && (
-					<Sharemodal
-						visible={Appear}
-						closable={true}
-						maskClosable={true}
-						onClose={closeModal}
-						titles="임시이름"
-					></Sharemodal>
-				)}
-			</React.Fragment>
-		</div>
+				<React.Fragment>
+					{Appear && (
+						<Sharemodal
+							visible={Appear}
+							closable={true}
+							maskClosable={true}
+							onClose={closeModal}
+							titles="임시이름"
+						></Sharemodal>
+					)}
+				</React.Fragment>
+			</div>
 		</div>
 	);
 }

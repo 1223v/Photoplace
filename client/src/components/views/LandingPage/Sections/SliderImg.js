@@ -3,7 +3,6 @@ import Axios from 'axios';
 import styled from 'styled-components';
 import Slider from "react-slick";
 import "./slick.css";
-import "./slick-theme.css";
 
 const Wrap = styled.div`
     position: relative;

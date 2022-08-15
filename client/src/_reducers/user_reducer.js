@@ -1,10 +1,9 @@
 import {
-    AI_USER,
-    AI_SELECT
+    AI_USER
 } from '../_actions/types';
  
 
-export default function(state={},action){
+export default function sagas(state={},action){
     switch(action.type){
         
         case AI_USER:

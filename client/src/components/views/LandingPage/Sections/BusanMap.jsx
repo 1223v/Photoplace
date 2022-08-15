@@ -2,9 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 
-const Map = () => {
+const BusanMap = () => {
 	
 	
 	const [modalVisible, setModalVisible] = useState(false);
@@ -17,19 +19,22 @@ const Map = () => {
 		setModalVisible(false);
 	};
 
+
+	
 	useEffect(() => {
 		const { kakao } = window;
 		var container = document.getElementById('map');
 		var options = {
-			center: new kakao.maps.LatLng(37.486021038352995, 126.80229974931666),
-			level: 13,
+			center: new kakao.maps.LatLng(35.1795543, 129.0756416),
+			level: 8,
+			
 		};
 
 		var map = new kakao.maps.Map(container, options);
 
-		Axios.get('/api/data/map').then((response) => {
+		Axios.get('/api/data/busanmap').then((response) => {
 			// 마커 이미지의 이미지 주소입니다
-
+			
 			for (var i = 0; i < response.data.length; i++) {
 				// 마커 이미지의 이미지 크기 입니다
 				var imageSize3 = new kakao.maps.Size(64, 69);
@@ -77,7 +82,8 @@ const Map = () => {
 		<div>
 			<br />
 			<br />
-			<br />
+			
+			
 			<div
 				id="map"
 				style={{ width: '90%', height: '70vh', margin: 'auto', borderRadius: '20px' }}
@@ -100,8 +106,53 @@ const Map = () => {
 				</div>
 			
 			</div>
+			<ContentBar key='5'>
+				
+				
+         <ContentBa key='1'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/"><ContentImage alt='ph1' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZpuBZ%2FbtrJB3Uv0j1%2FPMw9UW5233SHt3mACd9DX0%2Fimg.jpg"/><Contenttype>서울<br/>핫플</Contenttype></Link></ContentBa>
+         <ContentBa key='2'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/BusanMap"><ContentImage alt='ph2' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbcp5G1%2FbtrJC5EjiCr%2FvNDlQpmTTekbBci9j0W2sk%2Fimg.jpg"/><Contenttype>부산<br/>핫플</Contenttype></Link></ContentBa>
+         <ContentBa key='3'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/JejuMap"><ContentImage alt='ph3' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbsIu9O%2FbtrJCqol93S%2F7YEKkox4JUMSVvklKKgqNK%2Fimg.jpg"/><Contenttype>제주<br/>핫플</Contenttype></Link></ContentBa>
+         <ContentBa key='4'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/DramaMap"><ContentImage alt='ph4' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbQwTTe%2FbtrJLSwqsZE%2FDjAkDnIVkBoOJkr3TGaxW0%2Fimg.jpg"/><Contenttype>드라마<br/>/영화</Contenttype></Link></ContentBa>
+       			
+				
+			</ContentBar>
 		</div>
 	);
 };
 
-export default Map;
+export default BusanMap;
+
+const ContentBar = styled.ul`
+	display: flex;
+	padding-top:20px;
+	margin:auto;
+	background-color: white;
+	font-family: 'main_font';
+`;
+
+const Contenttype = styled.span`
+	display: flex;
+	margin: 15px;
+	background-color: white;
+	font-family: 'main_font';
+	
+`;
+			 
+const ContentBa = styled.li`
+	display: inline-block;
+	margin:auto;
+    position: relative;
+    
+	background-color: white;
+	font-family: 'main_font';
+	
+
+`;
+
+const ContentImage = styled.img`
+	
+	margin: auto;
+	width:60px;
+	height:60px;
+	border-radius: 100%;
+`;

@@ -4,13 +4,17 @@ import styled from 'styled-components';
 import Select from '../Ranking/SelectBox';
 import '../LandingPage/Sections/Componentpage.css';
 import Axios from 'axios';
-import './Mapsearch.css';
-import {BiSearch} from "react-icons/bi"
+
 
 const OPTIONS = [
 	{ value: 'latest', name: '최신순' },
 	{ value: 'popularity', name: '인기순' },
 ];
+
+const WholeWrapper=styled.div`
+	font-family: "main_font";
+	background-color: #F2F2F2;
+`;
 
 const SelectWrapper = styled.div`
 	display: flex;
@@ -72,13 +76,14 @@ const SearchBar = styled.form`
 	margin-top:10px;
 	align-items: center;
 `;
-
+/*
 const Image = styled.img`
 	margin-left: 1%;
 	margin-right: 1%;
 	width: 20px;
 	height: 20px;
 `;
+*/
 
 const Input = styled.input`
 	font-size: 14px;
@@ -108,10 +113,10 @@ const ItemWrapper = styled.div`
  `;
 
 const StyledButton=styled.button`
- 	font-color:lightgray;
- 	background-color:white;
+ 	font-color:#666666;
+ 	background-color:#F2F2F2;
 	border:none;
-	width:20px;
+	width:50px;
 	font:10px;
 `;
 
@@ -244,15 +249,15 @@ function Mapsearch() {
 	}
  
 	return (
-		<div className="mapsearch">
+		<div>
 			<br/>
 			<br/>
 			<br/>
-			
+			<WholeWrapper>
 			<SearchWrapper>
 				<SearchBar onSubmit={onSubmitHandler}>
 					<Input type="text" value={Text} onChange={onTextHandler} />
-					<StyledButton type="submit"><BiSearch></BiSearch></StyledButton>
+					<StyledButton type="submit">검색</StyledButton>
 				</SearchBar>
 				<SelectWrapper>
 					<Select options={OPTIONS} defaultValue="latest"></Select>
@@ -261,7 +266,7 @@ function Mapsearch() {
 				<SearchPage isSearching={isSearching}></SearchPage>
 				<InfoWrapper>
 					<TitleWrapper>
-						<Title>야경</Title>
+						<Title>서울</Title>
 					</TitleWrapper>
 					<ItemWrapper>
 					<div style={{ width: '100%', height: '250px' }} className="imagesRow">
@@ -300,7 +305,7 @@ function Mapsearch() {
 				</InfoWrapper>
 				<InfoWrapper>
 					<TitleWrapper>
-						<Title>놀이공원</Title>
+						<Title>부산</Title>
 					</TitleWrapper>
 					<ItemWrapper>
 					<div style={{ width: '100%', height: '250px' }} className="imagesRow">
@@ -338,7 +343,7 @@ function Mapsearch() {
 				</InfoWrapper>
 				<InfoWrapper>
 					<TitleWrapper>
-						<Title>포토존</Title>
+						<Title>드라마</Title>
 					</TitleWrapper>
 					<ItemWrapper>
 					<div style={{ width: '100%', height: '250px' }} className="imagesRow">
@@ -374,6 +379,7 @@ function Mapsearch() {
 			</div>
 					</ItemWrapper>
 				</InfoWrapper>
+			</WholeWrapper>
 			<br/>
 			<br/>
 			<br/>

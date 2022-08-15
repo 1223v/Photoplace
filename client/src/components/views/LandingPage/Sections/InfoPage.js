@@ -44,18 +44,6 @@ const PageWrapper = styled.div`
   
 `;
 
-const InfoWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: space-around;
-  flex-direction: columns;
-  border-radius: 3px;
-  width: 100%;
-  height: 80vh;
-  border: 1px solid black;
-  margin: 2%;
-  background: rgba(255, 255, 255, 0.6);
-`
 
 export default function InfoPage({isOpen, handleClose}){
   const [animate, setAnimate] = useState(false);

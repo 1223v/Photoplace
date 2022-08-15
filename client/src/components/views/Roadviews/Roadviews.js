@@ -8,6 +8,7 @@ const Roadviews = (props) => {
 	/*global kakao*/
 	const location = useLocation();
 	useEffect(() => {
+		const { kakao } = window;
 		var img = document.createElement('img');
 		img.id = 'overlayImg';
 		img.src =
@@ -72,14 +73,6 @@ const Compo = styled.div`
 	position: relative;
 `;
 
-const Button = styled.button`
-	display: absoulte;
-	font-size: 15px;
-	cursor: pointer;
-	border: 0;
-	outline: 0;
-	background-color: #ffffff;
-`;
 
 const Detail = styled.div`
 	margin: auto;

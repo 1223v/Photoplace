@@ -6,7 +6,7 @@ import 'react-activity/dist/Dots.css';
 import styled from 'styled-components';
 import { useDispatch} from 'react-redux';
 import { aiUser } from '../../../_actions/user_actions';
-import './AIcontent.css';
+
 import Select from "./Select"
 
 const Container = styled.div`
@@ -18,6 +18,7 @@ const Container = styled.div`
 	align-items: center;
 	background-color: white;
 	flex-direction: column;
+	font-family: "AIpage_font";
 	position: relative;
 	/* justify-content:space-evenly; */
 
@@ -105,17 +106,6 @@ const Jeju = (props, { history }) => {
 		},
 	];
 	
-	let icons = [
-		{
-			image:"https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Flyjkg%2FbtrIT91lvHy%2FseRbk2IR9tYKBWeHKG69u1%2Fimg.png"
-		},
-		{
-			image:"https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoqlOl%2FbtrISNEqoeV%2FOv6miOdVjaOADzyXcllPnK%2Fimg.png"
-		},
-		{
-			image:"https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkHhiq%2FbtrIRF7H6gC%2FnoqrnCCKbzrZThW8EGjYZ0%2Fimg.png"
-		}
-	]
 
 	const modelURL = URL + 'model.json';
 	const metadataURL = URL + 'metadata.json';
@@ -167,7 +157,17 @@ const Jeju = (props, { history }) => {
 		console.log('가장높은확률 : ', prediction[0].className);
 
 		let body = {
+			
 			prediction: prediction[0].className,
+			predictionper: prediction[0].probability.toFixed(2),
+			prediction1: prediction[1].className,
+			predictionper1: prediction[1].probability.toFixed(2),
+			prediction2: prediction[2].className,
+			predictionper2: prediction[2].probability.toFixed(2),
+			prediction3: prediction[3].className,
+			predictionper3: prediction[3].probability.toFixed(2),
+			prediction4: prediction[4].className,
+			predictionper4: prediction[4].probability.toFixed(2),
 		};
 
 		dispatch(aiUser(body));
@@ -221,14 +221,14 @@ const Jeju = (props, { history }) => {
 				}}
 			>
 				<UpperIconsContainer>
-					<img style={{marginRight:'38%' }} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Flyjkg%2FbtrIT91lvHy%2FseRbk2IR9tYKBWeHKG69u1%2Fimg.png"></img>
-					<img style={{}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoqlOl%2FbtrISNEqoeV%2FOv6miOdVjaOADzyXcllPnK%2Fimg.png"></img>
-					<img style={{ marginLeft:'38%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkHhiq%2FbtrIRF7H6gC%2FnoqrnCCKbzrZThW8EGjYZ0%2Fimg.png"></img>
+					<img alt = "photo1" style={{marginRight:'38%' }} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Flyjkg%2FbtrIT91lvHy%2FseRbk2IR9tYKBWeHKG69u1%2Fimg.png"></img>
+					<img alt = "photo2" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoqlOl%2FbtrISNEqoeV%2FOv6miOdVjaOADzyXcllPnK%2Fimg.png"></img>
+					<img alt = "photo3" style={{ marginLeft:'38%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkHhiq%2FbtrIRF7H6gC%2FnoqrnCCKbzrZThW8EGjYZ0%2Fimg.png"></img>
 				</UpperIconsContainer>
 
 				<LowerIconsContainer>
-					<img style={{width:'13%', marginRight:'27%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbiwEn6%2FbtrIVhLB9E9%2FhKikwNymyj7ScBirSWVZ20%2Fimg.png"></img>
-					<img style={{width:'16%', marginRight:'40%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8DD1z%2FbtrIOSF0zp1%2FGoaATe4xkFtl8gZB8cuhQk%2Fimg.png"></img>
+					<img alt = "photo4" style={{width:'13%', marginRight:'27%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbiwEn6%2FbtrIVhLB9E9%2FhKikwNymyj7ScBirSWVZ20%2Fimg.png"></img>
+					<img alt = "photo5" style={{width:'16%', marginRight:'40%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8DD1z%2FbtrIOSF0zp1%2FGoaATe4xkFtl8gZB8cuhQk%2Fimg.png"></img>
 					<br/>
 					<div>
 						<Link style={{zIndex:'10', color:'gray',textDecoration: 'none'}} to="/Seoul">서울 </Link>

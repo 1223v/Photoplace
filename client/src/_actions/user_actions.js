@@ -1,7 +1,5 @@
-import axios from 'axios';
 import {
-    AI_USER,
-	AI_SELECT
+    AI_USER
 } from './types';
 
 

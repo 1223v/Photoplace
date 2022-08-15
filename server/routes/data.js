@@ -14,8 +14,50 @@ connection.connect();
 
 
 
-router.get('/map',(req,res)=>{
-    sql = "select * from Marker";
+router.get('/seoulmap',(req,res)=>{
+    var sql = `select * from Marker WHERE title LIKE '%서울%' OR city LIKE '%서울%'`;
+    connection.query(sql,(err,rows)=>{
+       if(err){
+           
+           return res.send(err);
+       }
+      
+            return res.send(rows);
+		
+        
+    })
+});
+
+router.get('/busanmap',(req,res)=>{
+    var sql = `select * from Marker WHERE title LIKE '%부산%' OR city LIKE '%부산%'`;
+    connection.query(sql,(err,rows)=>{
+       if(err){
+           
+           return res.send(err);
+       }
+      
+            return res.send(rows);
+		
+        
+    })
+});
+
+router.get('/jejumap',(req,res)=>{
+    var sql = `select * from Marker WHERE title LIKE '%제주%' OR city LIKE '%제주%'`;
+    connection.query(sql,(err,rows)=>{
+       if(err){
+           
+           return res.send(err);
+       }
+      
+            return res.send(rows);
+		
+        
+    })
+});
+
+router.get('/dramamap',(req,res)=>{
+    var sql = `select * from Marker WHERE title LIKE '%드라마%' OR tag_1 LIKE '%드라마%' OR tag_2 LIKE '%드라마%'`;
     connection.query(sql,(err,rows)=>{
        if(err){
            
@@ -47,7 +89,6 @@ router.post('/Searchpage',(req,res)=>{
     
 	var userSearch = req.body.search;
     var sql = `SELECT * FROM Marker WHERE title LIKE '%${userSearch}%' OR tag_1 LIKE '%${userSearch}%' OR tag_2 LIKE '%${userSearch}%'`;
-	console.log(sql);
     connection.query(sql,(err,rows)=>{
 		
        if(err){

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./BottomNav.css";
 import { Link } from 'react-router-dom';
-import { BsGeoAltFill } from "react-icons/bs";
 import { FaRobot } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IoMdHome,IoMdTrophy } from "react-icons/io";
