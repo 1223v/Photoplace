@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 //const {Kakao, location} = window;
 
-function Share_modal({props, className, onClose, maskClosable, closable, visible, titles, nums }) {
+function Share_modal({className, onClose, maskClosable, closable, visible, titles, img, description, view }) {
 	useEffect(() => {
 		const script = document.createElement("script");
 		script.src = "https://developers.kakao.com.sdk/js/kakao.js";
@@ -15,18 +15,24 @@ function Share_modal({props, className, onClose, maskClosable, closable, visible
 
 	const shareKakaoCustom = () => {
 		const url = document.URL;
+		let found = parseInt(url.match(/\d+/g));
+		
 		if(window.Kakao) {
 			const kakao = window.Kakao;
 			if(!kakao.isInitialized()) {
 				kakao.init("88a1a10486c09c3e8ebff912acfccd68");
 			}
+
 			kakao.Link.sendCustom({
 				templateId: 81118,
 				templateArgs: {
 					'like': 123,
 					'share': 321,
 					'view': 213,
-					'url': url,
+					'title': titles,
+					'num': found,
+					'description': description,
+					'image': img
 				}
 			});			
 		}
@@ -44,24 +50,48 @@ function Share_modal({props, className, onClose, maskClosable, closable, visible
 		}
 	};
 
-	const handleCopyClipBoard = async () => {
-		const url = "https://korea-app-beqvu.run.goorm.io/";
+	const handleCopyClipBoard = async (e) => {
+		let url = document.URL;
+		url = url.slice(0, -5);
+		
+		if (!document.queryCommandSupported("copy")) {
+        return alert("복사하기가 지원되지 않는 브라우저입니다.");
+      	}
+		
 		try {
 		  await navigator.clipboard.writeText(url);
-		  alert('복사 성공!');
+		  alert('복사 성공! on 1');
 		} catch (error) {
-		  alert('복사 실패!');
+			try{
+				const txt =  document.createElement('input');
+				txt.value = url;
+				document.body.appendChild(txt);
+				txt.select();
+				await document.execCommand("copy");
+				document.body.removeChild(txt);
+				alert('복사 성공! on 2');
+			}
+			catch(error){
+				try {
+					e.preventDefault();
+					e.clipboardData.setData(url, url);
+					alert('복사 성공! on 3');
+				}
+				catch(error) {
+					return alert('복사 실패');
+				}
+			}
 		}
 	  };		
 
 	const LineShare = () => {
-		const title = "PhotoPlace";
-		const summary = "장소이름!";
-		const br = "\n";
-		const link = "https://korea-app-beqvu.run.goorm.io";
+		const title = titles;
+		const summary = description;
+		const br = "\n\n";
+		const link = document.URL.slice(0,-5);
 		
 		const url = "http://line.me/R/msg/text/?" 
-		+ encodeURIComponent(title + br + summary + link);
+		+ encodeURIComponent(title + br + summary + br + link);
 		window.open(url, 'sns', 'height=600 width=500');
 	}
 
@@ -89,21 +119,13 @@ function Share_modal({props, className, onClose, maskClosable, closable, visible
 							</CloseStyle>
 						)}
 						
-						<CloseStyled className="modal-close" style={{padding: '0px 10px'}} onClick={shareKakaoCustom}>
-							<Share>
+						<CloseStyled className="modal-close" style={{padding: '0px 10px'}} >
+							<Share onClick={shareKakaoCustom}>
 								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd8VMLZ%2FbtrJcGxWJKd%2FIaUnrdLRt41LWVL498QjjK%2Fimg.png"
 								style={{height: '50px', width: '50px', padding: '1px 2px'}}
 								/>
 								<Text>
 									카카오톡으로 공유
-								</Text>
-							</Share>
-							<Share>
-								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FrHPLy%2FbtrJgPAmMAh%2FfA3tMgpSzMAQ79DBnZTkQ0%2Fimg.png"
-								style={{height: '50px', width: '50px', padding: '1px 2px'}}
-								/>
-								<Text>
-									메신저로 공유
 								</Text>
 							</Share>
 							

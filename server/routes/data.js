@@ -14,7 +14,7 @@ connection.connect();
 
 
 
-router.get('/seoulmap',(req,res)=>{
+router.get('/seoulsmap',(req,res)=>{
     var sql = `select * from Marker WHERE title LIKE '%서울%' OR city LIKE '%서울%'`;
     connection.query(sql,(err,rows)=>{
        if(err){
@@ -26,6 +26,29 @@ router.get('/seoulmap',(req,res)=>{
 		
         
     })
+});
+router.post('/aimap',(req,res)=>{
+	
+	var AIcontent = req.body.ainame
+	let AIcontents = {
+		ainame:  req.body.ainame,
+		ainame1: req.body.ainame1,
+		ainame2: req.body.ainame2,
+		ainame3: req.body.ainame3,
+		ainame4: req.body.ainame4
+		
+		
+	}
+	var sql = `SELECT * FROM Marker WHERE title LIKE '%${AIcontent}%' OR tag_1 LIKE '%${AIcontent}%' OR tag_2 LIKE '%${AIcontent}%'`
+	connection.query(sql,(err,rows)=>{
+		
+	if(err){
+           console.log("실패");
+           return res.send(err);
+       }
+    	return res.send(rows);	
+		
+	})
 });
 
 router.get('/busanmap',(req,res)=>{
@@ -119,25 +142,31 @@ router.post('/Detail/:id',(req,res)=>{
         
     })
 });
-
+/*
 router.get('/Ranking',(req,res)=>{
-	
-	
-    var sql = `SELECT * FROM Marker LIMIT 20;`;
+
+    var sql = `select DISTINCT NAME from signgu_data where DAY_CODE = 2 and CODE like '1%' order by PER_CNT desc`;
     connection.query(sql,(err,rows)=>{
-		
-       if(err){
-           
+       if(err){  
            return res.send(err);
        }
-      
-		  	
-            return res.send(rows);
-		
-        
+   	tmp2 = rows;
+	//console.log(tmp2)
     })
+	for(var i = 0; i<3; i++){
+		sql2 = `select * from Marker where city REGEXP "서울" && city REGEXP '강남구';`/*${tmp2[i].RowDataPacket.NAME}';
+		console.log(sql2);
+		connection.query(sql2,(err0, rows2)=>{
+			if(err0){
+				return res.send(err0);
+			}
+			temp.push(rows2);
+		})
+	}
+	console.log(temp);
+    return res.send(temp);
 });
-
+*/
 router.post('/ModalSlider',(req,res)=>{
 	
     

@@ -5,6 +5,7 @@ import NavbarDetail from './views/NavBar/NavbarDetail';
 import Footer from './views/Footer/Footer';
 import Seoul from './views/AIcontent/Seoul';
 import Busan from './views/AIcontent/Busan';
+import Drama from './views/AIcontent/Drama';
 import Jeju from './views/AIcontent/Jeju';
 import Loading from './views/Loading/Loading';
 import Mapsearch from './views/Mapsearch/Mapsearch';
@@ -67,6 +68,7 @@ function App() {
 					<Route path="/Seoul" element={<Seoul />} />
 					<Route path="/Busan" element={<Busan />} />
 					<Route path="/Jeju" element={<Jeju />} />
+					<Route path="/Drama" element={<Drama />} />
 					<Route path="/Mapsearch" element={<Mapsearch />} />
 					<Route path="/Ranking" element={<Ranking />} />
 					<Route path="/AImap" element={<AImap />} />

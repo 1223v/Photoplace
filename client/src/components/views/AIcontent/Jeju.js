@@ -59,9 +59,15 @@ const ImageUploadContainer = styled.input`
 const ImageContainer = styled.div`
 	position: relative;
 	width: 85%;
-	height: 55%;
+	height: 60%;
 	display: flex;
 	background-color: rgb(252, 248, 232);
+	
+	
+	background: linear-gradient(to right bottom, #FF8500, #FFDD40);
+    color: transparent;
+	
+	
 	border-radius: 10px;
 	justify-content: center;
 	align-items: center;
@@ -76,36 +82,12 @@ const Image = styled.img`
 	height: 100%;
 	border-radius: 10px;
 `;
-const SelectWrapper = styled.div`
-	display: flex;
-	margin: 10px;
-	margin_bottom: 15px;
-	width: 80%;
-`;
+
 const AnalyzingContainer=styled.div`
 	top:50px;
 `
 const Jeju = (props, { history }) => {
-	let URL = 'https://teachablemachine.withgoogle.com/models/bPVTnnqcJ/';
-
-	let OPTIONS = [
-		{
-			value: 'Busan',
-			name: '부산',
-			key: '/Busan',
-		},
-		{
-			value: 'Seoul',
-			name: '서울',
-			key: '/Seoul',
-		},
-		{
-			value: 'Jeju',
-			name: '제주',
-			key: '/Jeju',
-		},
-	];
-	
+	let URL = 'https://teachablemachine.withgoogle.com/models/bPVTnnqcJ/';	
 
 	const modelURL = URL + 'model.json';
 	const metadataURL = URL + 'metadata.json';
@@ -198,14 +180,12 @@ const Jeju = (props, { history }) => {
 
 	return (
 		<Container className="ai_page">
-			<br/><br/>
-			<SelectWrapper>
-				<Select options={OPTIONS} defaultValue="Busan" onChange></Select>
-			</SelectWrapper>
+			<br/><br/><br/>
+			
 			{showResult ? (
 				<div>분석결과는?</div>
 			) : (
-				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : 'AI가 어울리는 여행지를 추천해드려요!'}</div>
+				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : 'AI가 어울리는 여행지를 추천해드려요! (제주)'}</div>
 			)}
 
 			{!loading && result === null ? (
@@ -215,27 +195,37 @@ const Jeju = (props, { history }) => {
 				</div>
 			) : null}
 			
-			<ImageContainer
-				onClick={() => {
-					inputRef.current.click();
-				}}
-			>
+			<ImageContainer>
 				<UpperIconsContainer>
 					<img alt = "photo1" style={{marginRight:'38%' }} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Flyjkg%2FbtrIT91lvHy%2FseRbk2IR9tYKBWeHKG69u1%2Fimg.png"></img>
 					<img alt = "photo2" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoqlOl%2FbtrISNEqoeV%2FOv6miOdVjaOADzyXcllPnK%2Fimg.png"></img>
 					<img alt = "photo3" style={{ marginLeft:'38%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkHhiq%2FbtrIRF7H6gC%2FnoqrnCCKbzrZThW8EGjYZ0%2Fimg.png"></img>
 				</UpperIconsContainer>
-
 				<LowerIconsContainer>
-					<img alt = "photo4" style={{width:'13%', marginRight:'27%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbiwEn6%2FbtrIVhLB9E9%2FhKikwNymyj7ScBirSWVZ20%2Fimg.png"></img>
-					<img alt = "photo5" style={{width:'16%', marginRight:'40%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8DD1z%2FbtrIOSF0zp1%2FGoaATe4xkFtl8gZB8cuhQk%2Fimg.png"></img>
+					<img 
+						onClick={() => {
+							inputRef.current.click();
+						}}
+						alt = "photo4" 
+						style={{width:'13%', marginRight:'27%'}} 
+						src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbiwEn6%2FbtrIVhLB9E9%2FhKikwNymyj7ScBirSWVZ20%2Fimg.png"></img>
+					<img 
+						onClick={() => {
+							inputRef.current.click();
+						}}
+						alt = "photo5" 
+						style={{width:'16%', marginRight:'40%'}} 
+						src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8DD1z%2FbtrIOSF0zp1%2FGoaATe4xkFtl8gZB8cuhQk%2Fimg.png"></img>
 					<br/>
 					<div>
-						<Link style={{zIndex:'10', color:'gray',textDecoration: 'none'}} to="/Seoul">서울 </Link>
-						<Link style={{zIndex:'10', color:'gray',textDecoration: 'none'}} to="/Busan">부산</Link>
-						<Link style={{zIndex:'10', color:'gray',textDecoration: 'none',marginRight:'18%'}} to="/Jeju"> 제주</Link>
+						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Seoul">서울 </Link>
+						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Busan">부산</Link>
+						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Jeju"> 제주</Link>
+						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Drama"> 드라마</Link>
 					</div>
 				</LowerIconsContainer>
+
+				
 				
 				<ImageUploadContainer
 					ref={inputRef}
@@ -246,15 +236,21 @@ const Jeju = (props, { history }) => {
 				{imgBase64 ? (
 					<Image id="srcImg" src={imgBase64}></Image>
 				) : (
-					<div style={{ fontSize:'25px'}}>
+					<div style={{ fontSize:'25px', height:'100%', width:'100%', textAlign:'center'}}
+						onClick={() => {
+							inputRef.current.click();
+						}}
+					>
+						<br/><br/><br/><br/>
 						GIVE ME YOUR PICTURE!
 					</div>
 				)}
 				</ImageContainer>
+			
 
 				<AnalyzingContainer>
 				{loading && result === null ? (
-					<div style={{fontSize:'25px', textAlign:'center'}}>
+					<div style={{fontSize:'15px', textAlign:'center'}}>
 						<Dots size={25} color="#224976" style={{textAlign:'center'}}></Dots>
 						분석중...
 					</div>

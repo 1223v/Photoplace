@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import './Componentpage.css';
 import ApexCharts from 'react-apexcharts';
+import SlickComponent from './SliderImg';
+
+import '../../../../index.css'
 
 const AnalysisPageWrapper = styled.div`
 	display: flex;
@@ -44,7 +46,7 @@ const LocDetail = styled.div`
 	font-family: 'main_font';
 `;
 
-export default function Componentpage() {
+export default function Componentpage({SubContents,SubimageSrces}) {
 	const aicontent = useSelector((state) => state.user);
 	console.log(aicontent.aiSuccess);
 
@@ -131,19 +133,20 @@ export default function Componentpage() {
 	const BarChart = () => {
 		return <ApexCharts series={data} options={options} type="bar" width="100%" height="100%" />;
 	};
-
+	
 	return (
 		<AnalysisPageWrapper>
 			<AnalysisTitleWrapper>
 				
 				<Title>분석 결과</Title>
+				<SlickComponent imageSrcs={SubimageSrces} nums={0}></SlickComponent>
+				
 			</AnalysisTitleWrapper>
+			
 			<LocTitle>{aicontent.aiSuccess.prediction}</LocTitle>
 
 			<LocDetail>
-				젠틀몬스터가 블랙핑크 제니와 협업한 프로젝트 ‘JENTLE GARDEN: 젠틀가든’ 팝업
-				공간으로, 젠틀몬스터와 제니가 함께 상상한 판타지 세계를 다양한 디오라마 설치물과
-				화려한 꽃, 핑크빛 호수 등을 활용해 몽환적인 공간으로 재현했습니다.
+				{SubContents}
 			</LocDetail>
 			<GraphWrapper>
 				<BarChart></BarChart>

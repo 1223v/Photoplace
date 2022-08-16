@@ -45,9 +45,10 @@ const PageWrapper = styled.div`
 `;
 
 
-export default function InfoPage({isOpen, handleClose}){
+export default function InfoPage({isOpen, handleClose, SubContent,SubimageSrcs}){
   const [animate, setAnimate] = useState(false);
   const [localVisible, setLocalVisible] = useState(isOpen);
+		
 
   useEffect(()=>{
     if(localVisible && !isOpen){
@@ -60,7 +61,7 @@ export default function InfoPage({isOpen, handleClose}){
   return(
     <div>
     <PageWrapper disappear={!isOpen}>
-		<Componentpage/>
+		<Componentpage SubContents={SubContent} SubimageSrces={SubimageSrcs}/>
     </PageWrapper>
     </div>
   )

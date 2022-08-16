@@ -3,6 +3,7 @@ import { Navbar, Container } from 'react-bootstrap'
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 import {IoIosArrowBack} from "react-icons/io"
+import {GrShareOption} from "react-icons/gr"
 import  'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -18,15 +19,18 @@ const MainText=styled.div`
 function NavbarDetail() {
   
   return (
+
     <div >
     <Navbar style={{position: "fixed", backgroundColor:"#FFFFFF", top:"0", left:"0", right:"0", zIndex:"500"}}>
     <Container>		
 		<div style={{ display:'flex', textAlign:'center', width:'100%' }}>
     		<Link to="/Ranking">
-				<IoIosArrowBack size="30" color="#707070"/>
+				<IoIosArrowBack size="30" color="#000000"/>
 			</Link>
 			
 			<MainText style={{ textAlign:'center' }}>장소이름</MainText>
+			
+			<GrShareOption size="30" color="#000000"/>
 		</div>
     </Container>
   </Navbar>

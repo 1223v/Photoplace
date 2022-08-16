@@ -18,6 +18,27 @@ const InfoButton = styled.button`
 	border: 1px solid ${(props) => props.color};
 `;
 
+const Container = styled.div`
+  margin-left:auto;
+  margin-right:auto;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  flex-direction: column;
+  position:relative;
+  font-family: "loadingpage_font";
+  @media (min-width: 800px) {
+    width: 600px;
+    height: 100vh;
+    /* border:1px solid #95afc0; */
+    /* border-left:1px solid #95afc0;
+    border-right:1px solid #95afc0; */
+  }
+`;
+
 const AImap = () => {
 	const [ButtonColor, setButton] = useState('#18978F');
 	const [showInfo, setShowInfo] = useState(false);
@@ -25,7 +46,8 @@ const AImap = () => {
 	const [imageSrcs, setimageSrcs] = useState('');
 	const [contents, setcontents] = useState('');
 	const [Titles, setTitles] = useState('');
-	
+	const [SubContent,setSubContent] = useState([])
+	const [SubimageSrcs,setSubimageSrcs] = useState([])
 	
 	const aicontent = useSelector((state) => state.user);
 	console.log(aicontent.aiSuccess);
@@ -48,10 +70,18 @@ const AImap = () => {
 
 		var map = new kakao.maps.Map(container, options);
 
-		Axios.get('/api/data/map')
+		let body = {
+			ainame: aicontent.aiSuccess.prediction,
+			ainame2: aicontent.aiSuccess.prediction1,
+			ainame3:aicontent.aiSuccess.prediction2,
+			ainame4:aicontent.aiSuccess.prediction3,
+			ainame5:aicontent.aiSuccess.prediction4
+		};
+		Axios.post('/api/data/aimap',body)
         .then(response => {
             
-
+		setSubContent(response.data[0].content);
+		setSubimageSrcs(response.data[0].imageSrc)
 		// 마커 이미지의 이미지 주소입니다
 
 		
@@ -96,15 +126,14 @@ const AImap = () => {
 		}
 		})
 	}, []);
-
+console.log("응", SubimageSrcs);
 	return (
-		<div>
+		<Container>
 			<br/>
-			<br/>
-			<br />
+			
 			<div
 				id="map"
-				style={{ width: '90%', height: '80vh', margin: 'auto', borderRadius: '30px' }}
+				style={{ width: '90%', height: '70vh', marginLeft: 'auto',marginRight: 'auto',marginTop: '0px', borderRadius: '10px' }}
 			>
 				<div>
 					<React.Fragment>
@@ -125,12 +154,14 @@ const AImap = () => {
 					isOpen={showInfo}
 					handleClose={show}
 					style={{ justifyContent: 'center' }}
+					SubContent={SubContent}
+					SubimageSrcs={SubimageSrcs}
 				></InfoPage>
 			</div>
 
 			<div style={{ display: 'flex', justifyContent: 'center' }}>
 				<InfoButton color={ButtonColor} onClick={show}>
-					전체보기
+					결과보기
 				</InfoButton>
 				
 			</div>
@@ -138,7 +169,7 @@ const AImap = () => {
 			<br />
 			<br />
 			<br />
-		</div>
+		</Container>
 	);
 };
 

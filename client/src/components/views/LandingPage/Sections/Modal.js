@@ -59,6 +59,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 						</ImgStyle>
 						<CloseStyled className="modal-close">
 							<Icon>
+								<div>
 								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
 									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbrkOxL%2FbtrH5eJL9Ql%2FbAKeSz9khkTLRRI1AOwo9k%2Fimg.png" alt=""></img>
 								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
@@ -66,6 +67,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FyYIqe%2FbtrH9Hj8n4e%2FMNmqEfiFOKEfMZArrlUBPK%2Fimg.png" alt=""></img>
 								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
 									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbifvKn%2FbtrIdyfccPX%2FBmgv8WgxBI2KlLWONeJ1b1%2Fimg.png" alt=""></img>
+								</div>
 								<Link 
 									to={`/Detail/${nums}?true`}
 								>

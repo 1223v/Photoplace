@@ -6,7 +6,7 @@ import styled from "styled-components";
 const Select = styled.select`
 	display: block;
 	background-color:white;
-	width: 100px;
+	width: 80px;
 	height: 35px;
 	padding: 5px 5px;
 	font-size: inherit;
@@ -15,6 +15,7 @@ const Select = styled.select`
 	line-height: inherit;
 	margin-top: 10px;
 	margin-left:20px;
+	margin-right:20px;
 	&:focus,
   	&:active {
     outline: none;

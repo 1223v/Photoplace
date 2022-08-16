@@ -5,10 +5,9 @@ import { useRef, useEffect, useState } from 'react';
 import Axios from 'axios';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom'; //이미지 상단 <버튼 누르면 뒤로가기 구현 관련
-import Sharemodal from '../LandingPage/Sections/Share_modal';
+import Sharemodal from '../LandingPage/Sections/ShareModal';
 import Detailmap from '../Detailmap/Detailmap';
-import './Detail.css';
-import './KeenSlider_style.css';
+import '../../../index.css';
 
 function Detail(props) {
 	const [Appear, setAppear] = useState(false);
@@ -128,10 +127,8 @@ function Detail(props) {
 		let body = {
 			Num: id,
 		};
-		Axios.post('/api/data/Detail/' + id, body)
-			.then((response) => {
+		Axios.post('/api/data/Detail/' + id, body).then((response) => {
 			setDetails(response.data[0]);
-			
 		});
 		setwidthe(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
 	}, []);
@@ -142,10 +139,10 @@ function Detail(props) {
 			style={{
 				backgroundRepeat: 'no-repeat',
 				backgroundImage: 'url(' + `${Details.imageSrc}` + ')',
-				backgroundPosition: 'center top',
+				backgroundPosition: 'center 8%',
 			}}
 		>
-			<img src="#" onError={init} alt="profile"/>
+			<img src="#" onError={init} alt="profile" />
 			<br />
 			<br />
 			<br />
@@ -164,138 +161,128 @@ function Detail(props) {
 				<br />
 				<br />
 				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				
+				
 			</div>
+			<Container>
+				<motion.div
+					ref={dragAreaRef}
+					whileTap={{ cursor: 'grabbing' }}
+					className="KeenSlider"
+					drag="y"
+					dragConstraints={{ top: -950, bottom: 0 }}
+					style={{ width: '100%', height: '100%'}}
+				>
+					<div className="line">&nbsp;</div>
 
-			<motion.div
-				ref={dragAreaRef}
-				whileTap={{ cursor: 'grabbing' }}
-				className="KeenSlider"
-				drag="y"
-				dragConstraints={{ top: -850, bottom: 200 }}
-				style={{ width: '100%', height: '100%' }}
-			>
-				<div className="line">-</div>
-
-				<div className="loc_info_expln">
-					<div className="loc_name">{Details.title}</div>
-					<div className="loc_explanation">
-						<br />
-						{Details.content}
-						<br />
+					<div className="loc_info_expln">
+						<div className="loc_name">{Details.title}</div>
+						<div className="loc_explanation">
+							
+							{Details.content}
+							
+						</div>
 					</div>
-				</div>
 
-				<br />
-				<div className="conges_info">
-					<div className="conges_info_inner">
-						<div className="d_cong">요일별 혼잡도</div>
-						<div className="d_cong_expln">
-							* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다.
-						</div>
-
-						<div className="days">
-							월&nbsp;&nbsp;&nbsp;&nbsp;화&nbsp;&nbsp;&nbsp;&nbsp;수&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;&nbsp;&nbsp;&nbsp;금&nbsp;&nbsp;&nbsp;&nbsp;토&nbsp;&nbsp;&nbsp;&nbsp;일
-						</div>
-						<div className="cong_circles">
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className="c_green">.</div>&nbsp;&nbsp;&nbsp;
-							<div className="c_green">.</div>&nbsp;&nbsp;&nbsp;
-							<div className="c_yellow">.</div>&nbsp;&nbsp;&nbsp;
-							<div className="c_orange">.</div>&nbsp;&nbsp;&nbsp;
-							<div className="c_red">.</div>&nbsp;&nbsp;&nbsp;
-							<div className="c_red">.</div>&nbsp;&nbsp;&nbsp;
-							<div className="c_orange">.</div>
-							<br />
-							<br />
-							<br />
-							<br />
-						</div>
-						<br />
-						<br />
-					</div>
-				</div>
-
-				<br />
-				<br />
-				<br />
-
-				<div className="map_div">
-					<div className="loc_info_with_map">위치정보</div>
-
-					<div className="map_and_expln">
-						해당 장소의 위치 정보 입니다.
-						<DETAIL>
-							<Compo>
-								<Button>장소 위치</Button>
-							</Compo>
-
-							<div>
-								<Detailmap
-									num={items[1].num}
-									up_loc={items[1].up_loc}
-									down_loc={items[1].down_loc}
-									left_loc={items[1].left_loc}
-									right_loc={items[1].right_loc}
-								/>
+					<br />
+					<div className="conges_info">
+						<div className="conges_info_inner">
+							<div className="d_cong">요일별 혼잡도</div>
+							<div className="d_cong_expln">
+								* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다.
 							</div>
-						</DETAIL>
-					</div>
-				</div>
 
-				<br />
-				<br />
-				<br />
-
-				<div className="photo_div">
-					<div className="photos_collection">사진 모음</div>
-					<div className="img_and_expln">
-						방문자 및 한국관광공사 제공 사진입니다.
-						<div style={{ width: '100%', height: '100%' }} className="photos">
-							<motion.div
-								ref={dragAreaRef}
-								className="dragAreaRef"
-								whileTap={{ cursor: 'grabbing' }}
-							>
-								<motion.div
-									style={{ width: '100%', height: '100%' }}
-									drag="x"
-									dragConstraints={{ right: 0, left: -650 }}
-									className="inner-carousel"
-								>
-									{items.map((array, index) => {
-										return (
-											<motion.div className="item7777" key={index}>
-												<div>
-													<img src={array.image} alt="" />
-												</div>
-											</motion.div>
-										);
-									})}
-								</motion.div>
-							</motion.div>
+							<div className="days">
+								월&nbsp;&nbsp;&nbsp;&nbsp;화&nbsp;&nbsp;&nbsp;&nbsp;수&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;&nbsp;&nbsp;&nbsp;금&nbsp;&nbsp;&nbsp;&nbsp;토&nbsp;&nbsp;&nbsp;&nbsp;일
+							</div>
+							<div className="cong_circles">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<div className="c_green">.</div>&nbsp;&nbsp;&nbsp;
+								<div className="c_green">.</div>&nbsp;&nbsp;&nbsp;
+								<div className="c_yellow">.</div>&nbsp;&nbsp;&nbsp;
+								<div className="c_orange">.</div>&nbsp;&nbsp;&nbsp;
+								<div className="c_red">.</div>&nbsp;&nbsp;&nbsp;
+								<div className="c_red">.</div>&nbsp;&nbsp;&nbsp;
+								<div className="c_orange">.</div>
+								<br />
+								<br />
+								<br />
+								<br />
+							</div>
+							<br />
+							<br />
 						</div>
 					</div>
-				</div>
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-			</motion.div>
+
+					<br />
+					<br />
+					<br />
+
+					<div className="map_div">
+						<div className="loc_info_with_map">위치정보</div>
+
+						<div className="map_and_expln">
+							해당 장소의 위치 정보 입니다.
+							<DETAIL>
+								<Compo>
+									<Button>장소 위치</Button>
+								</Compo>
+
+								<div>
+									<Detailmap
+										num={items[1].num}
+										up_loc={items[1].up_loc}
+										down_loc={items[1].down_loc}
+										left_loc={items[1].left_loc}
+										right_loc={items[1].right_loc}
+									/>
+								</div>
+							</DETAIL>
+						</div>
+					</div>
+
+		
+					
+					<div className="photo_div">
+						<div className="photos_collection">사진 모음</div>
+						<div className="img_and_expln">
+							방문자 및 한국관광공사 제공 사진입니다.
+							<div style={{ width: '100%' }} className="photos">
+								<motion.div
+									ref={dragAreaRef}
+									className="dragAreaRef"
+									whileTap={{ cursor: 'grabbing' }}
+								>
+									<motion.div
+										style={{ width: '100%', height: '100%' }}
+										drag="x"
+										dragConstraints={{ right: 0, left: -650 }}
+										className="inner-carousel"
+									>
+										{items.map((array, index) => {
+											return (
+												<motion.div className="item7777" key={index}>
+													<div>
+														<img src={array.image} alt="" />
+													</div>
+												</motion.div>
+											);
+										})}
+									</motion.div>
+								</motion.div>
+								<br/>
+							</div>
+						</div>
+					</div>					
+					
+				</motion.div>
+			</Container>
 			<div>
 				<React.Fragment>
 					{Appear && (
@@ -304,7 +291,9 @@ function Detail(props) {
 							closable={true}
 							maskClosable={true}
 							onClose={closeModal}
-							titles="임시이름"
+							titles= {Details.title}
+							description = {Details.content}
+							img = {Details.imageSrc}
 						></Sharemodal>
 					)}
 				</React.Fragment>
@@ -342,4 +331,25 @@ const DETAIL = styled.div`
 	background-color: #ffffff;
 
 	z-index: 5;
+`;
+
+const Container = styled.div`
+	margin-left: auto;
+	margin-right: auto;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #ffffff;
+	flex-direction: column;
+	position: relative;
+	font-family: 'loadingpage_font';
+	@media (min-width: 800px) {
+		width: 600px;
+		height: 100vh;
+		/* border:1px solid #95afc0; */
+		/* border-left:1px solid #95afc0;
+    border-right:1px solid #95afc0; */
+	}
 `;

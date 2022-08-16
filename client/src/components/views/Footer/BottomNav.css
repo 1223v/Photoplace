@@ -36,3 +36,14 @@
   .active {
     color: #FFD700;
   }
+
+
+ 
+
+.nav-color:active{
+	border-radius:100%;
+	background-color:#f1f3f5;
+	margin:auto;
+	width:70%;
+	height:100%;
+}

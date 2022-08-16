@@ -27,7 +27,7 @@ const SeoulMap = () => {
 
 		var map = new kakao.maps.Map(container, options);
 
-		Axios.get('/api/data/seoulmap').then((response) => {
+		Axios.get('/api/data/seoulsmap').then((response) => {
 			// 마커 이미지의 이미지 주소입니다
 
 			for (var i = 0; i < response.data.length; i++) {
@@ -81,14 +81,14 @@ const SeoulMap = () => {
 	}, []);
 
 	return (
-		<div>
+		<Container>
 			<br />
-			<br />
+			
 			
 			
 			<div
 				id="map"
-				style={{ width: '90%', height: '70vh', margin: 'auto', borderRadius: '20px' }}
+				style={{ width: '90%', height: '70vh', marginLeft: 'auto',marginRight: 'auto',marginTop: '0px', borderRadius: '10px' }}
 			>
 				<div>
 					<React.Fragment>
@@ -110,14 +110,14 @@ const SeoulMap = () => {
 			<ContentBar key='5'>
 				
 				
-         <ContentBa key='1'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/"><ContentImage alt='ph1' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZpuBZ%2FbtrJB3Uv0j1%2FPMw9UW5233SHt3mACd9DX0%2Fimg.jpg"/><Contenttype>서울<br/>핫플</Contenttype></Link></ContentBa>
-         <ContentBa key='2'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/BusanMap"><ContentImage alt='ph2' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbcp5G1%2FbtrJC5EjiCr%2FvNDlQpmTTekbBci9j0W2sk%2Fimg.jpg"/><Contenttype>부산<br/>핫플</Contenttype></Link></ContentBa>
-         <ContentBa key='3'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/JejuMap"><ContentImage alt='ph3' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbsIu9O%2FbtrJCqol93S%2F7YEKkox4JUMSVvklKKgqNK%2Fimg.jpg"/><Contenttype>제주<br/>핫플</Contenttype></Link></ContentBa>
+         <ContentBa key='1'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/"><ContentImage alt='ph1' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZpuBZ%2FbtrJB3Uv0j1%2FPMw9UW5233SHt3mACd9DX0%2Fimg.jpg"/><Contenttype>서울 핫플</Contenttype></Link></ContentBa>
+         <ContentBa key='2'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/BusanMap"><ContentImage alt='ph2' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbcp5G1%2FbtrJC5EjiCr%2FvNDlQpmTTekbBci9j0W2sk%2Fimg.jpg"/><Contenttype>부산 핫플</Contenttype></Link></ContentBa>
+         <ContentBa key='3'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/JejuMap"><ContentImage alt='ph3' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbsIu9O%2FbtrJCqol93S%2F7YEKkox4JUMSVvklKKgqNK%2Fimg.jpg"/><Contenttype>제주 핫플</Contenttype></Link></ContentBa>
          <ContentBa key='4'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/DramaMap"><ContentImage alt='ph4' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbQwTTe%2FbtrJLSwqsZE%2FDjAkDnIVkBoOJkr3TGaxW0%2Fimg.jpg"/><Contenttype>드라마<br/>/영화</Contenttype></Link></ContentBa>
        			
 				
 			</ContentBar>
-		</div>
+		</Container>
 	);
 };
 
@@ -126,26 +126,33 @@ export default SeoulMap;
 
 const ContentBar = styled.ul`
 	display: flex;
-	padding-top: 20px;
-	margin: auto;
+	width:100%;
+	margin-top: 8px;
+	margin-left: auto;
+	margin-right: auto;
+	
+  	padding-left:0px;
 	background-color: white;
 	font-family: 'main_font';
 `;
 
 const Contenttype = styled.span`
 	display: flex;
-	margin: 15px;
+	margin-left:auto;
+	margin-right:auto;
 	background-color: white;
 	font-family: 'main_font';
 `;
 
 const ContentBa = styled.li`
 	display: inline-block;
-	margin: auto;
+	float: left;
+	margin-left:auto;
+	margin-right:auto;
 	position: relative;
-
 	background-color: white;
 	font-family: 'main_font';
+	
 `;
 
 const ContentImage = styled.img`
@@ -153,4 +160,25 @@ const ContentImage = styled.img`
 	width: 60px;
 	height: 60px;
 	border-radius: 100%;
+`;
+
+const Container = styled.div`
+  margin-left:auto;
+  margin-right:auto;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  flex-direction: column;
+  position:relative;
+  font-family: "loadingpage_font";
+  @media (min-width: 800px) {
+    width: 600px;
+    height: 100vh;
+    /* border:1px solid #95afc0; */
+    /* border-left:1px solid #95afc0;
+    border-right:1px solid #95afc0; */
+  }
 `;
