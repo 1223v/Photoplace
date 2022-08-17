@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import SlickComponent from './SliderImg';
 
-function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs, contents, titles, nums }) {
+function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs, contents, titles, nums,cityd }) {
 	
 	const [Share, setShare] = useState(false);
 	
@@ -80,7 +80,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 							<Field style={{padding: '5px 0px 0px 0px'}}>
 								<img alt="" style={{ height:'20px', width:'25px', padding: '1px 2px', float: 'left' }}
 									   src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbSShKN%2FbtrIcG5SCGN%2FhKSILrQXKSh4fWQS4CjXQ1%2Fimg.png"></img>
-								장소는 어쩌구<br/>
+								{cityd}<br/>
 								<img alt="" style={{ height:'20px', width:'25px', padding: '1px 2px', float: 'left' }}
 									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fby0ndM%2FbtrIaPWtnIG%2FMGIxUL2x8XgaRzH6id7Oa1%2Fimg.png"></img>
 								거리는 이만큼

@@ -32,7 +32,7 @@ const BusanMap = () => {
 
 		var map = new kakao.maps.Map(container, options);
 
-		Axios.get('/api/data/busanmap').then((response) => {
+		Axios.get('/api/data/busansmap').then((response) => {
 			// 마커 이미지의 이미지 주소입니다
 			
 			for (var i = 0; i < response.data.length; i++) {

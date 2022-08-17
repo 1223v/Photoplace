@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GridCards from '../commons/GridCards';
 import Axios from 'axios';
 import styled from 'styled-components';
@@ -6,15 +6,12 @@ import styled from 'styled-components';
 function Ranking() {
 	const [Rankings, setRankings] = useState([]);
 
-	useEffect(()=>{
+	useEffect(() => {
 		Axios.get('/api/data/seoulsmap').then((response) => {
-		setRankings(response.data);
-		
-	});
-		
-	},[])
+			setRankings(response.data);
+		});
+	}, []);
 
-	
 	return (
 		<div>
 			<br />
@@ -29,9 +26,12 @@ function Ranking() {
 					/>
 				</Instag>
 				<Insta>
-					<h3>Photoplace</h3>
-					<h3>팔로우</h3>
-					<h3>···</h3>
+					<h3>
+						Photoplace 
+						<br/>
+						<Button href="https://www.instagram.com/photoplace70/">팔로우</Button>
+						&nbsp;&nbsp;···
+					</h3>	
 
 					<div>
 						게시물 <b>200</b>
@@ -52,6 +52,7 @@ function Ranking() {
 					<React.Fragment key={index}>
 						<GridCards
 							image={rank.imageSrc}
+							index={index + 1}
 							num={rank.num}
 							title={rank.title}
 							content={rank.content}
@@ -80,13 +81,25 @@ const IMage = styled.img`
 `;
 
 const Insta = styled.div`
-	
-	
-	
 	@media only screen and (max-width: 430px) {
 		body {
-			
 		}
+	}
+`;
+
+const Button = styled.a`
+	background-color: #0095F6;
+	border: 1px solid #0095F6;
+	border-radius: 5px;
+	font-size: 50%;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	padding:5px 9px;
+	font-weight:bold;
+	:hover{
+		text-decoration: none;
+		color: white;
 	}
 `;
 

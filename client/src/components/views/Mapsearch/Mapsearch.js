@@ -156,11 +156,11 @@ function Mapsearch() {
 			
 			setSeoul(response.data);
 		});
-		Axios.get('/api/data/busanmap').then((response) => {
+		Axios.get('/api/data/busansmap').then((response) => {
 			
 			setBusan(response.data);
 		});
-		Axios.get('/api/data/dramamap').then((response) => {
+		Axios.get('/api/data/dramasmap').then((response) => {
 			
 			setDrama(response.data);
 		});

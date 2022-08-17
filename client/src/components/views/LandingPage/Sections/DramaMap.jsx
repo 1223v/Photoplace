@@ -30,7 +30,7 @@ const DramaMap = () => {
 
 		var map = new kakao.maps.Map(container, options);
 
-		Axios.get('/api/data/dramamap').then((response) => {
+		Axios.get('/api/data/dramasmap').then((response) => {
 			// 마커 이미지의 이미지 주소입니다
 			
 			for (var i = 0; i < response.data.length; i++) {

@@ -57,7 +57,7 @@ function GridCards(props) {
 		
 		<Link to={`/Detail/${props.num}`}>
 			<Image alt={props.title} style={{backgroundImage: `url(${props.image})`}}>
-				<Numtext>#{props.num}</Numtext>
+				<Numtext>#{props.index}</Numtext>
 				<br/>
 				<br/>
 				<br/>

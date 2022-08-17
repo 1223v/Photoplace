@@ -51,7 +51,7 @@ router.post('/aimap',(req,res)=>{
 	})
 });
 
-router.get('/busanmap',(req,res)=>{
+router.get('/busansmap',(req,res)=>{
     var sql = `select * from Marker WHERE title LIKE '%부산%' OR city LIKE '%부산%'`;
     connection.query(sql,(err,rows)=>{
        if(err){
@@ -65,7 +65,7 @@ router.get('/busanmap',(req,res)=>{
     })
 });
 
-router.get('/jejumap',(req,res)=>{
+router.get('/jejusmap',(req,res)=>{
     var sql = `select * from Marker WHERE title LIKE '%제주%' OR city LIKE '%제주%'`;
     connection.query(sql,(err,rows)=>{
        if(err){
@@ -79,7 +79,7 @@ router.get('/jejumap',(req,res)=>{
     })
 });
 
-router.get('/dramamap',(req,res)=>{
+router.get('/dramasmap',(req,res)=>{
     var sql = `select * from Marker WHERE title LIKE '%드라마%' OR tag_1 LIKE '%드라마%' OR tag_2 LIKE '%드라마%'`;
     connection.query(sql,(err,rows)=>{
        if(err){
