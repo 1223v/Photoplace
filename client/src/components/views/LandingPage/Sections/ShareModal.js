@@ -12,12 +12,15 @@ function Share_modal({className, onClose, maskClosable, closable, visible, title
 		document.body.appendChild(script);
 		return () => document.body.removeChild(script);
 	}, []);
-
+	
+	
+	
 	const shareKakaoCustom = () => {
 		const url = document.URL;
 		let found = parseInt(url.match(/\d+/g));
 		
 		if(window.Kakao) {
+			
 			const kakao = window.Kakao;
 			if(!kakao.isInitialized()) {
 				kakao.init("88a1a10486c09c3e8ebff912acfccd68");

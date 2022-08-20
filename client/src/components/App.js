@@ -17,8 +17,10 @@ import SeoulMap from './views/LandingPage/SeoulMap';
 import BusanMap from './views/LandingPage/Sections/BusanMap';
 import JejuMap from './views/LandingPage/Sections/JejuMap';
 import DramaMap from './views/LandingPage/Sections/DramaMap';
+import {ShareContext} from './views/Context/forShareModal';
 
 function App() {
+	const [Appear, setAppear] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const location = useLocation();
 	
@@ -35,16 +37,22 @@ function App() {
 	const url = document.URL;
 	if (url.includes('Detail')) {
 		return (
-			<div>
-				<NavbarDetail />
-				<div style={{ minHeight: 'calc(100vh - 80px)' }}>
-					<Routes>
-						<Route path="/Detail/:id" element={<Detail />} />
-						<Route path="/Roadviews" element={<Roadviews />} />
-					</Routes>
+			<ShareContext.Provider
+			value= {{
+				Appear,
+				setAppear
+			}}>
+				<div>
+					<NavbarDetail />
+					<div style={{ minHeight: 'calc(100vh - 80px)' }}>
+						<Routes>
+							<Route path="/Detail/:id" element={<Detail />} />
+							<Route path="/Roadviews" element={<Roadviews />} />
+						</Routes>
+					</div>
+					<Footer />
 				</div>
-				<Footer />
-			</div>
+			</ShareContext.Provider>
 		);
 	} else if (url.includes('Roadviews')) {
 		return (
@@ -60,25 +68,31 @@ function App() {
 	}
 
 	return (
-		<div>
-			<NavBar />
-			<div style={{ minHeight: 'calc(100vh - 80px)' }}>
-				<Routes>
-					<Route path="/" element={<SeoulMap />} />
-					<Route path="/Seoul" element={<Seoul />} />
-					<Route path="/Busan" element={<Busan />} />
-					<Route path="/Jeju" element={<Jeju />} />
-					<Route path="/Drama" element={<Drama />} />
-					<Route path="/Mapsearch" element={<Mapsearch />} />
-					<Route path="/Ranking" element={<Ranking />} />
-					<Route path="/AImap" element={<AImap />} />
-					<Route path="/BusanMap" element={<BusanMap />} />
-					<Route path="/JejuMap" element={<JejuMap />} />
-					<Route path="/DramaMap" element={<DramaMap />} />
-				</Routes>
+		<ShareContext.Provider
+		value= {{
+			Appear,
+			setAppear
+		}}>
+			<div>
+				<NavBar />
+				<div style={{ minHeight: 'calc(100vh - 80px)' }}>
+					<Routes>
+						<Route path="/" element={<SeoulMap />} />
+						<Route path="/Seoul" element={<Seoul />} />
+						<Route path="/Busan" element={<Busan />} />
+						<Route path="/Jeju" element={<Jeju />} />
+						<Route path="/Drama" element={<Drama />} />
+						<Route path="/Mapsearch" element={<Mapsearch />} />
+						<Route path="/Ranking" element={<Ranking />} />
+						<Route path="/AImap" element={<AImap />} />
+						<Route path="/BusanMap" element={<BusanMap />} />
+						<Route path="/JejuMap" element={<JejuMap />} />
+						<Route path="/DramaMap" element={<DramaMap />} />
+					</Routes>
+				</div>
+				<Footer />
 			</div>
-			<Footer />
-		</div>
+		</ShareContext.Provider>
 	);
 }
 

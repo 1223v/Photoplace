@@ -65,7 +65,7 @@ const SearchBar = styled.form`
 	background: #f2f2f2;
 	border: none;
 	border-radius: 10px;
-	width: 90%;
+	width: 300px;
 	height: 35px;
 	padding: 0.5% 1% 0.5% 1%;
 	margin-top: 10px;
@@ -113,10 +113,16 @@ const StyledButton = styled.button`
 	color: #666666;
 	background-color: #f2f2f2;
 	border: none;
-	width: 40px;
+	width: 50px;
 	font: 10px;
 `;
 
+const ImgTitle = styled.div`
+	color : #000000;
+`
+const ImgContent = styled.div`
+	color: #666666;
+`
 /*
 const Container = styled.div`
 	margin-left: auto;
@@ -209,13 +215,18 @@ function Mapsearch() {
 										{SearchImage.map((array, index) => {
 											return (
 												<motion.div className="item7777" key={index}>
+													<Link to={`/Detail/${array.num}`}>
 													<div>
 														<img src={array.imageSrc} alt="" />
 														<br />
-														{array.title}
-														<br />
-														{array.content}
+														<ImgTitle>
+															{array.title}
+														</ImgTitle>
+														<ImgContent>
+															{array.content}
+														</ImgContent>
 													</div>
+													</Link>
 												</motion.div>
 											);
 										})}
@@ -265,13 +276,18 @@ function Mapsearch() {
 									{Seoul.map((array, index) => {
 										return (
 											<motion.div className="item7777" key={index}>
-												
-													<img src={array.imageSrc} alt="" />
-													<br />
-													{array.title}
-													<br />
-													{array.content}
-												
+												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>
+													<div>
+														<img src={array.imageSrc} alt="" />
+														<br />
+														<ImgTitle>
+															{array.title}
+														</ImgTitle>
+														<ImgContent>
+															{array.content}
+														</ImgContent>
+													</div>
+												</Link>
 											</motion.div>
 										);
 									})}
@@ -300,11 +316,18 @@ function Mapsearch() {
 									{Busan.map((array, index) => {
 										return (
 											<motion.div className="item7777" key={index}>
-												<img src={array.imageSrc} alt="" />
-												<br />
-												{array.title}
-												<br />
-												{array.content}
+												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>
+													<div>
+														<img src={array.imageSrc} alt="" />
+														<br />
+														<ImgTitle>
+															{array.title}
+														</ImgTitle>
+														<ImgContent>
+															{array.content}
+														</ImgContent>
+													</div>
+												</Link>
 											</motion.div>
 										);
 									})}
@@ -333,11 +356,18 @@ function Mapsearch() {
 									{Drama.map((array, index) => {
 										return (
 											<motion.div className="item7777" key={index}>
-												<img src={array.imageSrc} alt="" />
-												<br />
-												{array.title}
-												<br />
-												{array.content}
+												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>
+													<div>
+														<img src={array.imageSrc} alt="" />
+														<br />
+														<ImgTitle>
+															{array.title}
+														</ImgTitle>
+														<ImgContent>
+															{array.content}
+														</ImgContent>
+													</div>
+												</Link>
 											</motion.div>
 										);
 									})}

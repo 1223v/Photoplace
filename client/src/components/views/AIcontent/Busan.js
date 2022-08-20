@@ -247,7 +247,7 @@ const Busan = (props, { history }) => {
 					<br/>
 					
 					<div>
-						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Seoul">서울 </Link>
+						<Link style={{zIndex:'10', color:'black',textDecoration: 'none',marginLeft:'15%'}} to="/Seoul">서울 </Link>
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Busan">부산</Link>
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Jeju"> 제주</Link>
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Drama"> 드라마</Link>

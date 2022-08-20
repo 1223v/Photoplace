@@ -16,7 +16,7 @@ const AnalysisPageWrapper = styled.div`
 
 const AnalysisTitleWrapper = styled.div`
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-between;
 `;
 

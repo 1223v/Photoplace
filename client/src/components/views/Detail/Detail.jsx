@@ -8,13 +8,14 @@ import { useParams } from 'react-router-dom'; //이미지 상단 <버튼 누르�
 import Sharemodal from '../LandingPage/Sections/ShareModal';
 import Detailmap from '../Detailmap/Detailmap';
 import '../../../index.css';
+import Detailinfo from './Detailinfo';
+import {useShare} from '../Context/forShareModal';
 
 function Detail(props) {
-	const [Appear, setAppear] = useState(false);
+	const {Appear, setAppear} = useShare();
 
 	const init = () => {
 		const url = document.URL;
-		console.log(document.URL);
 		if (url.includes('true')) {
 			setAppear(true);
 		}
@@ -24,7 +25,7 @@ function Detail(props) {
 		setAppear(false);
 	};
 
-	const [width, setwidthe] = useState(0);
+	
 	const [Details, setDetails] = useState([]);
 	const dragAreaRef = useRef(null);
 
@@ -129,10 +130,16 @@ function Detail(props) {
 		};
 		Axios.post('/api/data/Detail/' + id, body).then((response) => {
 			setDetails(response.data[0]);
+			
+			
 		});
-		setwidthe(dragAreaRef.current.scrollWidth - dragAreaRef.current.offsetWidth);
+		
 	}, []);
 
+	
+	//<br/>왕창 준거 줄이면(or 늘리면) keenSlider 사진근처로 이동
+	//animate={{y:-110}} <-- 페이지 새로고침했을 때 keenSlider 시작위치
+	
 	return (
 		<div
 			className="fixed"
@@ -162,11 +169,6 @@ function Detail(props) {
 				<br />
 				<br />
 				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
 				
 				
 			</div>
@@ -176,48 +178,20 @@ function Detail(props) {
 					whileTap={{ cursor: 'grabbing' }}
 					className="KeenSlider"
 					drag="y"
-					dragConstraints={{ top: -950, bottom: 0 }}
+					dragConstraints={{ top: -1050, bottom: 0 }}
 					style={{ width: '100%', height: '100%'}}
+					
+					initial={{y: 0}}
 				>
-					<div className="line">&nbsp;</div>
-
 					<div className="loc_info_expln">
+						<br/>
 						<div className="loc_name">{Details.title}</div>
-						<div className="loc_explanation">
-							
-							{Details.content}
-							
-						</div>
+						<div className="loc_explanation">{Details.content}</div>
 					</div>
 
 					<br />
 					<div className="conges_info">
-						<div className="conges_info_inner">
-							<div className="d_cong">요일별 혼잡도</div>
-							<div className="d_cong_expln">
-								* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다.
-							</div>
-
-							<div className="days">
-								월&nbsp;&nbsp;&nbsp;&nbsp;화&nbsp;&nbsp;&nbsp;&nbsp;수&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;&nbsp;&nbsp;&nbsp;금&nbsp;&nbsp;&nbsp;&nbsp;토&nbsp;&nbsp;&nbsp;&nbsp;일
-							</div>
-							<div className="cong_circles">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<div className="c_green">.</div>&nbsp;&nbsp;&nbsp;
-								<div className="c_green">.</div>&nbsp;&nbsp;&nbsp;
-								<div className="c_yellow">.</div>&nbsp;&nbsp;&nbsp;
-								<div className="c_orange">.</div>&nbsp;&nbsp;&nbsp;
-								<div className="c_red">.</div>&nbsp;&nbsp;&nbsp;
-								<div className="c_red">.</div>&nbsp;&nbsp;&nbsp;
-								<div className="c_orange">.</div>
-								<br />
-								<br />
-								<br />
-								<br />
-							</div>
-							<br />
-							<br />
-						</div>
+						<Detailinfo cityinfo ={Details.city}/>
 					</div>
 
 					<br />

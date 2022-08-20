@@ -6,12 +6,19 @@
     font-weight: normal;
     font-style: normal;
 }
-
+/*
 @font-face {
      font-family: 'main_font';
      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/locus_sangsang.woff') format('woff');
      font-weight: normal;
      font-style: normal;
+}
+*/
+@font-face {
+    font-family: 'main_font';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
@@ -210,13 +217,25 @@ font-size: 5px;
 overflow-y: auto;
 */
 
+/*media query*/
+/* 360 x 740 
+    orientation: landscape <-- 화면 넓이가 화면 높이보다 크면(전체화면일때)
+*/
+
+@media only screen and (orientation: landscape){
+	.fixed{
+		background-size: 360px 360px;
+		position: fixed; 
+		width: 100%;
+	}
+}
 .fixed{
-	position: fixed; 
-	width: 100%;
-	background-size: 400px 500px;
-	
+		background-size: 360px 360px;
+		position: fixed; 
+		width: 100%;
 }
 
+/* Detail.js에 - <--썻었는데 이제 안씀
 .line{
 	text-align: center;
 	font-size: 30px;
@@ -224,6 +243,8 @@ overflow-y: auto;
 	font-family: "main_font";
 	font-weight: bold;
 }
+*/
+
 .locName_and_btn_back{
 	/* < 장소이름 - 취소버튼 겸 장소이름 */
 	height: 50%;

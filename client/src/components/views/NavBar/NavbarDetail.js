@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import {IoIosArrowBack} from "react-icons/io"
 import {GrShareOption} from "react-icons/gr"
 import  'bootstrap/dist/css/bootstrap.min.css';
-
+import {useShare} from '../Context/forShareModal';
 
 const MainText=styled.div`
    
@@ -17,7 +17,12 @@ const MainText=styled.div`
 
 
 function NavbarDetail() {
-  
+	
+  	const {Appear, setAppear} = useShare();
+	const click = () => {
+		setAppear(true);
+	}
+	
   return (
 
     <div >
@@ -29,8 +34,8 @@ function NavbarDetail() {
 			</Link>
 			
 			<MainText style={{ textAlign:'center' }}>장소이름</MainText>
-			
-			<GrShareOption size="30" color="#000000"/>
+			<GrShareOption onClick={click} size="30" color="#000000"/>
+
 		</div>
     </Container>
   </Navbar>

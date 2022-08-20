@@ -29,14 +29,17 @@ const Roadviews = (props) => {
 			);
 
 			//커스텀 오버레이를 로드뷰 위에 올립니다.
-			new kakao.maps.CustomOverlay({
+			var customOverlay=new kakao.maps.CustomOverlay({
 				map: roadview,
 				position: new kakao.maps.Viewpoint(
 					location.state.left_loc,
 					location.state.right_loc
 				),
 				content: img,
+				setRange: 30
+				
 			});
+			customOverlay.setRange(30);
 		});
 	});
 	return (

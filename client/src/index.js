@@ -22,7 +22,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	
 	
-  <React.StrictMode>
+  
 		<BrowserRouter>
 		<Provider
 			store={store}
@@ -36,7 +36,7 @@ root.render(
 		</PersistGate>
 		</Provider>
     </BrowserRouter>
-  </React.StrictMode>
+  
 		
 );
 
