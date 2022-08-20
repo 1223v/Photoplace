@@ -32,7 +32,7 @@ const Footer = () => {
           />
 		  </div>
       </Link>
-      <Link to="/Ranking" className="nav-link" onClick={() => setActiveNav(4)}>
+      <Link to="/SeoulRanking" className="nav-link" onClick={() => setActiveNav(4)}>
         <div className="nav-color">
           <IoMdTrophy
 			  size="25"

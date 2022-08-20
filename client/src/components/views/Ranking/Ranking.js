@@ -4,17 +4,17 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-function Ranking() {
+function Ranking(props) {
 	const [City, setCity] = useState([]);
 	const [Rankings, setRankings] = useState([]);
 	const [Page, setPage] = useState(0);
 	const [Visible, setVisible] = useState(true);
-
 	useEffect(() => {
 		// Axios.get('/api/data/seoulsmap').then((response) => {
 		// 	setRankings(response.data);
 		// });
-		Axios.get('/api/data/Ranking').then((response) => {
+		console.log(props.category);
+		Axios.get('/api/data/' + props.category+'Ranking').then((response) => {
 			setCity(response.data);
 		});
 	}, []);
@@ -25,10 +25,11 @@ function Ranking() {
 		// });
 
 		let body = {
-			rankingObject: Limit(City),
+			rankingObject: Limit(City)
 		};
 		if (body.rankingObject.length !== 0 ) {
-			Axios.post('api/data/Rankinginfo', body).then((response) => {
+			Axios.post('api/data/' + props.category + 'Rankinginfo', body).then((response) => {
+				console.log(response.data);
 				setRankings(response.data);
 				setPage(Page + 1);
 			});
@@ -43,9 +44,11 @@ function Ranking() {
 		let body = {
 			rankingObject: Limit(City),
 		};
-		Axios.post('api/data/Rankinginfo', body).then((response) => {
+		Axios.post('api/data/' + props.category + 'Rankinginfo', body).then((response) => {
+			console.log(response.data)
 			setRankings([...Rankings, ...response.data]);
 			if(City.length <= Page*5 + 5){
+				console.log(Page * 5 + 5);
 				setVisible(false);
 			}else{
 				setPage(Page + 1);
@@ -91,7 +94,7 @@ function Ranking() {
 			<Containered>
 				<ContentBar key="5">
 					<ContentBa key="1">
-						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/SeoulRanking">
 							<ContentImage
 								alt="ph1"
 								src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZpuBZ%2FbtrJB3Uv0j1%2FPMw9UW5233SHt3mACd9DX0%2Fimg.jpg"
@@ -100,7 +103,7 @@ function Ranking() {
 						</Link>
 					</ContentBa>
 					<ContentBa key="2">
-						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/BusanMap">
+						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/BusanRanking">
 							<ContentImage
 								alt="ph2"
 								src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbcp5G1%2FbtrJC5EjiCr%2FvNDlQpmTTekbBci9j0W2sk%2Fimg.jpg"
@@ -109,7 +112,7 @@ function Ranking() {
 						</Link>
 					</ContentBa>
 					<ContentBa key="3">
-						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/JejuMap">
+						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/JejuRanking">
 							<ContentImage
 								alt="ph3"
 								src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbsIu9O%2FbtrJCqol93S%2F7YEKkox4JUMSVvklKKgqNK%2Fimg.jpg"
@@ -290,3 +293,6 @@ const CButton = styled.button`
 	border: 1px solid #18978f;
 	border-radius: 30px;
 `;
+
+
+

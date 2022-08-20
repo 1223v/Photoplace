@@ -29,7 +29,7 @@ function NavbarDetail() {
     <Navbar style={{position: "fixed", backgroundColor:"#FFFFFF", top:"0", left:"0", right:"0", zIndex:"500"}}>
     <Container>		
 		<div style={{ display:'flex', textAlign:'center', width:'100%' }}>
-    		<Link to="/Ranking">
+    		<Link to="/SeoulRanking">
 				<IoIosArrowBack size="30" color="#000000"/>
 			</Link>
 			

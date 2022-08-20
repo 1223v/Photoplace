@@ -9,7 +9,9 @@ import Drama from './views/AIcontent/Drama';
 import Jeju from './views/AIcontent/Jeju';
 import Loading from './views/Loading/Loading';
 import Mapsearch from './views/Mapsearch/Mapsearch';
-import Ranking from './views/Ranking/Ranking';
+import Ranking from './views/Ranking/RankingSeoul';
+import BusanRanking from './views/Ranking/RankingBusan';
+import JejuRanking from './views/Ranking/RankingJeju';
 import Detail from './views/Detail/Detail';
 import Share from './views/Share/Share';
 import AImap from './views/AImap/AImap';
@@ -104,7 +106,9 @@ function App() {
 						<Route path="/Jeju" element={<Jeju />} />
 						<Route path="/Drama" element={<Drama />} />
 						<Route path="/Mapsearch" element={<Mapsearch />} />
-						<Route path="/Ranking" element={<Ranking />} />
+						<Route path="/SeoulRanking" element={<Ranking />} />
+						<Route path="/BusanRanking" element={<BusanRanking />} />
+						<Route path="/JejuRanking" element={<JejuRanking />} />
 						<Route path="/AImap" element={<AImap />} />
 						<Route path="/BusanMap" element={<BusanMap />} />
 						<Route path="/JejuMap" element={<JejuMap />} />

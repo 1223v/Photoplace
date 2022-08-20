@@ -22,32 +22,20 @@ router.get('/seoulsmap', (req, res) => {
 router.post('/detailsi', (req, res) => {
 	var usercity = req.body.city;
 	
-	//var usercity = "서울특별시 강남구 대치동 11-11"
+	
 	let usercitys = usercity.split(' ', 2);
+	console.log(usercity);
 	
-	
-	var sql = `SELECT NAME, PER_CNT,DAY_CODE FROM signgu_data WHERE CODE LIKE '1%' and NAME LIKE '%${usercitys[1]}%'`;
-    //var sql=`SELECT NAME, PER_CNT FROM signgu_data WHERE CODE LIKE '1%' ORDER by PER_CNT;`;
+	var sql=`SELECT DAY_NAME, avg(PER_CNT) AS PER_CNT FROM signgu_data WHERE CODE LIKE '1%' and NAME LIKE '%${usercitys[1]}%' GROUP BY DAY_CODE ORDER BY DAY_CODE;`;
+    
 	connection.query(sql, (err, rows) => {
 		if (err) {
 			return res.send(err);
 		}
 
-        let bodys= [
-        { 
-            Sun: (rows[0].PER_CNT+rows[7].PER_CNT)/2,
-            Mon: (rows[1].PER_CNT+rows[8].PER_CNT)/2,
-            Tue: (rows[2].PER_CNT+rows[9].PER_CNT)/2,
-            Wed: (rows[3].PER_CNT+rows[10].PER_CNT)/2,
-            Thu: (rows[4].PER_CNT+rows[11].PER_CNT)/2,
-            Fri: (rows[5].PER_CNT+rows[12].PER_CNT)/2,
-            Sat: rows[6].PER_CNT,
-            total:(rows[0].PER_CNT+rows[7].PER_CNT+rows[1].PER_CNT+rows[8].PER_CNT+rows[2].PER_CNT+rows[9].PER_CNT+rows[3].PER_CNT+rows[10].PER_CNT+rows[4].PER_CNT+rows[11].PER_CNT+rows[5].PER_CNT+rows[12].PER_CNT+rows[6].PER_CNT)/13
-        }
-        ];
-        let bodypi=[(rows[0].PER_CNT+rows[7].PER_CNT)/2,(rows[1].PER_CNT+rows[8].PER_CNT)/2,(rows[2].PER_CNT+rows[9].PER_CNT)/2,(rows[3].PER_CNT+rows[10].PER_CNT)/2,(rows[4].PER_CNT+rows[11].PER_CNT)/2, (rows[5].PER_CNT+rows[12].PER_CNT)/2,rows[6].PER_CNT]
-		let bodyObject = [];
-		
+        
+        let bodypi=[rows[0].PER_CNT,rows[1].PER_CNT,rows[2].PER_CNT,rows[3].PER_CNT,rows[4].PER_CNT,rows[5].PER_CNT,rows[6].PER_CNT];
+		let bodyObject=[];
         for(var i =0; i<7;i++){
             if(bodypi[i]>=230 && bodypi[i]<400){
                 //초
@@ -167,7 +155,7 @@ router.post('/Detail/:id', (req, res) => {
 
 
 
-router.get('/Ranking', (req, res) => {
+router.get('/SeoulRanking', (req, res) => {
 	var sql = `select DISTINCT NAME from signgu_data where DAY_CODE = 2 and CODE like '1%' order by PER_CNT desc;`
 	connection.query(sql, (err, rows) => {
 		if (err) {
@@ -176,28 +164,94 @@ router.get('/Ranking', (req, res) => {
 		return res.send(rows);
 	});
 });
+router.post('/SeoulRankinginfo', (req, res) => {
 
-
-router.post('/Rankinginfo', (req, res) => {
-	//var ranking = req.body.rankingObject.value;
-	
-	let ranking = [req.body.rankingObject[0].NAME, req.body.rankingObject[1].NAME, 
-				   req.body.rankingObject[2].NAME, req.body.rankingObject[3].NAME, req.body.rankingObject[4].NAME];
-	/*
-	var sql1 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[0].NAME};'`
-	var sql2 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[1].NAME};'`
-	var sql3 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[2].NAME};'`
-	var sql4 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[3].NAME};'`
-	var sql5 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[4].NAME};'`
+	var sql1 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[0].NAME}';`;
+	var sql2 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[1].NAME}';`;
+	var sql3 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[2].NAME}';`;
+	var sql4 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[3].NAME}';`;
+	var sql5 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[4].NAME}';`;
 	var sql = sql1 + sql2 + sql3 + sql4 +sql5
-	*/
-	var sql = `select * from Marker where city REGEXP '서울' && city REGEXP ?`
-	console.log(sql);
-	connection.query(sql, ranking (err, rows) => {
+	connection.query(sql, (err, rows) => {
 		if (err) {
 			return res.send(err);
 		}
+		let Rank = []
+		let i, j
+		for (i = 0; i<5; i++){
+			for (j = 0; rows[i][j] != null; j++ ){
+				Rank.push(rows[i][j]);
+			}
+		}
+		return res.send(Rank);
+	});
+});
+
+
+
+router.get('/BusanRanking', (req, res) => {
+	var sql = `select DISTINCT NAME from signgu_data where DAY_CODE = 2 and CODE like '26%' order by PER_CNT desc;`
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			return res.send(err);
+		}	
 		return res.send(rows);
+	});
+});
+router.post('/BusanRankinginfo', (req, res) => {
+
+	var sql1 = `select * from Marker where city REGEXP '부산' && city REGEXP '${req.body.rankingObject[0].NAME}';`;
+	var sql2 = `select * from Marker where city REGEXP '부산' && city REGEXP '${req.body.rankingObject[1].NAME}';`;
+	var sql3 = `select * from Marker where city REGEXP '부산' && city REGEXP '${req.body.rankingObject[2].NAME}';`;
+	var sql4 = `select * from Marker where city REGEXP '부산' && city REGEXP '${req.body.rankingObject[3].NAME}';`;
+	var sql5 = `select * from Marker where city REGEXP '부산' && city REGEXP '${req.body.rankingObject[4].NAME}';`;
+	var sql = sql1 + sql2 + sql3 + sql4 +sql5
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			return res.send(err);
+		}
+		let Rank = []
+		let i, j
+		for (i = 0; i<5; i++){
+			for (j = 0; rows[i][j] != null; j++ ){
+				Rank.push(rows[i][j]);
+			}
+		}
+		return res.send(Rank);
+	});
+});
+
+
+
+router.get('/JejuRanking', (req, res) => {
+	var sql = `select DISTINCT NAME from signgu_data where DAY_CODE = 2 and CODE like '5%' order by PER_CNT desc;`
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			return res.send(err);
+		}	
+		return res.send(rows);
+	});
+});
+router.post('/JejuRankinginfo', (req, res) => {
+
+	var sql1 = `select * from Marker where city REGEXP '제주' && city REGEXP '${req.body.rankingObject[0].NAME}';`;
+	var sql2 = `select * from Marker where city REGEXP '제주' && city REGEXP '${req.body.rankingObject[1].NAME}';`;
+	var sql3 = `select * from Marker where city REGEXP '제주' && city REGEXP '${req.body.rankingObject[2].NAME}';`;
+	var sql4 = `select * from Marker where city REGEXP '제주' && city REGEXP '${req.body.rankingObject[3].NAME}';`;
+	var sql5 = `select * from Marker where city REGEXP '제주' && city REGEXP '${req.body.rankingObject[4].NAME}';`;
+	var sql = sql1 + sql2 + sql3 + sql4 +sql5
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			return res.send(err);
+		}
+		let Rank = []
+		let i, j
+		for (i = 0; i<5; i++){
+			for (j = 0; rows[i][j] != null; j++ ){
+				Rank.push(rows[i][j]);
+			}
+		}
+		return res.send(Rank);
 	});
 });
 
