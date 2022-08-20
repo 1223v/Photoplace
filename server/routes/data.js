@@ -181,16 +181,22 @@ router.get('/Ranking', (req, res) => {
 router.post('/Rankinginfo', (req, res) => {
 	//var ranking = req.body.rankingObject.value;
 	
-	let ranking= [req.body.rankingObject[0].NAME, req.body.rankingObject[1].NAME, 
-				  req.body.rankingObject[2].NAME, req.body.rankingObject[3].NAME, req.body.rankingObject[4].NAME];
-	
-	
-	var sql = `select * from Marker where city REGEXP '서울' && city REGEXP ?;`
-	connection.query(sql, ranking, (err, rows) => {
+	let ranking = [req.body.rankingObject[0].NAME, req.body.rankingObject[1].NAME, 
+				   req.body.rankingObject[2].NAME, req.body.rankingObject[3].NAME, req.body.rankingObject[4].NAME];
+	/*
+	var sql1 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[0].NAME};'`
+	var sql2 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[1].NAME};'`
+	var sql3 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[2].NAME};'`
+	var sql4 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[3].NAME};'`
+	var sql5 = `select * from Marker where city REGEXP '서울' && city REGEXP '${req.body.rankingObject[4].NAME};'`
+	var sql = sql1 + sql2 + sql3 + sql4 +sql5
+	*/
+	var sql = `select * from Marker where city REGEXP '서울' && city REGEXP ?`
+	console.log(sql);
+	connection.query(sql, ranking (err, rows) => {
 		if (err) {
 			return res.send(err);
 		}
-		console.log(rows);
 		return res.send(rows);
 	});
 });

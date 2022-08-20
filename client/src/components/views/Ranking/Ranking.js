@@ -8,7 +8,8 @@ function Ranking() {
 	const [City, setCity] = useState([]);
 	const [Rankings, setRankings] = useState([]);
 	const [Page, setPage] = useState(0);
-	
+	const [Visible, setVisible] = useState(true);
+
 	useEffect(() => {
 		// Axios.get('/api/data/seoulsmap').then((response) => {
 		// 	setRankings(response.data);
@@ -16,26 +17,42 @@ function Ranking() {
 		Axios.get('/api/data/Ranking').then((response) => {
 			setCity(response.data);
 		});
-
 	}, []);
-	
-	const Limit = (data) => {
-		let start = 0 + 5 * Page;
-		return data.slice(start, start + 5);
-	}	
-	
-	const Click = () =>{
-		console.log(City);
+
+	useEffect(() => {
+		// Axios.get('/api/data/seoulsmap').then((response) => {
+		// 	setRankings(response.data);
+		// });
+
 		let body = {
-			rankingObject: Limit(City)
+			rankingObject: Limit(City),
+		};
+		if (body.rankingObject.length !== 0 ) {
+			Axios.post('api/data/Rankinginfo', body).then((response) => {
+				setRankings(response.data);
+				setPage(Page + 1);
+			});
 		}
-		Axios.post('api/data/Rankinginfo', body)
-		.then(response => {
-			setRankings([...Rankings, ...response.data])
-			setPage(Page + 1);
-		})
-	}
-	
+	}, [City]);
+
+	const Limit = (data) => {
+		const start = 0 + 5 * Page;
+		return data.slice(start, start + 5);
+	};
+	const Click = () => {
+		let body = {
+			rankingObject: Limit(City),
+		};
+		Axios.post('api/data/Rankinginfo', body).then((response) => {
+			setRankings([...Rankings, ...response.data]);
+			if(City.length <= Page*5 + 5){
+				setVisible(false);
+			}else{
+				setPage(Page + 1);
+			}
+		});
+	};
+
 	return (
 		<div>
 			<br />
@@ -51,11 +68,11 @@ function Ranking() {
 				</Instag>
 				<Insta>
 					<h3>
-						Photoplace 
-						<br/>
+						Photoplace
+						<br />
 						<Button href="https://www.instagram.com/photoplace70/">팔로우</Button>
 						&nbsp;&nbsp;···
-					</h3>	
+					</h3>
 
 					<Ins>
 						게시물 <b>200</b>
@@ -70,20 +87,52 @@ function Ranking() {
 					</Ins>
 				</Insta>
 			</Container>
-			<br/>
+			<br />
 			<Containered>
-				<ContentBar key='5'>
-				
-				
-         <ContentBa key='1'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/"><ContentImage alt='ph1' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZpuBZ%2FbtrJB3Uv0j1%2FPMw9UW5233SHt3mACd9DX0%2Fimg.jpg"/><Contenttype>서울 핫플</Contenttype></Link></ContentBa>
-         <ContentBa key='2'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/BusanMap"><ContentImage alt='ph2' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbcp5G1%2FbtrJC5EjiCr%2FvNDlQpmTTekbBci9j0W2sk%2Fimg.jpg"/><Contenttype>부산 핫플</Contenttype></Link></ContentBa>
-         <ContentBa key='3'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/JejuMap"><ContentImage alt='ph3' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbsIu9O%2FbtrJCqol93S%2F7YEKkox4JUMSVvklKKgqNK%2Fimg.jpg"/><Contenttype>제주 핫플</Contenttype></Link></ContentBa>
-         <ContentBa key='4'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/DramaMap"><ContentImage alt='ph4' src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbQwTTe%2FbtrJLSwqsZE%2FDjAkDnIVkBoOJkr3TGaxW0%2Fimg.jpg"/><Contenttype>드라마<br/>/영화</Contenttype></Link></ContentBa>
-       			
-				
-			</ContentBar>
+				<ContentBar key="5">
+					<ContentBa key="1">
+						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+							<ContentImage
+								alt="ph1"
+								src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZpuBZ%2FbtrJB3Uv0j1%2FPMw9UW5233SHt3mACd9DX0%2Fimg.jpg"
+							/>
+							<Contenttype>서울 핫플</Contenttype>
+						</Link>
+					</ContentBa>
+					<ContentBa key="2">
+						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/BusanMap">
+							<ContentImage
+								alt="ph2"
+								src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbcp5G1%2FbtrJC5EjiCr%2FvNDlQpmTTekbBci9j0W2sk%2Fimg.jpg"
+							/>
+							<Contenttype>부산 핫플</Contenttype>
+						</Link>
+					</ContentBa>
+					<ContentBa key="3">
+						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/JejuMap">
+							<ContentImage
+								alt="ph3"
+								src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbsIu9O%2FbtrJCqol93S%2F7YEKkox4JUMSVvklKKgqNK%2Fimg.jpg"
+							/>
+							<Contenttype>제주 핫플</Contenttype>
+						</Link>
+					</ContentBa>
+					<ContentBa key="4">
+						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/DramaMap">
+							<ContentImage
+								alt="ph4"
+								src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbQwTTe%2FbtrJLSwqsZE%2FDjAkDnIVkBoOJkr3TGaxW0%2Fimg.jpg"
+							/>
+							<Contenttype>
+								드라마
+								<br />
+								/영화
+							</Contenttype>
+						</Link>
+					</ContentBa>
+				</ContentBar>
 			</Containered>
-			<hr style={{ width: '70%', margin: 'auto'}} />
+			<hr style={{ width: '70%', margin: 'auto' }} />
 			<div style={{ margin: '1rem auto', textAlign: 'center' }}>
 				{Rankings.map((rank, index) => (
 					<React.Fragment key={index}>
@@ -101,7 +150,7 @@ function Ranking() {
 				<br />
 			</div>
 			<div style={{ textAlign: 'center' }}>
-				<CButton onClick={Click}>더보기</CButton>
+				{Visible && <CButton onClick={Click}>더보기</CButton>}
 			</div>
 			<br />
 			<br />
@@ -132,16 +181,16 @@ const Insta = styled.div`
 `;
 
 const Button = styled.a`
-	background-color: #0095F6;
-	border: 1px solid #0095F6;
+	background-color: #0095f6;
+	border: 1px solid #0095f6;
 	border-radius: 5px;
 	font-size: 50%;
 	text-align: center;
 	text-decoration: none;
 	color: white;
-	padding:5px 9px;
-	font-weight:bold;
-	:hover{
+	padding: 5px 9px;
+	font-weight: bold;
+	:hover {
 		text-decoration: none;
 		color: white;
 	}
@@ -150,7 +199,6 @@ const Button = styled.a`
 const Ins = styled.div`
 	font-size: 90%;
 `;
-
 
 const Instag = styled.div`
 	display: flex;
@@ -179,23 +227,21 @@ const Container = styled.div`
 `;
 
 const Containered = styled.div`
-  margin-left:auto;
-  margin-right:auto;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #FFFFFF;
-  flex-direction: column;
-  position:relative;
-  font-family: "loadingpage_font";
-  @media (max-width: 480px) {
-    
-    
-    /* border:1px solid #95afc0; */
-    /* border-left:1px solid #95afc0;
+	margin-left: auto;
+	margin-right: auto;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #ffffff;
+	flex-direction: column;
+	position: relative;
+	font-family: 'loadingpage_font';
+	@media (max-width: 480px) {
+		/* border:1px solid #95afc0; */
+		/* border-left:1px solid #95afc0;
     border-right:1px solid #95afc0; */
-  }
+	}
 `;
 
 const ContentBar = styled.ul`
@@ -203,16 +249,16 @@ const ContentBar = styled.ul`
 	margin-top: 8px;
 	margin-left: auto;
 	margin-right: auto;
-	
-  	padding-left:0px;
+
+	padding-left: 0px;
 	background-color: white;
 	font-family: 'main_font';
 `;
 
 const Contenttype = styled.span`
 	display: flex;
-	margin-left:auto;
-	margin-right:auto;
+	margin-left: auto;
+	margin-right: auto;
 	background-color: white;
 	font-family: 'main_font';
 `;
@@ -220,8 +266,8 @@ const Contenttype = styled.span`
 const ContentBa = styled.li`
 	display: inline-block;
 	float: left;
-	margin-left:15px;
-	margin-right:auto;
+	margin-left: 15px;
+	margin-right: auto;
 	position: relative;
 	background-color: white;
 	font-family: 'main_font';
@@ -235,12 +281,12 @@ const ContentImage = styled.img`
 `;
 const CButton = styled.button`
 	background-color: white;
-	color: #18978F;
+	color: #18978f;
 	width: 80px;
 	height: 40px;
 	position: absolute;
 	padding: 0;
 	margin: 10px;
-	border: 1px solid #18978F;
+	border: 1px solid #18978f;
 	border-radius: 30px;
 `;

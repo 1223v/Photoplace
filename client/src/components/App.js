@@ -11,6 +11,7 @@ import Loading from './views/Loading/Loading';
 import Mapsearch from './views/Mapsearch/Mapsearch';
 import Ranking from './views/Ranking/Ranking';
 import Detail from './views/Detail/Detail';
+import Share from './views/Share/Share';
 import AImap from './views/AImap/AImap';
 import Roadviews from './views/Roadviews/Roadviews';
 import SeoulMap from './views/LandingPage/SeoulMap';
@@ -22,6 +23,10 @@ import {ShareContext} from './views/Context/forShareModal';
 function App() {
 	const [Appear, setAppear] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const [Num, setNum] = useState(0);
+	const [Title, setTitle] = useState("");
+	const [Description, setDesc] = useState("");
+	const [Img, setImg] = useState(null);
 	const location = useLocation();
 	
 	useEffect(() => {
@@ -39,14 +44,14 @@ function App() {
 		return (
 			<ShareContext.Provider
 			value= {{
-				Appear,
-				setAppear
+				Appear, setAppear, setTitle, setNum, setDesc, setImg
 			}}>
 				<div>
 					<NavbarDetail />
 					<div style={{ minHeight: 'calc(100vh - 80px)' }}>
 						<Routes>
 							<Route path="/Detail/:id" element={<Detail />} />
+							<Route path="/Share" element={<Share />} />
 							<Route path="/Roadviews" element={<Roadviews />} />
 						</Routes>
 					</div>
@@ -65,6 +70,22 @@ function App() {
 				<Footer />
 			</div>
 		);
+	} else if (url.includes('Share')) {
+		return (
+			<ShareContext.Provider
+			value= {{ Img, Title, Description, Num }}>
+				<div>
+					<NavbarDetail />
+					<div style={{ minHeight: 'calc(100vh - 80px)', align: 'center', valign: 'center'}}>
+						<Routes>
+							<Route path="/Share" element={<Share />} />
+						</Routes>
+					</div>
+					<Footer />
+				</div>
+			</ShareContext.Provider>
+		)
+		
 	}
 
 	return (

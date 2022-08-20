@@ -1,10 +1,22 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import {useShare} from '../../Context/forShareModal';
 
 //const {Kakao, location} = window;
 
 function Share_modal({className, onClose, maskClosable, closable, visible, titles, img, description, view }) {
+	const {setTitle, setNum, setDesc, setImg} = useShare();
+	
+	const test = () => {
+		let num = parseInt(document.URL.match(/\d+/g));
+		setTitle(titles);
+		setNum(num);
+		setDesc(description);
+		setImg(img);
+		window.open("https://korea-app-beqvu.run.goorm.io/Share");
+	}
+	
 	useEffect(() => {
 		const script = document.createElement("script");
 		script.src = "https://developers.kakao.com.sdk/js/kakao.js";
@@ -97,6 +109,8 @@ function Share_modal({className, onClose, maskClosable, closable, visible, title
 		+ encodeURIComponent(title + br + summary + br + link);
 		window.open(url, 'sns', 'height=600 width=500');
 	}
+	
+	
 
 
 	return (
@@ -123,7 +137,7 @@ function Share_modal({className, onClose, maskClosable, closable, visible, title
 						)}
 						
 						<CloseStyled className="modal-close" style={{padding: '0px 10px'}} >
-							<Share onClick={shareKakaoCustom}>
+							<Share onClick={test}>
 								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd8VMLZ%2FbtrJcGxWJKd%2FIaUnrdLRt41LWVL498QjjK%2Fimg.png"
 								style={{height: '50px', width: '50px', padding: '1px 2px'}}
 								/>
