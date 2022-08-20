@@ -16,14 +16,7 @@ function Ranking() {
 		Axios.get('/api/data/Ranking').then((response) => {
 			setCity(response.data);
 		});
-		let body = {
-			rankingObject: City.slice(0, 5)
-		}
-		Axios.post('api/data/Rankinginfo', body)
-		.then(response => {
-			setRankings(response.data)
-			console.log(Rankings);
-		})
+
 	}, []);
 	
 	const Limit = (data) => {
