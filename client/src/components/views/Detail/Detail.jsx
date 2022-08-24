@@ -35,7 +35,7 @@ function Detail(props) {
 		{
 			num: 0,
 			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png',
+				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdAkhzL%2FbtrKkSb8Uwu%2FnXvvbZjHBykkBGmGdcOJIK%2Fimg.png',
 			loc_name: '장소이름1',
 			loc_info: '주소1',
 			dayCd: 1,
@@ -44,15 +44,14 @@ function Detail(props) {
 			touristNm: '현지인(a)',
 			tourNum: 30107,
 			baseYmd: 20210513,
-			down_loc: 128.7273531,
-			up_loc: 35.3490459,
-			left_loc: 320,
-			right_loc: -40,
+			down_loc: 126.99743695587028,
+			up_loc: 37.710686362916505,
+			left_loc: 0,
+			right_loc: 0,
 		},
 		{
 			num: 1,
-			image:
-				'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqUpFy%2FbtrGF6SfaRi%2F2RBk5OaRvQD5FbuJtcCE70%2Fimg.png',
+			image:'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvJpjn%2FbtrKi87VDvR%2FGc86Sh40JtaEnglvRkuE8K%2Fimg.png',
 			loc_name: '장소이름2',
 			loc_info: '주소2',
 			dayCd: 2,
@@ -61,10 +60,10 @@ function Detail(props) {
 			touristNm: '외지인(b)',
 			tourNum: 284354,
 			baseYmd: 20210514,
-			down_loc: 128.7273531,
-			up_loc: 35.3490459,
-			left_loc: 320,
-			right_loc: -40,
+			down_loc: 127.10539886818825,
+			up_loc: 37.50919618018258,
+			left_loc: 130,
+			right_loc: 0,
 		},
 		{
 			num: 3,
@@ -211,6 +210,8 @@ function Detail(props) {
 								<div>
 									<Detailmap
 										num={items[1].num}
+										image={items[1].image}
+										loc_name = {items[1].loc_name}
 										up_loc={items[1].up_loc}
 										down_loc={items[1].down_loc}
 										left_loc={items[1].left_loc}

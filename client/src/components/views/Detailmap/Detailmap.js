@@ -32,20 +32,41 @@ const Detailmap = (props) => {
 	});
 
 	return (
+		//이 부분은 윤기훈이 수정함 꼬이면 알려주세요
 		<MAP id="map1">
-			<Button>
-				<Link
-					to={'/Roadviews'}
-					state={{num:props.num, up_loc: props.up_loc, down_loc: props.down_loc, left_loc: props.left_loc, right_loc: props.right_loc}}
-					style={{ textDecoration: 'none', color: 'black' }}
-				>
-					<BiWebcam size="25" />
-					로드뷰보기
-				</Link>
+			<Button>	
+				<LeftBox>
+					<Link
+						to={'/Roadviews'}
+						state={{num:props.num, up_loc: props.up_loc, down_loc: props.down_loc, left_loc: props.left_loc, right_loc: props.right_loc}}
+						style={{ textDecoration: 'none', color: 'black' }}
+					>
+						<BiWebcam size="25" />
+						로드뷰보기
+					</Link>
+				</LeftBox>
+				<RightBox>
+					<a
+						href={"https://map.kakao.com/link/to/" + props.loc_name + "," + props.up_loc + "," + props.down_loc}
+						target='_blank'
+						style={{ textDecoration: 'none', color: 'black' }}
+					>
+						길찾기
+					</a>
+				</RightBox>
 			</Button>
 		</MAP>
 	);
 };
+
+const LeftBox = styled.div`
+	float: left;
+	width: 50%;
+`
+const RightBox = styled.div`
+	float: right;
+	width: 50%;
+`
 
 const MAP = styled.div`
 	position: relative;

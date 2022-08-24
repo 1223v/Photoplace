@@ -4,9 +4,11 @@ import Modal from './Sections/Modal';
 import Axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import AdModal from './Sections/AdModal';
 
 const SeoulMap = () => {
 	const [modalVisible, setModalVisible] = useState(false);
+	const [AdModalVisible, setAdModalVisible] = useState(false);
 	const [imageSrcs, setimageSrcs] = useState('');
 	const [contents, setcontents] = useState('');
 	const [Titles, setTitles] = useState('');
@@ -15,6 +17,7 @@ const SeoulMap = () => {
 
 	const closeModal = () => {
 		setModalVisible(false);
+		setAdModalVisible(false);
 	};
 
 
@@ -95,6 +98,14 @@ const SeoulMap = () => {
 			>
 				<div>
 					<React.Fragment>
+						{AdModalVisible && (
+							<AdModal
+							visible={AdModalVisible}
+							closable={true}
+							onClose={closeModal}
+							></AdModal>
+						)}
+						
 						{modalVisible && (
 							<Modal
 								visible={modalVisible}

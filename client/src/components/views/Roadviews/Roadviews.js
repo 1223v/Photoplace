@@ -11,8 +11,7 @@ const Roadviews = (props) => {
 		const { kakao } = window;
 		var img = document.createElement('img');
 		img.id = 'overlayImg';
-		img.src =
-			'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FG0YYM%2FbtrIXxAjM1u%2FYtXlXpsFIEYkWKPab038JK%2Fimg.png';
+		img.src =location.state.image;
 
 		const roadviewContainer = document.getElementById('roadview');
 		const roadview = new kakao.maps.Roadview(roadviewContainer);

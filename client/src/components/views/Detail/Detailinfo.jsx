@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import styled from 'styled-components';
-
+import ApexCharts from 'react-apexcharts';
 function Detailinfo(props) {
 	const [Detailobject, setDetailobject] = useState([]);
 
@@ -21,6 +21,103 @@ function Detailinfo(props) {
 	}, [props.cityinfo]);
 	
 		
+	
+var options = {
+          series: [{
+          name: 'TEAM A',
+          type: 'column',
+          data: [23, 11, 22, 27, 13, 22, 37]
+        }, {
+          name: 'TEAM B',
+          type: 'area',
+          data: [44, 55, 41, 67, 22, 43, 21]
+        }],
+          chart: {
+          height: 350,
+          type: 'line',
+          stacked: false,
+			  toolbar: {
+        show: false,
+        offsetX: 0,
+        offsetY: 0,
+        tools: {
+          download: false,
+          selection: false,
+          zoom: false,
+          zoomin: false,
+          zoomout: false,
+          pan: false,
+          reset: false,
+          customIcons: []
+        },
+        export: {
+          csv: {
+            filename: undefined,
+            columnDelimiter: ',',
+            headerCategory: 'category',
+            headerValue: 'value',
+            dateFormatter(timestamp) {
+              return new Date(timestamp).toDateString()
+            }
+          },
+          svg: {
+            filename: undefined,
+          },
+          png: {
+            filename: undefined,
+          }
+        },
+        autoSelected: 'zoom' 
+      },
+        },
+        stroke: {
+          width: [0, 2, 5],
+          curve: 'smooth'
+        },
+        plotOptions: {
+          bar: {
+            columnWidth: '50%'
+          }
+        },
+        
+        fill: {
+          opacity: [0.85, 0.25, 1],
+          gradient: {
+            inverseColors: false,
+            shade: 'light',
+            type: "vertical",
+            opacityFrom: 0.85,
+            opacityTo: 0.55,
+            stops: [0, 100, 100, 100]
+          }
+        },
+        
+        markers: {
+          size: 0
+        },
+        xaxis: {
+          categories: ['Mon', 'Tues', 'Web', 'Thu', 'Fri', 'Sat', 'Sun'],
+        },
+        yaxis: {
+          
+          min: 0
+        },
+        tooltip: {
+          shared: true,
+          intersect: false,
+          y: {
+            formatter: function (y) {
+              if (typeof y !== "undefined") {
+                return y.toFixed(0) + "명";
+              }
+              return y;
+        
+            }
+          }
+        }
+        };
+
+     
 
 	return (
 		<div>
@@ -30,9 +127,12 @@ function Detailinfo(props) {
 					* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다.
 					*해당 지역의 방문객 
 				</div>
+				<div>
+					<ApexCharts series={options.series} options={options} type="bar" width="100%" height="100%" />
+				</div>
 
-				<div className="days">
-					일&nbsp;&nbsp;&nbsp;&nbsp;월&nbsp;&nbsp;&nbsp;&nbsp;화&nbsp;&nbsp;&nbsp;&nbsp;수&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;&nbsp;&nbsp;&nbsp;금&nbsp;&nbsp;&nbsp;&nbsp;토
+				{/*<div className="days">
+					월&nbsp;&nbsp;&nbsp;&nbsp;화&nbsp;&nbsp;&nbsp;&nbsp;수&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;&nbsp;&nbsp;&nbsp;금&nbsp;&nbsp;&nbsp;&nbsp;토&nbsp;&nbsp;&nbsp;&nbsp;일
 				</div>
 				<div className="cong_circles">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -50,6 +150,8 @@ function Detailinfo(props) {
 				</div>
 				<br />
 				<br />
+				*/}
+				
 			</div>
 		</div>
 	);
