@@ -181,7 +181,7 @@ const Container = styled.div`
   margin-left:auto;
   margin-right:auto;
   width: 100vw;
-  height: 100vh;
+  height: 94vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,7 +191,7 @@ const Container = styled.div`
   font-family: "loadingpage_font";
   @media (min-width: 800px) {
     width: 600px;
-    height: 100vh;
+    height: 94vh;
     /* border:1px solid #95afc0; */
     /* border-left:1px solid #95afc0;
     border-right:1px solid #95afc0; */

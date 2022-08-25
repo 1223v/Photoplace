@@ -12,7 +12,7 @@ const Roadviews = (props) => {
 		var img = document.createElement('img');
 		img.id = 'overlayImg';
 		img.src =location.state.image;
-
+		console.log(location.state.image);
 		const roadviewContainer = document.getElementById('roadview');
 		const roadview = new kakao.maps.Roadview(roadviewContainer);
 		const roadviewClient = new kakao.maps.RoadviewClient();

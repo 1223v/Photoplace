@@ -1,7 +1,7 @@
 /* 네비바 하단 고정 밑 세로 길이 설정 */
 .wrapper {
     position: fixed;
-    bottom: 0;
+    bottom: 30px;
     left: 0;
     right: 0;
     height: 65px;

@@ -38,7 +38,7 @@ const Detailmap = (props) => {
 				<LeftBox>
 					<Link
 						to={'/Roadviews'}
-						state={{num:props.num, up_loc: props.up_loc, down_loc: props.down_loc, left_loc: props.left_loc, right_loc: props.right_loc}}
+						state={{num:props.num, up_loc: props.up_loc, down_loc: props.down_loc, left_loc: props.left_loc, right_loc: props.right_loc, image: props.image}}
 						style={{ textDecoration: 'none', color: 'black' }}
 					>
 						<BiWebcam size="25" />

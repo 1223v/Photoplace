@@ -11,6 +11,10 @@ const OPTIONS = [
 	{ value: 'popularity', name: '인기순' },
 ];
 
+const Tags = [
+	{num: 1, Tagname: '롯데월드'},
+	{num: 2, Tagname: '부산'},
+]
 const WholeWrapper = styled.div`
 	font-family: 'main_font';
 	background-color: #f2f2f2;
@@ -71,6 +75,27 @@ const SearchBar = styled.form`
 	margin-top: 10px;
 	align-items: center;
 `;
+const TagButton = styled.button`
+	background-color: #FED06E;
+	color: white;
+	width: auto;
+	height: 25px;
+	position: relative;
+	padding: 0 10px 0 10px;
+	margin-left: 10px;
+	border: none;
+	border-radius: 30px;
+`;
+
+const TagContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 45px;
+	background-color: white;
+	padding: 10px;
+	margin-bottom: 5px;
+`
 /*
 const Image = styled.img`
 	margin-left: 1%;
@@ -145,6 +170,7 @@ const Container = styled.div`
 `;
 */
 
+
 function Mapsearch() {
 	const [Text, setText] = useState('');
 	const [SearchImage, setSearchImage] = useState([]);
@@ -152,8 +178,8 @@ function Mapsearch() {
 	const [Seoul, setSeoul] = useState([]);
 	const [Busan, setBusan] = useState([]);
 	const [Drama, setDrama] = useState([]);
+	const [Tag, setTag] = useState(Tags);
 	const dragAreaRef = useRef(null);
-
 
 
 	useEffect(() => {
@@ -163,11 +189,9 @@ function Mapsearch() {
 			setSeoul(response.data);
 		});
 		Axios.get('/api/data/busansmap').then((response) => {
-			
 			setBusan(response.data);
 		});
 		Axios.get('/api/data/dramasmap').then((response) => {
-			
 			setDrama(response.data);
 		});
 	}, []);
@@ -190,8 +214,45 @@ function Mapsearch() {
 			}
 		});
 	};
+	const TagSearch = (e, params) => {
+		console.log(params);
+		setText(params);
+		e.preventDefault();
+		let body = {
+			search: params,
+		};
+		Axios.post('/api/data/Searchpage', body).then((response) => {
+			setSearchImage(response.data);
+			setIsSearching(true);
+		});
+	}
+	const TagPage = () => {
+		return(
+			<TagContainer>
+				<motion.div
+					ref={dragAreaRef}
+					className="dragAreaRef"
+					whileTap={{ cursor: 'grabbing' }}
+				>
+					<motion.div
+						style={{ width: '100%', height: '100%' }}
+						drag="x"
+						dragConstraints={{ right: 0, left: -12300 }}
+						className="inner-carousel"
+					>
+						{Tag.map((array, index) => {
+							return(
+								<div key={index}>
+									<TagButton onClick={(e) => {TagSearch(e, array.Tagname)}}>#{array.Tagname}</TagButton>
+								</div>
+							);
+						})}
+					</motion.div>
+				</motion.div>
+			</TagContainer>
+		)
+	}
 	const SearchPage = (props) => {
-		const SearchText = props.Text;
 		if (props.isSearching) {
 			return (
 				
@@ -209,7 +270,7 @@ function Mapsearch() {
 									<motion.div
 										style={{ width: '100%', height: '100%' }}
 										drag="x"
-										dragConstraints={{ right: 0, left: -15000}}
+										dragConstraints={{ right: 0, left: -1000}}
 										className="inner-carousel"
 									>
 										{SearchImage.map((array, index) => {
@@ -255,7 +316,9 @@ function Mapsearch() {
 						<Select options={OPTIONS} defaultValue="latest"></Select>
 					</SelectWrapper>
 				</SearchWrapper>
+				<TagPage></TagPage>
 				<SearchPage isSearching={isSearching}></SearchPage>
+
 				<InfoWrapper>
 					<TitleWrapper>
 						<Title>서울</Title>
@@ -336,46 +399,7 @@ function Mapsearch() {
 						</div>
 					</ItemWrapper>
 				</InfoWrapper>
-				<InfoWrapper>
-					<TitleWrapper>
-						<Title>드라마</Title>
-					</TitleWrapper>
-					<ItemWrapper>
-						<div style={{ width: '100%' }} className="imagesRow">
-							<motion.div
-								ref={dragAreaRef}
-								className="dragAreaRef"
-								whileTap={{ cursor: 'grabbing' }}
-							>
-								<motion.div
-									style={{ width: '100%', height: '100%' }}
-									drag="x"
-									dragConstraints={{ right: 0, left: -15000 }}
-									className="inner-carousel"
-								>
-									{Drama.map((array, index) => {
-										return (
-											<motion.div className="item7777" key={index}>
-												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>
-													<div>
-														<img src={array.imageSrc} alt="" />
-														<br />
-														<ImgTitle>
-															{array.title}
-														</ImgTitle>
-														<ImgContent>
-															{array.content}
-														</ImgContent>
-													</div>
-												</Link>
-											</motion.div>
-										);
-									})}
-								</motion.div>
-							</motion.div>
-						</div>
-					</ItemWrapper>
-				</InfoWrapper>
+
 			</WholeWrapper>
 			<br />
 			<br />
