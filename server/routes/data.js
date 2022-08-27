@@ -34,7 +34,7 @@ router.post('/detailsi', (req, res) => {
 		}
 
         
-        let bodypi=[rows[0].PER_CNT,rows[1].PER_CNT,rows[2].PER_CNT,rows[3].PER_CNT,rows[4].PER_CNT,rows[5].PER_CNT,rows[6].PER_CNT];
+        let bodypi=[parseInt(rows[0].PER_CNT),parseInt(rows[1].PER_CNT),parseInt(rows[2].PER_CNT),parseInt(rows[3].PER_CNT),parseInt(rows[4].PER_CNT),parseInt(rows[5].PER_CNT),parseInt(rows[6].PER_CNT)];
 		let bodyObject=[];
         for(var i =0; i<7;i++){
             if(bodypi[i]>=230 && bodypi[i]<400){
@@ -59,7 +59,7 @@ router.post('/detailsi', (req, res) => {
             }
         }
 		
-		return res.send(bodyObject);
+		return res.send(bodypi);
 	});
 });
 
@@ -130,6 +130,18 @@ router.get('/Componentpage', (req, res) => {
 router.post('/Searchpage', (req, res) => {
 	var userSearch = req.body.search;
 	var sql = `SELECT * FROM Marker WHERE title LIKE '%${userSearch}%' OR tag_1 LIKE '%${userSearch}%' OR tag_2 LIKE '%${userSearch}%'`;
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			console.log('실패');
+			return res.send(err);
+		} else {
+			return res.send(rows);
+		}
+	});
+});
+
+router.get('/Searchpage', (req, res) => {
+	var sql = `select distinct tag_1 from Marker union select distinct tag_2 from Marker;`;
 	connection.query(sql, (err, rows) => {
 		if (err) {
 			console.log('실패');

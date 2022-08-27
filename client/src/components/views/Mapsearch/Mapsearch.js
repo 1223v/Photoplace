@@ -11,10 +11,10 @@ const OPTIONS = [
 	{ value: 'popularity', name: '인기순' },
 ];
 
-const Tags = [
-	{num: 1, Tagname: '롯데월드'},
-	{num: 2, Tagname: '부산'},
-]
+// const Tags = [
+// 	{num: 1, Tagname: '롯데월드'},
+// 	{num: 2, Tagname: '부산'},
+// ]
 const WholeWrapper = styled.div`
 	font-family: 'main_font';
 	background-color: #f2f2f2;
@@ -78,7 +78,7 @@ const SearchBar = styled.form`
 const TagButton = styled.button`
 	background-color: #FED06E;
 	color: white;
-	width: auto;
+	width: max-content;
 	height: 25px;
 	position: relative;
 	padding: 0 10px 0 10px;
@@ -178,7 +178,7 @@ function Mapsearch() {
 	const [Seoul, setSeoul] = useState([]);
 	const [Busan, setBusan] = useState([]);
 	const [Drama, setDrama] = useState([]);
-	const [Tag, setTag] = useState(Tags);
+	const [Tag, setTag] = useState([]);
 	const dragAreaRef = useRef(null);
 
 
@@ -193,6 +193,10 @@ function Mapsearch() {
 		});
 		Axios.get('/api/data/dramasmap').then((response) => {
 			setDrama(response.data);
+		});
+		Axios.get('/api/data/SearchPage').then((response) => {
+			setTag(response.data);
+			console.log(response.data);
 		});
 	}, []);
 
@@ -243,7 +247,7 @@ function Mapsearch() {
 						{Tag.map((array, index) => {
 							return(
 								<div key={index}>
-									<TagButton onClick={(e) => {TagSearch(e, array.Tagname)}}>#{array.Tagname}</TagButton>
+									<TagButton onClick={(e) => {TagSearch(e, array.tag_1)}}>#{array.tag_1}</TagButton>
 								</div>
 							);
 						})}

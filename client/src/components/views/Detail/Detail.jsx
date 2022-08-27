@@ -51,7 +51,7 @@ function Detail(props) {
 		},
 		{
 			num: 1,
-			image:'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvJpjn%2FbtrKi87VDvR%2FGc86Sh40JtaEnglvRkuE8K%2Fimg.png',
+			image:'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FRlsU4%2FbtrKgr7ub4S%2FzBMoMdwKKnobu3Vfd7IQz0%2Fimg.png',
 			loc_name: '장소이름2',
 			loc_info: '주소2',
 			dayCd: 2,
@@ -60,9 +60,9 @@ function Detail(props) {
 			touristNm: '외지인(b)',
 			tourNum: 284354,
 			baseYmd: 20210514,
-			down_loc: 127.10539886818825,
-			up_loc: 37.50919618018258,
-			left_loc: 130,
+			down_loc: 126.98491702226163,
+			up_loc: 37.506690594154875,
+			left_loc: 0,
 			right_loc: 0,
 		},
 		{

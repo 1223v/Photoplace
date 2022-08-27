@@ -15,7 +15,7 @@ function Detailinfo(props) {
 			Axios.post('/api/data/detailsi', body).then((response) => {
 				
 				setDetailobject(response.data);
-				
+				console.log(response.data);
 			});
 		}
 	}, [props.cityinfo]);
@@ -26,14 +26,14 @@ var options = {
           series: [{
           name: 'TEAM A',
           type: 'column',
-          data: [23, 11, 22, 27, 13, 22, 37]
+          data: [Detailobject[0], Detailobject[1], Detailobject[2], Detailobject[3], Detailobject[4], Detailobject[5], Detailobject[6]]
         }, {
           name: 'TEAM B',
           type: 'area',
-          data: [44, 55, 41, 67, 22, 43, 21]
+          data: [Detailobject[0], Detailobject[1], Detailobject[2], Detailobject[3], Detailobject[4], Detailobject[5], Detailobject[6]]
         }],
           chart: {
-          height: 350,
+          height: 550,
           type: 'line',
           stacked: false,
 			  toolbar: {
@@ -99,8 +99,9 @@ var options = {
           categories: ['Mon', 'Tues', 'Web', 'Thu', 'Fri', 'Sat', 'Sun'],
         },
         yaxis: {
-          
-          min: 0
+			opacity: [0, 0, 0],
+          max: 2500,
+          opposite: true
         },
         tooltip: {
           shared: true,
