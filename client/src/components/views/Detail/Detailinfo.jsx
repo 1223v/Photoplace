@@ -96,13 +96,20 @@ var options = {
           size: 0
         },
         xaxis: {
-          categories: ['Mon', 'Tues', 'Web', 'Thu', 'Fri', 'Sat', 'Sun'],
+          categories: ['Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
         },
         yaxis: {
-			opacity: [0, 0, 0],
+		  opacity: [0, 0, 0],
           max: 2500,
-          opposite: true
+          opposite: true,
+		  labels: {
+			show: false,
+		}
         },
+		dataLabels: {
+			enabled: false,
+		},
+
         tooltip: {
           shared: true,
           intersect: false,

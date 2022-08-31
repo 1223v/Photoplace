@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { BiWebcam } from 'react-icons/bi';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+//<BiWebcam size="25" />
 
 const Detailmap = (props) => {
 	/*global kakao*/
@@ -41,7 +41,6 @@ const Detailmap = (props) => {
 						state={{num:props.num, up_loc: props.up_loc, down_loc: props.down_loc, left_loc: props.left_loc, right_loc: props.right_loc, image: props.image}}
 						style={{ textDecoration: 'none', color: 'black' }}
 					>
-						<BiWebcam size="25" />
 						로드뷰보기
 					</Link>
 				</LeftBox>
@@ -62,15 +61,18 @@ const Detailmap = (props) => {
 const LeftBox = styled.div`
 	float: left;
 	width: 50%;
+	border-bottom-left-radiuis:15px;
 `
 const RightBox = styled.div`
 	float: right;
 	width: 50%;
+	border-bottom-right-radius:15px;
 `
 
 const MAP = styled.div`
 	position: relative;
-
+	border-bottom-right-radius:15px;
+	border-bottom-left-radius:15px;
 	width: 100%;
 	height: 306px;
 `;
@@ -79,7 +81,9 @@ const Button = styled.button`
 	z-index: 5;
 	position: absolute;
 	text-align: center;
-	border: 1px solid rgb(238, 238, 238);
+	border: none;
+	border-bottom-right-radius:15px;
+	border-bottom-left-radius:15px;
 	bottom: 0px;
 	padding: 13px;
 	height: 47px;

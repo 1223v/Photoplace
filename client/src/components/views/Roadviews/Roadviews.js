@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
 import './Roadviews.css';
 
 const Roadviews = (props) => {
 	/*global kakao*/
+	const history=useNavigate();
 	const location = useLocation();
 	useEffect(() => {
 		const { kakao } = window;
@@ -43,17 +44,8 @@ const Roadviews = (props) => {
 	});
 	return (
 		<Detail>
-			
 			<Compo>
-				<Link
-					to={`/Detail/${location.state.num}`}
-					state={{num:location.state.num}}
-					key={location.key}
-					style={{ textDecoration: 'none', color: 'black' }}
-				>
-					{BiArrowBack()}
-					돌아가기
-				</Link>
+				<BiArrowBack size="30" color="#000000" onClick={()=> history(-1)}/>	
 			</Compo>
 			<View id="roadview" />
 		</Detail>
@@ -71,7 +63,8 @@ const Compo = styled.div`
 	padding: 18px;
 	background-color: white;
 	display: flex;
-	height: 50px;
+	height: 60px;
+	align-items:center;
 	position: relative;
 `;
 

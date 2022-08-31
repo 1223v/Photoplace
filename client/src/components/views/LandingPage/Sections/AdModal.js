@@ -46,7 +46,7 @@ function AdModal({ className, onClose, maskClosable, closable, visible}) {
 									console.log("현재는 광고가 없습니다!")
 								 }
 							</script>
-							<ins class="kakao_ad_area" style="display:none" 
+							<ins class="kakao_ad_area" style="display:none; position: fixed;" 
 								data-ad-onfall = "callBackFunc"
 								 data-ad-unit    = "DAN-LZqzukiu3QDGF5c4" 
 								 data-ad-width   = "320" 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Container } from 'react-bootstrap'
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {IoIosArrowBack} from "react-icons/io"
 import {GrShareOption} from "react-icons/gr"
 import  'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +17,7 @@ const MainText=styled.div`
 
 
 function NavbarDetail() {
-	
+	const history=useNavigate();
   	const {Appear, setAppear} = useShare();
 	const click = () => {
 		setAppear(true);
@@ -29,10 +29,7 @@ function NavbarDetail() {
     <Navbar style={{position: "fixed", backgroundColor:"#FFFFFF", top:"0", left:"0", right:"0", zIndex:"500"}}>
     <Container>		
 		<div style={{ display:'flex', textAlign:'center', width:'100%' }}>
-    		<Link to="/SeoulRanking">
-				<IoIosArrowBack size="30" color="#000000"/>
-			</Link>
-			
+			<IoIosArrowBack size="30" color="#000000" onClick={()=> history(-1)}/>
 			<MainText style={{ textAlign:'center' }}>장소이름</MainText>
 			<GrShareOption onClick={click} size="30" color="#000000"/>
 

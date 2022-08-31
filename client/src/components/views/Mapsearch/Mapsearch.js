@@ -1,15 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import Select from '../Ranking/SelectBox';
 import '../../../index.css';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
-
-const OPTIONS = [
-	{ value: 'latest', name: '최신순' },
-	{ value: 'popularity', name: '인기순' },
-];
 
 // const Tags = [
 // 	{num: 1, Tagname: '롯데월드'},
@@ -20,11 +14,6 @@ const WholeWrapper = styled.div`
 	background-color: #f2f2f2;
 `;
 
-const SelectWrapper = styled.div`
-	display: flex;
-	background-color: white;
-	align-items: center;
-`;
 
 const SearchWrapper = styled.div`
 	display: flex;
@@ -32,7 +21,6 @@ const SearchWrapper = styled.div`
 	justify-content: center;
 	align-content: center;
 	width: 100%;
-	padding-left: 20px;
 	padding-bottom: 20px;
 	margin-bottom: 5px;
 	background-color: white;
@@ -84,7 +72,7 @@ const TagButton = styled.button`
 	padding: 0 10px 0 10px;
 	margin-left: 10px;
 	border: none;
-	border-radius: 30px;
+	border-radius: 10px;
 `;
 
 const TagContainer = styled.div`
@@ -178,6 +166,7 @@ function Mapsearch() {
 	const [Seoul, setSeoul] = useState([]);
 	const [Busan, setBusan] = useState([]);
 	const [Drama, setDrama] = useState([]);
+	const [Jeju, setJeju] = useState([]);
 	const [Tag, setTag] = useState([]);
 	const dragAreaRef = useRef(null);
 
@@ -193,6 +182,9 @@ function Mapsearch() {
 		});
 		Axios.get('/api/data/dramasmap').then((response) => {
 			setDrama(response.data);
+		});
+		Axios.get('/api/data/jejusmap').then((response) => {
+			setJeju(response.data);
 		});
 		Axios.get('/api/data/SearchPage').then((response) => {
 			setTag(response.data);
@@ -316,9 +308,6 @@ function Mapsearch() {
 						<Input type="text" value={Text} onChange={onTextHandler} />
 						<StyledButton type="submit">검색</StyledButton>
 					</SearchBar>
-					<SelectWrapper>
-						<Select options={OPTIONS} defaultValue="latest"></Select>
-					</SelectWrapper>
 				</SearchWrapper>
 				<TagPage></TagPage>
 				<SearchPage isSearching={isSearching}></SearchPage>
@@ -381,6 +370,86 @@ function Mapsearch() {
 									className="inner-carousel"
 								>
 									{Busan.map((array, index) => {
+										return (
+											<motion.div className="item7777" key={index}>
+												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>
+													<div>
+														<img src={array.imageSrc} alt="" />
+														<br />
+														<ImgTitle>
+															{array.title}
+														</ImgTitle>
+														<ImgContent>
+															{array.content}
+														</ImgContent>
+													</div>
+												</Link>
+											</motion.div>
+										);
+									})}
+								</motion.div>
+							</motion.div>
+						</div>
+					</ItemWrapper>
+				</InfoWrapper>
+				<InfoWrapper>
+					<TitleWrapper>
+						<Title>제주</Title>
+					</TitleWrapper>
+					<ItemWrapper>
+						<div style={{ width: '100%' }} className="imagesRow">
+							<motion.div
+								ref={dragAreaRef}
+								className="dragAreaRef"
+								whileTap={{ cursor: 'grabbing' }}
+							>
+								<motion.div
+									style={{ width: '100%', height: '100%' }}
+									drag="x"
+									dragConstraints={{ right: 0, left: -12300 }}
+									className="inner-carousel"
+								>
+									{Jeju.map((array, index) => {
+										return (
+											<motion.div className="item7777" key={index}>
+												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>
+													<div>
+														<img src={array.imageSrc} alt="" />
+														<br />
+														<ImgTitle>
+															{array.title}
+														</ImgTitle>
+														<ImgContent>
+															{array.content}
+														</ImgContent>
+													</div>
+												</Link>
+											</motion.div>
+										);
+									})}
+								</motion.div>
+							</motion.div>
+						</div>
+					</ItemWrapper>
+				</InfoWrapper>
+				<InfoWrapper>
+					<TitleWrapper>
+						<Title>드라마</Title>
+					</TitleWrapper>
+					<ItemWrapper>
+						<div style={{ width: '100%' }} className="imagesRow">
+							<motion.div
+								ref={dragAreaRef}
+								className="dragAreaRef"
+								whileTap={{ cursor: 'grabbing' }}
+							>
+								<motion.div
+									style={{ width: '100%', height: '100%' }}
+									drag="x"
+									dragConstraints={{ right: 0, left: -12300 }}
+									className="inner-carousel"
+								>
+									{Drama.map((array, index) => {
 										return (
 											<motion.div className="item7777" key={index}>
 												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>

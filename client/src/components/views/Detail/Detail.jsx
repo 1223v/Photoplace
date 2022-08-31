@@ -24,7 +24,6 @@ function Detail(props) {
 	const closeModal = () => {
 		setAppear(false);
 	};
-
 	
 	const [Details, setDetails] = useState([]);
 	const dragAreaRef = useRef(null);
@@ -51,7 +50,7 @@ function Detail(props) {
 		},
 		{
 			num: 1,
-			image:'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FRlsU4%2FbtrKgr7ub4S%2FzBMoMdwKKnobu3Vfd7IQz0%2Fimg.png',
+			image:'https://blog.kakaocdn.net/dn/b6AJOq/btrKkgD7fRq/sxnHxFizAteJBSt2OORVR1/img.png',
 			loc_name: '장소이름2',
 			loc_info: '주소2',
 			dayCd: 2,
@@ -60,9 +59,9 @@ function Detail(props) {
 			touristNm: '외지인(b)',
 			tourNum: 284354,
 			baseYmd: 20210514,
-			down_loc: 126.98491702226163,
-			up_loc: 37.506690594154875,
-			left_loc: 0,
+			down_loc: 126.69192912457233,
+			up_loc: 35.3487825609607235,
+			left_loc: 220,
 			right_loc: 0,
 		},
 		{
@@ -204,7 +203,7 @@ function Detail(props) {
 							해당 장소의 위치 정보 입니다.
 							<DETAIL>
 								<Compo>
-									<Button>장소 위치</Button>
+									<div>{Details.city}</div>
 								</Compo>
 
 								<div>
@@ -223,7 +222,6 @@ function Detail(props) {
 					</div>
 
 		
-					
 					<div className="photo_div">
 						<div className="photos_collection">사진 모음</div>
 						<div className="img_and_expln">
@@ -280,11 +278,14 @@ function Detail(props) {
 export default Detail;
 
 const Compo = styled.div`
-	padding: 18px;
+	padding: 5px;
 	background-color: white;
 	display: flex;
-	height: 50px;
+	height: 40px;
 	position: relative;
+	align-items: center;
+	border-top-right-radius:15px;
+	border-top-left-radius:15px;
 `;
 
 const Button = styled.button`
@@ -298,7 +299,8 @@ const Button = styled.button`
 
 const DETAIL = styled.div`
 	margin: auto;
-
+	border: 3px solid #f2f2f2;
+	border-radius:15px;
 	right: 0;
 	width: 100%;
 	height: 100%;

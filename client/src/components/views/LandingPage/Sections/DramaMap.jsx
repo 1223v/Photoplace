@@ -29,18 +29,22 @@ const DramaMap = () => {
 
 		Axios.get('/api/data/dramasmap').then((response) => {
 			// 마커 이미지의 이미지 주소입니다
-
+			var backSize = new kakao.maps.Size(62, 87);
+			var backOption = {offset: new kakao.maps.Point(36, 78) };
+			var back = new kakao.maps.MarkerImage(
+				"https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FuB3qA%2FbtrKTpnIGuI%2FhGJH2lJxJDsm6iDPXzuRt0%2Fimg.png",
+				backSize,
+				backOption,
+			);
 			for (var i = 0; i < response.data.length; i++) {
 				// 마커 이미지의 이미지 크기 입니다
-				var imageSize3 = new kakao.maps.Size(64, 69);
-				var imageOption3 = { offset: new kakao.maps.Point(27, 69) };
-				// 마커 이미지를 생성합니다
+				var imageSize3 = new kakao.maps.Size(43, 47);
+				var imageOption3 = { offset: new kakao.maps.Point(26.5, 68.5) };
 				var markerImage3 = new kakao.maps.MarkerImage(
 					response.data[i].imageSrc,
 					imageSize3,
 					imageOption3
 				);
-
 				// 마커를 생성합니다
 				var latlngs = new kakao.maps.LatLng(
 					response.data[i].uplatlng,
@@ -52,9 +56,13 @@ const DramaMap = () => {
 					title: response.data[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 					image: markerImage3, // 마커 이미지
 				});
-
+				var backMarker = new kakao.maps.Marker({
+					map: map,
+					position: latlngs,
+					image: back,
+				})
 				kakao.maps.event.addListener(
-					marker3,
+					backMarker,
 					'click',
 					makeOverListener(
 						map,
@@ -66,6 +74,9 @@ const DramaMap = () => {
 						response.data[i].city
 					)
 				);
+				
+				backMarker.setMap(map);
+				marker3.setMap(map);
 			}
 
 			// 인포윈도우를 표시하는 클로저를 만드는 함수입니다

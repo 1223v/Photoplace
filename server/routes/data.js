@@ -19,6 +19,19 @@ router.get('/seoulsmap', (req, res) => {
 	});
 });
 
+router.post('/detailSlide', (req, res) => {
+	var usercity = req.body.city;
+	let usercitys = usercity.split(' ', 2);
+	var sql = `select * from photo_data WHERE PHOTOGRAPY_LOCATION LIKE '%${usercitys}%'`;
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			return res.send(err);
+		}
+
+		return res.send(rows);
+	});
+});
+
 router.post('/detailsi', (req, res) => {
 	var usercity = req.body.city;
 	
@@ -27,38 +40,19 @@ router.post('/detailsi', (req, res) => {
 	console.log(usercity);
 	
 	var sql=`SELECT DAY_NAME, avg(PER_CNT) AS PER_CNT FROM signgu_data WHERE CODE LIKE '1%' and NAME LIKE '%${usercitys[1]}%' GROUP BY DAY_CODE ORDER BY DAY_CODE;`;
-    
-	connection.query(sql, (err, rows) => {
+    var sql1 = ``
+	connection.query(sql + sql1, (err, results,rows) => {
+		
 		if (err) {
 			return res.send(err);
 		}
-
+		var sql_result = results[0];
+		var sql1_result = results[1];
         
-        let bodypi=[parseInt(rows[0].PER_CNT),parseInt(rows[1].PER_CNT),parseInt(rows[2].PER_CNT),parseInt(rows[3].PER_CNT),parseInt(rows[4].PER_CNT),parseInt(rows[5].PER_CNT),parseInt(rows[6].PER_CNT)];
-		let bodyObject=[];
-        for(var i =0; i<7;i++){
-            if(bodypi[i]>=230 && bodypi[i]<400){
-                //초
-				bodyObject.push("green");
-            }
-            else if(bodypi[i]>=400 && bodypi[i]<600){
-                //노 400~600
-				bodyObject.push("yellow");
-            }
-            else if(bodypi[i]>=600 && bodypi[i]<800){
-                    //주 600~ 800
-					bodyObject.push("orange");
-            }
-            else if(bodypi[i]>=800){
-                //빨 800 이상
-				bodyObject.push("red");
-            }
-            else if(bodypi[i] < 230){
-                //파 230이하
-				bodyObject.push("blue");
-            }
-        }
+        let bodypi=[parseInt(sql_result[0].PER_CNT),parseInt(sql_result[1].PER_CNT),parseInt(sql_result[2].PER_CNT),parseInt(sql_result[3].PER_CNT),parseInt(sql_result[4].PER_CNT),parseInt(sql_result[5].PER_CNT),parseInt(sql_result[6].PER_CNT)];
 		
+		console.log(bodypi);
+		console.log(sql1_result);
 		return res.send(bodypi);
 	});
 });
