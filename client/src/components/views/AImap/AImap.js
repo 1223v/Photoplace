@@ -29,10 +29,10 @@ const Container = styled.div`
   background-color: #FFFFFF;
   flex-direction: column;
   position:relative;
-  font-family: "loadingpage_font";
+  font-family: "main_font";
   @media (min-width: 800px) {
     width: 600px;
-    height: 100vh;
+    height: 94vh;
     /* border:1px solid #95afc0; */
     /* border-left:1px solid #95afc0;
     border-right:1px solid #95afc0; */
@@ -129,7 +129,6 @@ const AImap = () => {
 console.log("응", SubimageSrcs);
 	return (
 		<Container>
-			<br/>
 			
 			<div
 				id="map"

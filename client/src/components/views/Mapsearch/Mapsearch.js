@@ -22,32 +22,36 @@ const SearchWrapper = styled.div`
 	align-content: center;
 	width: 100%;
 	padding-bottom: 20px;
-	margin-bottom: 5px;
+	padding-top:10px;
+	margin-bottom: 3px;
 	background-color: white;
 `;
 
 const InfoWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 5px;
+	margin-bottom: 3px;
 	width: 100%;
 	align-items: center;
 	background-color: white;
-	padding: 5px;
+	padding: 2px;
 `;
 
 const TitleWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
-	margin-bottom: 5px;
+	margin-bottom: 3px;
 	width: 100%;
 	background-color: white;
 `;
 
+const Hr = styled.hr`
+	margin-bottom: 0.4em;
+`
 const Title = styled.div`
-	font-size: 28px;
-	margin-top: 8px;
-	margin_bottom: 5px;
+	font-size: 23px;
+	margin-top:10px;
+	margin-bottom: 5px;
 	margin-left: 8px;
 	font-weight: bold;
 `;
@@ -57,7 +61,7 @@ const SearchBar = styled.form`
 	background: #f2f2f2;
 	border: none;
 	border-radius: 10px;
-	width: 300px;
+	width: 320px;
 	height: 35px;
 	padding: 0.5% 1% 0.5% 1%;
 	margin-top: 10px;
@@ -82,7 +86,15 @@ const TagContainer = styled.div`
 	height: 45px;
 	background-color: white;
 	padding: 10px;
-	margin-bottom: 5px;
+	margin-bottom: 3px;
+`
+
+const ContentWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+	background-color: white;
+	justify-content: center;
 `
 /*
 const Image = styled.img`
@@ -132,9 +144,12 @@ const StyledButton = styled.button`
 
 const ImgTitle = styled.div`
 	color : #000000;
+	font-size:17px;
+	font-weight:bold;
 `
 const ImgContent = styled.div`
 	color: #666666;
+	font-size:15px;
 `
 /*
 const Container = styled.div`
@@ -251,7 +266,7 @@ function Mapsearch() {
 	const SearchPage = (props) => {
 		if (props.isSearching) {
 			return (
-				
+				<div>
 					<InfoWrapper>
 						<TitleWrapper>
 							<Title>검색결과</Title>
@@ -292,16 +307,14 @@ function Mapsearch() {
 							</div>
 						</ItemWrapper>
 					</InfoWrapper>
-				
+				</div>
 			);
 		}
 	};
 
 	return (
 		<div>
-			<br />
-			<br />
-			<br />
+			
 			<WholeWrapper>
 				<SearchWrapper>
 					<SearchBar onSubmit={onSubmitHandler}>
@@ -311,7 +324,6 @@ function Mapsearch() {
 				</SearchWrapper>
 				<TagPage></TagPage>
 				<SearchPage isSearching={isSearching}></SearchPage>
-
 				<InfoWrapper>
 					<TitleWrapper>
 						<Title>서울</Title>
@@ -331,12 +343,11 @@ function Mapsearch() {
 								>
 									{Seoul.map((array, index) => {
 										return (
-											<motion.div className="item7777" key={index}>
+											<motion.div className="item7777" key={index} style={{width: 'fit-content', textalign: 'center'}}>
 												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>
 													<div>
-														<img src={array.imageSrc} alt="" />
-														<br />
-														<ImgTitle>
+														<img src={array.imageSrc} alt=""/>
+														<ImgTitle style={{width: 'max-content'}}>
 															{array.title}
 														</ImgTitle>
 														<ImgContent>

@@ -59,8 +59,7 @@ function Ranking(props) {
 	return (
 		<div>
 			<br />
-			<br />
-			<br />
+
 
 			<Container>
 				<Instag>

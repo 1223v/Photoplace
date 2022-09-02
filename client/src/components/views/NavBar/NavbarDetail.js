@@ -6,13 +6,13 @@ import {IoIosArrowBack} from "react-icons/io"
 import {GrShareOption} from "react-icons/gr"
 import  'bootstrap/dist/css/bootstrap.min.css';
 import {useShare} from '../Context/forShareModal';
+import { useSelector } from 'react-redux';
 
 const MainText=styled.div`
-   
+   font-weight:bold;
    font-size:25px;
    margin: auto;
-   font-family: 'main_font', cursive;
-   
+   font-family: 'main_font';
 `;
 
 
@@ -22,7 +22,9 @@ function NavbarDetail() {
 	const click = () => {
 		setAppear(true);
 	}
-	
+	const navcontent = useSelector((state) => state.user);
+	let navcity = navcontent.navSuccess
+	let navcitys = navcity.split('(', 2);
   return (
 
     <div >
@@ -30,7 +32,7 @@ function NavbarDetail() {
     <Container>		
 		<div style={{ display:'flex', textAlign:'center', width:'100%' }}>
 			<IoIosArrowBack size="30" color="#000000" onClick={()=> history(-1)}/>
-			<MainText style={{ textAlign:'center' }}>장소이름</MainText>
+			<MainText style={{ textAlign:'center' }}>{navcitys[0]}</MainText>
 			<GrShareOption onClick={click} size="30" color="#000000"/>
 
 		</div>

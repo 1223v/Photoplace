@@ -65,7 +65,7 @@ const ImageContainer = styled.div`
 	background-color: rgb(252, 248, 232);
 	
 	
-	background: linear-gradient(to right bottom, #00BDD3, #56FFB6);
+	background: #FED06E;
     color: transparent;
 	
 	
@@ -208,7 +208,7 @@ const Busan = (props, { history }) => {
 
 	return (
 		<Container className="ai_page">
-			<br/><br/><br/>
+			<br/>
 			{showResult ? (
 				<div>분석결과는?</div>
 			) : (

@@ -9,6 +9,7 @@ const Roadviews = (props) => {
 	const history=useNavigate();
 	const location = useLocation();
 	useEffect(() => {
+		console.log(location.state.up_loc, location.state.down_loc);
 		const { kakao } = window;
 		var img = document.createElement('img');
 		img.id = 'overlayImg';

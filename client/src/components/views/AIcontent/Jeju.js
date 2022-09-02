@@ -64,7 +64,7 @@ const ImageContainer = styled.div`
 	background-color: rgb(252, 248, 232);
 	
 	
-	background: linear-gradient(to right bottom, #FF8500, #FFDD40);
+	background: #F2F2F2;
     color: transparent;
 	
 	
@@ -180,7 +180,7 @@ const Jeju = (props, { history }) => {
 
 	return (
 		<Container className="ai_page">
-			<br/><br/><br/>
+			<br/>
 			
 			{showResult ? (
 				<div>분석결과는?</div>

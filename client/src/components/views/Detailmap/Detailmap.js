@@ -29,6 +29,7 @@ const Detailmap = (props) => {
 
 			circle.setMap(map);
 		});
+		
 	});
 
 	return (
@@ -41,7 +42,7 @@ const Detailmap = (props) => {
 						state={{num:props.num, up_loc: props.up_loc, down_loc: props.down_loc, left_loc: props.left_loc, right_loc: props.right_loc, image: props.image}}
 						style={{ textDecoration: 'none', color: 'black' }}
 					>
-						로드뷰보기
+						포토존 보기
 					</Link>
 				</LeftBox>
 				<RightBox>
@@ -50,7 +51,7 @@ const Detailmap = (props) => {
 						target='_blank'
 						style={{ textDecoration: 'none', color: 'black' }}
 					>
-						길찾기
+						길 찾기
 					</a>
 				</RightBox>
 			</Button>
@@ -62,11 +63,13 @@ const LeftBox = styled.div`
 	float: left;
 	width: 50%;
 	border-bottom-left-radiuis:15px;
+	border-right:1.5px solid #f2f2f2;
 `
 const RightBox = styled.div`
 	float: right;
 	width: 50%;
 	border-bottom-right-radius:15px;
+	border-left:1.5px solid #f2f2f2;
 `
 
 const MAP = styled.div`

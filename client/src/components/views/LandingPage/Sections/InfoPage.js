@@ -26,12 +26,12 @@ const PageWrapper = styled.div`
   justify-content: space-around;
   align-items: space-around;
   width: 100%;
-  height: 80vh;
+  height: 100%;
   flex-direction: row;
-  border-radius: 30px;
+  border-radius: 10px;
   border: 3px solid black;
   background: rgba(255, 255, 255, 0.8);
-  border-radius: 30px;
+  border-radius: 10px;
   position: absolute;
   animation-duration: 0.25s;
   animation-timing-function: ease-out;

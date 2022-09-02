@@ -35,13 +35,13 @@ router.post('/detailSlide', (req, res) => {
 
 router.post('/detailsi', (req, res) => {
 	var usercity = req.body.city;
-	
+	//var usercity = "서울특별시 강남구 대치동 11번지";
 	
 	let usercitys = usercity.split(' ', 2);
-	console.log(usercity);
+	
 	
 	var sql=`SELECT DAY_NAME, avg(PER_CNT) AS PER_CNT FROM signgu_data WHERE CODE LIKE '1%' and NAME LIKE '%${usercitys[1]}%' GROUP BY DAY_CODE ORDER BY DAY_CODE;`;
-    var sql1 = ``
+    var sql1 = `select DAY_CODE,PER_CNT from signgu_data where (DAY_CODE, seq) in ( select DAY_CODE, max(seq) as BASE_YMD from signgu_data group by DAY_CODE) order by DAY_CODE;`
 	connection.query(sql + sql1, (err, results,rows) => {
 		
 		if (err) {
@@ -51,10 +51,14 @@ router.post('/detailsi', (req, res) => {
 		var sql1_result = results[1];
         
         let bodypi=[parseInt(sql_result[0].PER_CNT),parseInt(sql_result[1].PER_CNT),parseInt(sql_result[2].PER_CNT),parseInt(sql_result[3].PER_CNT),parseInt(sql_result[4].PER_CNT),parseInt(sql_result[5].PER_CNT),parseInt(sql_result[6].PER_CNT)];
+		let bodypi2=[parseInt(sql1_result[0].PER_CNT),parseInt(sql1_result[1].PER_CNT),parseInt(sql1_result[2].PER_CNT),parseInt(sql1_result[3].PER_CNT),parseInt(sql1_result[4].PER_CNT),parseInt(sql1_result[5].PER_CNT),parseInt(sql1_result[6].PER_CNT)];
 		
-		console.log(bodypi);
-		console.log(sql1_result);
-		return res.send(bodypi);
+		
+		let bodypitotal=[];
+		bodypitotal.push(bodypi);
+		bodypitotal.push(bodypi2);
+		
+		return res.send(bodypitotal);
 	});
 });
 
@@ -70,7 +74,7 @@ router.post('/aimap', (req, res) => {
 	var sql = `SELECT * FROM Marker WHERE title LIKE '%${AIcontent}%' OR tag_1 LIKE '%${AIcontent}%' OR tag_2 LIKE '%${AIcontent}%'`;
 	connection.query(sql, (err, rows) => {
 		if (err) {
-			console.log('실패');
+			
 			return res.send(err);
 		}
 		return res.send(rows);
@@ -114,7 +118,7 @@ router.get('/Componentpage', (req, res) => {
 	var sql = 'select * from Marker';
 	connection.query(sql, (err, rows) => {
 		if (err) {
-			console.log('실패');
+			
 			return res.send(err);
 		} else {
 			return res.send(rows);
@@ -127,7 +131,7 @@ router.post('/Searchpage', (req, res) => {
 	var sql = `SELECT * FROM Marker WHERE title LIKE '%${userSearch}%' OR tag_1 LIKE '%${userSearch}%' OR tag_2 LIKE '%${userSearch}%'`;
 	connection.query(sql, (err, rows) => {
 		if (err) {
-			console.log('실패');
+			
 			return res.send(err);
 		} else {
 			return res.send(rows);
@@ -139,7 +143,7 @@ router.get('/Searchpage', (req, res) => {
 	var sql = `select distinct tag_1 from Marker union select distinct tag_2 from Marker;`;
 	connection.query(sql, (err, rows) => {
 		if (err) {
-			console.log('실패');
+			
 			return res.send(err);
 		} else {
 			return res.send(rows);
@@ -152,7 +156,7 @@ router.post('/Detail/:id', (req, res) => {
 	var sql = `SELECT * FROM Marker WHERE num = ${userNum}`;
 	connection.query(sql, (err, rows) => {
 		if (err) {
-			console.log('실패');
+			
 			return res.send(err);
 		} else {
 			return res.send(rows);
@@ -269,7 +273,7 @@ router.post('/ModalSlider', (req, res) => {
 	var sql = `SELECT num, marker_num, imageSrc FROM slide WHERE marker_num='${nums}'`;
 	connection.query(sql, (err, rows) => {
 		if (err) {
-			console.log('실패');
+			
 			return res.send(err);
 		} else {
 			return res.send(rows);

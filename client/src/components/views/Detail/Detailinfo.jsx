@@ -26,11 +26,13 @@ var options = {
           series: [{
           name: 'TEAM A',
           type: 'column',
-          data: [Detailobject[0], Detailobject[1], Detailobject[2], Detailobject[3], Detailobject[4], Detailobject[5], Detailobject[6]]
+		  data:[10,10,10,10,10,10,10],  
+          //data: [Detailobject[0][0], Detailobject[0][1], Detailobject[0][2], Detailobject[0][3], Detailobject[0][4], Detailobject[0][5], Detailobject[0][6]]
         }, {
           name: 'TEAM B',
           type: 'area',
-          data: [Detailobject[0], Detailobject[1], Detailobject[2], Detailobject[3], Detailobject[4], Detailobject[5], Detailobject[6]]
+			data:[10,10,10,10,10,10,10],	
+          //data: [Detailobject[1][0], Detailobject[1][1], Detailobject[1][2], Detailobject[1][3], Detailobject[1][4], Detailobject[1][5], Detailobject[1][6]]
         }],
           chart: {
           height: 550,
@@ -129,8 +131,8 @@ var options = {
 
 	return (
 		<div>
+			<div className="d_cong">요일별 혼잡도</div>
 			<div className="conges_info_inner">
-				<div className="d_cong">요일별 혼잡도</div>
 				<div className="d_cong_expln">
 					* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다.
 					*해당 지역의 방문객 

@@ -98,7 +98,7 @@ function App() {
 		}}>
 			<div>
 				<NavBar />
-				<div style={{ minHeight: 'calc(100vh - 80px)' }}>
+				<div style={{ minHeight: 'calc(100vh - 80px)', paddingTop: '50px' }}>
 					<Routes>
 						<Route path="/" element={<SeoulMap />} />
 						<Route path="/Seoul" element={<Seoul />} />

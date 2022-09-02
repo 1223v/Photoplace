@@ -2,8 +2,8 @@
 
 @font-face {
     font-family: 'tag_font';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff');
-    font-weight: normal;
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: 500;
     font-style: normal;
 }
 /*
@@ -16,8 +16,8 @@
 */
 @font-face {
     font-family: 'main_font';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
-    font-weight: normal;
+    src: url('https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css') format('stylesheet');
+    font-weight: 300;
     font-style: normal;
 }
 
@@ -278,7 +278,8 @@ overflow-y: auto;
 	
 	/* 장소이름(굵은)  ex) 젠틀가든 팝업 스토어 */
 	font-family: "main_font";
-	font-size: 15px;
+	font-size: 18px;
+	color:#2f4f4f;
 	font-weight: bold;
 
 	overflow-y: auto;
@@ -317,13 +318,13 @@ overflow-y: auto;
 }
 .d_cong{
 	
-	width: 90%;
-	margin: 10px;
+	width: 100%;
+	margin: auto;
 	
 	/* 요일별 혼잡도 */
 	font-family: "main_font";
-	font-size: 16px;
-	color: rgb(112,112,112);
+	font-size: 18px;
+	color:#2f4f4f;
 	font-weight: bold;
 	
 }
@@ -401,7 +402,7 @@ overflow-y: auto;
 
 
 .map_div{
-	height: 60%;
+	height: 48%;
 	width: 100%;
 	background-color:#ffffff;
 }
@@ -411,8 +412,9 @@ overflow-y: auto;
 	
 	/* 위치정보 */
 	font-family: "main_font";
-	font-size: 15px;
+	font-size: 18px;
 	font-weight: bold;
+	color:#2f4f4f;
 	margin: auto;
 }
 .map_and_expln{
@@ -433,9 +435,9 @@ overflow-y: auto;
 	width: 90%;
 	
 	font-family: "main_font";
-	font-size: 15px;
+	font-size: 18px;
 	font-weight: bold;
-	
+	color:#2f4f4f;
 	margin: auto;
 }
 .img_and_expln{
@@ -451,7 +453,7 @@ overflow-y: auto;
 .photos{
 	font-family: "main_font";
 	font-size: 10px;
-	margin: auto;
+	margin:auto;
 }
 .photo_div{
 	height: 100%;

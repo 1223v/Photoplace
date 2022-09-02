@@ -184,7 +184,7 @@ const Drama = (props, { history }) => {
 
 	return (
 		<Container className="ai_page">
-			<br/><br/><br/>
+			<br/>
 			
 			{showResult ? (
 				<div>분석결과는?</div>

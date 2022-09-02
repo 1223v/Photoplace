@@ -95,7 +95,6 @@ const BusanMap = () => {
 
 	return (
 		<Container>
-			<br />
 
 			<div
 				id="map"
@@ -133,7 +132,7 @@ const BusanMap = () => {
 							alt="ph1"
 							src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZpuBZ%2FbtrJB3Uv0j1%2FPMw9UW5233SHt3mACd9DX0%2Fimg.jpg"
 						/>
-						<Contenttype>서울 핫플</Contenttype>
+						<Contenttype>서울</Contenttype>
 					</Link>
 				</ContentBa>
 				<ContentBa key="2">
@@ -142,7 +141,7 @@ const BusanMap = () => {
 							alt="ph2"
 							src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbcp5G1%2FbtrJC5EjiCr%2FvNDlQpmTTekbBci9j0W2sk%2Fimg.jpg"
 						/>
-						<Contenttype>부산 핫플</Contenttype>
+						<Contenttype>부산</Contenttype>
 					</Link>
 				</ContentBa>
 				<ContentBa key="3">
@@ -151,7 +150,7 @@ const BusanMap = () => {
 							alt="ph3"
 							src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbsIu9O%2FbtrJCqol93S%2F7YEKkox4JUMSVvklKKgqNK%2Fimg.jpg"
 						/>
-						<Contenttype>제주 핫플</Contenttype>
+						<Contenttype>제주</Contenttype>
 					</Link>
 				</ContentBa>
 				<ContentBa key="4">
@@ -161,9 +160,7 @@ const BusanMap = () => {
 							src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbQwTTe%2FbtrJLSwqsZE%2FDjAkDnIVkBoOJkr3TGaxW0%2Fimg.jpg"
 						/>
 						<Contenttype>
-							드라마
-							<br />
-							/영화
+							방송
 						</Contenttype>
 					</Link>
 				</ContentBa>
@@ -176,32 +173,34 @@ export default BusanMap;
 
 const ContentBar = styled.ul`
 	display: flex;
-	width: 100%;
+	width:100%;
 	margin-top: 8px;
 	margin-left: auto;
 	margin-right: auto;
-
-	padding-left: 0px;
+  	padding-left:0px;
 	background-color: white;
 	font-family: 'main_font';
 `;
 
 const Contenttype = styled.span`
 	display: flex;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left:auto;
+	margin-right:auto;
 	background-color: white;
+	font-weight:bold;
 	font-family: 'main_font';
+	justify-content:center;
 `;
 
 const ContentBa = styled.li`
 	display: inline-block;
 	float: left;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left:auto;
+	margin-right:auto;
 	position: relative;
 	background-color: white;
 	font-family: 'main_font';
+	
 `;
 
 const ContentImage = styled.img`
@@ -212,22 +211,22 @@ const ContentImage = styled.img`
 `;
 
 const Container = styled.div`
-	margin-left: auto;
-	margin-right: auto;
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #ffffff;
-	flex-direction: column;
-	position: relative;
-	font-family: 'loadingpage_font';
-	@media (min-width: 800px) {
-		width: 600px;
-		height: 100vh;
-		/* border:1px solid #95afc0; */
-		/* border-left:1px solid #95afc0;
+  margin-left:auto;
+  margin-right:auto;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  flex-direction: column;
+  position:relative;
+  font-family: "loadingpage_font";
+  @media (min-width: 800px) {
+    width: 600px;
+    height: 94vh;
+    /* border:1px solid #95afc0; */
+    /* border-left:1px solid #95afc0;
     border-right:1px solid #95afc0; */
-	}
+  }
 `;
