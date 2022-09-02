@@ -1,7 +1,6 @@
 import React from 'react';
-import { Navbar, Container } from 'react-bootstrap'
 import styled from "styled-components";
-import  'bootstrap/dist/css/bootstrap.min.css';
+
 
 const MainText=styled.h1`
    
