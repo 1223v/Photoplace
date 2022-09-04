@@ -16,6 +16,7 @@ function Ranking(props) {
 		console.log(props.category);
 		Axios.get('/api/data/' + props.category+'Ranking').then((response) => {
 			setCity(response.data);
+			console.log(response.data);
 		});
 	}, []);
 

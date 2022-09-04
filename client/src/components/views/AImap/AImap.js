@@ -25,11 +25,10 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin-top: 10px;
   background-color: #FFFFFF;
   flex-direction: column;
   position:relative;
-  font-family: "main_font";
   @media (min-width: 800px) {
     width: 600px;
     height: 94vh;
@@ -74,16 +73,15 @@ const AImap = () => {
 			ainame: aicontent.aiSuccess.prediction,
 			ainame2: aicontent.aiSuccess.prediction1,
 			ainame3:aicontent.aiSuccess.prediction2,
-			ainame4:aicontent.aiSuccess.prediction3,
-			ainame5:aicontent.aiSuccess.prediction4
 		};
+		console.log("응", body);
 		Axios.post('/api/data/aimap',body)
         .then(response => {
             
 		setSubContent(response.data[0].content);
 		setSubimageSrcs(response.data[0].imageSrc)
 		// 마커 이미지의 이미지 주소입니다
-
+			console.log("응애", response.data);
 		
 		for (var i = 0; i < response.data.length; i++) {
 			// 마커 이미지의 이미지 크기 입니다
@@ -126,7 +124,7 @@ const AImap = () => {
 		}
 		})
 	}, []);
-console.log("응", SubimageSrcs);
+
 	return (
 		<Container>
 			

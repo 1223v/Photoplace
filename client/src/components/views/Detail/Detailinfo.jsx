@@ -21,17 +21,17 @@ function Detailinfo(props) {
 	}, [props.cityinfo]);
 	
 		
-	
+console.log(Detailobject[0]);
 var options = {
           series: [{
-          name: 'TEAM A',
+          name: '한달간 방문객',
           type: 'column',
-		  data:[10,10,10,10,10,10,10],  
+		  data:Detailobject[0],  
           //data: [Detailobject[0][0], Detailobject[0][1], Detailobject[0][2], Detailobject[0][3], Detailobject[0][4], Detailobject[0][5], Detailobject[0][6]]
         }, {
-          name: 'TEAM B',
+          name: '1주일간 방문객',
           type: 'area',
-			data:[10,10,10,10,10,10,10],	
+			data:Detailobject[1],	
           //data: [Detailobject[1][0], Detailobject[1][1], Detailobject[1][2], Detailobject[1][3], Detailobject[1][4], Detailobject[1][5], Detailobject[1][6]]
         }],
           chart: {
@@ -127,18 +127,21 @@ var options = {
         }
         };
 
-     
-
 	return (
 		<div>
 			<div className="d_cong">요일별 혼잡도</div>
 			<div className="conges_info_inner">
 				<div className="d_cong_expln">
-					* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다.
-					*해당 지역의 방문객 
+					* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다.<br/>
+					* 해당 지역의 방문객 
 				</div>
 				<div>
-					<ApexCharts series={options.series} options={options} type="bar" width="100%" height="100%" />
+					{
+         				(function() {
+            				if(Detailobject.length!=0) return <div><ApexCharts series={options.series} options={options} type="bar" width="100%" height="100%" /></div>;
+							else return <div className="d_cong_expln">* 해당 지역의 정보를 제공하지 않습니다.<br/></div>;
+          				})()
+					}
 				</div>
 
 				{/*<div className="days">

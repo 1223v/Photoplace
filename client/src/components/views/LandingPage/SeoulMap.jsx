@@ -183,11 +183,10 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin-top: 10px;
   background-color: #FFFFFF;
   flex-direction: column;
   position:relative;
-  font-family: "loadingpage_font";
   @media (min-width: 800px) {
     width: 600px;
     height: 94vh;

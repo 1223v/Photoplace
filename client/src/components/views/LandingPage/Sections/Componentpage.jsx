@@ -9,19 +9,26 @@ import '../../../../index.css'
 const AnalysisPageWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	padding: 2%;
 	justify-content: center;
-	width: 80%;
-	height: 80vh;
 `;
 
-const AnalysisTitleWrapper = styled.div`
+const InfoContainerDiv = styled.div`
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-`;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 4%
+`
 
+const AnalysisImg = styled.img`
+	display: flex;
+	width: 30%;
+	border-radius: 15px;
+`
 const GraphWrapper = styled.div`
-	margin-top: 10px;
+	margin-top: 2%;
 	width: 100%;
 	flex-direction: row;
 	justify-content: center;
@@ -29,16 +36,23 @@ const GraphWrapper = styled.div`
 `;
 
 const Title = styled.div`
-	font-size: 30px;
-	font-family: 'main_font';
+	font-size: 25px;
+	font-weight: bold;
+	font-family: "main_font";
 `;
 
-
+const LocWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-content: flex-start;
+	margin-left: 4%;
+`;
 
 const LocTitle = styled.div`
 	font-size: 25px;
 	font-family: 'main_font';
 	color: #ffcc00;
+	margin-bottom: 10px;
 `;
 
 const LocDetail = styled.div`
@@ -73,7 +87,7 @@ export default function Componentpage({SubContents,SubimageSrces}) {
 					position: 'bottom',
 				},
 				colors: {
-					backgroundBarColors: ['#eee'],
+					backgroundBarColors: ['#848484'],
 					backgroundBarOpacity: 1,
 					backgroundBarRadius: 9,
 				},
@@ -136,18 +150,18 @@ export default function Componentpage({SubContents,SubimageSrces}) {
 	
 	return (
 		<AnalysisPageWrapper>
-			<AnalysisTitleWrapper>
-				
+			<div>
 				<Title>분석 결과</Title>
-				<SlickComponent imageSrcs={SubimageSrces} nums={0}></SlickComponent>
-				
-			</AnalysisTitleWrapper>
-			
-			<LocTitle>{aicontent.aiSuccess.prediction}</LocTitle>
-
-			<LocDetail>
-				{SubContents}
-			</LocDetail>
+			</div>
+			<InfoContainerDiv>
+				<AnalysisImg src={SubimageSrces} ></AnalysisImg>
+				<LocWrapper>
+					<LocTitle>{aicontent.aiSuccess.prediction}</LocTitle>
+					<LocDetail>
+						{SubContents}
+					</LocDetail>
+				</LocWrapper>
+			</InfoContainerDiv>
 			<GraphWrapper>
 				<BarChart></BarChart>
 			</GraphWrapper>

@@ -24,7 +24,8 @@ function NavbarDetail() {
 	}
 	const navcontent = useSelector((state) => state.user);
 	let navcity = navcontent.navSuccess
-	let navcitys = navcity.split('(', 2);
+	let navcitys = (navcity||'').split('(', 2);
+	//let navcitys = navcontent.navSuccess
   return (
 
     <div >

@@ -31,7 +31,7 @@ function Detail(props) {
 	const dragAreaRef = useRef(null);
 	const dispatch = useDispatch();
 	let { id } = useParams();
-
+	
  let Detailse = [
       {
          num: 0,
@@ -84,7 +84,6 @@ function Detail(props) {
 		});
 		
 	}, []);
-
 	
 	//<br/>왕창 준거 줄이면(or 늘리면) keenSlider 사진근처로 이동
 	//animate={{y:-110}} <-- 페이지 새로고침했을 때 keenSlider 시작위치
@@ -171,10 +170,10 @@ function Detail(props) {
 							</DETAIL>
 						</div>
 					</div>
-					
-					<hr/>
 				
 					<div className="photo_div">
+						<br/>
+						<hr/>
 						<div className="photos_collection">사진 모음</div>
 						<div className="img_and_expln">
 							방문자 및 한국관광공사 제공 사진입니다.

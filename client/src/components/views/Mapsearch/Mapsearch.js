@@ -182,29 +182,36 @@ function Mapsearch() {
 	const [Busan, setBusan] = useState([]);
 	const [Drama, setDrama] = useState([]);
 	const [Jeju, setJeju] = useState([]);
-	const [Tag, setTag] = useState([]);
+	const [Tagd, setTagd] = useState([]);
 	const dragAreaRef = useRef(null);
 
+	const [SeoulLength, setSeoulLength] = useState(0);
+	const [BusanLength, setBusanLength] = useState(0);
+	const [DramaLength, setDramaLength] = useState(0);
+	const [SearchLength, setSearchLength] = useState(0);
 
 	useEffect(() => {
 		
 		Axios.get('/api/data/seoulsmap').then((response) => {
-			
 			setSeoul(response.data);
+			setSeoulLength(response.data.length);
 		});
 		Axios.get('/api/data/busansmap').then((response) => {
 			setBusan(response.data);
+			console.log(typeof(response.data.length));
+			console.log(180*{SeoulLength});
+			setBusanLength(response.data.length);
 		});
 		Axios.get('/api/data/dramasmap').then((response) => {
 			setDrama(response.data);
+			setDramaLength(response.data.length);			
 		});
-		Axios.get('/api/data/jejusmap').then((response) => {
-			setJeju(response.data);
-		});
-		Axios.get('/api/data/SearchPage').then((response) => {
-			setTag(response.data);
+		Axios.get('/api/data/SearchPaged').then((response) => {
 			console.log(response.data);
+			setTagd(response.data);
+			setSearchLength(response.data.length);
 		});
+		
 	}, []);
 
 	const onTextHandler = (event) => {
@@ -216,7 +223,7 @@ function Mapsearch() {
 		let body = {
 			search: Text,
 		};
-		Axios.post('/api/data/Searchpage', body).then((response) => {
+		Axios.post('/api/data/Searchpagede', body).then((response) => {
 			
 			setSearchImage(response.data);
 			setIsSearching(true);
@@ -232,7 +239,7 @@ function Mapsearch() {
 		let body = {
 			search: params,
 		};
-		Axios.post('/api/data/Searchpage', body).then((response) => {
+		Axios.post('/api/data/Searchpagede', body).then((response) => {
 			setSearchImage(response.data);
 			setIsSearching(true);
 		});
@@ -251,7 +258,7 @@ function Mapsearch() {
 						dragConstraints={{ right: 0, left: -12300 }}
 						className="inner-carousel"
 					>
-						{Tag.map((array, index) => {
+						{Tagd.map((array, index) => {
 							return(
 								<div key={index}>
 									<TagButton onClick={(e) => {TagSearch(e, array.tag_1)}}>#{array.tag_1}</TagButton>
@@ -338,7 +345,7 @@ function Mapsearch() {
 								<motion.div
 									style={{ width: '100%', height: '100%' }}
 									drag="x"
-									dragConstraints={{ right: 0, left: -12300 }}
+									//dragConstraints={{ right: 0, left: -(180*{SeoulLength} }}
 									className="inner-carousel"
 								>
 									{Seoul.map((array, index) => {
