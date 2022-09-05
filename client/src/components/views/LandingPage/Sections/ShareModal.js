@@ -139,7 +139,7 @@ function Share_modal({className, onClose, maskClosable, closable, visible, title
 						<CloseStyled className="modal-close" style={{padding: '0px 10px'}} >
 							<Share onClick={test}>
 								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd8VMLZ%2FbtrJcGxWJKd%2FIaUnrdLRt41LWVL498QjjK%2Fimg.png"
-								style={{height: '50px', width: '50px', padding: '1px 2px'}}
+								style={{height: '50px', width: '50px', padding: '1px 2px', borderRadius:'10px'}}
 								/>
 								<Text>
 									카카오톡으로 공유
@@ -193,10 +193,10 @@ const Text = styled.div`
 const CloseStyle = styled.div`
 	display: flex;
 	justify-content: space-between;
-	background-color: rgba(0, 0, 0);
+	background-color: #ffffff;
 	width: 100%;
 	padding: 10px 15px 0px 15px;
-	color: #ffffff;
+	color: #000000;
 	border-radius: 20px 20px 0px 0px / 20px 20px 0px 0px;
 `;
 
@@ -205,13 +205,13 @@ const CloseStyled = styled.div`
 	display: flex;
 	align-content: center;
 	justify-content: space-between;
-	background-color: rgba(0, 0, 0);
+	background-color: #FFFFFF;
 	width: 100%;
 	min-height: 100px;
 	height: 330px;
 	padding: 10px 15px 10px 15px;
 	flex-direction: column;
-	color: #ffffff;
+	color: #000000;
 	position: relative;
 	
 `;

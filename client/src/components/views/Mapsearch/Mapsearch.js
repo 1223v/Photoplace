@@ -5,15 +5,10 @@ import '../../../index.css';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
-// const Tags = [
-// 	{num: 1, Tagname: '롯데월드'},
-// 	{num: 2, Tagname: '부산'},
-// ]
 const WholeWrapper = styled.div`
 	font-family: 'main_font';
 	background-color: #f2f2f2;
 `;
-
 
 const SearchWrapper = styled.div`
 	display: flex;
@@ -22,7 +17,7 @@ const SearchWrapper = styled.div`
 	align-content: center;
 	width: 100%;
 	padding-bottom: 20px;
-	padding-top:10px;
+	padding-top: 10px;
 	margin-bottom: 3px;
 	background-color: white;
 `;
@@ -47,7 +42,7 @@ const TitleWrapper = styled.div`
 
 const Title = styled.div`
 	font-size: 23px;
-	margin-top:10px;
+	margin-top: 10px;
 	margin-bottom: 5px;
 	margin-left: 8px;
 	font-weight: bold;
@@ -65,7 +60,7 @@ const SearchBar = styled.form`
 	align-items: center;
 `;
 const TagButton = styled.button`
-	background-color: #FED06E;
+	background-color: #fed06e;
 	color: white;
 	width: max-content;
 	height: 25px;
@@ -84,23 +79,7 @@ const TagContainer = styled.div`
 	background-color: white;
 	padding: 10px;
 	margin-bottom: 3px;
-`
-
-// const ContentWrapper = styled.div`
-// 	display: flex;
-// 	flex-direction: column;
-// 	width: fit-content;
-// 	background-color: white;
-// 	justify-content: center;
-// `
-/*
-const Image = styled.img`
-	margin-left: 1%;
-	margin-right: 1%;
-	width: 20px;
-	height: 20px;
 `;
-*/
 
 const Input = styled.input`
 	font-size: 14px;
@@ -127,7 +106,7 @@ const ItemWrapper = styled.div`
 
 	width: 100%;
 	background-color: white;
-	
+
 	text-decoration: none;
 `;
 
@@ -140,36 +119,14 @@ const StyledButton = styled.button`
 `;
 
 const ImgTitle = styled.div`
-	color : #000000;
-	font-size:17px;
-	font-weight:bold;
-`
+	color: #000000;
+	font-size: 17px;
+	font-weight: bold;
+`;
 const ImgContent = styled.div`
 	color: #666666;
-	font-size:15px;
-`
-/*
-const Container = styled.div`
-	margin-left: auto;
-	margin-right: auto;
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #ffffff;
-	flex-direction: column;
-	position: relative;
-	font-family: 'loadingpage_font';
-	@media (min-width: 800px) {
-		width: 600px;
-		height: 100vh;
-		/* border:1px solid #95afc0; */
-		/* border-left:1px solid #95afc0;
-    border-right:1px solid #95afc0; 
+	font-size: 15px;
 `;
-*/
-
 
 function Mapsearch() {
 	const [Text, setText] = useState('');
@@ -189,31 +146,28 @@ function Mapsearch() {
 	const [SearchLength, setSearchLength] = useState(0);
 
 	useEffect(() => {
-		
 		Axios.get('/api/data/seoulsmap').then((response) => {
 			setSeoul(response.data);
 			setSeoulLength(response.data.length);
 		});
 		Axios.get('/api/data/busansmap').then((response) => {
 			setBusan(response.data);
-			console.log(typeof(response.data.length));
-			console.log(180*{SeoulLength});
+			
 			setBusanLength(response.data.length);
 		});
 		Axios.get('/api/data/jejusmap').then((response) => {
 			setJeju(response.data);
-			setJejuLength(response.data.length);			
+			setJejuLength(response.data.length);
 		});
 		Axios.get('/api/data/dramasmap').then((response) => {
 			setDrama(response.data);
-			setDramaLength(response.data.length);			
+			setDramaLength(response.data.length);
 		});
 		Axios.get('/api/data/SearchPaged').then((response) => {
-			console.log(response.data);
+			
 			setTagd(response.data);
 			setSearchLength(response.data.length);
 		});
-		
 	}, []);
 
 	const onTextHandler = (event) => {
@@ -226,7 +180,6 @@ function Mapsearch() {
 			search: Text,
 		};
 		Axios.post('/api/data/Searchpagede', body).then((response) => {
-			
 			setSearchImage(response.data);
 			setIsSearching(true);
 			if (Text === '') {
@@ -235,7 +188,7 @@ function Mapsearch() {
 		});
 	};
 	const TagSearch = (e, params) => {
-		console.log(params);
+		
 		setText(params);
 		e.preventDefault();
 		let body = {
@@ -245,9 +198,9 @@ function Mapsearch() {
 			setSearchImage(response.data);
 			setIsSearching(true);
 		});
-	}
+	};
 	const TagPage = () => {
-		return(
+		return (
 			<TagContainer>
 				<motion.div
 					ref={dragAreaRef}
@@ -261,17 +214,23 @@ function Mapsearch() {
 						className="inner-carousel"
 					>
 						{Tagd.map((array, index) => {
-							return(
+							return (
 								<div key={index}>
-									<TagButton onClick={(e) => {TagSearch(e, array.tag_1)}}>#{array.tag_1}</TagButton>
+									<TagButton
+										onClick={(e) => {
+											TagSearch(e, array.tag_1);
+										}}
+									>
+										#{array.tag_1}
+									</TagButton>
 								</div>
 							);
 						})}
 					</motion.div>
 				</motion.div>
 			</TagContainer>
-		)
-	}
+		);
+	};
 	const SearchPage = (props) => {
 		if (props.isSearching) {
 			return (
@@ -290,23 +249,25 @@ function Mapsearch() {
 									<motion.div
 										style={{ width: '100%', height: '100%' }}
 										drag="x"
-										dragConstraints={{ right: 0, left: -1000}}
+										dragConstraints={{ right: 0, left: -1000 }}
 										className="inner-carousel"
 									>
 										{SearchImage.map((array, index) => {
 											return (
 												<motion.div className="item7777" key={index}>
-													<Link to={`/Detail/${array.num}`}  style={{ textDecoration:'none', color:'#1E1E1E' }}>
-													<div>
-														<img src={array.imageSrc} alt="" />
-														<br />
-														<ImgTitle>
-															{array.title}
-														</ImgTitle>
-														<ImgContent>
-															{array.content}
-														</ImgContent>
-													</div>
+													<Link
+														to={`/Detail/${array.num}`}
+														style={{
+															textDecoration: 'none',
+															color: '#1E1E1E',
+														}}
+													>
+														<div>
+															<img src={array.imageSrc} alt="" />
+															<br />
+															<ImgTitle>{array.title}</ImgTitle>
+															<ImgContent>{array.content}</ImgContent>
+														</div>
 													</Link>
 												</motion.div>
 											);
@@ -323,7 +284,6 @@ function Mapsearch() {
 
 	return (
 		<div>
-			
 			<WholeWrapper>
 				<SearchWrapper>
 					<SearchBar onSubmit={onSubmitHandler}>
@@ -352,16 +312,27 @@ function Mapsearch() {
 								>
 									{Seoul.map((array, index) => {
 										return (
-											<motion.div className="item7777" key={index} style={{width: 'fit-content', textalign: 'center'}}>
-												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>
+											<motion.div
+												className="item7777"
+												key={index}
+												style={{
+													width: 'fit-content',
+													textalign: 'center',
+												}}
+											>
+												<Link
+													to={`/Detail/${array.num}`}
+													style={{
+														textDecoration: 'none',
+														color: '#1E1E1E',
+													}}
+												>
 													<div>
-														<img src={array.imageSrc} alt=""/>
-														<ImgTitle style={{width: 'max-content'}}>
+														<img src={array.imageSrc} alt="" />
+														<ImgTitle style={{ width: 'max-content' }}>
 															{array.title}
 														</ImgTitle>
-														<ImgContent>
-															{array.content}
-														</ImgContent>
+														<ImgContent>{array.content}</ImgContent>
 													</div>
 												</Link>
 											</motion.div>
@@ -392,16 +363,18 @@ function Mapsearch() {
 									{Busan.map((array, index) => {
 										return (
 											<motion.div className="item7777" key={index}>
-												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>
+												<Link
+													to={`/Detail/${array.num}`}
+													style={{
+														textDecoration: 'none',
+														color: '#1E1E1E',
+													}}
+												>
 													<div>
 														<img src={array.imageSrc} alt="" />
 														<br />
-														<ImgTitle>
-															{array.title}
-														</ImgTitle>
-														<ImgContent>
-															{array.content}
-														</ImgContent>
+														<ImgTitle>{array.title}</ImgTitle>
+														<ImgContent>{array.content}</ImgContent>
 													</div>
 												</Link>
 											</motion.div>
@@ -432,16 +405,18 @@ function Mapsearch() {
 									{Jeju.map((array, index) => {
 										return (
 											<motion.div className="item7777" key={index}>
-												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>
+												<Link
+													to={`/Detail/${array.num}`}
+													style={{
+														textDecoration: 'none',
+														color: '#1E1E1E',
+													}}
+												>
 													<div>
 														<img src={array.imageSrc} alt="" />
 														<br />
-														<ImgTitle>
-															{array.title}
-														</ImgTitle>
-														<ImgContent>
-															{array.content}
-														</ImgContent>
+														<ImgTitle>{array.title}</ImgTitle>
+														<ImgContent>{array.content}</ImgContent>
 													</div>
 												</Link>
 											</motion.div>
@@ -472,16 +447,18 @@ function Mapsearch() {
 									{Drama.map((array, index) => {
 										return (
 											<motion.div className="item7777" key={index}>
-												<Link to={`/Detail/${array.num}`} style={{ textDecoration:'none', color:'#1E1E1E' }}>
+												<Link
+													to={`/Detail/${array.num}`}
+													style={{
+														textDecoration: 'none',
+														color: '#1E1E1E',
+													}}
+												>
 													<div>
 														<img src={array.imageSrc} alt="" />
 														<br />
-														<ImgTitle>
-															{array.title}
-														</ImgTitle>
-														<ImgContent>
-															{array.content}
-														</ImgContent>
+														<ImgTitle>{array.title}</ImgTitle>
+														<ImgContent>{array.content}</ImgContent>
 													</div>
 												</Link>
 											</motion.div>
@@ -492,7 +469,6 @@ function Mapsearch() {
 						</div>
 					</ItemWrapper>
 				</InfoWrapper>
-
 			</WholeWrapper>
 			<br />
 			<br />

@@ -32,14 +32,14 @@ const BusanMap = () => {
 			var backSize = new kakao.maps.Size(62, 87);
 			var backOption = {offset: new kakao.maps.Point(36, 78) };
 			var back = new kakao.maps.MarkerImage(
-				"https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FuB3qA%2FbtrKTpnIGuI%2FhGJH2lJxJDsm6iDPXzuRt0%2Fimg.png",
+				"https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnGqcq%2FbtrLmzjp8fE%2FjUQKh5qVkFIRgmgLsyJoxK%2Fimg.png",
 				backSize,
 				backOption,
 			);
 			for (var i = 0; i < response.data.length; i++) {
 				// 마커 이미지의 이미지 크기 입니다
-				var imageSize3 = new kakao.maps.Size(43, 47);
-				var imageOption3 = { offset: new kakao.maps.Point(26.5, 68.5) };
+				var imageSize3 = new kakao.maps.Size(55, 55);
+				var imageOption3 = { offset: new kakao.maps.Point(30.5, 68.5) };
 				var markerImage3 = new kakao.maps.MarkerImage(
 					response.data[i].imageSrc,
 					imageSize3,

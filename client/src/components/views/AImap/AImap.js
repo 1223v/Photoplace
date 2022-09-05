@@ -45,8 +45,10 @@ const AImap = () => {
 	const [imageSrcs, setimageSrcs] = useState('');
 	const [contents, setcontents] = useState('');
 	const [Titles, setTitles] = useState('');
-	const [SubContent,setSubContent] = useState([])
-	const [SubimageSrcs,setSubimageSrcs] = useState([])
+	const [SubContent,setSubContent] = useState([]);
+	const [SubimageSrcs,setSubimageSrcs] = useState([]);
+	const [Nums, setNums] = useState([]);
+	const [Citye, setCitye] = useState([]);
 	
 	const aicontent = useSelector((state) => state.user);
 	
@@ -84,46 +86,68 @@ const AImap = () => {
 		// 마커 이미지의 이미지 주소입니다
 			
 		
-		for (var i = 0; i < response.data.length; i++) {
-			// 마커 이미지의 이미지 크기 입니다
-			var imageSize3 = new kakao.maps.Size(64, 69);
-			var imageOption3 = { offset: new kakao.maps.Point(27, 69) };
-			// 마커 이미지를 생성합니다
-			var markerImage3 = new kakao.maps.MarkerImage(
-				response.data[i].imageSrc,
-				imageSize3,
-				imageOption3
+		var backSize = new kakao.maps.Size(62, 87);
+			var backOption = {offset: new kakao.maps.Point(36, 78) };
+			var back = new kakao.maps.MarkerImage(
+				"https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnGqcq%2FbtrLmzjp8fE%2FjUQKh5qVkFIRgmgLsyJoxK%2Fimg.png",
+				backSize,
+				backOption,
 			);
-			var imageSrca = response.data[i].imageSrc;
-			var contents = response.data[i].content;
-			var titles = response.data[i].title;
-			
-			// 마커를 생성합니다
-			var latlngs = new kakao.maps.LatLng(response.data[i].uplatlng,response.data[i].downlatlng)
-			var marker3 = new kakao.maps.Marker({
-				map: map, // 마커를 표시할 지도
-				position: latlngs, // 마커를 표시할 위치
-				title: response.data[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-				image: markerImage3, // 마커 이미지
-			});
+			for (var i = 0; i < response.data.length; i++) {
+				// 마커 이미지의 이미지 크기 입니다
+				var imageSize3 = new kakao.maps.Size(55, 55);
+				var imageOption3 = { offset: new kakao.maps.Point(30.5, 68.5) };
+				var markerImage3 = new kakao.maps.MarkerImage(
+					response.data[i].imageSrc,
+					imageSize3,
+					imageOption3
+				);
+				// 마커를 생성합니다
+				var latlngs = new kakao.maps.LatLng(
+					response.data[i].uplatlng,
+					response.data[i].downlatlng
+				);
+				var marker3 = new kakao.maps.Marker({
+					map: map, // 마커를 표시할 지도
+					position: latlngs, // 마커를 표시할 위치
+					title: response.data[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+					image: markerImage3, // 마커 이미지
+				});
+				var backMarker = new kakao.maps.Marker({
+					map: map,
+					position: latlngs,
+					image: back,
+				})
+				kakao.maps.event.addListener(
+					backMarker,
+					'click',
+					makeOverListener(
+						map,
+						marker3,
+						response.data[i].imageSrc,
+						response.data[i].content,
+						response.data[i].title,
+						response.data[i].num,
+						response.data[i].city
+					)
+				);
+				
+				backMarker.setMap(map);
+				marker3.setMap(map);
+			}
 
-			kakao.maps.event.addListener(
-				marker3,
-				'click',
-				makeOverListener(map, marker3, imageSrca, contents,titles)
-			);
-		}
-
-		// 인포윈도우를 표시하는 클로저를 만드는 함수입니다
-		function makeOverListener(map, marker3, imageSrca, contents,titles) {
-			return function () {
-				setModalVisible(true);
-				setimageSrcs(imageSrca);
-				setcontents(contents);
-				setTitles(titles)
-			};
-		}
-		})
+			// 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+			function makeOverListener(map, marker3, imageSrca, contents, titles, nums,citys) {
+				return function () {
+					setModalVisible(true);
+					setimageSrcs(imageSrca);
+					setcontents(contents);
+					setTitles(titles);
+					setNums(nums);
+					setCitye(citys);
+				};
+			}
+		});
 	}, []);
 
 	return (
@@ -144,6 +168,8 @@ const AImap = () => {
 								imageSrcs={imageSrcs}
 								contents={contents}
 								titles={Titles}
+								nums={Nums}
+								cityd={Citye}
 							></Modal>
 						)}
 					</React.Fragment>
