@@ -184,6 +184,7 @@ function Mapsearch() {
 
 	const [SeoulLength, setSeoulLength] = useState(0);
 	const [BusanLength, setBusanLength] = useState(0);
+	const [JejuLength, setJejuLength] = useState(0);
 	const [DramaLength, setDramaLength] = useState(0);
 	const [SearchLength, setSearchLength] = useState(0);
 
@@ -198,6 +199,10 @@ function Mapsearch() {
 			console.log(typeof(response.data.length));
 			console.log(180*{SeoulLength});
 			setBusanLength(response.data.length);
+		});
+		Axios.get('/api/data/jejusmap').then((response) => {
+			setJeju(response.data);
+			setJejuLength(response.data.length);			
 		});
 		Axios.get('/api/data/dramasmap').then((response) => {
 			setDrama(response.data);

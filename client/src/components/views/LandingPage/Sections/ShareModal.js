@@ -263,7 +263,7 @@ const ModalInner = styled.div`
 	// box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
 	// background-color: #fff;
 	// border-radius: 10px;
-	width: 100%;
+	width: 100vw;
 	max-width: 100%;
 	min-width: 350px;
 	top: 50%;
@@ -271,6 +271,12 @@ const ModalInner = styled.div`
 	//transform: translateY(50%);
 	margin: 0 auto;
 	padding: 20px 20px;
+	@media (min-width: 800px) {
+    width: 600px;
+    /* border:1px solid #95afc0; */
+    /* border-left:1px solid #95afc0;
+    border-right:1px solid #95afc0; */
+  }
 `;
 
 const Share = styled.div`
@@ -283,4 +289,6 @@ const Share = styled.div`
 	flex-direction: row;
 	padding: 10px
 `
+
+
 export default React.memo(Share_modal);

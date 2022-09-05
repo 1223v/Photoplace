@@ -10,6 +10,7 @@ const Footer = () => {
   const [activeNav, setActiveNav] = useState(1);
 	
   return (
+	  
     <nav className="wrapper">
       {/* 하단 네비게이션 최상위 태그 */}
       
@@ -52,7 +53,9 @@ const Footer = () => {
       </Link>
       
     </nav>
+		 
   );
 };
 
 export default Footer;
+
