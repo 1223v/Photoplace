@@ -433,7 +433,7 @@ overflow-y: auto;
 	/* 사진 모음*/
 	
 	width: 90%;
-	
+	margin-top:10px;
 	font-family: "main_font";
 	font-size: 18px;
 	font-weight: bold;

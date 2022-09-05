@@ -22,7 +22,8 @@ router.get('/seoulsmap', (req, res) => {
 router.post('/detailSlide', (req, res) => {
 	var usercity = req.body.city;
 	let usercitys = usercity.split(' ', 2);
-	var sql = `select * from photo_data WHERE PHOTOGRAPY_LOCATION LIKE '%${usercitys}%'`;
+	let searchcity = usercitys[0] + " " + usercitys[1];
+	var sql = `select * from photo_data WHERE PHOTOGRAPY_LOCATION LIKE '%${searchcity}%'`;
 	connection.query(sql, (err, rows) => {
 		if (err) {
 			return res.send(err);

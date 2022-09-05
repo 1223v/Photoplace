@@ -49,7 +49,8 @@ const AImap = () => {
 	const [SubimageSrcs,setSubimageSrcs] = useState([])
 	
 	const aicontent = useSelector((state) => state.user);
-	console.log(aicontent.aiSuccess);
+	
+
 	
 	
 	const show = () => {
@@ -74,14 +75,14 @@ const AImap = () => {
 			ainame2: aicontent.aiSuccess.prediction1,
 			ainame3:aicontent.aiSuccess.prediction2,
 		};
-		console.log("응", body);
+		
 		Axios.post('/api/data/aimap',body)
         .then(response => {
             
 		setSubContent(response.data[0].content);
 		setSubimageSrcs(response.data[0].imageSrc)
 		// 마커 이미지의 이미지 주소입니다
-			console.log("응애", response.data);
+			
 		
 		for (var i = 0; i < response.data.length; i++) {
 			// 마커 이미지의 이미지 크기 입니다

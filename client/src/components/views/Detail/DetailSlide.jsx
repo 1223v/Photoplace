@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Axios from 'axios';
 import styled from 'styled-components';
-import ApexCharts from 'react-apexcharts';
-function Detailinfo(props) {
-	const [Detailobject, setDetailobject] = useState([]);
+import { motion } from 'framer-motion';
 
+function DetailSlide(props) {
+	const [DetailImgs, setDetailImgs] = useState([]);
+	const dragAreaRef = useRef(null);
 	
 	useEffect(() => {
 		let body = {
@@ -14,32 +15,43 @@ function Detailinfo(props) {
 		if (body.city != null) {
 			Axios.post('/api/data/detailSlide', body).then((response) => {
 				
-				setDetailobject(response.data);
+				setDetailImgs(response.data);
 				console.log(response.data);
 			});
 		}
 	}, [props.cityinfo]);
 	
-		
-	
-     
-
 	return (
-		/*
-		<div>
-			<div className="conges_info_inner">
-				<div className="d_cong">요일별 혼잡도</div>
-				<div className="d_cong_expln">
-					* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다.
-					*해당 지역의 방문객 
-				</div>
-				<div>
-					<ApexCharts series={options.series} options={options} type="bar" width="100%" height="100%" />
-				</div>
-				
+		<div style={{marginTop: '10px'}}>
+			<div style={{ width: '100%'}} className="photos">
+				<motion.div
+					ref={dragAreaRef}
+					className="dragAreaRef"
+					whileTap={{ cursor: 'grabbing' }}
+				>
+					<motion.div
+						style={{ width: '100%', height: '100%' }}
+						drag="x"
+						dragConstraints={{ right: 0, left: -650 }}
+						className="inner-carousel"
+					>
+						{DetailImgs.map((array, index) => {
+							return (
+								<motion.div className="item7777" key={index}>
+									<div>
+										<img src={array.IMG_URL} alt="" />
+									</div>
+								</motion.div>
+							);
+						})}
+					</motion.div>
+				</motion.div>
+				<br/>
 			</div>
 		</div>
 	);
-	*/
+
 }
+
+export default DetailSlide;
 

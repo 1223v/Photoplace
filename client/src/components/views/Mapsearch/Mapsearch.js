@@ -45,9 +45,6 @@ const TitleWrapper = styled.div`
 	background-color: white;
 `;
 
-const Hr = styled.hr`
-	margin-bottom: 0.4em;
-`
 const Title = styled.div`
 	font-size: 23px;
 	margin-top:10px;
@@ -89,13 +86,13 @@ const TagContainer = styled.div`
 	margin-bottom: 3px;
 `
 
-const ContentWrapper = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: fit-content;
-	background-color: white;
-	justify-content: center;
-`
+// const ContentWrapper = styled.div`
+// 	display: flex;
+// 	flex-direction: column;
+// 	width: fit-content;
+// 	background-color: white;
+// 	justify-content: center;
+// `
 /*
 const Image = styled.img`
 	margin-left: 1%;
@@ -294,7 +291,7 @@ function Mapsearch() {
 										{SearchImage.map((array, index) => {
 											return (
 												<motion.div className="item7777" key={index}>
-													<Link to={`/Detail/${array.num}`}>
+													<Link to={`/Detail/${array.num}`}  style={{ textDecoration:'none', color:'#1E1E1E' }}>
 													<div>
 														<img src={array.imageSrc} alt="" />
 														<br />

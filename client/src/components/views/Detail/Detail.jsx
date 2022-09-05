@@ -9,6 +9,7 @@ import Sharemodal from '../LandingPage/Sections/ShareModal';
 import Detailmap from '../Detailmap/Detailmap';
 import '../../../index.css';
 import Detailinfo from './Detailinfo';
+import DetailSlide from './DetailSlide';
 import {useShare} from '../Context/forShareModal';
 import { navUser } from '../../../_actions/user_actions';
 import { useDispatch} from 'react-redux';
@@ -177,31 +178,7 @@ function Detail(props) {
 						<div className="photos_collection">사진 모음</div>
 						<div className="img_and_expln">
 							방문자 및 한국관광공사 제공 사진입니다.
-							<div style={{ width: '100%'}} className="photos">
-								<motion.div
-									ref={dragAreaRef}
-									className="dragAreaRef"
-									whileTap={{ cursor: 'grabbing' }}
-								>
-									<motion.div
-										style={{ width: '100%', height: '100%' }}
-										drag="x"
-										dragConstraints={{ right: 0, left: -650 }}
-										className="inner-carousel"
-									>
-										{Detailse.map((array, index) => {
-											return (
-												<motion.div className="item7777" key={index}>
-													<div>
-														<img src={array.image} alt="" />
-													</div>
-												</motion.div>
-											);
-										})}
-									</motion.div>
-								</motion.div>
-								<br/>
-							</div>
+							<DetailSlide cityinfo={Details.city}></DetailSlide>
 						</div>
 					</div>					
 					
