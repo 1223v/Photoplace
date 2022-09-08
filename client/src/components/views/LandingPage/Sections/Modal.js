@@ -41,7 +41,9 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 						{closable && (
 							<CloseStyle>
 								<Close className="modal-close" onClick={close}>
-									{titles}
+									{(titles||'').split('(', 2)[0]}
+									<br/>
+									{(titles||'').split('(')[1]}
 								</Close>
 								<Close className="modal-close" onClick={close}>
 									X	
@@ -59,21 +61,23 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 						</ImgStyle>
 						<CloseStyled className="modal-close">
 							<Icon>
-								<div>
-								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
-									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbrkOxL%2FbtrH5eJL9Ql%2FbAKeSz9khkTLRRI1AOwo9k%2Fimg.png" alt=""></img>
-								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
-									
-									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FyYIqe%2FbtrH9Hj8n4e%2FMNmqEfiFOKEfMZArrlUBPK%2Fimg.png" alt=""></img>
-								<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
-									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbifvKn%2FbtrIdyfccPX%2FBmgv8WgxBI2KlLWONeJ1b1%2Fimg.png" alt=""></img>
-								</div>
-								<Link 
-									to={`/Detail/${nums}?true`}
-								>
-									 <img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px', float: 'right' }}
-									src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDwzJD%2FbtrIvnZEn58%2FBe6spOic2XwizQK025Wdh0%2Fimg.png" alt=""></img>	
-								</Link>
+								<LeftBox>
+									<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
+										src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbrkOxL%2FbtrH5eJL9Ql%2FbAKeSz9khkTLRRI1AOwo9k%2Fimg.png" alt=""></img>
+									<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
+
+										src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FyYIqe%2FbtrH9Hj8n4e%2FMNmqEfiFOKEfMZArrlUBPK%2Fimg.png" alt=""></img>
+									<img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px' }}
+										src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbifvKn%2FbtrIdyfccPX%2FBmgv8WgxBI2KlLWONeJ1b1%2Fimg.png" alt=""></img>
+								</LeftBox>
+								<RightBox>
+									<Link 
+										to={`/Detail/${nums}?true`}
+									>
+										 <img style={{ height:'20px', width:'25px', margin: 'auto', padding: '1px 2px', float: 'right' }}
+										src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDwzJD%2FbtrIvnZEn58%2FBe6spOic2XwizQK025Wdh0%2Fimg.png" alt=""></img>	
+									</Link>
+								</RightBox>
 
 							</Icon>
 							<Field style={{padding: '5px 0px 0px 0px'}}>{contents}</Field>
@@ -191,12 +195,25 @@ const Field = styled.div`
 	outline: none;
 	align-content: center;
 	flex-direction: row;
-`
+`;
 
 const Icon = styled.div`
 	display: flex;
 	outline: none;
 	flex-direction: row;
-`
+`;
+
+const LeftBox = styled.div`
+	float: left;
+	width: 50%;
+	border-bottom-left-radiuis:15px;
+	border-right:1.5px solid #000000;
+`;
+const RightBox = styled.div`
+	float: right;
+	width: 50%;
+	border-bottom-right-radius:15px;
+	border-left:1.5px solid #000000;
+`;
 
 export default React.memo(Modal);

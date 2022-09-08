@@ -16,7 +16,6 @@ function Ranking(props) {
 		console.log(props.category);
 		Axios.get('/api/data/' + props.category+'Ranking').then((response) => {
 			setCity(response.data);
-			console.log(response.data);
 		});
 	}, []);
 
@@ -30,7 +29,6 @@ function Ranking(props) {
 		};
 		if (body.rankingObject.length !== 0 ) {
 			Axios.post('api/data/' + props.category + 'Rankinginfo', body).then((response) => {
-				console.log(response.data);
 				setRankings(response.data);
 				setPage(Page + 1);
 			});
@@ -46,10 +44,8 @@ function Ranking(props) {
 			rankingObject: Limit(City),
 		};
 		Axios.post('api/data/' + props.category + 'Rankinginfo', body).then((response) => {
-			console.log(response.data)
 			setRankings([...Rankings, ...response.data]);
 			if(City.length <= Page*5 + 5){
-				console.log(Page * 5 + 5);
 				setVisible(false);
 			}else{
 				setPage(Page + 1);

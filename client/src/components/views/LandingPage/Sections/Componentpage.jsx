@@ -39,6 +39,7 @@ const Title = styled.div`
 	font-size: 25px;
 	font-weight: bold;
 	font-family: "main_font";
+	font-style: italic;
 `;
 
 const LocWrapper = styled.div`
@@ -49,10 +50,11 @@ const LocWrapper = styled.div`
 `;
 
 const LocTitle = styled.div`
-	font-size: 25px;
+	font-size: 23px;
 	font-family: 'main_font';
-	color: #ffcc00;
+	color: #585858;
 	margin-bottom: 10px;
+	font-weight: bold;
 `;
 
 const LocDetail = styled.div`
@@ -62,7 +64,6 @@ const LocDetail = styled.div`
 
 export default function Componentpage({SubContents,SubimageSrces}) {
 	const aicontent = useSelector((state) => state.user);
-	console.log(aicontent.aiSuccess);
 
 	var data = [
 		{

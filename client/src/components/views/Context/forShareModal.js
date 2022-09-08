@@ -6,7 +6,7 @@ export const ShareContext = createContext({
 	Title: "",
 	Num: 0,
 	Description: "",
-	Img: null,
+	Img: "",
 	setTitle: () => {},
 	setNum: () => {},
 	setDesc: () => {},

@@ -14,6 +14,10 @@ function Share_modal({className, onClose, maskClosable, closable, visible, title
 		setNum(num);
 		setDesc(description);
 		setImg(img);
+		console.log("before share" + titles);
+		console.log("before share" + num);
+		console.log("before share" + description);
+		console.log("before share" + img);
 		window.open("https://korea-app-beqvu.run.goorm.io/Share");
 	}
 	
@@ -75,7 +79,7 @@ function Share_modal({className, onClose, maskClosable, closable, visible, title
 		
 		try {
 		  await navigator.clipboard.writeText(url);
-		  alert('복사 성공! on 1');
+		  alert('복사 성공!');
 		} catch (error) {
 			try{
 				const txt =  document.createElement('input');
@@ -84,13 +88,13 @@ function Share_modal({className, onClose, maskClosable, closable, visible, title
 				txt.select();
 				await document.execCommand("copy");
 				document.body.removeChild(txt);
-				alert('복사 성공! on 2');
+				alert('복사 성공!');
 			}
 			catch(error){
 				try {
 					e.preventDefault();
 					e.clipboardData.setData(url, url);
-					alert('복사 성공! on 3');
+					alert('복사 성공!');
 				}
 				catch(error) {
 					return alert('복사 실패');
@@ -287,8 +291,9 @@ const Share = styled.div`
 	outline: none;
 	align-content: center;
 	flex-direction: row;
-	padding: 10px
-`
+	padding: 10px;
+	border-color: #000000 none #000000;
+`;
 
 
 export default React.memo(Share_modal);

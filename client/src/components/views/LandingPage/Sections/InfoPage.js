@@ -30,7 +30,7 @@ const PageWrapper = styled.div`
   flex-direction: row;
   border-radius: 10px;
   border: 3px solid black;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   position: absolute;
   animation-duration: 0.25s;

@@ -9,10 +9,14 @@ function Share() {
 		script.src = "https://developers.kakao.com.sdk/js/kakao.js";
 		script.async = true;
 		document.body.appendChild(script);
-		return () => document.body.removeChild(script);
+		return () => document.body.removeChild(script);		
 	}, []);
 	
-	const shareKakaoCustom = () => {		
+	const shareKakaoCustom = () => {	
+		console.log("after share" + Img);
+		console.log("after share" + Title);
+		console.log("after share" + Description);
+		console.log("after share" + Num);
 		if(window.Kakao) {
 			const kakao = window.Kakao;
 			if(!kakao.isInitialized()) {
@@ -35,7 +39,7 @@ function Share() {
 	};
 	
 	return (
-		<center onLoad={shareKakaoCustom}>
+		<center>
 			<br/>
 			<br/>
 			<br/>

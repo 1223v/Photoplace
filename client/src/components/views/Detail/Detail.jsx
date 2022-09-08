@@ -159,13 +159,13 @@ function Detail(props) {
 
 								<div>
 									<Detailmap
-										num={Detailse[1].num}
-										image={Detailse[1].imSrc}
-										loc_name = {Detailse[1].city}
-										up_loc={Detailse[1].uplatlnged}
-										down_loc={Detailse[1].downlatlnged}
-										left_loc={Detailse[1].leftlng}
-										right_loc={Detailse[1].rightlng}
+										num={Details.num}
+										image={Details.imSrc}
+										loc_name = {Details.city}
+										up_loc={Details.uplatlnged}
+										down_loc={Details.downlatlnged}
+										left_loc={Details.leftlng}
+										right_loc={Details.rightlng}
 									/>
 								</div>
 							</DETAIL>

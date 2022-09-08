@@ -39,7 +39,7 @@ const Container = styled.div`
 `;
 
 const AImap = () => {
-	const [ButtonColor, setButton] = useState('#18978F');
+	const [ButtonColor, setButton] = useState('#0B2161');
 	const [showInfo, setShowInfo] = useState(false);
 	const [modalVisible, setModalVisible] = useState(false);
 	const [imageSrcs, setimageSrcs] = useState('');
@@ -57,7 +57,7 @@ const AImap = () => {
 	
 	const show = () => {
 		setShowInfo(!showInfo);
-		ButtonColor === '#18978F' ? setButton('#FF869E') : setButton('#18978F');
+		ButtonColor === '#0B2161' ? setButton('#146152') : setButton('#0B2161');
 	};
 	const closeModal = () => {
 		setModalVisible(false);
