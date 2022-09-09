@@ -218,7 +218,8 @@ function Mapsearch() {
 					>
 						{Tagd.map((array, index) => {
 							return (
-									<div key={index}>	
+								<div>
+									<div key={index}>
 										<TagButton
 											onClick={(e) => {
 												TagSearch(e, array.tag_1);
@@ -227,6 +228,16 @@ function Mapsearch() {
 											#{array.tag_1}
 										</TagButton>
 									</div>
+									<div key={index}>
+										<TagButton
+											onClick={(e) => {
+												TagSearch(e, array.tag_1);
+											}}
+										>
+											#{array.tag_1}
+										</TagButton>
+									</div>
+								</div>
 							);
 						})}
 					</motion.div>
