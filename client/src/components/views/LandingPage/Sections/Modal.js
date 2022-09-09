@@ -9,6 +9,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 	const [Share, setShare] = useState(false);
 	
 	
+	
    const openShare = () => {
       setShare(!Share);
    };
