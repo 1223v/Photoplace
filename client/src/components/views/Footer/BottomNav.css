@@ -4,7 +4,7 @@
     bottom: 0;
 	left: 0;
     right: 0;
-    height: 65px;
+    height: 60px;
     background-color:#FFFFFF;
 	box-shadow: 0px -1px 20px -10px gray;
 	z-index: 5;
@@ -23,8 +23,8 @@
     text-align: center;
   	padding: 0px 0px;
     /* 세로길이 설정 */
-    height: 65px;
-    line-height: 65px;
+    
+    line-height: 75px;
   }
   
   /* 하단 네비바의 메뉴를 눌렀을 때 색상 변경*/

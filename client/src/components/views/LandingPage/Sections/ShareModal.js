@@ -140,7 +140,7 @@ function Share_modal({className, onClose, maskClosable, closable, visible, title
 							</CloseStyle>
 						)}
 						
-						<CloseStyled className="modal-close" style={{padding: '0px 10px'}} >
+						<CloseStyled className="modal-close" >
 							<Share onClick={test}>
 								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd8VMLZ%2FbtrJcGxWJKd%2FIaUnrdLRt41LWVL498QjjK%2Fimg.png"
 								style={{height: '50px', width: '50px', padding: '1px 2px', borderRadius:'10px'}}

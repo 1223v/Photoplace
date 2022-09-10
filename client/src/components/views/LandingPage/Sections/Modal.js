@@ -108,7 +108,7 @@ const CloseStyle = styled.div`
 	display: flex;
 	justify-content: space-between;
 	background-color: rgba(0, 0, 0);
-	width: 270px;
+	width: 240px;
 	padding: 10px 15px 10px 15px;
 	color: #ffffff;
 `;
@@ -119,7 +119,7 @@ const CloseStyled = styled.div`
 	align-content: center;
 	justify-content: space-between;
 	background-color: rgba(0, 0, 0);
-	width: 270px;
+	width: 240px;
 	min-height: 100px;
 	padding: 10px 15px 10px 15px;
 	flex-direction: column;

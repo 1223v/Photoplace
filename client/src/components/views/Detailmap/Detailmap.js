@@ -35,7 +35,8 @@ const Detailmap = (props) => {
 	return (
 		//이 부분은 윤기훈이 수정함 꼬이면 알려주세요
 		<MAP id="map1">
-			<Button>	
+			<Button>
+				 <tr>
 				<LeftBox>
 					<Link
 						to={'/Roadviews'}
@@ -45,6 +46,7 @@ const Detailmap = (props) => {
 						포토존 보기
 					</Link>
 				</LeftBox>
+			
 				<RightBox>
 					<a
 						href={"https://map.kakao.com/link/to/" + props.loc_name + "," + props.up_loc + "," + props.down_loc}
@@ -54,22 +56,24 @@ const Detailmap = (props) => {
 						길 찾기
 					</a>
 				</RightBox>
+				</tr>
 			</Button>
 		</MAP>
 	);
 };
 
-const LeftBox = styled.div`
-	float: left;
+const LeftBox = styled.td`
+	
 	width: 50%;
 	border-bottom-left-radiuis:15px;
 	border-right:1.5px solid #f2f2f2;
 `
-const RightBox = styled.div`
-	float: right;
+const RightBox = styled.td`
+	
 	width: 50%;
 	border-bottom-right-radius:15px;
 	border-left:1.5px solid #f2f2f2;
+	vertical-align: middle;
 `
 
 const MAP = styled.div`
@@ -80,7 +84,7 @@ const MAP = styled.div`
 	height: 306px;
 `;
 
-const Button = styled.button`
+const Button = styled.table`
 	z-index: 5;
 	position: absolute;
 	text-align: center;

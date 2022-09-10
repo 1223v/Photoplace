@@ -327,12 +327,7 @@ function Mapsearch() {
 									{Seoul.map((array, index) => {
 										return (
 											<motion.div
-												className="item7777"
-												key={index}
-												style={{
-													width: 'fit-content',
-													textalign: 'center',
-												}}
+												className="item7777" key={index}
 											>
 												<Link
 													to={`/Detail/${array.num}`}

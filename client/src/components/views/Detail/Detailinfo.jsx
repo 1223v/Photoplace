@@ -24,7 +24,7 @@ function Detailinfo(props) {
 console.log(Detailobject[0]);
 var options = {
           series: [{
-          name: '한달간 방문객',
+          name: '한달간 평균 방문객',
           type: 'column',
 		  data:Detailobject[0],  
           //data: [Detailobject[0][0], Detailobject[0][1], Detailobject[0][2], Detailobject[0][3], Detailobject[0][4], Detailobject[0][5], Detailobject[0][6]]
@@ -132,8 +132,8 @@ var options = {
 			<div className="d_cong">요일별 혼잡도</div>
 			<div className="conges_info_inner">
 				<div className="d_cong_expln">
-					* 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다.<br/>
-					* 해당 지역의 방문객 
+					* 해당지역에 대한 월-일 일주일 간 방문객 수를 나타낸 혼잡도입니다.<br/>
+					
 				</div>
 				<div>
 					{

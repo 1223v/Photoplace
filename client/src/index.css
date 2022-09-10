@@ -278,7 +278,7 @@ overflow-y: auto;
 	
 	/* 장소이름(굵은)  ex) 젠틀가든 팝업 스토어 */
 	font-family: "main_font";
-	font-size: 18px;
+	font-size: 20px;
 	color:#2f4f4f;
 	font-weight: bold;
 
@@ -293,9 +293,30 @@ overflow-y: auto;
 	font-family: "main_font";
 	
 	font-size: 15px;
-	color: rgb(112,112,112);
+	color: black;
 }
 
+.loccity{
+	
+	width: 100%;
+	margin: auto;
+	/* 장소설명~~~~ */
+	font-family: "main_font";
+	font-weight: bold;
+	font-size: 12px;
+	color: gray;
+}
+
+.loctag{
+	
+	width: 100%;
+	margin: auto;
+	/* 장소설명~~~~ */
+	font-family: "main_font";
+	
+	font-size: 11px;
+	
+}
 
 
 

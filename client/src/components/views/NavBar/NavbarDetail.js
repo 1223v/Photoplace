@@ -4,13 +4,12 @@ import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 import {IoIosArrowBack} from "react-icons/io"
 import {GrShareOption} from "react-icons/gr"
-import  'bootstrap/dist/css/bootstrap.min.css';
 import {useShare} from '../Context/forShareModal';
 import { useSelector } from 'react-redux';
 
 const MainText=styled.div`
    font-weight:bold;
-   font-size:25px;
+   font-size:22px;
    margin: auto;
    font-family: 'main_font';
 `;
@@ -29,7 +28,7 @@ function NavbarDetail() {
   return (
 
     <div >
-    <Navbar style={{position: "fixed", backgroundColor:"#FFFFFF", top:"0", left:"0", right:"0", zIndex:"500"}}>
+    <Navbar style={{position: "fixed", backgroundColor:"#FFFFFF",  left:"0", right:"0", zIndex:"500"}}>
     <Container>		
 		<div style={{ display:'flex', textAlign:'center', width:'100%' }}>
 			<IoIosArrowBack size="30" color="#000000" onClick={()=> history(-1)}/>

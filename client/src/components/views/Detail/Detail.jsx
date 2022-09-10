@@ -10,12 +10,14 @@ import Detailmap from '../Detailmap/Detailmap';
 import '../../../index.css';
 import Detailinfo from './Detailinfo';
 import DetailSlide from './DetailSlide';
-import {useShare} from '../Context/forShareModal';
+import { useShare } from '../Context/forShareModal';
 import { navUser } from '../../../_actions/user_actions';
-import { useDispatch} from 'react-redux';
+import { GrLocation } from 'react-icons/gr';
+import { MdContentCopy } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 
 function Detail(props) {
-	const {Appear, setAppear} = useShare();
+	const { Appear, setAppear } = useShare();
 
 	const init = () => {
 		const url = document.URL;
@@ -27,75 +29,39 @@ function Detail(props) {
 	const closeModal = () => {
 		setAppear(false);
 	};
-	
+
 	const [Details, setDetails] = useState([]);
+	const [Decity, setDecity] = useState([]);
 	const dragAreaRef = useRef(null);
 	const dispatch = useDispatch();
 	let { id } = useParams();
-	
- let Detailse = [
-      {
-         num: 0,
-         image:
-            'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0qPUV%2FbtrGbYaFMNG%2FdGuykZIHsDyqrrwtz4Ptk0%2Fimg.png',
-         loc_name: '장소이름1',
-         loc_info: '주소1',
-         dayCd: 1,
-         dayNm: '월요일',
-         touristCd: 1,
-         touristNm: '현지인(a)',
-         tourNum: 30107,
-         baseYmd: 20210513,
-         down_loc: 128.7273531,
-         up_loc: 35.3490459,
-         left_loc: 320,
-         right_loc: -40,
-      },
-      {
-         num: 1,
-         imSrc:
-            'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FRlsU4%2FbtrKgr7ub4S%2FzBMoMdwKKnobu3Vfd7IQz0%2Fimg.png',
-         city: '장소이름2',
-         loc_info: '주소2',
-         dayCd: 2,
-         dayNm: '화요일',
-         touristCd: 2,
-         touristNm: '외지인(b)',
-         tourNum: 284354,
-         baseYmd: 20210514,
-         downlatlnged: 126.62274408181165,
-         uplatlnged: 37.47545865728303,
-         leftlng: 150,
-         rightlng: 0,
-      }
-   ];
-
 
 	useEffect(() => {
 		let body = {
 			Num: id,
 		};
-		
+
 		Axios.post('/api/data/Detail/' + id, body).then((response) => {
 			setDetails(response.data[0]);
-			console.log(response.data[0].title);
-			
+
+			let decity = response.data[0].city;
+			let decitys = decity.split(' ', 2);
+			setDecity(decitys);
+
 			dispatch(navUser(response.data[0].title));
-			
 		});
-		
 	}, []);
-	
+
 	//<br/>왕창 준거 줄이면(or 늘리면) keenSlider 사진근처로 이동
 	//animate={{y:-110}} <-- 페이지 새로고침했을 때 keenSlider 시작위치
-	
+
 	return (
 		<div
 			className="fixed"
 			style={{
 				backgroundRepeat: 'no-repeat',
 				backgroundImage: 'url(' + `${Details.imageSrc}` + ')',
-				backgroundPosition: 'center 8%',
+				backgroundPosition: 'center 5%',
 			}}
 		>
 			<img src="#" onError={init} alt="profile" />
@@ -118,8 +84,6 @@ function Detail(props) {
 				<br />
 				<br />
 				<br />
-				
-				
 			</div>
 			<Container>
 				<motion.div
@@ -128,40 +92,51 @@ function Detail(props) {
 					className="KeenSlider"
 					drag="y"
 					dragConstraints={{ top: -1050, bottom: 0 }}
-					style={{ width: '100%', height: '100%'}}
-					
-					initial={{y: 0}}
+					style={{ width: '100%', height: '100%' }}
+					initial={{ y: 0 }}
 				>
 					<div className="loc_info_expln">
-						<br/>
+						<br />
 						<div className="loc_name">{Details.title}</div>
+						<div className="loccity">
+							<GrLocation size="12" />
+							{Decity[0]} {Decity[1]}
+						</div>
+						<br/>
 						<div className="loc_explanation">{Details.content}</div>
+						<br/>
+						<div className="loctag">
+							<b style={{backgroundColor:"#D3D3D3"}}>#{Details.tag_1}</b> <b style={{backgroundColor:"#D3D3D3"}}>#{Details.tag_2}</b>
+						</div>
 					</div>
 
 					<br />
 					<div className="conges_info">
-						<Detailinfo cityinfo ={Details.city}/>
+						<Detailinfo cityinfo={Details.city} />
 					</div>
 
 					<br />
 					<br />
-					<hr/>
-					
+					<hr />
+
 					<div className="map_div">
 						<div className="loc_info_with_map">위치정보</div>
 
 						<div className="map_and_expln">
-							
 							<DETAIL>
 								<Compo>
-									<div>{Details.city}</div>
+									<div>
+										
+										{Details.city}&nbsp; 
+										<MdContentCopy size="17" />
+									</div>
 								</Compo>
 
 								<div>
 									<Detailmap
 										num={Details.num}
 										image={Details.imSrc}
-										loc_name = {Details.city}
+										loc_name={Details.city}
 										up_loc={Details.uplatlnged}
 										down_loc={Details.downlatlnged}
 										left_loc={Details.leftlng}
@@ -171,17 +146,16 @@ function Detail(props) {
 							</DETAIL>
 						</div>
 					</div>
-				
+
 					<div className="photo_div">
-						<br/>
-						<hr/>
+						<br />
+						<hr />
 						<div className="photos_collection">사진 모음</div>
 						<div className="img_and_expln">
 							방문자 및 한국관광공사 제공 사진입니다.
 							<DetailSlide cityinfo={Details.city}></DetailSlide>
 						</div>
-					</div>					
-					
+					</div>
 				</motion.div>
 			</Container>
 			<div>
@@ -192,9 +166,9 @@ function Detail(props) {
 							closable={true}
 							maskClosable={true}
 							onClose={closeModal}
-							titles= {Details.title}
-							description = {Details.content}
-							img = {Details.imageSrc}
+							titles={Details.title}
+							description={Details.content}
+							img={Details.imageSrc}
 						></Sharemodal>
 					)}
 				</React.Fragment>
@@ -212,8 +186,8 @@ const Compo = styled.div`
 	height: 40px;
 	position: relative;
 	align-items: center;
-	border-top-right-radius:15px;
-	border-top-left-radius:15px;
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
 `;
 
 const Button = styled.button`
@@ -228,7 +202,7 @@ const Button = styled.button`
 const DETAIL = styled.div`
 	margin-top: 10px;
 	border: 3px solid #f2f2f2;
-	border-radius:15px;
+	border-radius: 15px;
 	right: 0;
 	width: 100%;
 	height: 100%;
