@@ -156,7 +156,7 @@ const Recommendation = (props, { history }) => {
 		};
 
 		dispatch(aiUser(body));
-		navigate('/AImap');
+		navigate('/REmap');
 	}
 
 	const handleChangeFile = (event) => {

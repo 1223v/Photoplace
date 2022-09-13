@@ -17,6 +17,7 @@ import DramaRanking from './views/Ranking/RankingDrama';
 import Detail from './views/Detail/Detail';
 import Share from './views/Share/Share';
 import AImap from './views/AImap/AImap';
+import REmap from './views/AImap/REmap';
 import Roadviews from './views/Roadviews/Roadviews';
 import SeoulMap from './views/LandingPage/SeoulMap';
 import BusanMap from './views/LandingPage/Sections/BusanMap';
@@ -117,6 +118,7 @@ function App() {
 						<Route path="/JejuRanking" element={<JejuRanking />} />
 						<Route path="/DramaRanking" element={<DramaRanking/>}/>
 						<Route path="/AImap" element={<AImap />} />
+						<Route path="/REmap" element={<REmap />} />
 						<Route path="/BusanMap" element={<BusanMap />} />
 						<Route path="/JejuMap" element={<JejuMap />} />
 						<Route path="/DramaMap" element={<DramaMap />} />
