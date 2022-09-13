@@ -117,7 +117,7 @@ function Ranking(props) {
 						</Link>
 					</ContentBa>
 					<ContentBa key="4">
-						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/DramaMap">
+						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/DramaRanking">
 							<ContentImage
 								alt="ph4"
 								src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbQwTTe%2FbtrJLSwqsZE%2FDjAkDnIVkBoOJkr3TGaxW0%2Fimg.jpg"
@@ -148,13 +148,9 @@ function Ranking(props) {
 				<br />
 				<br />
 			</div>
-			<div style={{ textAlign: 'center' }}>
+			<CbuttonDiv>
 				{Visible && <CButton onClick={Click}>더보기</CButton>}
-			</div>
-			<br />
-			<br />
-			<br />
-			<br />
+			</CbuttonDiv>
 		</div>
 	);
 }
@@ -285,9 +281,15 @@ const CButton = styled.button`
 	height: 40px;
 	position: absolute;
 	padding: 0;
-	margin: 10px;
 	border: 1px solid #18978f;
 	border-radius: 30px;
+`;
+const CbuttonDiv = styled.div`
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	height: 40px;
+	margin-bottom: 80px;
 `;
 
 

@@ -177,6 +177,7 @@ const ContentBar = styled.ul`
 	margin-top: 8px;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 70px;
   	padding-left:0px;
 	background-color: white;
 	font-family: 'main_font';

@@ -10,7 +10,6 @@ import { aiUser } from '../../../_actions/user_actions';
 
 
 
-
 const Container = styled.div`
 	margin-left: auto;
 	margin-right: auto;
@@ -90,7 +89,7 @@ const AnalyzingContainer=styled.div`
 	top:50px;
 `
 
-const Seoul = (props, { history }) => {
+const Recommendation = (props, { history }) => {
 	let URL = 'https://teachablemachine.withgoogle.com/models/D563JHUM9/'; //<--TM url
 
 	const modelURL = URL + 'model.json';
@@ -190,7 +189,7 @@ const Seoul = (props, { history }) => {
 			{showResult ? (
 				<div>분석결과는?</div>
 			) : (
-				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : 'AI가 궁금한 여행지를 찾아드려요! (서울)'}</div>
+				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : '얼굴 사진을 올리면 AI가 어울리는 여행지를 추천해드려요! (AI 추천)'}</div>
 			)}
 
 			{!loading && result === null ? (
@@ -264,4 +263,4 @@ const Seoul = (props, { history }) => {
 	);
 };
 
-export default Seoul;
+export default Recommendation;

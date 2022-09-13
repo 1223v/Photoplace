@@ -4,6 +4,7 @@ import NavBar from './views/NavBar/NavBar';
 import NavbarDetail from './views/NavBar/NavbarDetail';
 import Footer from './views/Footer/Footer';
 import Seoul from './views/AIcontent/Seoul';
+import Recommendation from './views/AIcontent/Recommendation';
 import Busan from './views/AIcontent/Busan';
 import Drama from './views/AIcontent/Drama';
 import Jeju from './views/AIcontent/Jeju';
@@ -12,6 +13,7 @@ import Mapsearch from './views/Mapsearch/Mapsearch';
 import Ranking from './views/Ranking/RankingSeoul';
 import BusanRanking from './views/Ranking/RankingBusan';
 import JejuRanking from './views/Ranking/RankingJeju';
+import DramaRanking from './views/Ranking/RankingDrama';
 import Detail from './views/Detail/Detail';
 import Share from './views/Share/Share';
 import AImap from './views/AImap/AImap';
@@ -20,7 +22,7 @@ import SeoulMap from './views/LandingPage/SeoulMap';
 import BusanMap from './views/LandingPage/Sections/BusanMap';
 import JejuMap from './views/LandingPage/Sections/JejuMap';
 import DramaMap from './views/LandingPage/Sections/DramaMap';
-import {ShareContext} from './views/Context/forShareModal';
+import {ShareContext, useShare} from './views/Context/forShareModal';
 
 function App() {
 	const [Appear, setAppear] = useState(false);
@@ -30,6 +32,7 @@ function App() {
 	const [Description, setDesc] = useState("");
 	const [Img, setImg] = useState(null);
 	const location = useLocation();
+	
 	
 	useEffect(() => {
 		setTimeout(() => {
@@ -46,14 +49,13 @@ function App() {
 		return (
 			<ShareContext.Provider
 			value= {{
-				Appear, setAppear, setTitle, setNum, setDesc, setImg
-			}}>
+				Appear, setAppear, setTitle, setNum, setDesc, setImg, Img, Num, Description, Title
+			}}> 
 				<div>
 					<NavbarDetail />
-					<div style={{ minHeight: 'calc(100vh - 80px)' }}>
+					<div style={{ minHeight: 'calc(100vh - 80px)', paddingTop: '50px' }}>
 						<Routes>
 							<Route path="/Detail/:id" element={<Detail />} />
-							<Route path="/Share" element={<Share />} />
 							<Route path="/Roadviews" element={<Roadviews />} />
 						</Routes>
 					</div>
@@ -73,12 +75,15 @@ function App() {
 			</div>
 		);
 	} else if (url.includes('Share')) {
+		console.log("going " + Title);
 		return (
 			<ShareContext.Provider
-			value= {{ Img, Title, Description, Num }}>
+			value= {{
+				Appear, setAppear, setTitle, setNum, setDesc, setImg, Img, Num, Description, Title
+			}}>
 				<div>
 					<NavbarDetail />
-					<div style={{ minHeight: 'calc(100vh - 80px)', align: 'center', valign: 'center'}}>
+					<div style={{ minHeight: 'calc(100vh - 80px)', align: 'center', valign: 'center', paddingTop: '50px'}}>
 						<Routes>
 							<Route path="/Share" element={<Share />} />
 						</Routes>
@@ -104,11 +109,13 @@ function App() {
 						<Route path="/Seoul" element={<Seoul />} />
 						<Route path="/Busan" element={<Busan />} />
 						<Route path="/Jeju" element={<Jeju />} />
+						<Route path="/Recommendation" element={<Recommendation />} />
 						<Route path="/Drama" element={<Drama />} />
 						<Route path="/Mapsearch" element={<Mapsearch />} />
 						<Route path="/SeoulRanking" element={<Ranking />} />
 						<Route path="/BusanRanking" element={<BusanRanking />} />
 						<Route path="/JejuRanking" element={<JejuRanking />} />
+						<Route path="/DramaRanking" element={<DramaRanking/>}/>
 						<Route path="/AImap" element={<AImap />} />
 						<Route path="/BusanMap" element={<BusanMap />} />
 						<Route path="/JejuMap" element={<JejuMap />} />

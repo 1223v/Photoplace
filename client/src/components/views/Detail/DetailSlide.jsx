@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 function DetailSlide(props) {
 	const [DetailImgs, setDetailImgs] = useState([]);
 	const dragAreaRef = useRef(null);
+	const [PicLength, setPicLength] = useState(0);
+	let currentWidth = document.body.scrollWidth;
 	
 	useEffect(() => {
 		let body = {
@@ -16,10 +18,12 @@ function DetailSlide(props) {
 			Axios.post('/api/data/detailSlide', body).then((response) => {
 				
 				setDetailImgs(response.data);
-				console.log(response.data);
+				setPicLength(response.data.length);			
 			});
 		}
 	}, [props.cityinfo]);
+	
+	let width = PicLength > 3 ? -170*PicLength+600 : 0;
 	
 	return (
 		<div style={{marginTop: '10px'}}>
@@ -32,7 +36,7 @@ function DetailSlide(props) {
 					<motion.div
 						style={{ width: '100%', height: '100%' }}
 						drag="x"
-						dragConstraints={{ right: 0, left: -650 }}
+						dragConstraints={{ right: 0, left: width }}
 						className="inner-carousel"
 					>
 						{DetailImgs.map((array, index) => {

@@ -8,7 +8,6 @@ import styled from 'styled-components';
 import { useDispatch} from 'react-redux';
 import { aiUser } from '../../../_actions/user_actions';
 
-//import Select from "./Select"
 
 const Container = styled.div`
 	margin-left: auto;
@@ -93,28 +92,7 @@ const AnalyzingContainer=styled.div`
 const Busan = (props, { history }) => {
 	let URL = 'https://teachablemachine.withgoogle.com/models/bPVTnnqcJ/';
 
-	let OPTIONS = [
-		{
-			value: 'Busan',
-			name: '부산',
-			key: '/Busan',
-		},
-		{
-			value: 'Seoul',
-			name: '서울',
-			key: '/Seoul',
-		},
-		{
-			value: 'Jeju',
-			name: '제주',
-			key: '/Jeju',
-		},
-		{
-			value: 'Drama',
-			name: '드라마',
-			key: './Drama',
-		},
-	];
+	
 	
 
 	const modelURL = URL + 'model.json';
@@ -212,7 +190,7 @@ const Busan = (props, { history }) => {
 			{showResult ? (
 				<div>분석결과는?</div>
 			) : (
-				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : 'AI가 어울리는 여행지를 추천해드려요! (부산)'}</div>
+				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : 'AI가 궁금한 여행지를 찾아드려요! (부산)'}</div>
 			)}
 
 			{!loading && result === null ? (
@@ -251,6 +229,7 @@ const Busan = (props, { history }) => {
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Busan">부산</Link>
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Jeju"> 제주</Link>
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Drama"> 드라마</Link>
+						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Recommendation">AI 추천</Link>
 					</div>
 				</LowerIconsContainer>
 				

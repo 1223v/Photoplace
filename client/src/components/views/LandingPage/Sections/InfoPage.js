@@ -27,6 +27,7 @@ const PageWrapper = styled.div`
   align-items: space-around;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   flex-direction: row;
   border-radius: 10px;
   border: 3px solid black;

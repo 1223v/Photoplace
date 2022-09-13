@@ -7,7 +7,8 @@ import styled from 'styled-components';
 import { useDispatch} from 'react-redux';
 import { aiUser } from '../../../_actions/user_actions';
 
-import Select from "./Select"
+
+
 
 const Container = styled.div`
 	margin-left: auto;
@@ -185,7 +186,7 @@ const Jeju = (props, { history }) => {
 			{showResult ? (
 				<div>분석결과는?</div>
 			) : (
-				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : 'AI가 어울리는 여행지를 추천해드려요! (제주)'}</div>
+				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : 'AI가 궁금한 여행지를 찾아드려요! (제주)'}</div>
 			)}
 
 			{!loading && result === null ? (
@@ -222,6 +223,7 @@ const Jeju = (props, { history }) => {
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Busan">부산</Link>
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Jeju"> 제주</Link>
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none',marginRight:'5%'}} to="/Drama"> 드라마</Link>
+						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Recommendation">AI 추천</Link>
 					</div>
 				</LowerIconsContainer>
 

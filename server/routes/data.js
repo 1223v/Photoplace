@@ -263,6 +263,16 @@ router.post('/JejuRankinginfo', (req, res) => {
 	});
 });
 
+router.get('/DramaRanking', (req, res) => {
+	var sql = `select * from Marker where tag_2 = "드라마" order by instaCount DESC;`;
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			return res.send(err);
+		}
+		return res.send(rows);
+	});
+});
+
 router.post('/ModalSlider', (req, res) => {
 	var nums = req.body.nums;
 	//var sql = `SELECT * FROM Marker WHERE num='${nums}' union SELECT num, marker_num, imageSrc,1,2,3,4,5,6 FROM slide WHERE marker_num='${nums}'`;

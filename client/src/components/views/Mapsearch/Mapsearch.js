@@ -8,6 +8,7 @@ import Axios from 'axios';
 const WholeWrapper = styled.div`
 	font-family: 'main_font';
 	background-color: #f2f2f2;
+	width: 100%;
 `;
 
 const SearchWrapper = styled.div`
@@ -30,6 +31,7 @@ const InfoWrapper = styled.div`
 	align-items: center;
 	background-color: white;
 	padding: 2px;
+	box-sizing: border-box;
 `;
 
 const TitleWrapper = styled.div`
@@ -71,14 +73,25 @@ const TagButton = styled.button`
 	border-radius: 10px;
 `;
 
+const TagDiv = styled.div`
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	background-color: white;
+`;
+const TagItem = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+`
 const TagContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	height: 45px;
 	background-color: white;
 	padding: 10px;
 	margin-bottom: 3px;
+	box-sizing: border-box;
 `;
 
 const Input = styled.input`
@@ -171,7 +184,8 @@ function Mapsearch() {
 	}, []);
 	
 	let currentWidth = document.body.scrollWidth;
-
+	let Search_width = 0;
+	
 	const onTextHandler = (event) => {
 		setText(event.currentTarget.value);
 	};
@@ -183,7 +197,7 @@ function Mapsearch() {
 		};
 		Axios.post('/api/data/Searchpagede', body).then((response) => {
 			setSearchImage(response.data);
-			setTagLength(response.data.length);
+			setSearchLength(response.data.length);
 			setIsSearching(true);
 			if (Text === '') {
 				setIsSearching(false);
@@ -191,7 +205,6 @@ function Mapsearch() {
 		});
 	};
 	const TagSearch = (e, params) => {
-		
 		setText(params);
 		e.preventDefault();
 		let body = {
@@ -199,7 +212,9 @@ function Mapsearch() {
 		};
 		Axios.post('/api/data/Searchpagede', body).then((response) => {
 			setSearchImage(response.data);
+			setSearchLength(response.data.length);
 			setIsSearching(true);
+			
 		});
 	};
 	const TagPage = () => {
@@ -213,38 +228,48 @@ function Mapsearch() {
 					<motion.div
 						style={{ width: '100%', height: '100%' }}
 						drag="x"
-						dragConstraints={{ right: 0, left: -9000 }}
+						dragConstraints={{ right: 0, left: -105*TagLength/2+currentWidth }}
 						className="inner-carousel"
 					>
-						{Tagd.map((array, index) => {
-							return (
-								<div>
-									<div key={index}>
-										<TagButton
-											onClick={(e) => {
-												TagSearch(e, array.tag_1);
-											}}
-										>
-											#{array.tag_1}
-										</TagButton>
-									</div>
-									<div key={index}>
-										<TagButton
-											onClick={(e) => {
-												TagSearch(e, array.tag_1);
-											}}
-										>
-											#{array.tag_1}
-										</TagButton>
-									</div>
-								</div>
-							);
-						})}
+						<TagItem>
+							<TagDiv style={{marginBottom: '5px'}}>
+								{Tagd.slice(0, Tagd.length/2).map((array, index) => {
+									return ( 
+										<div key={index}>
+											<TagButton
+												onClick={(e) => {
+													TagSearch(e, array.tag_1);
+												}}
+											>
+												#{array.tag_1}
+											</TagButton>
+										</div>
+									);
+								})}
+							</TagDiv>
+							<TagDiv>
+								{Tagd.slice(Tagd.length / 2, Tagd.length + 1).map((array, index) => {
+									return ( 
+										<div key={index}>
+											<TagButton
+												onClick={(e) => {
+													TagSearch(e, array.tag_1);
+												}}
+											>
+												#{array.tag_1}
+											</TagButton>
+										</div>
+									);
+								})}
+							</TagDiv>
+						</TagItem>
 					</motion.div>
 				</motion.div>
 			</TagContainer>
 		);
 	};
+	
+	
 	const SearchPage = (props) => {
 		if (props.isSearching) {
 			return (
@@ -263,7 +288,7 @@ function Mapsearch() {
 									<motion.div
 										style={{ width: '100%', height: '100%' }}
 										drag="x"
-										dragConstraints={{ right: 0, left: -160*SearchLength+currentWidth }}
+										dragConstraints={{ right: 0, left: SearchLength*170 > currentWidth ? -170*SearchLength+currentWidth : 0 }}
 										className="inner-carousel"
 									>
 										{SearchImage.map((array, index) => {
@@ -298,7 +323,7 @@ function Mapsearch() {
 
 	return (
 		<div>
-			<WholeWrapper>
+			<WholeWrapper style={{width: '100%'}}>
 				<SearchWrapper>
 					<SearchBar onSubmit={onSubmitHandler}>
 						<Input type="text" value={Text} onChange={onTextHandler} />
@@ -321,7 +346,7 @@ function Mapsearch() {
 								<motion.div
 									style={{ width: '100%', height: '100%' }}
 									drag="x"
-									dragConstraints={{ right: 0, left: -180*SeoulLength }}
+									dragConstraints={{ right: 0, left: -160*SeoulLength+currentWidth }}
 									className="inner-carousel"
 								>
 									{Seoul.map((array, index) => {
@@ -338,7 +363,7 @@ function Mapsearch() {
 												>
 													<div>
 														<img src={array.imageSrc} alt="" />
-														<ImgTitle style={{ width: 'max-content' }}>
+														<ImgTitle>
 															{array.title}
 														</ImgTitle>
 														<ImgContent>{array.content}</ImgContent>
@@ -479,9 +504,7 @@ function Mapsearch() {
 					</ItemWrapper>
 				</InfoWrapper>
 			</WholeWrapper>
-			<br />
-			<br />
-			<br />
+
 		</div>
 	);
 }

@@ -5,33 +5,15 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function RankingJeju() {
-	const [City, setCity] = useState([]);
 	const [Rankings, setRankings] = useState([]);
 	useEffect(() => {
 		// Axios.get('/api/data/seoulsmap').then((response) => {
 		// 	setRankings(response.data);
 		// });
-		Axios.get('/api/data/JejuRanking').then((response) => {
-			setCity(response.data);
-			console.log(response.data);
+		Axios.get('/api/data/DramaRanking').then((response) => {
+			setRankings(response.data);
 		});
 	}, []);
-
-	useEffect(() => {
-		// Axios.get('/api/data/seoulsmap').then((response) => {
-		// 	setRankings(response.data);
-		// });
-
-		let body = {
-			rankingObject: City
-		};
-		if (body.rankingObject.length !== 0 ) {
-			Axios.post('api/data/JejuRankinginfo', body).then((response) => {
-				console.log(response.data);
-				setRankings(response.data);
-			});
-		}
-	}, [City]);
 
 
 	return (

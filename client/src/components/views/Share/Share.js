@@ -1,22 +1,27 @@
 import React, {useEffect} from 'react';
-import {useShare} from '../Context/forShareModal';
+import { Bounce } from "react-activity";
+import Loading from '../Loading/Loading';
 
 function Share() {
-	const {Title, Img, Description, Num} = useShare();
 	
+	let img = "";
 	useEffect(() => {
 		const script = document.createElement("script");
 		script.src = "https://developers.kakao.com.sdk/js/kakao.js";
 		script.async = true;
 		document.body.appendChild(script);
 		return () => document.body.removeChild(script);		
+		
 	}, []);
 	
 	const shareKakaoCustom = () => {	
-		console.log("after share" + Img);
-		console.log("after share" + Title);
-		console.log("after share" + Description);
-		console.log("after share" + Num);
+		let url = document.URL;
+		let parse = url.split('&');
+		let title = decodeURI(parse[1]);
+		let num = parse[2];
+		let desc = decodeURI(parse[3]);
+		img = decodeURI(atob(parse[4]));
+
 		if(window.Kakao) {
 			const kakao = window.Kakao;
 			if(!kakao.isInitialized()) {
@@ -29,27 +34,22 @@ function Share() {
 					'like': 123,
 					'share': 321,
 					'view': 213,
-					'title': Title,
-					'num': Num,
-					'description': Description,
-					'image': Img
+					'title': title,
+					'num': num,
+					'description': desc,
+					'image': img
 				}
 			});			
 		}
 	};
 	
 	return (
+		<div>
 		<center>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<img src="#" onError={shareKakaoCustom} />
+			<img src="#" onError="this.style.display='none';" onError={shareKakaoCustom} />
 		</center>
+		<Loading></Loading>
+		</div>
 	);
 }
 

@@ -1,24 +1,21 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {useShare} from '../../Context/forShareModal';
+import {useShare, ShareContext} from '../../Context/forShareModal';
 
 //const {Kakao, location} = window;
 
 function Share_modal({className, onClose, maskClosable, closable, visible, titles, img, description, view }) {
-	const {setTitle, setNum, setDesc, setImg} = useShare();
+	const {setTitle, setNum, setDesc, setImg, Img, Description, Num, Title} = useShare();
 	
 	const test = () => {
 		let num = parseInt(document.URL.match(/\d+/g));
-		setTitle(titles);
 		setNum(num);
-		setDesc(description);
-		setImg(img);
-		console.log("before share" + titles);
-		console.log("before share" + num);
-		console.log("before share" + description);
-		console.log("before share" + img);
-		window.open("https://korea-app-beqvu.run.goorm.io/Share");
+		console.log("before share " + Title);
+		console.log("before share " + Num);
+		console.log("before share " + Description);
+		console.log("before share " + Img);
+		window.open("https://korea-app-beqvu.run.goorm.io/Share?&" + Title  + "&" + Num + "&" + Description + "&" + btoa(Img));
 	}
 	
 	useEffect(() => {
@@ -27,6 +24,7 @@ function Share_modal({className, onClose, maskClosable, closable, visible, title
 		script.async = true;
 		document.body.appendChild(script);
 		return () => document.body.removeChild(script);
+		
 	}, []);
 	
 	
@@ -141,34 +139,34 @@ function Share_modal({className, onClose, maskClosable, closable, visible, title
 						)}
 						
 						<CloseStyled className="modal-close" >
-							<Share onClick={test}>
+							<Share_div onClick={test}>
 								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd8VMLZ%2FbtrJcGxWJKd%2FIaUnrdLRt41LWVL498QjjK%2Fimg.png"
 								style={{height: '50px', width: '50px', padding: '1px 2px', borderRadius:'10px'}}
 								/>
 								<Text>
 									카카오톡으로 공유
 								</Text>
-							</Share>
+							</Share_div>
 							
-							<Share onClick={LineShare}>
+							<Share_div onClick={LineShare}>
 								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fr9uWm%2FbtrJgduNhuq%2F94lr5w0oztqXb0QuCiv0x0%2Fimg.png"
 								style={{height: '50px', width: '50px', padding: '1px 2px'}}
 								/>
 								<Text>
 									라인으로 공유
 								</Text>
-							</Share>
+							</Share_div>
 							
-							<Share onClick={handleCopyClipBoard}>
+							<Share_div onClick={handleCopyClipBoard}>
 								<img alt="" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdTY4Ft%2FbtrI2VinIYg%2FKsMqBaRomHlvTnFB5ZkeVK%2Fimg.png"
 								style={{height:'50px', width:'50px', padding: '1px 2px'}}
 								/>
 								<Text>
 								  url 복사
 								</Text>
-							</Share>
-							<Share>
-							</Share>	
+							</Share_div>
+							<Share_div>
+							</Share_div>	
 						</CloseStyled>
 					</ModalInner2>
 				</ModalInner>
@@ -283,7 +281,7 @@ const ModalInner = styled.div`
   }
 `;
 
-const Share = styled.div`
+const Share_div = styled.div`
 	font-family: "main_font";
 	text-align: left;
 	font-size: 15px;

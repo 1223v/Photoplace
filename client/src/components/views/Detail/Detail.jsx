@@ -17,15 +17,8 @@ import { MdContentCopy } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 
 function Detail(props) {
-	const { Appear, setAppear } = useShare();
-
-	const init = () => {
-		const url = document.URL;
-		if (url.includes('true')) {
-			setAppear(true);
-		}
-	};
-
+	const {Appear, setAppear, setTitle, setNum, setDesc, setImg, Img, Description, Num, Title} = useShare();
+	
 	const closeModal = () => {
 		setAppear(false);
 	};
@@ -36,35 +29,93 @@ function Detail(props) {
 	const dispatch = useDispatch();
 	let { id } = useParams();
 
-	useEffect(() => {
+	const syncro_kihun = () => {
+		setTitle(Details.title);
+		setDesc(Details.content);
+		setImg(Details.imageSrc);
+		console.log("in detail ", + Title);
+		console.log("in detail " + Description);
+		console.log("in detail " + Img);
+	}
+	
+	useEffect(() => {		
 		let body = {
 			Num: id,
 		};
 
 		Axios.post('/api/data/Detail/' + id, body).then((response) => {
 			setDetails(response.data[0]);
-
+			
+			//kihun	
+			let num = parseInt(document.URL.match(/\d+/g));
+			console.log("setting " + num);
+			console.log("setting " + response.data[0].title);
+			console.log("setting " + response.data[0].content);
+			console.log("setting " + response.data[0].imageSrc);
+			setNum(num);
+			setTitle(response.data[0].title);
+			setDesc(response.data[0].content);
+			setImg(response.data[0].imageSrc);
+			///kihun
+			
 			let decity = response.data[0].city;
 			let decitys = decity.split(' ', 2);
 			setDecity(decitys);
 
 			dispatch(navUser(response.data[0].title));
 		});
+		
+		const url = document.URL;
+		if (url.includes('true')) {
+			setAppear(true);
+		}
+		
 	}, []);
 
 	//<br/>왕창 준거 줄이면(or 늘리면) keenSlider 사진근처로 이동
 	//animate={{y:-110}} <-- 페이지 새로고침했을 때 keenSlider 시작위치
-
+	
+	const handleCopyClipBoard = async (e) => {
+		let city = Details.city;
+		let cityfs =(city||'').split('[', 2);
+		if (!document.queryCommandSupported("copy")) {
+        return alert("복사하기가 지원되지 않는 브라우저입니다.");
+      	}
+		try {
+		  await navigator.clipboard.writeText(cityfs[0]);
+		  alert('복사 성공!');
+		} catch (error) {
+			try{
+				const txt =  document.createElement('input');
+				txt.value = city;
+				document.body.appendChild(txt);
+				txt.select();
+				await document.execCommand("copy");
+				document.body.removeChild(txt);
+				alert('복사 성공!');
+			}
+			catch(error){
+				try {
+					e.preventDefault();
+					e.clipboardData.setData(cityfs[0], cityfs[0]);
+					alert('복사 성공!');
+				}
+				catch(error) {
+					return alert('복사 실패');
+				}
+			}
+		}
+	  };
+	
 	return (
 		<div
 			className="fixed"
 			style={{
 				backgroundRepeat: 'no-repeat',
 				backgroundImage: 'url(' + `${Details.imageSrc}` + ')',
-				backgroundPosition: 'center 5%',
+				backgroundPosition: 'center 1%',
 			}}
 		>
-			<img src="#" onError={init} alt="profile" />
 			<br />
 			<br />
 			<br />
@@ -125,10 +176,9 @@ function Detail(props) {
 						<div className="map_and_expln">
 							<DETAIL>
 								<Compo>
-									<div>
-										
+									<div>										
 										{Details.city}&nbsp; 
-										<MdContentCopy size="17" />
+										<MdContentCopy size="17" onClick={handleCopyClipBoard}/>
 									</div>
 								</Compo>
 
@@ -230,4 +280,4 @@ const Container = styled.div`
 		/* border-left:1px solid #95afc0;
     border-right:1px solid #95afc0; */
 	}
-`;
+`; 

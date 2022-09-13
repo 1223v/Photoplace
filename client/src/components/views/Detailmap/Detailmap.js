@@ -31,7 +31,7 @@ const Detailmap = (props) => {
 		});
 		
 	});
-
+	let locname = (props.loc_name||'').split('[', 2);
 	return (
 		//이 부분은 윤기훈이 수정함 꼬이면 알려주세요
 		<MAP id="map1">
@@ -49,7 +49,7 @@ const Detailmap = (props) => {
 			
 				<RightBox>
 					<a
-						href={"https://map.kakao.com/link/to/" + props.loc_name + "," + props.up_loc + "," + props.down_loc}
+						href={"https://map.kakao.com/link/to/" + locname[0] + "," + props.up_loc + "," + props.down_loc}
 						target='_blank'
 						style={{ textDecoration: 'none', color: 'black' }}
 					>
