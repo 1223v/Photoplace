@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import SlickComponent from './SliderImg';
+import { MdContentCopy } from 'react-icons/md';
 
 function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs, contents, titles, nums,cityd }) {
 	
@@ -17,6 +18,37 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 			onClose(e);
 		}
 	};
+	const handleCopyClipBoard2 = async (e) => {
+		let city = cityd;
+		let cityfs =(city||'').split('[', 2);
+		if (!document.queryCommandSupported("copy")) {
+        return alert("복사하기가 지원되지 않는 브라우저입니다.");
+      	}
+		try {
+		  await navigator.clipboard.writeText(cityfs[0]);
+		  alert('복사 성공!');
+		} catch (error) {
+			try{
+				const txt =  document.createElement('input');
+				txt.value = city;
+				document.body.appendChild(txt);
+				txt.select();
+				await document.execCommand("copy");
+				document.body.removeChild(txt);
+				alert('복사 성공!');
+			}
+			catch(error){
+				try {
+					e.preventDefault();
+					e.clipboardData.setData(cityfs[0], cityfs[0]);
+					alert('복사 성공!');
+				}
+				catch(error) {
+					return alert('복사 실패');
+				}
+			}
+		}
+	  };
 	
 	return (
 		<div elementid="modal-root">
@@ -89,7 +121,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs,
 								<img alt="" style={{ height:'20px', width:'25px', padding: '1px 2px', float: 'left' }}
 									   src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbSShKN%2FbtrIcG5SCGN%2FhKSILrQXKSh4fWQS4CjXQ1%2Fimg.png"></img>
 								{cityd}
-								
+								<MdContentCopy size="17" onClick={handleCopyClipBoard2}/>
 							</Field>
 						</CloseStyled>
 					</ModalInner2>
