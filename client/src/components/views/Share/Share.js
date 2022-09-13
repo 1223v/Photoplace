@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import { Bounce } from "react-activity";
 import Loading from '../Loading/Loading';
 
 function Share() {
@@ -31,9 +30,6 @@ function Share() {
 			kakao.Link.sendCustom({
 				templateId: 81118,
 				templateArgs: {
-					'like': 123,
-					'share': 321,
-					'view': 213,
 					'title': title,
 					'num': num,
 					'description': desc,
@@ -45,10 +41,15 @@ function Share() {
 	
 	return (
 		<div>
-		<center>
-			<img src="#" onError="this.style.display='none';" onError={shareKakaoCustom} />
-		</center>
-		<Loading></Loading>
+			<Loading></Loading>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<img src="#" onError={shareKakaoCustom} />
+		
+		
 		</div>
 	);
 }

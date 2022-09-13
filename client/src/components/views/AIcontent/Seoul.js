@@ -195,7 +195,7 @@ const Seoul = (props, { history }) => {
 
 			{!loading && result === null ? (
 				<div style={{ width:'80%' , fontSize:'10px'}}>
-						※ 업로드 된 사진은 별도로 수집, 보존 하지않고 얼굴인식 용도에만 사용됩니다.
+						※ 업로드 된 사진은 별도로 수집, 보존 하지않고 인식 용도에만 사용됩니다.
 						<br/><br/>
 				</div>
 			) : null}

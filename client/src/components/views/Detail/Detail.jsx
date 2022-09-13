@@ -1,4 +1,3 @@
-/* global kakao */
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
@@ -17,7 +16,7 @@ import { MdContentCopy } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 
 function Detail(props) {
-	const {Appear, setAppear, setTitle, setNum, setDesc, setImg, Img, Description, Num, Title} = useShare();
+	const {Appear, setAppear, setTitle, setNum, setDesc, setImg} = useShare();
 	
 	const closeModal = () => {
 		setAppear(false);
@@ -29,15 +28,6 @@ function Detail(props) {
 	const dispatch = useDispatch();
 	let { id } = useParams();
 
-	const syncro_kihun = () => {
-		setTitle(Details.title);
-		setDesc(Details.content);
-		setImg(Details.imageSrc);
-		console.log("in detail ", + Title);
-		console.log("in detail " + Description);
-		console.log("in detail " + Img);
-	}
-	
 	useEffect(() => {		
 		let body = {
 			Num: id,
@@ -48,10 +38,6 @@ function Detail(props) {
 			
 			//kihun	
 			let num = parseInt(document.URL.match(/\d+/g));
-			console.log("setting " + num);
-			console.log("setting " + response.data[0].title);
-			console.log("setting " + response.data[0].content);
-			console.log("setting " + response.data[0].imageSrc);
 			setNum(num);
 			setTitle(response.data[0].title);
 			setDesc(response.data[0].content);
@@ -238,15 +224,6 @@ const Compo = styled.div`
 	align-items: center;
 	border-top-right-radius: 15px;
 	border-top-left-radius: 15px;
-`;
-
-const Button = styled.button`
-	display: absoulte;
-	font-size: 15px;
-	cursor: pointer;
-	border: 0;
-	outline: 0;
-	background-color: #ffffff;
 `;
 
 const DETAIL = styled.div`

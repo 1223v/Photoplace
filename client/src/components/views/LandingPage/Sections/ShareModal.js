@@ -1,21 +1,17 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {useShare, ShareContext} from '../../Context/forShareModal';
+import {useShare} from '../../Context/forShareModal';
 
 //const {Kakao, location} = window;
 
 function Share_modal({className, onClose, maskClosable, closable, visible, titles, img, description, view }) {
-	const {setTitle, setNum, setDesc, setImg, Img, Description, Num, Title} = useShare();
+	const {setNum, Img, Description, Num, Title} = useShare();
 	
 	const test = () => {
 		let num = parseInt(document.URL.match(/\d+/g));
 		setNum(num);
-		console.log("before share " + Title);
-		console.log("before share " + Num);
-		console.log("before share " + Description);
-		console.log("before share " + Img);
-		window.open("https://korea-app-beqvu.run.goorm.io/Share?&" + Title  + "&" + Num + "&" + Description + "&" + btoa(Img));
+		window.open("http://photoplace.shop/Share?&" + Title  + "&" + Num + "&" + Description + "&" + btoa(Img));
 	}
 	
 	useEffect(() => {
@@ -26,34 +22,6 @@ function Share_modal({className, onClose, maskClosable, closable, visible, title
 		return () => document.body.removeChild(script);
 		
 	}, []);
-	
-	
-	
-	const shareKakaoCustom = () => {
-		const url = document.URL;
-		let found = parseInt(url.match(/\d+/g));
-		
-		if(window.Kakao) {
-			
-			const kakao = window.Kakao;
-			if(!kakao.isInitialized()) {
-				kakao.init("88a1a10486c09c3e8ebff912acfccd68");
-			}
-
-			kakao.Link.sendCustom({
-				templateId: 81118,
-				templateArgs: {
-					'like': 123,
-					'share': 321,
-					'view': 213,
-					'title': titles,
-					'num': found,
-					'description': description,
-					'image': img
-				}
-			});			
-		}
-	};	 
 
 	const onMaskClick = (e) => {
 		if (e.target === e.currentTarget) {

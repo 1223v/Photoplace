@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -6,20 +6,11 @@ import SlickComponent from './SliderImg';
 
 function Modal({ className, onClose, maskClosable, closable, visible, imageSrcs, contents, titles, nums,cityd }) {
 	
-	const [Share, setShare] = useState(false);
-	
-	
-	
-   const openShare = () => {
-      setShare(!Share);
-   };
-	
 	const onMaskClick = (e) => {
 		if (e.target === e.currentTarget) {
 			onClose(e);
 		}
 	};
-
  
 	const close = (e) => {
 		if (onClose) {
