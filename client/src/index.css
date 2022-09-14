@@ -565,3 +565,23 @@ box-shadow: none | x-position y-position blur spread color | inset | initial | i
 	font-family: "main_font";
 	font-size: 15px;
 }
+
+
+
+
+/*AIcontent 페이지 css*/
+.GiveMeButton{
+	color:'gray';
+	font-family: "AIpage_font";
+	background-color: rgba(0,0,0,0);
+	border:0;
+	outline:0;
+	
+	margin-left: auto;
+	margin-right: auto;
+	align-items: center;
+	flex-direction: column;
+	
+	font-size:30px;
+	margin-top:25%;
+}

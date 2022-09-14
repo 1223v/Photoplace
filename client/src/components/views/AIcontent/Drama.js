@@ -227,8 +227,8 @@ const Drama = (props, { history }) => {
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Seoul">서울 </Link>
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Busan">부산</Link>
 						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Jeju"> 제주</Link>
-						<Link style={{zIndex:'10', color:'black',textDecoration: 'none',marginRight:'30%'}} to="/Drama"> 드라마</Link>
-						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Recommendation">AI 추천</Link>
+						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Drama"> 드라마</Link>
+						<Link style={{zIndex:'10', color:'black',textDecoration: 'none', marginRight:'9%'}} to="/Recommendation"> AI추천</Link>
 					</div>
 				</LowerIconsContainer>
 				
@@ -247,8 +247,10 @@ const Drama = (props, { history }) => {
 							inputRef.current.click();
 						}}
 					>
-						<br/><br/><br/><br/>
-						GIVE ME YOUR PICTURE!
+						<button className='GiveMeButton'>
+							<br/><br/><br/><br/>
+							GIVE ME YOUR PICTURE!
+						</button>
 					</div>
 				)}
 			</ImageContainer>

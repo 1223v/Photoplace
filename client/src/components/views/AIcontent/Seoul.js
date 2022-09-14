@@ -224,11 +224,11 @@ const Seoul = (props, { history }) => {
 						src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8DD1z%2FbtrIOSF0zp1%2FGoaATe4xkFtl8gZB8cuhQk%2Fimg.png"></img>
 					<br/>
 				<div>
-					<Link style={{zIndex:'10', color:'black',textDecoration: 'none',marginLeft:'35%'}} to="/Seoul">서울 </Link>
+					<Link style={{zIndex:'10', color:'black',textDecoration: 'none',marginLeft:'25%'}} to="/Seoul">서울 </Link>
 					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Busan">부산</Link>
 					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Jeju"> 제주</Link>
 					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Drama"> 드라마</Link>
-					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Recommendation">AI 추천</Link>
+					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Recommendation"> AI추천</Link>
 				</div>
 				</LowerIconsContainer>
 				
@@ -241,13 +241,15 @@ const Seoul = (props, { history }) => {
 				{imgBase64 ? (
 					<Image id="srcImg" src={imgBase64}></Image>
 				) : (
-					<div style={{ fontSize:'25px', height:'100%', width:'100%', textAlign:'center',zIndex:'10'}}
+					<div style={{ fontSize:'25px', height:'100%', width:'100%', textAlign:'center'}}
 						onClick={() => {
 							inputRef.current.click();
 						}}
 					>
-						<br/><br/><br/><br/>
-						GIVE ME YOUR PICTURE!
+						<button className='GiveMeButton'>
+							<br/><br/><br/><br/>
+							GIVE ME YOUR PICTURE!
+						</button>
 					</div>
 				)}
 			</ImageContainer>

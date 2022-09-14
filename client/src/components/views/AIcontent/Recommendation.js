@@ -1,5 +1,4 @@
 import React, { useState, useRef} from 'react';
-
 import { Link, useNavigate } from 'react-router-dom';
 import * as tmImage from '@teachablemachine/image';
 import Dots from 'react-activity/dist/Dots';
@@ -75,7 +74,7 @@ const ImageContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	
-	z-index: 5;
+	
 	flex-direction: column;
 	box-shadow: 0px 3px 5px 1px rgb(252, 248, 232);
 `;
@@ -89,8 +88,9 @@ const AnalyzingContainer=styled.div`
 	top:50px;
 `
 
+
 const Recommendation = (props, { history }) => {
-	let URL = 'https://teachablemachine.withgoogle.com/models/D563JHUM9/'; //<--TM url
+	let URL = 'https://teachablemachine.withgoogle.com/models/opP0j0l0A7/'; //<--TM url
 
 	const modelURL = URL + 'model.json';
 	const metadataURL = URL + 'metadata.json';
@@ -223,11 +223,11 @@ const Recommendation = (props, { history }) => {
 						src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8DD1z%2FbtrIOSF0zp1%2FGoaATe4xkFtl8gZB8cuhQk%2Fimg.png"></img>
 					<br/>
 				<div>
-					<Link style={{zIndex:'10', color:'black',textDecoration: 'none',marginLeft:'35%'}} to="/Seoul">서울 </Link>
+					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Seoul">서울 </Link>
 					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Busan">부산</Link>
 					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Jeju"> 제주</Link>
 					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Drama"> 드라마</Link>
-					<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Recommendation">AI 추천</Link>
+					<Link style={{zIndex:'10', color:'black',textDecoration: 'none', marginRight:'25%'}} to="/Recommendation"> AI추천</Link>
 				</div>
 				</LowerIconsContainer>
 				
@@ -240,13 +240,15 @@ const Recommendation = (props, { history }) => {
 				{imgBase64 ? (
 					<Image id="srcImg" src={imgBase64}></Image>
 				) : (
-					<div style={{ fontSize:'25px', height:'100%', width:'100%', textAlign:'center',zIndex:'10'}}
+					<div style={{ fontSize:'25px', height:'100%', width:'100%', textAlign:'center'}}
 						onClick={() => {
 							inputRef.current.click();
 						}}
 					>
-						<br/><br/><br/><br/>
-						GIVE ME YOUR PICTURE!
+						<button className='GiveMeButton'>
+							<br/><br/><br/><br/>
+							GIVE ME YOUR PICTURE!
+						</button>
 					</div>
 				)}
 			</ImageContainer>
