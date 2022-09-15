@@ -139,7 +139,7 @@ const Recommendation = (props, { history }) => {
 		setLoading(false);
 		setResult(prediction[0].className);
 
-		console.log('가장높은확률 : ', prediction[0].className);
+		
 
 		let body = {
 			
@@ -177,7 +177,7 @@ const Recommendation = (props, { history }) => {
 		if (event.target.files[0]) {
 			reader.readAsDataURL(event.target.files[0]); // 1. 파일을 읽어 버퍼에 저장합니다.
 			setImgFile(event.target.files[0]); // 파일 상태 업데이트
-			init().then(console.log('init 모델'), predict());
+			init().then( predict());
 		}
 	};
 

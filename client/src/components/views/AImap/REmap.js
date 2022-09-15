@@ -45,8 +45,6 @@ const REmap = () => {
 	const [imageSrcs, setimageSrcs] = useState('');
 	const [contents, setcontents] = useState('');
 	const [Titles, setTitles] = useState('');
-	const [SubContent,setSubContent] = useState([]);
-	const [SubimageSrcs,setSubimageSrcs] = useState([]);
 	const [Nums, setNums] = useState([]);
 	const [Citye, setCitye] = useState([]);
 	
@@ -81,8 +79,7 @@ const REmap = () => {
 		Axios.post('/api/data/remaps',body)
         .then(response => {
             
-		setSubContent(response.data[0].content);
-		setSubimageSrcs(response.data[0].imageSrc)
+		
 		// 마커 이미지의 이미지 주소입니다
 			
 		
@@ -178,8 +175,7 @@ const REmap = () => {
 					isOpen={showInfo}
 					handleClose={show}
 					style={{ justifyContent: 'center' }}
-					SubContent={SubContent}
-					SubimageSrcs={SubimageSrcs}
+					
 				></InPage>
 			</div>
 

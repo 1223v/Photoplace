@@ -13,7 +13,7 @@ function Ranking(props) {
 		// Axios.get('/api/data/seoulsmap').then((response) => {
 		// 	setRankings(response.data);
 		// });
-		console.log(props.category);
+		
 		Axios.get('/api/data/' + props.category+'Ranking').then((response) => {
 			setCity(response.data);
 		});

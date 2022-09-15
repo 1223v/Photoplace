@@ -13,7 +13,7 @@ function RankingJeju() {
 		// });
 		Axios.get('/api/data/JejuRanking').then((response) => {
 			setCity(response.data);
-			console.log(response.data);
+			
 		});
 	}, []);
 
@@ -27,7 +27,7 @@ function RankingJeju() {
 		};
 		if (body.rankingObject.length !== 0 ) {
 			Axios.post('api/data/JejuRankinginfo', body).then((response) => {
-				console.log(response.data);
+				
 				setRankings(response.data);
 			});
 		}

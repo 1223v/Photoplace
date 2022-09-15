@@ -27,7 +27,7 @@ function SelectBox(props){
 
 	
 	const handleChange = (e) => {
-		console.log("응애",e.target.value);
+		
 	}
 	return(
 		<Select onChange={handleChange}>

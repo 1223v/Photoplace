@@ -15,13 +15,13 @@ function Detailinfo(props) {
 			Axios.post('/api/data/detailsi', body).then((response) => {
 				
 				setDetailobject(response.data);
-				console.log(response.data);
+				
 			});
 		}
 	}, [props.cityinfo]);
 	
 		
-console.log(Detailobject[0]);
+
 var options = {
           series: [{
           name: '한달간 평균 방문객',

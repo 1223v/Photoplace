@@ -76,7 +76,7 @@ function App() {
 			</div>
 		);
 	} else if (url.includes('Share')) {
-		console.log("going " + Title);
+		
 		return (
 			<ShareContext.Provider
 			value= {{
