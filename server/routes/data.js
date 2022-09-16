@@ -80,18 +80,16 @@ router.post('/detailsi', (req, res) => {
 
 router.post('/remaps', (req, res) => {
 	
-	var sql = `SELECT * FROM Marker WHERE tag_3 LIKE '%${req.body.ainame}%' OR tag_4 LIKE '%${req.body.ainame}%';`;
-	var sql1 = `SELECT * FROM Marker WHERE tag_3 LIKE '%${req.body.ainame2}%' OR tag_4 LIKE '%${req.body.ainame2}%';`;
-	//요형태로 가능한가?
-	//var sql2 = `SELECT * FROM Marker WHERE tag_3 LIKE '%${req.body.ainame}%' OR tag_4 LIKE '%${req.body.ainame}%' OR tag_3 LIKE '%${req.body.ainame2}%' OR tag_4 LIKE '%${req.body.ainame2}%';`;
-	connection.query(sql + sql1, (err, results, rows) => {
+	
+	var sql2 = `SELECT * FROM Marker WHERE tag_3 LIKE '%${req.body.ainame}%' OR tag_4 LIKE '%${req.body.ainame}%' OR tag_3 LIKE '%${req.body.ainame2}%' OR tag_4 LIKE '%${req.body.ainame2}%';`;
+	connection.query(sql2, (err, rows) => {
 		if (err) {
 			return res.send(err);
 		}
 
-		const newArr = [...results[0], ...results[1], ...results[2]];
+		
 
-		return res.send(newArr);
+		return res.send(rows);
 	});
 });
 

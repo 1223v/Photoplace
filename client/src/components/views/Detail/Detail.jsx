@@ -143,7 +143,7 @@ function Detail(props) {
 						<div className="loc_explanation">{Details.content}</div>
 						<br/>
 						<div className="loctag">
-							<b style={{backgroundColor:"#D3D3D3"}}>#{Details.tag_1}</b> <b style={{backgroundColor:"#D3D3D3"}}>#{Details.tag_2}</b>
+							<b style={{backgroundColor:"#D3D3D3"}}>#{Details.tag_1}</b> <b style={{backgroundColor:"#D3D3D3"}}>#{Details.tag_2}</b> <b style={{backgroundColor:"#D3D3D3"}}>#{Details.tag_3}</b> <b style={{backgroundColor:"#D3D3D3"}}>#{Details.tag_4}</b>
 						</div>
 					</div>
 

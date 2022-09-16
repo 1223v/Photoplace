@@ -73,7 +73,7 @@ const REmap = () => {
 		let body = {
 			ainame: aicontent.aiSuccess.prediction,
 			ainame2: aicontent.aiSuccess.prediction1,
-			ainame3:aicontent.aiSuccess.prediction2,
+			
 		};
 		
 		Axios.post('/api/data/remaps',body)
