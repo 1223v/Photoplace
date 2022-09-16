@@ -65,6 +65,7 @@ const ImageContainer = styled.div`
 	
 	
 	
+	
 	background: linear-gradient(to right bottom, #8033F1, #ffa69e);
     color: transparent;
 	
