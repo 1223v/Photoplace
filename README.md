@@ -1,78 +1,104 @@
-# Getting Started with Create React App
+<h1 align="center">Welcome to Photoplace 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/kefranabg/readme-md-generator/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+  
+    <img alt="License: MIT" src="https://img.shields.io/github/license/wupitch/wupitch-server" />
+  
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Photoplace Project
 
-## Available Scripts
+<div align=center>
+  <img width="200" alt="스크린샷 2021-12-05 오후 9 41 41" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbGe1WA%2FbtrVhSFxkqc%2FrdlWb13VKaeA8WFeWof9U1%2Fimg.png">
+</div>
+<h2 align=center>AI가 추천하는 나와 어울리는 여행지, Photoplace</h2>
 
-In the project directory, you can run:
+<div align=center>
+<img width="905" alt="스크린샷 2021-12-05 오후 9 52 15" src="https://user-images.githubusercontent.com/54254402/144747317-5af71998-a855-474b-9d20-79a565411b59.png">
+</div>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## API Docs
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 💎 [OPEN API DOCs-Tour API v.4](https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15101972)
+### 💎 [OPEN API DOCs-Tour API v.4](https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15101914)
+### 💎 [OPEN API DOCs-Tour API v.4](https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15101578)
+### ✨ [KAKAO MAP API](https://apis.map.kakao.com/web/documentation/)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 기술스택
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p>
+  <img src="https://img.shields.io/badge/-NodeJS-blue"/>&nbsp
+  <img src="https://img.shields.io/badge/-Python-red"/>&nbsp
+  <img src="https://img.shields.io/badge/-MySQL-yellow"/>&nbsp
+  <img src="https://img.shields.io/badge/-React-blue"/>&nbsp
+  <img src="https://img.shields.io/badge/-AWS-orange"/>&nbsp
+  <img src="https://img.shields.io/badge/-Nginx-red"/>&nbsp
+  <img src="https://img.shields.io/badge/-PM2-black"/>&nbsp
+  
+ 
+</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 개발환경
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- front
+  - react v
+  
+  
+- backend
+  - nodejs
+  - express v
 
-### `npm run eject`
+## 시스템 구성도
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![drawio](https://user-images.githubusercontent.com/54254402/136225436-8693e719-f8cc-4670-bbbd-33e6e68096cc.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+$ ./gradlew clean build
+```
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Author
 
-### Analyzing the Bundle Size
+👤 **1223v**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+* Website: 1223v.github.io
+* Github: [@1223v](https://github.com/1223v)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🤝 Contributing
 
-### Advanced Configuration
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/kefranabg/readme-md-generator/graphs/contributors"><img src="https://opencollective.com/readme-md-generator/contributors.svg?width=890&button=false" /></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## Show your support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Give a ⭐️ if this project helped you!
 
-### `npm run build` fails to minify
+## 📝 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Copyright © 2021 [1223v](https://github.com/1223v).<br />
+This project is [MIT]() licensed.
 
-### YOU MUST MAKE "config/database.js"
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+
+## YOU MUST MAKE 
+"config/database.js"
 mkdir config
 vi database.js
-
 
 module.exports= {
     
