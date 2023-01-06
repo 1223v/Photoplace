@@ -12,12 +12,12 @@
 > Photoplace Project
 
 <div align=center>
-  <img width="200" alt="스크린샷 2021-12-05 오후 9 41 41" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbGe1WA%2FbtrVhSFxkqc%2FrdlWb13VKaeA8WFeWof9U1%2Fimg.png">
+  <img width="200" alt="스크린샷 2021-12-05 오후 9 41 41" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbw1OPq%2FbtrVzUKBRB4%2FjlyM7eo0Cfdk7qDG8ig0XK%2Fimg.png">
 </div>
 <h2 align=center>AI가 추천하는 나와 어울리는 여행지, Photoplace</h2>
 
 <div align=center>
-<img width="905" alt="스크린샷 2021-12-05 오후 9 52 15" src="https://user-images.githubusercontent.com/54254402/144747317-5af71998-a855-474b-9d20-79a565411b59.png">
+<img width="905" alt="스크린샷 2021-12-05 오후 9 52 15" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FToby9%2FbtrVyVwK8Tu%2FuxAhKRQk9ilRv8V0PEiP11%2Fimg.png">
 </div>
 
 
