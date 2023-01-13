@@ -54,7 +54,7 @@
 ## Usage
 
 ```sh
-$ ./gradlew clean build
+$ ./npm run dev
 ```
 
 
