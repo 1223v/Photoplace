@@ -48,7 +48,7 @@
 
 ## 시스템 구성도
 
-![drawio](https://user-images.githubusercontent.com/54254402/136225436-8693e719-f8cc-4670-bbbd-33e6e68096cc.png)
+![drawio](아직..)
 
 
 ## Usage
