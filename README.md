@@ -39,12 +39,12 @@
 ## 개발환경
 
 - front
-  - react v
+  - react v18.1.0
   
   
 - backend
   - nodejs
-  - express v
+  - express v4.18.1
 
 ## 시스템 구성도
 
