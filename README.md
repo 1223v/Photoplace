@@ -82,7 +82,7 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2021 [1223v](https://github.com/1223v).<br />
-This project is [MIT]() licensed.
+
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
