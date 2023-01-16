@@ -89,8 +89,8 @@ _This README was generated with ❤️ by [readme-md-generator](https://github.c
 
 ## YOU MUST MAKE "config/database.js"
   
-###mkdir config
-###vi database.js
+### mkdir config
+### vi database.js
 
     module.exports= {
 
