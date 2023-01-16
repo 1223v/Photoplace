@@ -87,10 +87,9 @@ Copyright © 2021 [1223v](https://github.com/1223v).<br />
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
 
-## YOU MUST MAKE 
-"config/database.js"
-mkdir config
-vi database.js
+## YOU MUST MAKE "config/database.js"
+  mkdir config
+  vi database.js
 
     module.exports= {
 
