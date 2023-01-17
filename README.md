@@ -92,7 +92,7 @@ _This README was generated with ❤️ by [readme-md-generator](https://github.c
   - mkdir config
   - vi database.js
 
-      module.exports= {
+        module.exports= {
 
           host : 'host url',
           user : "user name",
