@@ -69,10 +69,10 @@ $ ./npm run dev
 * Website: 1223v.github.io
 * Github: [@1223v](https://github.com/1223v)
 
-👤 **1223v**
+👤 **kihun0422**
 
 
-* Website: 1223v.github.io
+
 * Github: [@1223v](https://github.com/1223v)
 
 👤 **linirini**
@@ -80,29 +80,23 @@ $ ./npm run dev
 
 * Github: [@1223v](https://github.com/linirini)
 
-👤 **1223v**
+👤 **sujinyang00**
 
 
-* Website: 1223v.github.io
-* Github: [@1223v](https://github.com/1223v)
 
-👤 **1223v**
+* Github: [@1223v](https://github.com/sujinyang00)
 
-
-* Website: 1223v.github.io
-* Github: [@1223v](https://github.com/1223v)
-
-👤 **1223v**
+👤 **lgee1**
 
 
-* Website: 1223v.github.io
-* Github: [@1223v](https://github.com/1223v)
 
-👤 **1223v**
+* Github: [@1223v](https://github.com/lgee1)
+
+👤 **aestera**
 
 
-* Website: 1223v.github.io
-* Github: [@1223v](https://github.com/1223v)
+
+* Github: [@1223v](https://github.com/aestera)
 
 
 
