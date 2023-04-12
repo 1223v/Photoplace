@@ -73,30 +73,30 @@ $ ./npm run dev
 
 
 
-* Github: [@1223v](https://github.com/1223v)
+* Github: [@kihun0422](https://github.com/1223v)
 
 👤 **linirini**
 
 
-* Github: [@1223v](https://github.com/linirini)
+* Github: [@linirini](https://github.com/linirini)
 
 👤 **sujinyang00**
 
 
 
-* Github: [@1223v](https://github.com/sujinyang00)
+* Github: [@sujinyang00](https://github.com/sujinyang00)
 
 👤 **lgee1**
 
 
 
-* Github: [@1223v](https://github.com/lgee1)
+* Github: [@lgee1](https://github.com/lgee1)
 
 👤 **aestera**
 
 
 
-* Github: [@1223v](https://github.com/aestera)
+* Github: [@aestera](https://github.com/aestera)
 
 
 
