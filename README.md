@@ -73,7 +73,7 @@ $ ./npm run dev
 
 
 
-* Github: [@kihun0422](https://github.com/1223v)
+* Github: [@kihun0422](https://github.com/kihun0422)
 
 👤 **linirini**
 
@@ -98,6 +98,11 @@ $ ./npm run dev
 
 * Github: [@aestera](https://github.com/aestera)
 
+
+👤 **twOn3**
+
+
+* Github: [@twOn3](https://github.com/twOn3)
 
 
 ## 🤝 Contributing
