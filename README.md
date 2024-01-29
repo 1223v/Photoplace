@@ -65,8 +65,6 @@ $ ./npm run dev
 
 👤 **1223v**
 
-
-* Website: 1223v.github.io
 * Github: [@1223v](https://github.com/1223v)
 
 👤 **kihun0422**
