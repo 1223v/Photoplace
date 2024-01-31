@@ -1,5 +1,12 @@
 <h1 align="center">Welcome to Photoplace 👋</h1>
 
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/1223v/Photoplace/blob/main/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/1223v/Photoplace" />
+  </a>
+</p>
+
 
 > Photoplace Project
 
@@ -10,7 +17,17 @@
 
 <div align=center>
 <img width="905" alt="스크린샷 2021-12-05 오후 9 52 15" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FToby9%2FbtrVyVwK8Tu%2FuxAhKRQk9ilRv8V0PEiP11%2Fimg.png">
+ 
+
 </div>
+
+ ![image](https://github.com/1223v/Photoplace/assets/78861124/0f2e6a41-b55f-4417-bf88-a0e7cb01e71c)
+ ![image](https://github.com/1223v/Photoplace/assets/78861124/919a9a7d-2311-4703-8de3-58120f60caf5)
+ ![image](https://github.com/1223v/Photoplace/assets/78861124/8a8ac8ab-9088-4be7-a903-76b150815acf)
+![image](https://github.com/1223v/Photoplace/assets/78861124/cffe3460-471b-48db-af41-0a66b82df40e)
+![image](https://github.com/1223v/Photoplace/assets/78861124/fe270fa5-1f63-4cbe-9794-45caf5864456)
+
+
 
 
 ## API Docs
@@ -101,11 +118,6 @@ $ ./npm run dev
 
 
 * Github: [@twOn3](https://github.com/twOn3)
-
-
-## 🤝 Contributing
-
-This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
 
 
 
