@@ -80,46 +80,13 @@ $ ./npm run dev
 
 ## Author
 
-👤 **1223v**
-
-* Github: [@1223v](https://github.com/1223v)
-
-👤 **kihun0422**
-
-
-
-* Github: [@kihun0422](https://github.com/kihun0422)
-
-👤 **linirini**
-
-
-* Github: [@linirini](https://github.com/linirini)
-
-👤 **sujinyang00**
-
-
-
-* Github: [@sujinyang00](https://github.com/sujinyang00)
-
-👤 **lgee1**
-
-
-
-* Github: [@lgee1](https://github.com/lgee1)
-
-👤 **aestera**
-
-
-
-* Github: [@aestera](https://github.com/aestera)
-
-
-👤 **twOn3**
-
-
-* Github: [@twOn3](https://github.com/twOn3)
-
-
+👤 **[1223v](https://github.com/1223v)**
+👤 **[kihun0422](https://github.com/kihun0422)**
+👤 **[linirini](https://github.com/linirini)**
+👤 **[sujinyang00](https://github.com/sujinyang00)**
+👤 **[lgee1](https://github.com/lgee1)**
+👤 **[aestera](https://github.com/aestera)**
+👤 **[twOn3](https://github.com/twOn3)**
 
 ## Show your support
 
@@ -132,6 +99,8 @@ Copyright © 2021 [1223v](https://github.com/1223v).<br />
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+
+***
 
 ## YOU MUST MAKE "config/database.js"
   
