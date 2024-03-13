@@ -88,9 +88,6 @@ $ ./npm run dev
 👤 **[aestera](https://github.com/aestera)**
 👤 **[twOn3](https://github.com/twOn3)**
 
-## Show your support
-
-Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
@@ -102,17 +99,4 @@ _This README was generated with ❤️ by [readme-md-generator](https://github.c
 
 ***
 
-## YOU MUST MAKE "config/database.js"
-  
-  - mkdir config
-  - vi database.js
 
-        module.exports= {
-
-          host : 'host url',
-          user : "user name",
-          password : "user password", 
-          database : "db name",
-          port: "3306",
-          multipleStatements: true
-        };
